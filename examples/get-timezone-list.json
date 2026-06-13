@@ -1,0 +1,12 @@
+{
+  "operationId": "get-timezone-list",
+  "summary": "Get Timezone List",
+  "method": "GET",
+  "path": "/v1/business/{businessNumber}/timezones",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

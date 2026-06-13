@@ -1,0 +1,12 @@
+{
+  "operationId": "track-social-post",
+  "summary": "Track Social Post",
+  "method": "GET",
+  "path": "/v1/social/{accountNumber}/post/track/{trackingId}",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

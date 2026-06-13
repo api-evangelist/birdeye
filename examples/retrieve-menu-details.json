@@ -1,0 +1,12 @@
+{
+  "operationId": "retrieve-menu-details",
+  "summary": "Retrieve Menu Details",
+  "method": "POST",
+  "path": "/v1/listing/menu-details",
+  "examples": {
+    "response_200": {
+      "code": 2458,
+      "message": "Invalid order value. Allowed values are 'asc' or 'desc'."
+    }
+  }
+}

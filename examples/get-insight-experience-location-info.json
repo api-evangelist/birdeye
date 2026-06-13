@@ -1,0 +1,12 @@
+{
+  "operationId": "get-insight-experience-location-info",
+  "summary": "Get Insight Experience Location Info",
+  "method": "POST",
+  "path": "/v1/insight/experience/locationInfo",
+  "examples": {
+    "response_200": {
+      "code": 2003,
+      "message": "businessNumbers are mandatory"
+    }
+  }
+}

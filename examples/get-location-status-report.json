@@ -1,0 +1,12 @@
+{
+  "operationId": "get-location-status-report",
+  "summary": "Get Location Status Report",
+  "method": "GET",
+  "path": "/v1/listing/status/location",
+  "examples": {
+    "response_200": {
+      "code": 1043,
+      "message": "Business should be either SMB or Enterprise sub account"
+    }
+  }
+}

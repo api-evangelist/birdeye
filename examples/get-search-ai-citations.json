@@ -1,0 +1,12 @@
+{
+  "operationId": "get-search-ai-citations",
+  "summary": "Get Search AI Citations",
+  "method": "POST",
+  "path": "/v1/listing/searchAi/public/citations",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

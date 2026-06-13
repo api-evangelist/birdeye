@@ -1,0 +1,12 @@
+{
+  "operationId": "post-review-reply",
+  "summary": "Post Review Reply",
+  "method": "PUT",
+  "path": "/v1/review/reply/business/{businessNumber}/review/{reviewId}",
+  "examples": {
+    "response_200": {
+      "code": 2078,
+      "message": "Error while posting a reply to Rent"
+    }
+  }
+}

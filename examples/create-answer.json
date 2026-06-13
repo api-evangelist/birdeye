@@ -1,0 +1,12 @@
+{
+  "operationId": "create-answer",
+  "summary": "Create Answer",
+  "method": "POST",
+  "path": "/v1/qna/answer/create",
+  "examples": {
+    "response_200": {
+      "code": 2462,
+      "message": "Owner answer already added please edit answer"
+    }
+  }
+}

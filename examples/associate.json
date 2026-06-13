@@ -1,0 +1,12 @@
+{
+  "operationId": "associate",
+  "summary": "Associate",
+  "method": "PUT",
+  "path": "/v1/business/public/custom-fields/associate",
+  "examples": {
+    "response_200": {
+      "code": 5028,
+      "message": "Custom field delete failed."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "remove-particular-tags-from-all-reviews",
+  "summary": "Remove particular tags from all reviews",
+  "method": "POST",
+  "path": "/v1/tag/remove/all/review",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "get-all-tags",
+  "summary": "Get all tags",
+  "method": "GET",
+  "path": "/v1/tag/all",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

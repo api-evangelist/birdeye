@@ -1,0 +1,12 @@
+{
+  "operationId": "nps-by-location-report",
+  "summary": "NPS By Location Report",
+  "method": "POST",
+  "path": "/v1/reports/nps/location/elst",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

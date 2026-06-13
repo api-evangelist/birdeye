@@ -1,0 +1,12 @@
+{
+  "operationId": "customer-delete",
+  "summary": "Customer Delete",
+  "method": "DELETE",
+  "path": "/v1/customer/id/{customerId}",
+  "examples": {
+    "response_200": {
+      "code": 1089,
+      "message": "Customer id is invalid."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "get-all-aggregation-source",
+  "summary": "Get all aggregation source",
+  "method": "GET",
+  "path": "/v1/survey/reviewsites-alias",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "list-conversations",
+  "summary": "List Conversations",
+  "method": "POST",
+  "path": "/v1/messenger/export",
+  "examples": {
+    "response_200": {
+      "code": 1246,
+      "message": "Customer email or phone number is required."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "get-reviews-summary",
+  "summary": "Get reviews summary",
+  "method": "GET",
+  "path": "/v1/review/businessid/{businessId}/summary",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

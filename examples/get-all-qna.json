@@ -1,0 +1,12 @@
+{
+  "operationId": "get-all-qna",
+  "summary": "Get All QnA",
+  "method": "POST",
+  "path": "/v1/quero/external/get-all-qna",
+  "examples": {
+    "response_200": {
+      "code": 1532,
+      "message": "Business id is missing or invalid."
+    }
+  }
+}

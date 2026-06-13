@@ -1,0 +1,12 @@
+{
+  "operationId": "add-ticket-comments",
+  "summary": "Add Ticket Comments",
+  "method": "POST",
+  "path": "/v1/ticket/{businessNumber}/comment-activity",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

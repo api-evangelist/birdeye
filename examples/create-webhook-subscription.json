@@ -1,0 +1,12 @@
+{
+  "operationId": "create-webhook-subscription",
+  "summary": "Create webhook subscription",
+  "method": "POST",
+  "path": "/v1/messenger/subscribe/webhook/event",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

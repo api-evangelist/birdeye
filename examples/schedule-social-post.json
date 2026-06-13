@@ -1,0 +1,12 @@
+{
+  "operationId": "schedule-social-post",
+  "summary": "Schedule Social Post",
+  "method": "POST",
+  "path": "/v1/social/{accountNumber}/schedule",
+  "examples": {
+    "response_200": {
+      "code": 5557,
+      "message": "Requested Business Ids are empty."
+    }
+  }
+}

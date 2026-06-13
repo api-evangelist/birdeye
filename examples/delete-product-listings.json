@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-product-listings",
+  "summary": "Delete Product Listings",
+  "method": "POST",
+  "path": "/v1/listing/public/product/deleteProduct",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

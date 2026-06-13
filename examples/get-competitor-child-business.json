@@ -1,0 +1,12 @@
+{
+  "operationId": "get-competitor-child-business",
+  "summary": "Get Competitor Child Business",
+  "method": "GET",
+  "path": "/v1/business/{EnterpriseCompetitorBusinessId}/child",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

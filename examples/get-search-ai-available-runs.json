@@ -1,0 +1,12 @@
+{
+  "operationId": "get-search-ai-available-runs",
+  "summary": "Get Search AI Available Runs",
+  "method": "GET",
+  "path": "/v1/listing/searchAi/available-runs",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

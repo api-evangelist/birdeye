@@ -1,0 +1,12 @@
+{
+  "operationId": "update",
+  "summary": "Update",
+  "method": "PUT",
+  "path": "/v1/business/public/custom-fields/update/{fieldId}",
+  "examples": {
+    "response_200": {
+      "code": 5026,
+      "message": "Custom field updation failed."
+    }
+  }
+}

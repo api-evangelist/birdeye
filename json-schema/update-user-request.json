@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/update-user-request.json",
+  "title": "Update User Request",
+  "type": "object",
+  "properties": {
+    "locationsNumberAccess": {
+      "type": "array"
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      }
+    },
+    "userRole": {
+      "type": "string"
+    },
+    "notification": {
+      "type": "object",
+      "properties": {
+        "sendReviewEmailAlert": {
+          "type": "number"
+        },
+        "sendDailyReviewDigest": {
+          "type": "number"
+        },
+        "dailyDigestAbsoluteTime": {
+          "type": "string"
+        },
+        "dailyDigestRunHour": {
+          "type": "number"
+        },
+        "dailyDigestRunMinute": {
+          "type": "number"
+        },
+        "sendWeeklyReviewDigest": {
+          "type": "number"
+        },
+        "weeklyDigestAbsoluteTime": {
+          "type": "string"
+        },
+        "weeklyDigestRunDay": {
+          "type": "number"
+        },
+        "weeklyDigestRunHour": {
+          "type": "number"
+        },
+        "weeklyDigestRunMinute": {
+          "type": "number"
+        },
+        "sendReviewSmsAlert": {
+          "type": "number"
+        },
+        "sendDailySocialDigest": {
+          "type": "number"
+        },
+        "sendTicketAlert": {
+          "type": "number"
+        },
+        "sendTicketStatusAlert": {
+          "type": "number"
+        },
+        "sendTicketAssigneeChangeAlert": {
+          "type": "number"
+        },
+        "sendTicketCommentAlert": {
+          "type": "number"
+        },
+        "sendTicketStartOrStoppedWatchingAlert": {
+          "type": "number"
+        },
+        "sendSurveyAlert": {
+          "type": "number"
+        },
+        "sendReferralAlert": {
+          "type": "number"
+        },
+        "sendScanToolSignUpAlert": {
+          "type": "number"
+        },
+        "webChatEmailInterval": {
+          "type": "string"
+        },
+        "webChatEmailAbsoluteTime": {
+          "type": "string"
+        },
+        "enableWebchat": {
+          "type": "number"
+        },
+        "enableTeamAlert": {
+          "type": "number"
+        },
+        "reviewAlertRatings": {
+          "type": "array"
+        },
+        "messengerEmailConversationType": {
+          "type": "string"
+        },
+        "assignedToMeAlert": {
+          "type": "number"
+        },
+        "enableBrowserNotification": {
+          "type": "number"
+        },
+        "messengerReportEnable": {
+          "type": "number"
+        },
+        "appointmentBooking": {
+          "type": "number"
+        },
+        "appointmentFormsEnabled": {
+          "type": "number"
+        },
+        "enableAIPostSuggestions": {
+          "type": "number"
+        },
+        "enablePostFailureEmail": {
+          "type": "number"
+        },
+        "enableDirectMessageEmail": {
+          "type": "number"
+        },
+        "enablePostCommentsEmail": {
+          "type": "number"
+        },
+        "enableMentionsEmail": {
+          "type": "number"
+        },
+        "enableStoryMentionsEmail": {
+          "type": "number"
+        },
+        "enableNewFollowersEmail": {
+          "type": "number"
+        },
+        "enableRetweetEmail": {
+          "type": "number"
+        },
+        "enableQuoteTweetEmail": {
+          "type": "number"
+        },
+        "enablePostFailureBrowserNotification": {
+          "type": "number"
+        },
+        "paymentAlert": {
+          "type": "number"
+        },
+        "sendBrokenIntegrationAlert": {
+          "type": "number"
+        },
+        "sendBrokenIntegrationEmail": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

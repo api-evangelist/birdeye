@@ -1,0 +1,12 @@
+{
+  "operationId": "customer-or-lead-list",
+  "summary": "Customer or Lead list",
+  "method": "POST",
+  "path": "/v1/contact/details",
+  "examples": {
+    "response_200": {
+      "code": 2348,
+      "message": "Max window size allowed is 60000 for a filter selection"
+    }
+  }
+}

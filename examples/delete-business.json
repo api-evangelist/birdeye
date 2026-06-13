@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-business",
+  "summary": "Delete Business",
+  "method": "DELETE",
+  "path": "/v1/business/{business_Id}",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

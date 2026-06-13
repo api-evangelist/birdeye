@@ -1,0 +1,12 @@
+{
+  "operationId": "upsert-contact",
+  "summary": "Upsert Contact",
+  "method": "POST",
+  "path": "/v1/contact/external/preferences/saveCustomer",
+  "examples": {
+    "response_200": {
+      "code": 5043,
+      "message": "Contact not found for the given request"
+    }
+  }
+}

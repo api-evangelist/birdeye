@@ -1,0 +1,12 @@
+{
+  "operationId": "get-all-ticket-data",
+  "summary": "Get All Ticket Data",
+  "method": "POST",
+  "path": "/v1/ticket/{businessNumber}/get/all?",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

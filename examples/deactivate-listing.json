@@ -1,0 +1,12 @@
+{
+  "operationId": "deactivate-listing",
+  "summary": "Deactivate Listing",
+  "method": "POST",
+  "path": "/v1/listing/{businessNumber}/deactivate",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

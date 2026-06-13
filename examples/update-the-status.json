@@ -1,0 +1,12 @@
+{
+  "operationId": "update-the-status",
+  "summary": "Update the status",
+  "method": "PUT",
+  "path": "/v1/business/{business_id}/status",
+  "examples": {
+    "response_200": {
+      "code": 1191,
+      "message": "Invalid status."
+    }
+  }
+}

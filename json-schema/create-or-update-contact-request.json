@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/create-or-update-contact-request.json",
+  "title": "Create Or Update Contact Request",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "countryCode": {
+      "type": "string"
+    },
+    "smsOptin": {
+      "type": "boolean"
+    },
+    "emailOptin": {
+      "type": "boolean"
+    },
+    "blocked": {
+      "type": "boolean"
+    },
+    "businessIds": {
+      "type": "array"
+    },
+    "tags": {
+      "type": "string"
+    },
+    "customFields": {
+      "type": "array"
+    },
+    "externalId": {
+      "type": "string"
+    }
+  }
+}

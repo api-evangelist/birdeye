@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/get-birdeye-impressions-request.json",
+  "title": "Get Birdeye Impressions Request",
+  "type": "object",
+  "properties": {
+    "businessNumbers": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "endDate": {
+      "type": "string"
+    },
+    "limit": {
+      "type": "number"
+    },
+    "startIndex": {
+      "type": "number"
+    },
+    "sortby": {
+      "type": "string"
+    },
+    "order": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "businessNumbers"
+  ]
+}

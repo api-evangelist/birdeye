@@ -1,0 +1,12 @@
+{
+  "operationId": "create-user",
+  "summary": "Create User",
+  "method": "POST",
+  "path": "/v1/user/signup/v2",
+  "examples": {
+    "response_200": {
+      "code": 1059,
+      "message": "Last name cannot be more than 50 characters"
+    }
+  }
+}

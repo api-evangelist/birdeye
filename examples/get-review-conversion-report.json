@@ -1,0 +1,12 @@
+{
+  "operationId": "get-review-conversion-report",
+  "summary": "Get Review conversion report",
+  "method": "GET",
+  "path": "/v1/reports/business/analytics/email",
+  "examples": {
+    "response_200": {
+      "code": 1039,
+      "message": "Invalid business aggregation id"
+    }
+  }
+}

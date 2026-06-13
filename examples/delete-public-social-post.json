@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-public-social-post",
+  "summary": "Delete public social Post",
+  "method": "POST",
+  "path": "/v1/social/post/public/delete/{accountNumber}",
+  "examples": {
+    "response_200": {
+      "code": 5557,
+      "message": "Requested Business Ids are empty."
+    }
+  }
+}

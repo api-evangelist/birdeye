@@ -1,0 +1,12 @@
+{
+  "operationId": "create-or-update-contact",
+  "summary": "Create or Update Contact",
+  "method": "POST",
+  "path": "/v1/customer-v2/external/saveCustomer",
+  "examples": {
+    "response_200": {
+      "code": 5043,
+      "message": "Contact not found for the given request"
+    }
+  }
+}

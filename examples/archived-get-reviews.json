@@ -1,0 +1,12 @@
+{
+  "operationId": "archived-get-reviews",
+  "summary": "Archived Get Reviews",
+  "method": "POST",
+  "path": "/v1/review/archive/public",
+  "examples": {
+    "response_200": {
+      "code": 400,
+      "message": "Invalid media id"
+    }
+  }
+}

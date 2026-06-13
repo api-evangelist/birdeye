@@ -1,0 +1,12 @@
+{
+  "operationId": "review-response-rate-over-time",
+  "summary": "Review Response Rate Over Time",
+  "method": "POST",
+  "path": "/v1/review/report/response-rate/time/rate-over-time",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

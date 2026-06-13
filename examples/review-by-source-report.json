@@ -1,0 +1,12 @@
+{
+  "operationId": "review-by-source-report",
+  "summary": "Review By Source Report",
+  "method": "POST",
+  "path": "/v1/reports/count/reviewsite",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

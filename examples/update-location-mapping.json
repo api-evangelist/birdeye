@@ -1,0 +1,12 @@
+{
+  "operationId": "update-location-mapping",
+  "summary": "Update Location Mapping",
+  "method": "POST",
+  "path": "/v1/google-services/services/location-mapping",
+  "examples": {
+    "response_200": {
+      "code": 2494,
+      "message": "Invalid GBP Service Id"
+    }
+  }
+}

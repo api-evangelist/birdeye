@@ -1,0 +1,12 @@
+{
+  "operationId": "get-accuracy-report",
+  "summary": "Get Accuracy Report",
+  "method": "POST",
+  "path": "/v1/listing/searchAi/public/aio-details?page-size=100&start-index=0",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

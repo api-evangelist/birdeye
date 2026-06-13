@@ -1,0 +1,12 @@
+{
+  "operationId": "review-count-rating-by-employee",
+  "summary": "Review Count & Rating By Employee",
+  "method": "POST",
+  "path": "/v1/review/report/count-by-rating/employee/{BusinessId}",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

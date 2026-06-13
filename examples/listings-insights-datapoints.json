@@ -1,0 +1,12 @@
+{
+  "operationId": "listings-insights-datapoints",
+  "summary": "Listings Insights Datapoints",
+  "method": "POST",
+  "path": "/v1/listing/report/{reportType}/datapoints",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

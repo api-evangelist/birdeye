@@ -1,0 +1,12 @@
+{
+  "operationId": "assign-tags-to-filtered-reviews",
+  "summary": "Assign tags to filtered reviews",
+  "method": "POST",
+  "path": "/v1/tag/add/review",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

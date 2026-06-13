@@ -1,0 +1,12 @@
+{
+  "operationId": "review-and-rating-over-time-report",
+  "summary": "Review and rating over time Report",
+  "method": "POST",
+  "path": "/v1/reports/review/analytic/time",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

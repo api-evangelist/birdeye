@@ -1,0 +1,12 @@
+{
+  "operationId": "get-location-mapping",
+  "summary": "Get Location Mapping",
+  "method": "GET",
+  "path": "/v1/google-services/service/location-mapping",
+  "examples": {
+    "response_200": {
+      "code": 2486,
+      "message": "Business Id missing or invalid"
+    }
+  }
+}

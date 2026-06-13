@@ -1,0 +1,12 @@
+{
+  "operationId": "create",
+  "summary": "Create",
+  "method": "POST",
+  "path": "/v1/business/public/custom-fields/create",
+  "examples": {
+    "response_200": {
+      "code": 5040,
+      "message": "Max limit reached for custom fields."
+    }
+  }
+}

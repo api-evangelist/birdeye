@@ -1,0 +1,12 @@
+{
+  "operationId": "get-list-product-listing",
+  "summary": "Get List Product Listing",
+  "method": "POST",
+  "path": "/v1/listing/public/product/getList",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

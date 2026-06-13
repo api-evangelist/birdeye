@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/create-request.json",
+  "title": "Create Request",
+  "type": "object",
+  "properties": {
+    "defaultValue": {
+      "type": "string"
+    },
+    "dropDownOptions": {
+      "type": "array"
+    },
+    "fieldDescription": {
+      "type": "string"
+    },
+    "fieldName": {
+      "type": "string"
+    },
+    "filterable": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "fieldName",
+    "type"
+  ]
+}

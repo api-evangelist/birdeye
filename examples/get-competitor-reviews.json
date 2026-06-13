@@ -1,0 +1,12 @@
+{
+  "operationId": "get-competitor-reviews",
+  "summary": "Get Competitor Reviews",
+  "method": "POST",
+  "path": "/v1/review/businessId/{CompetitorEnterpriseBusinessId}",
+  "examples": {
+    "response_200": {
+      "code": 1228,
+      "message": "Invalid updated to date. Allowed format is MM/dd/yyyy"
+    }
+  }
+}

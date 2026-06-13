@@ -1,0 +1,12 @@
+{
+  "operationId": "list-responses-for-a-survey",
+  "summary": "List Responses for a Survey",
+  "method": "POST",
+  "path": "/v1/survey/ext/list/responses/{survey_id}",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

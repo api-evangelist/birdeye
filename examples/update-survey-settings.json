@@ -1,0 +1,12 @@
+{
+  "operationId": "update-survey-settings",
+  "summary": "Update Survey Settings",
+  "method": "POST",
+  "path": "/v1/survey/{surveyId}/settings/update",
+  "examples": {
+    "response_200": {
+      "code": 2096,
+      "message": "Detected conflicting user-access request!"
+    }
+  }
+}

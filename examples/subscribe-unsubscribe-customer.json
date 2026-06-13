@@ -1,0 +1,12 @@
+{
+  "operationId": "subscribe-unsubscribe-customer",
+  "summary": "Subscribe/Unsubscribe Customer",
+  "method": "POST",
+  "path": "/v1/customer-v2/change-permission",
+  "examples": {
+    "response_200": {
+      "code": 1089,
+      "message": "Customer id is invalid."
+    }
+  }
+}

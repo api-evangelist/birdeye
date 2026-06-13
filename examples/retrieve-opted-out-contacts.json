@@ -1,0 +1,12 @@
+{
+  "operationId": "retrieve-opted-out-contacts",
+  "summary": "Retrieve Opted-Out Contacts",
+  "method": "POST",
+  "path": "/v1/contact/external/preferences/update-feed",
+  "examples": {
+    "response_200": {
+      "code": 20083,
+      "message": "End date can't be before start date"
+    }
+  }
+}

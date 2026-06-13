@@ -1,0 +1,12 @@
+{
+  "operationId": "get",
+  "summary": "Get",
+  "method": "GET",
+  "path": "/v1/business/public/custom-fields/get/{fieldId}?locationBizNumber={locationBizNumber}",
+  "examples": {
+    "response_200": {
+      "code": 5025,
+      "message": "Custom field not found."
+    }
+  }
+}

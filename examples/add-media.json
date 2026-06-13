@@ -1,0 +1,12 @@
+{
+  "operationId": "add-media",
+  "summary": "Add Media",
+  "method": "POST",
+  "path": "/v1/business/{businessNumber}/upload/media",
+  "examples": {
+    "response_200": {
+      "code": 2175,
+      "message": "Provided media category is not supported"
+    }
+  }
+}

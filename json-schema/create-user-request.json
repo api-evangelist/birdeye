@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/create-user-request.json",
+  "title": "Create User Request",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "userEmailId": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "userRole": {
+      "type": "string"
+    },
+    "sendInvite": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "userEmailId",
+    "userRole"
+  ]
+}

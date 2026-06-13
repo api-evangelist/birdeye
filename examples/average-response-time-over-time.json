@@ -1,0 +1,12 @@
+{
+  "operationId": "average-response-time-over-time",
+  "summary": "Average Response Time Over Time",
+  "method": "POST",
+  "path": "/v1/review/report/avg-response-time/time",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

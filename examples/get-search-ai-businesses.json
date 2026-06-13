@@ -1,0 +1,12 @@
+{
+  "operationId": "get-search-ai-businesses",
+  "summary": "Get Search AI Businesses",
+  "method": "POST",
+  "path": "/v1/listing/searchAi/public/business",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

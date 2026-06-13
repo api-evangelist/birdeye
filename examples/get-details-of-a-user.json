@@ -1,0 +1,12 @@
+{
+  "operationId": "get-details-of-a-user",
+  "summary": "Get details of a user",
+  "method": "GET",
+  "path": "/v1/user/details",
+  "examples": {
+    "response_200": {
+      "code": 1010,
+      "message": "No user found with the given id"
+    }
+  }
+}

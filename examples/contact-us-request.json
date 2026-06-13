@@ -1,0 +1,12 @@
+{
+  "operationId": "contact-us-request",
+  "summary": "Contact Us Request",
+  "method": "POST",
+  "path": "/v1/contactUs/{businessId}",
+  "examples": {
+    "response_200": {
+      "code": 5046,
+      "message": "The customer is blocked"
+    }
+  }
+}

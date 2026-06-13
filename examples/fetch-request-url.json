@@ -1,0 +1,12 @@
+{
+  "operationId": "fetch-request-url",
+  "summary": "Fetch Request URL",
+  "method": "POST",
+  "path": "/v1/campaign/external/campaign-request-url",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

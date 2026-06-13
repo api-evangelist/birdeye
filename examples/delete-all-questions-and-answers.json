@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-all-questions-and-answers",
+  "summary": "Delete All Questions and Answers",
+  "method": "DELETE",
+  "path": "/v1/qna/question/deleteAll",
+  "examples": {
+    "response_200": {
+      "code": 2482,
+      "message": "Question Id is Invalid"
+    }
+  }
+}

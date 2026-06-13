@@ -1,0 +1,12 @@
+{
+  "operationId": "set-defaullt-review-sources",
+  "summary": "Set Defaullt Review Sources",
+  "method": "POST",
+  "path": "/v1/campaign/external/default-review-sources",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

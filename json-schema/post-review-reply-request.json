@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/post-review-reply-request.json",
+  "title": "Post Review Reply Request",
+  "type": "object",
+  "properties": {
+    "response": {
+      "type": "string"
+    },
+    "isPrivateResponse": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "visitor-report",
+  "summary": "Visitor report",
+  "method": "POST",
+  "path": "/v1/reports/count/visitors",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

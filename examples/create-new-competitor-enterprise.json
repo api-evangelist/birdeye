@@ -1,0 +1,12 @@
+{
+  "operationId": "create-new-competitor-enterprise",
+  "summary": "Create New Competitor Enterprise",
+  "method": "POST",
+  "path": "/v1/signup/competitor/{businessNumber}",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

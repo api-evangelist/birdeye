@@ -1,0 +1,12 @@
+{
+  "operationId": "post",
+  "summary": "POST",
+  "method": "POST",
+  "path": "/v1/business/public/custom-fields/getList?locationBizNumber={locationBizNumber}",
+  "examples": {
+    "response_200": {
+      "code": 1027,
+      "message": "Invalid business number."
+    }
+  }
+}

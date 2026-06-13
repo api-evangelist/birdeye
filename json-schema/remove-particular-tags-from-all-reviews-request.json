@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/remove-particular-tags-from-all-reviews-request.json",
+  "title": "Remove Particular Tags From All Reviews Request",
+  "type": "object",
+  "properties": {
+    "tags": {
+      "type": "array"
+    }
+  }
+}

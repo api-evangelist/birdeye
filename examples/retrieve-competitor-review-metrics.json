@@ -1,0 +1,12 @@
+{
+  "operationId": "retrieve-competitor-review-metrics",
+  "summary": "Retrieve Competitor Review metrics",
+  "method": "POST",
+  "path": "/v1/competitors/review/metrics",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

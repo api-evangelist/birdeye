@@ -1,0 +1,12 @@
+{
+  "operationId": "get-contact",
+  "summary": "Get Contact",
+  "method": "POST",
+  "path": "/v1/customer-v2/external/getCustomer",
+  "examples": {
+    "response_200": {
+      "code": 5043,
+      "message": "Contact not found for the given request"
+    }
+  }
+}

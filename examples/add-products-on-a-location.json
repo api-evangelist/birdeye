@@ -1,0 +1,12 @@
+{
+  "operationId": "add-products-on-a-location",
+  "summary": "Add Products On a Location",
+  "method": "POST",
+  "path": "/v1/listing/public/product/addProduct",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

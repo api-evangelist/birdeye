@@ -1,0 +1,12 @@
+{
+  "operationId": "get-more-hours-type",
+  "summary": "Get More Hours Type",
+  "method": "GET",
+  "path": "/v1/listing/{businessNumber}/more-hours-type",
+  "examples": {
+    "response_200": {
+      "code": 400,
+      "message": "Invalid Source Name"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "unsubscribe-subscription",
+  "summary": "Unsubscribe subscription",
+  "method": "GET",
+  "path": "/v1/subscriptions/unsubscribe/{subscriptionId}",
+  "examples": {
+    "response_200": {
+      "code": 1005,
+      "message": "Subscription Not found for Particular Id"
+    }
+  }
+}

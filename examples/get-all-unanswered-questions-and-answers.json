@@ -1,0 +1,12 @@
+{
+  "operationId": "get-all-unanswered-questions-and-answers",
+  "summary": "Get All Unanswered Questions and Answers",
+  "method": "POST",
+  "path": "/v1/qna/unanswered/get",
+  "examples": {
+    "response_200": {
+      "code": 2466,
+      "message": "Invalid input request"
+    }
+  }
+}

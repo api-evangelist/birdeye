@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/create-a-business-request.json",
+  "title": "Create A Business Request",
+  "type": "object",
+  "properties": {
+    "businessName": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "number"
+    },
+    "entityCategory": {
+      "type": "string"
+    },
+    "countryCode": {
+      "type": "string"
+    },
+    "aggrOptions": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "businessName",
+    "zip",
+    "phone"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/search-business-request.json",
+  "title": "Search Business Request",
+  "type": "object",
+  "properties": {
+    "searchStr": {
+      "type": "string"
+    },
+    "sortBy": {
+      "type": "string"
+    },
+    "sortOrder": {
+      "type": "string"
+    },
+    "startIndex": {
+      "type": "number"
+    },
+    "pageSize": {
+      "type": "number"
+    }
+  }
+}

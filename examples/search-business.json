@@ -1,0 +1,12 @@
+{
+  "operationId": "search-business",
+  "summary": "Search Business",
+  "method": "POST",
+  "path": "/v1/business/{businessNumber}/search",
+  "examples": {
+    "response_200": {
+      "code": 400,
+      "message": "Page size must not be less than one!"
+    }
+  }
+}

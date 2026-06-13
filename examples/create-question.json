@@ -1,0 +1,12 @@
+{
+  "operationId": "create-question",
+  "summary": "Create Question",
+  "method": "POST",
+  "path": "/v1/qna/question/create",
+  "examples": {
+    "response_200": {
+      "code": 2483,
+      "message": "Question should have minimum 3 words"
+    }
+  }
+}

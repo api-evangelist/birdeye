@@ -1,0 +1,12 @@
+{
+  "operationId": "insights-category-report-by-location-report",
+  "summary": "Insights Category Report by location report",
+  "method": "POST",
+  "path": "/v1/keywords/opmetric/location",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "update-ticket",
+  "summary": "Update ticket",
+  "method": "PUT",
+  "path": "/v1/ticket/{businessNumber}/update",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

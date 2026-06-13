@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-aggregation-url",
+  "summary": "Delete aggregation URL",
+  "method": "DELETE",
+  "path": "/v1/aggregation/business/{businessID}/aggregation/{aggregationID}",
+  "examples": {
+    "response_200": {
+      "code": 1039,
+      "message": "Invalid business aggregation id"
+    }
+  }
+}

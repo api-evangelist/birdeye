@@ -1,0 +1,12 @@
+{
+  "operationId": "post-a-survey-response",
+  "summary": "Post a survey response",
+  "method": "POST",
+  "path": "/v1/survey/{survey_id}/submit",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

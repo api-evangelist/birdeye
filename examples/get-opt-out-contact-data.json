@@ -1,0 +1,12 @@
+{
+  "operationId": "get-opt-out-contact-data",
+  "summary": "Get opt-out contact data",
+  "method": "POST",
+  "path": "/v1/contact/{businessId}/update-feed",
+  "examples": {
+    "response_200": {
+      "code": 20083,
+      "message": "End date can't be before start date"
+    }
+  }
+}

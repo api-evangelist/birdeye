@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/post-request.json",
+  "title": "Post Request",
+  "type": "object",
+  "properties": {
+    "page": {
+      "type": "number"
+    },
+    "size": {
+      "type": "number"
+    },
+    "searchStr": {
+      "type": "string"
+    },
+    "sortBy": {
+      "type": "string"
+    },
+    "orderBy": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "page",
+    "size"
+  ]
+}

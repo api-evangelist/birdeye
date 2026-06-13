@@ -1,0 +1,12 @@
+{
+  "operationId": "get-insight-experience-score-benchmark",
+  "summary": "Get Insight Experience Score Benchmark",
+  "method": "POST",
+  "path": "/v1/insight/experience/scoreBenchmark",
+  "examples": {
+    "response_200": {
+      "code": 2003,
+      "message": "businessNumbers are mandatory"
+    }
+  }
+}

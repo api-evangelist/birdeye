@@ -1,0 +1,12 @@
+{
+  "operationId": "fix-listing",
+  "summary": "Fix Listing",
+  "method": "POST",
+  "path": "/v1/listing/fix",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

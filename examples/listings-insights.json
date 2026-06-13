@@ -1,0 +1,12 @@
+{
+  "operationId": "listings-insights",
+  "summary": "Listings Insights",
+  "method": "POST",
+  "path": "/v1/listing/insights",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

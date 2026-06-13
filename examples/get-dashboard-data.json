@@ -1,0 +1,12 @@
+{
+  "operationId": "get-dashboard-data",
+  "summary": "Get Dashboard data",
+  "method": "GET",
+  "path": "/v1/reports/smb",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

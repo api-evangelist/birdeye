@@ -1,0 +1,12 @@
+{
+  "operationId": "update-communication-preferences",
+  "summary": "Update Communication Preferences",
+  "method": "POST",
+  "path": "/v1/contact/external/preferences/change-permission",
+  "examples": {
+    "response_200": {
+      "code": 1089,
+      "message": "Customer id is invalid."
+    }
+  }
+}

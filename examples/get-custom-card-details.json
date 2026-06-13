@@ -1,0 +1,12 @@
+{
+  "operationId": "get-custom-card-details",
+  "summary": "Get Custom card details",
+  "method": "GET",
+  "path": "/v1/business/{businessNumber}/profile/customcard",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

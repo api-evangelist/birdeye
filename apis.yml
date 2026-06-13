@@ -33,6 +33,12 @@ apis:
         url: https://developers.birdeye.com/
       - type: Authentication
         url: https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+      - type: OpenAPI
+        url: openapi/birdeye-birdeye-api-openapi.yml
+      - type: Vocabulary
+        url: vocabulary/birdeye-vocabulary.yml
+      - type: JSONLDContext
+        url: json-ld/birdeye-context.jsonld
 common:
   - type: Website
     url: https://birdeye.com/

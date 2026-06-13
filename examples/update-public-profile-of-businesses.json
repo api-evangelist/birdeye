@@ -1,0 +1,12 @@
+{
+  "operationId": "update-public-profile-of-businesses",
+  "summary": "Update public profile of Businesses",
+  "method": "POST",
+  "path": "/v1/business/tabs",
+  "examples": {
+    "response_200": {
+      "code": 1191,
+      "message": "Invalid status."
+    }
+  }
+}

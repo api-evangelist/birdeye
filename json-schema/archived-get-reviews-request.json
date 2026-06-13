@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/archived-get-reviews-request.json",
+  "title": "Archived Get Reviews Request",
+  "type": "object",
+  "properties": {
+    "businessNumbers": {
+      "type": "array"
+    },
+    "startDate": {
+      "type": "number"
+    },
+    "endDate": {
+      "type": "number"
+    },
+    "sourceAlias": {
+      "type": "array"
+    },
+    "deleteStartDate": {
+      "type": "number"
+    },
+    "deleteEndDate": {
+      "type": "number"
+    },
+    "ratings": {
+      "type": "array"
+    },
+    "statuses": {
+      "type": "array"
+    },
+    "searchStr": {
+      "type": "string"
+    }
+  }
+}

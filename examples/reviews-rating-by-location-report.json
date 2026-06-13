@@ -1,0 +1,12 @@
+{
+  "operationId": "reviews-rating-by-location-report",
+  "summary": "Reviews & Rating By Location Report",
+  "method": "POST",
+  "path": "/v1/reports/rating/location",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

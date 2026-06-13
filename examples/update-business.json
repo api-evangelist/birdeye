@@ -1,0 +1,12 @@
+{
+  "operationId": "update-business",
+  "summary": "Update Business",
+  "method": "PUT",
+  "path": "/v1/business/{businessId}",
+  "examples": {
+    "response_200": {
+      "code": 6001,
+      "message": "The 'sub_locality' field cannot exceed 80 characters."
+    }
+  }
+}

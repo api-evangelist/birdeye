@@ -1,0 +1,12 @@
+{
+  "operationId": "get-score",
+  "summary": "Get Score",
+  "method": "POST",
+  "path": "/v1/competitors/competitive-insight/categories/{businessNumber}",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

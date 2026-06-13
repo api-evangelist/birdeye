@@ -1,0 +1,12 @@
+{
+  "operationId": "nps-over-time-report",
+  "summary": "NPS Over time Report",
+  "method": "POST",
+  "path": "/v1/reports/nps/time/elst",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

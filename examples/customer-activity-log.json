@@ -1,0 +1,12 @@
+{
+  "operationId": "customer-activity-log",
+  "summary": "Customer activity log",
+  "method": "GET",
+  "path": "/v1/customer/history/{customerId}",
+  "examples": {
+    "response_200": {
+      "code": 1524,
+      "message": "Date entered is invalid."
+    }
+  }
+}

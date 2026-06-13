@@ -1,0 +1,12 @@
+{
+  "operationId": "create-custom-card",
+  "summary": "Create Custom card",
+  "method": "POST",
+  "path": "/v1/business/public/card",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

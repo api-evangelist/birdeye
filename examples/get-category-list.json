@@ -1,0 +1,12 @@
+{
+  "operationId": "get-category-list",
+  "summary": "Get Category List",
+  "method": "GET",
+  "path": "/v1/listing/{businessNumber}/category-list",
+  "examples": {
+    "response_200": {
+      "code": 400,
+      "message": "Invalid Source Name"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "get-apple-action-links",
+  "summary": "Get Apple Action Links",
+  "method": "GET",
+  "path": "/v1/listing/{businessNumber}/apple-action-links",
+  "examples": {
+    "response_200": {
+      "code": 400,
+      "message": "Invalid country code"
+    }
+  }
+}

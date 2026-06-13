@@ -1,0 +1,12 @@
+{
+  "operationId": "usage-report",
+  "summary": "Usage report",
+  "method": "POST",
+  "path": "/v1/reports/usage",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "get-search-ai-configuration",
+  "summary": "Get Search AI Configuration",
+  "method": "GET",
+  "path": "/v1/listing/searchAi/account-setup",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

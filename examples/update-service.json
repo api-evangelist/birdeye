@@ -1,0 +1,12 @@
+{
+  "operationId": "update-service",
+  "summary": "Update Service",
+  "method": "POST",
+  "path": "/v1/google-services/service/update",
+  "examples": {
+    "response_200": {
+      "code": 2494,
+      "message": "Invalid GBP Service Id"
+    }
+  }
+}

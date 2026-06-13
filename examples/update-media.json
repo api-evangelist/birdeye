@@ -1,0 +1,12 @@
+{
+  "operationId": "update-media",
+  "summary": "Update Media",
+  "method": "PUT",
+  "path": "/v1/business/{businessNumber}/update/media/{mediaId}",
+  "examples": {
+    "response_200": {
+      "code": 400,
+      "message": "Invalid media id"
+    }
+  }
+}

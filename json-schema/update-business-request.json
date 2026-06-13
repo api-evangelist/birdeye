@@ -1,0 +1,307 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/update-business-request.json",
+  "title": "Update Business Request",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "alias": {
+      "type": "string"
+    },
+    "isAddressHidden": {
+      "type": "number"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "address1": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "subLocality": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "zip"
+      ]
+    },
+    "emailId": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "fax": {
+      "type": "string"
+    },
+    "websiteUrl": {
+      "type": "string"
+    },
+    "establishedYear": {
+      "type": "number"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "array"
+    },
+    "isServiceAreaProvider": {
+      "type": "string"
+    },
+    "serviceAreas": {
+      "type": "array"
+    },
+    "working24x7": {
+      "type": "number"
+    },
+    "hoursOfOperations": {
+      "type": "array"
+    },
+    "specialHours": {
+      "type": "array"
+    },
+    "businessStatus": {
+      "type": "string"
+    },
+    "reopenDate": {
+      "type": "string"
+    },
+    "services": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": "string"
+    },
+    "products": {
+      "type": "string"
+    },
+    "appointmentLink": {
+      "type": "string"
+    },
+    "reservationLink": {
+      "type": "string"
+    },
+    "menuLink": {
+      "type": "string"
+    },
+    "orderAheadLink": {
+      "type": "string"
+    },
+    "impressum": {
+      "type": "string"
+    },
+    "payment": {
+      "type": "string"
+    },
+    "localPhoneNumber": {
+      "type": "string"
+    },
+    "tollFreePhoneNumber": {
+      "type": "string"
+    },
+    "androidAppURL": {
+      "type": "string"
+    },
+    "iosAppURL": {
+      "type": "string"
+    },
+    "logoUrl": {
+      "type": "string"
+    },
+    "gmbLogoOptOut": {
+      "type": "number"
+    },
+    "fbLogoOptOut": {
+      "type": "number"
+    },
+    "gmbCoverOptOut": {
+      "type": "number"
+    },
+    "fbCoverOptOut": {
+      "type": "number"
+    },
+    "coverImageUrl": {
+      "type": "string"
+    },
+    "gmbCover": {
+      "type": "string"
+    },
+    "facebookCover": {
+      "type": "string"
+    },
+    "coverBusinessInfoLayout": {
+      "type": "string"
+    },
+    "covidInfo": {
+      "type": "object",
+      "properties": {
+        "postDescription": {
+          "type": "string"
+        },
+        "covid19SupportLink": {
+          "type": "string"
+        },
+        "virtualCareLink": {
+          "type": "string"
+        }
+      }
+    },
+    "bingListing": {
+      "type": "object",
+      "properties": {
+        "primaryCategoryBing": {
+          "type": "string"
+        },
+        "bingPhoneNumber": {
+          "type": "string"
+        },
+        "categories": {
+          "type": "string"
+        },
+        "bingDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "internalListing": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "subcategory": {
+          "type": "string"
+        },
+        "displayCategory": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "category",
+        "subcategory"
+      ]
+    },
+    "facebookListing": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "facebookDescription": {
+          "type": "string"
+        },
+        "facebookPhoneNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "gmbListing": {
+      "type": "object",
+      "properties": {
+        "googleWebsiteUrl": {
+          "type": "string"
+        },
+        "googlePhoneNumber": {
+          "type": "string"
+        },
+        "googleStoreId": {
+          "type": "string"
+        },
+        "primaryCategoryGmb": {
+          "type": "string"
+        },
+        "additionalCategory": {
+          "type": "string"
+        },
+        "googleDescription": {
+          "type": "string"
+        },
+        "attributes": {
+          "type": "object"
+        },
+        "foodDelivery": {
+          "type": "string"
+        },
+        "foodTakeout": {
+          "type": "string"
+        }
+      }
+    },
+    "socialProfileURLs": {
+      "type": "object",
+      "properties": {
+        "facebookUrl": {
+          "type": "string"
+        },
+        "twitterUrl": {
+          "type": "string"
+        },
+        "linkedInUrl": {
+          "type": "string"
+        },
+        "googleUrl": {
+          "type": "string"
+        },
+        "youTubeUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "isSEOEnabled": {
+      "type": "boolean"
+    },
+    "externalReferenceId": {
+      "type": "string"
+    },
+    "customFields": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "fieldValue": {
+          "type": "string"
+        },
+        "fieldName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "fieldName",
+        "id"
+      ]
+    },
+    "entityCategory": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "emailId",
+    "phone",
+    "services"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/create-tags-request.json",
+  "title": "Create Tags Request",
+  "type": "object",
+  "properties": {
+    "tags": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "get-media",
+  "summary": "Get Media",
+  "method": "GET",
+  "path": "/v1/business/{businessNumber}/media/get",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

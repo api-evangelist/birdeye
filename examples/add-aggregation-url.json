@@ -1,0 +1,12 @@
+{
+  "operationId": "add-aggregation-url",
+  "summary": "Add aggregation URL",
+  "method": "POST",
+  "path": "/v1/aggregation/business/{business_id}",
+  "examples": {
+    "response_200": {
+      "code": 1032,
+      "message": "Invalid source id"
+    }
+  }
+}

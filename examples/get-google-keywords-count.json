@@ -1,0 +1,12 @@
+{
+  "operationId": "get-google-keywords-count",
+  "summary": "Get Google Keywords Count",
+  "method": "POST",
+  "path": "/v1/listing/{businessNumber}/gmb/keywords",
+  "examples": {
+    "response_200": {
+      "code": 2458,
+      "message": "Invalid order value. Allowed values are 'asc' or 'desc'."
+    }
+  }
+}

@@ -1,0 +1,932 @@
+vocabulary:
+  name: Birdeye API Vocabulary
+  description: Domain vocabulary for the Birdeye reputation management and customer
+    experience API.
+  url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/vocabulary/birdeye-vocabulary.yml
+  terms:
+  - name: Aggregation
+    type: tag
+    definition: API resource group for Aggregation operations in Birdeye.
+  - name: Business
+    type: tag
+    definition: API resource group for Business operations in Birdeye.
+  - name: Business Media
+    type: tag
+    definition: API resource group for Business Media operations in Birdeye.
+  - name: BusinessId
+    type: parameter
+    definition: Id of the business.
+  - name: Campaign
+    type: tag
+    definition: API resource group for Campaign operations in Birdeye.
+  - name: Competitor
+    type: tag
+    definition: API resource group for Competitor operations in Birdeye.
+  - name: Competitor AI
+    type: tag
+    definition: API resource group for Competitor AI operations in Birdeye.
+  - name: Contact
+    type: tag
+    definition: API resource group for Contact operations in Birdeye.
+  - name: Contact V2
+    type: tag
+    definition: API resource group for Contact V2 operations in Birdeye.
+  - name: Conversation
+    type: tag
+    definition: API resource group for Conversation operations in Birdeye.
+  - name: Custom Fields
+    type: tag
+    definition: API resource group for Custom Fields operations in Birdeye.
+  - name: Employee
+    type: tag
+    definition: API resource group for Employee operations in Birdeye.
+  - name: EnterpriseBusinessNumber
+    type: parameter
+    definition: Enterprise Business id.
+  - name: FAQ
+    type: tag
+    definition: API resource group for FAQ operations in Birdeye.
+  - name: GMB Products
+    type: tag
+    definition: API resource group for GMB Products operations in Birdeye.
+  - name: Google Q&A
+    type: tag
+    definition: API resource group for Google Q&A operations in Birdeye.
+  - name: Google Services
+    type: tag
+    definition: API resource group for Google Services operations in Birdeye.
+  - name: Insight AI
+    type: tag
+    definition: API resource group for Insight AI operations in Birdeye.
+  - name: Integration
+    type: tag
+    definition: API resource group for Integration operations in Birdeye.
+  - name: Level
+    type: property
+    definition: The Level field.
+  - name: Listing
+    type: tag
+    definition: API resource group for Listing operations in Birdeye.
+  - name: Report
+    type: tag
+    definition: API resource group for Report operations in Birdeye.
+  - name: Reviews
+    type: tag
+    definition: API resource group for Reviews operations in Birdeye.
+  - name: Search AI
+    type: tag
+    definition: API resource group for Search AI operations in Birdeye.
+  - name: Social
+    type: tag
+    definition: API resource group for Social operations in Birdeye.
+  - name: Subscription
+    type: tag
+    definition: API resource group for Subscription operations in Birdeye.
+  - name: Survey
+    type: tag
+    definition: API resource group for Survey operations in Birdeye.
+  - name: Ticketing
+    type: tag
+    definition: API resource group for Ticketing operations in Birdeye.
+  - name: User
+    type: tag
+    definition: API resource group for User operations in Birdeye.
+  - name: Webhook
+    type: tag
+    definition: API resource group for Webhook operations in Birdeye.
+  - name: accessControl
+    type: property
+    definition: The accessControl field.
+  - name: accountNumber
+    type: property
+    definition: The accountNumber field.
+  - name: active
+    type: property
+    definition: The active field.
+  - name: additionalImageLinks
+    type: property
+    definition: The additionalImageLinks field.
+  - name: additionalInfo
+    type: property
+    definition: The additionalInfo field.
+  - name: additionalMetaData
+    type: property
+    definition: The additionalMetaData field.
+  - name: additionalParams
+    type: property
+    definition: The additionalParams field.
+  - name: aggrOptions
+    type: property
+    definition: The aggrOptions field.
+  - name: aggregationID
+    type: parameter
+    definition: Id of the aggregation to be deleted.
+  - name: aiModel
+    type: property
+    definition: The aiModel field.
+  - name: aiModels
+    type: property
+    definition: The aiModels field.
+  - name: alias
+    type: property
+    definition: The alias field.
+  - name: allChild
+    type: property
+    definition: The allChild field.
+  - name: androidAppURL
+    type: property
+    definition: The androidAppURL field.
+  - name: answer
+    type: property
+    definition: The answer field.
+  - name: answerId
+    type: property
+    definition: The answerId field.
+  - name: apiKey
+    type: property
+    definition: The apiKey field.
+  - name: appleListing
+    type: property
+    definition: The appleListing field.
+  - name: appointmentLink
+    type: property
+    definition: The appointmentLink field.
+  - name: assignedTo
+    type: property
+    definition: The assignedTo field.
+  - name: assignees
+    type: property
+    definition: The assignees field.
+  - name: astatus
+    type: parameter
+    definition: New status for the business. Valid values are &quot;active/inactive&quot;.
+  - name: auth
+    type: property
+    definition: The auth field.
+  - name: b_id
+    type: parameter
+    definition: Id of the business.
+  - name: bid
+    type: parameter
+    definition: Business Id from which user access has to be revoked
+  - name: bingListing
+    type: property
+    definition: The bingListing field.
+  - name: blocked
+    type: property
+    definition: The blocked field.
+  - name: brandIds
+    type: property
+    definition: The brandIds field.
+  - name: brandName
+    type: property
+    definition: The brandName field.
+  - name: businessID
+    type: parameter
+    definition: Id of the business.
+  - name: businessId
+    type: parameter
+    definition: The Business Number
+  - name: businessIds
+    type: property
+    definition: The businessIds field.
+  - name: businessInfo
+    type: property
+    definition: The businessInfo field.
+  - name: businessName
+    type: property
+    definition: The businessName field.
+  - name: businessNumber
+    type: parameter
+    definition: Long id of the business, under which user wants to search for.
+  - name: businessNumbers
+    type: property
+    definition: The businessNumbers field.
+  - name: businessStatus
+    type: property
+    definition: The businessStatus field.
+  - name: business_Id
+    type: parameter
+    definition: Id of the Business.
+  - name: business_id
+    type: parameter
+    definition: Id of the Business.
+  - name: cardId
+    type: parameter
+    definition: Id of the custom card to update.
+  - name: categoryId
+    type: parameter
+    definition: Category id.
+  - name: category_name
+    type: property
+    definition: The category_name field.
+  - name: channel
+    type: parameter
+    definition: Source name for which more hours type needs to be fetched. Possible
+      values are gmb, apple. Default value will be gmb if not passed
+  - name: checkinId
+    type: property
+    definition: The checkinId field.
+  - name: cid
+    type: property
+    definition: The cid field.
+  - name: clickURL
+    type: property
+    definition: The clickURL field.
+  - name: comment
+    type: property
+    definition: The comment field.
+  - name: compAccountId
+    type: parameter
+    definition: Competitor Account Id.
+  - name: comparisonFilter
+    type: property
+    definition: The comparisonFilter field.
+  - name: competitorId
+    type: property
+    definition: The competitorId field.
+  - name: competitorLocationIds
+    type: property
+    definition: The competitorLocationIds field.
+  - name: competitors
+    type: property
+    definition: The competitors field.
+  - name: contact
+    type: property
+    definition: The contact field.
+  - name: contactType
+    type: property
+    definition: The contactType field.
+  - name: count
+    type: parameter
+    definition: Number of reviews to query. Refer API note for max permissible value.
+  - name: countryCode
+    type: property
+    definition: The countryCode field.
+  - name: coverBusinessInfoLayout
+    type: property
+    definition: The coverBusinessInfoLayout field.
+  - name: coverImageUrl
+    type: property
+    definition: The coverImageUrl field.
+  - name: covidInfo
+    type: property
+    definition: The covidInfo field.
+  - name: currencyCode
+    type: property
+    definition: The currencyCode field.
+  - name: customFields
+    type: property
+    definition: The customFields field.
+  - name: customer
+    type: property
+    definition: The customer field.
+  - name: customerComment
+    type: property
+    definition: The customerComment field.
+  - name: customerId
+    type: parameter
+    definition: Id of the customer.
+  - name: customfields
+    type: parameter
+    definition: If custom fields data is required send true, default is false.
+  - name: days
+    type: parameter
+    definition: Use to get results for last some days.
+  - name: defaultValue
+    type: property
+    definition: The defaultValue field.
+  - name: deleteEndDate
+    type: property
+    definition: The deleteEndDate field.
+  - name: deleteStartDate
+    type: property
+    definition: The deleteStartDate field.
+  - name: description
+    type: property
+    definition: The description field.
+  - name: dropDownOptions
+    type: property
+    definition: The dropDownOptions field.
+  - name: duration
+    type: property
+    definition: The duration field.
+  - name: email
+    type: parameter
+    definition: Email id of the user whose access has to be revoked
+  - name: emailId
+    type: property
+    definition: The emailId field.
+  - name: emailOptin
+    type: property
+    definition: The emailOptin field.
+  - name: emailPreferences
+    type: property
+    definition: The emailPreferences field.
+  - name: email_id
+    type: parameter
+    definition: Business Email id.
+  - name: emails
+    type: property
+    definition: The emails field.
+  - name: employees
+    type: property
+    definition: The employees field.
+  - name: end
+    type: property
+    definition: The end field.
+  - name: endDate
+    type: property
+    definition: The endDate field.
+  - name: endDateUtc
+    type: property
+    definition: The endDateUtc field.
+  - name: endpoint
+    type: property
+    definition: The endpoint field.
+  - name: entUser
+    type: parameter
+    definition: 'true if the user needs to provide enterprise level access in case
+      of all locations.
+
+      entUser needs to be passed as true if user needs to be provided access to all
+      locations otherwise by default its false.'
+  - name: entityCategory
+    type: property
+    definition: The entityCategory field.
+  - name: establishedYear
+    type: property
+    definition: The establishedYear field.
+  - name: eventName
+    type: property
+    definition: The eventName field.
+  - name: events
+    type: property
+    definition: The events field.
+  - name: excludeCampaignMessages
+    type: property
+    definition: The excludeCampaignMessages field.
+  - name: experienceScore
+    type: property
+    definition: The experienceScore field.
+  - name: externalId
+    type: property
+    definition: The externalId field.
+  - name: externalReferenceId
+    type: property
+    definition: The externalReferenceId field.
+  - name: facebookCover
+    type: property
+    definition: The facebookCover field.
+  - name: facebookListing
+    type: property
+    definition: The facebookListing field.
+  - name: fax
+    type: property
+    definition: The fax field.
+  - name: fbCoverOptOut
+    type: property
+    definition: The fbCoverOptOut field.
+  - name: fbLogoOptOut
+    type: property
+    definition: The fbLogoOptOut field.
+  - name: fetchAssitedByDetails
+    type: property
+    definition: The fetchAssitedByDetails field.
+  - name: fetchExtraParams
+    type: property
+    definition: The fetchExtraParams field.
+  - name: fieldDescription
+    type: property
+    definition: The fieldDescription field.
+  - name: fieldId
+    type: parameter
+    definition: fieldId of the custom field created earlier.
+  - name: fieldName
+    type: property
+    definition: The fieldName field.
+  - name: fieldValue
+    type: property
+    definition: The fieldValue field.
+  - name: filterable
+    type: property
+    definition: The filterable field.
+  - name: firstName
+    type: property
+    definition: The firstName field.
+  - name: fromDate
+    type: property
+    definition: The fromDate field.
+  - name: fromTimestamp
+    type: property
+    definition: The fromTimestamp field.
+  - name: gmbCover
+    type: property
+    definition: The gmbCover field.
+  - name: gmbCoverOptOut
+    type: property
+    definition: The gmbCoverOptOut field.
+  - name: gmbListing
+    type: property
+    definition: The gmbListing field.
+  - name: gmbLogoOptOut
+    type: property
+    definition: The gmbLogoOptOut field.
+  - name: googleProductCategoryId
+    type: property
+    definition: The googleProductCategoryId field.
+  - name: group
+    type: property
+    definition: The group field.
+  - name: groupByDays
+    type: property
+    definition: The groupByDays field.
+  - name: groupByType
+    type: property
+    definition: The groupByType field.
+  - name: healthcare
+    type: property
+    definition: The healthcare field.
+  - name: hoursOfOperations
+    type: property
+    definition: The hoursOfOperations field.
+  - name: id
+    type: property
+    definition: The id field.
+  - name: imageLink
+    type: property
+    definition: The imageLink field.
+  - name: imagePosition
+    type: property
+    definition: The imagePosition field.
+  - name: imageURL
+    type: property
+    definition: The imageURL field.
+  - name: impressum
+    type: property
+    definition: The impressum field.
+  - name: includeNonAggregatedReviews
+    type: parameter
+    definition: Include Reviews whose auto-crawling is blocked e.g. PressGaney
+  - name: includeTicketId
+    type: parameter
+    definition: The field to fetch ticketIds associated with the response.
+  - name: integrationGroupId
+    type: property
+    definition: The integrationGroupId field.
+  - name: integrationProperties
+    type: property
+    definition: The integrationProperties field.
+  - name: internalListing
+    type: property
+    definition: The internalListing field.
+  - name: iosAppURL
+    type: property
+    definition: The iosAppURL field.
+  - name: isAddressHidden
+    type: property
+    definition: The isAddressHidden field.
+  - name: isCompetitor
+    type: parameter
+    definition: True for get competitor business of Enterprise Business and False
+      for get Child Business of Enterprise Business.
+  - name: isHidden
+    type: property
+    definition: The isHidden field.
+  - name: isPinOnTop
+    type: property
+    definition: The isPinOnTop field.
+  - name: isPrivateResponse
+    type: property
+    definition: The isPrivateResponse field.
+  - name: isSEOEnabled
+    type: property
+    definition: The isSEOEnabled field.
+  - name: isServiceAreaProvider
+    type: property
+    definition: The isServiceAreaProvider field.
+  - name: isVisible
+    type: property
+    definition: The isVisible field.
+  - name: keywords
+    type: property
+    definition: The keywords field.
+  - name: keywordsSearch
+    type: property
+    definition: The keywordsSearch field.
+  - name: lang
+    type: parameter
+    definition: The survey locale, default is english
+  - name: languages
+    type: property
+    definition: The languages field.
+  - name: lastName
+    type: property
+    definition: The lastName field.
+  - name: limit
+    type: property
+    definition: The limit field.
+  - name: linkText
+    type: property
+    definition: The linkText field.
+  - name: localPhoneNumber
+    type: property
+    definition: The localPhoneNumber field.
+  - name: location
+    type: property
+    definition: The location field.
+  - name: locationBizNumber
+    type: parameter
+    definition: Long Location number of the Location
+  - name: locationsNumberAccess
+    type: property
+    definition: The locationsNumberAccess field.
+  - name: logoUrl
+    type: property
+    definition: The logoUrl field.
+  - name: media
+    type: property
+    definition: The media field.
+  - name: mediaCategory
+    type: property
+    definition: The mediaCategory field.
+  - name: mediaId
+    type: parameter
+    definition: Id of the media item.
+  - name: menuLink
+    type: property
+    definition: The menuLink field.
+  - name: merchantId
+    type: parameter
+    definition: Google Merchant Center account ID.
+  - name: months
+    type: parameter
+    definition: Use to get results for last some months.
+  - name: name
+    type: property
+    definition: The name field.
+  - name: needCustomerInfo
+    type: property
+    definition: The needCustomerInfo field.
+  - name: notification
+    type: property
+    definition: The notification field.
+  - name: offset
+    type: property
+    definition: The offset field.
+  - name: op
+    type: parameter
+    definition: 'Possible values are: [1] will display ticket count only, [3] will
+      display all the data of the ticket. Default value - 3.'
+  - name: optOut
+    type: property
+    definition: The optOut field.
+  - name: order
+    type: property
+    definition: The order field.
+  - name: orderAheadLink
+    type: property
+    definition: The orderAheadLink field.
+  - name: orderBy
+    type: property
+    definition: The orderBy field.
+  - name: page
+    type: property
+    definition: The page field.
+  - name: pageNo
+    type: property
+    definition: The pageNo field.
+  - name: pageNumber
+    type: parameter
+    definition: 0-based page index. Default 0.
+  - name: pageSize
+    type: property
+    definition: The pageSize field.
+  - name: payment
+    type: property
+    definition: The payment field.
+  - name: permission
+    type: property
+    definition: The permission field.
+  - name: phone
+    type: property
+    definition: The phone field.
+  - name: pid
+    type: parameter
+    definition: Reseller/Sub-reseller/Enterprise Id.
+  - name: price
+    type: property
+    definition: The price field.
+  - name: productId
+    type: parameter
+    definition: Unique identifier of the product to update.
+  - name: productIdentifier
+    type: parameter
+    definition: Product identifier.
+  - name: productIds
+    type: property
+    definition: The productIds field.
+  - name: productSku
+    type: property
+    definition: The productSku field.
+  - name: productTypes
+    type: property
+    definition: The productTypes field.
+  - name: productUrl
+    type: property
+    definition: The productUrl field.
+  - name: products
+    type: property
+    definition: The products field.
+  - name: profileTabs
+    type: property
+    definition: The profileTabs field.
+  - name: question
+    type: property
+    definition: The question field.
+  - name: questionId
+    type: property
+    definition: The questionId field.
+  - name: ratings
+    type: property
+    definition: The ratings field.
+  - name: reopenDate
+    type: property
+    definition: The reopenDate field.
+  - name: reportType
+    type: parameter
+    definition: The type of Report - Summary or Tabular.
+  - name: reservationLink
+    type: property
+    definition: The reservationLink field.
+  - name: response
+    type: property
+    definition: The response field.
+  - name: reviewId
+    type: parameter
+    definition: Review Id.
+  - name: reviewSiteAllFlag
+    type: property
+    definition: The reviewSiteAllFlag field.
+  - name: reviewSites
+    type: property
+    definition: The reviewSites field.
+  - name: reviewSources
+    type: property
+    definition: The reviewSources field.
+  - name: rid
+    type: parameter
+    definition: Id of the Reseller.
+  - name: sIndex
+    type: parameter
+    definition: The starting index for the records to fetch. Default is 0 if not specified.
+  - name: salePrice
+    type: property
+    definition: The salePrice field.
+  - name: scheduleTimestamp
+    type: property
+    definition: The scheduleTimestamp field.
+  - name: search
+    type: property
+    definition: The search field.
+  - name: searchStr
+    type: property
+    definition: The searchStr field.
+  - name: selectedMonth
+    type: property
+    definition: The selectedMonth field.
+  - name: selectedkeywords
+    type: property
+    definition: The selectedkeywords field.
+  - name: sendInvite
+    type: property
+    definition: The sendInvite field.
+  - name: sentiment
+    type: property
+    definition: The sentiment field.
+  - name: serviceAreas
+    type: property
+    definition: The serviceAreas field.
+  - name: serviceId
+    type: property
+    definition: The serviceId field.
+  - name: serviceIds
+    type: property
+    definition: The serviceIds field.
+  - name: service_id
+    type: property
+    definition: The service_id field.
+  - name: services
+    type: property
+    definition: The services field.
+  - name: sindex
+    type: parameter
+    definition: Start index of the reviews. Refer API note for max permissible value.
+  - name: size
+    type: property
+    definition: The size field.
+  - name: smsEnabled
+    type: property
+    definition: The smsEnabled field.
+  - name: smsOptin
+    type: property
+    definition: The smsOptin field.
+  - name: smsPreferences
+    type: property
+    definition: The smsPreferences field.
+  - name: socialProfileURLs
+    type: property
+    definition: The socialProfileURLs field.
+  - name: socialSite
+    type: property
+    definition: The socialSite field.
+  - name: sorder
+    type: parameter
+    definition: '''0'' for ascending and ''1'' for descending order.'
+  - name: sortBy
+    type: property
+    definition: The sortBy field.
+  - name: sortOrder
+    type: property
+    definition: The sortOrder field.
+  - name: sortby
+    type: property
+    definition: The sortby field.
+  - name: sortorder
+    type: parameter
+    definition: Sort order identifier. Default is 1.
+  - name: sourceAlias
+    type: property
+    definition: The sourceAlias field.
+  - name: sourceAliases
+    type: property
+    definition: The sourceAliases field.
+  - name: sourceName
+    type: parameter
+    definition: Source name for which category data needs to be fetched. Possible
+      values are BING, HEALTHCARE, GMB, VENDOR, FACEBOOK, APPLE.
+  - name: sourceNames
+    type: property
+    definition: The sourceNames field.
+  - name: sourceType
+    type: property
+    definition: The sourceType field.
+  - name: sourceTypes
+    type: property
+    definition: The sourceTypes field.
+  - name: sources
+    type: property
+    definition: The sources field.
+  - name: specialHours
+    type: property
+    definition: The specialHours field.
+  - name: start
+    type: property
+    definition: The start field.
+  - name: startDate
+    type: property
+    definition: The startDate field.
+  - name: startDateUtc
+    type: property
+    definition: The startDateUtc field.
+  - name: startIndex
+    type: property
+    definition: The startIndex field.
+  - name: status
+    type: property
+    definition: The status field.
+  - name: statuses
+    type: property
+    definition: The statuses field.
+  - name: subBusinessIds
+    type: property
+    definition: The subBusinessIds field.
+  - name: subBusinessNumbers
+    type: property
+    definition: The subBusinessNumbers field.
+  - name: subscriptionStatus
+    type: property
+    definition: The subscriptionStatus field.
+  - name: surveyId
+    type: property
+    definition: The surveyId field.
+  - name: surveyResponseId
+    type: property
+    definition: The surveyResponseId field.
+  - name: surveySettings
+    type: property
+    definition: The surveySettings field.
+  - name: survey_id
+    type: parameter
+    definition: Id of the Survey.
+  - name: tag
+    type: parameter
+    definition: List of tags.
+  - name: tagNames
+    type: property
+    definition: The tagNames field.
+  - name: tagname
+    type: parameter
+    definition: Tag name to be deleted.
+  - name: tags
+    type: property
+    definition: The tags field.
+  - name: templateId
+    type: property
+    definition: The templateId field.
+  - name: text
+    type: property
+    definition: The text field.
+  - name: theme
+    type: property
+    definition: The theme field.
+  - name: thirdPartyListing
+    type: property
+    definition: The thirdPartyListing field.
+  - name: ticketId
+    type: property
+    definition: The ticketId field.
+  - name: ticketStatuses
+    type: property
+    definition: The ticketStatuses field.
+  - name: ticketType
+    type: property
+    definition: The ticketType field.
+  - name: ticketTypes
+    type: property
+    definition: The ticketTypes field.
+  - name: ticketUpdateMessages
+    type: property
+    definition: The ticketUpdateMessages field.
+  - name: timePeriodSelected
+    type: property
+    definition: The timePeriodSelected field.
+  - name: timezone
+    type: property
+    definition: The timezone field.
+  - name: title
+    type: property
+    definition: The title field.
+  - name: toDate
+    type: property
+    definition: The toDate field.
+  - name: toTimestamp
+    type: property
+    definition: The toTimestamp field.
+  - name: tollFreePhoneNumber
+    type: property
+    definition: The tollFreePhoneNumber field.
+  - name: topAd
+    type: property
+    definition: The topAd field.
+  - name: topKW
+    type: property
+    definition: The topKW field.
+  - name: topThm
+    type: property
+    definition: The topThm field.
+  - name: trackingId
+    type: property
+    definition: The trackingId field.
+  - name: type
+    type: property
+    definition: The type field.
+  - name: updateFromDate
+    type: property
+    definition: The updateFromDate field.
+  - name: updateToDate
+    type: property
+    definition: The updateToDate field.
+  - name: url
+    type: property
+    definition: The url field.
+  - name: user
+    type: property
+    definition: The user field.
+  - name: userEmail
+    type: property
+    definition: The userEmail field.
+  - name: userEmailId
+    type: property
+    definition: The userEmailId field.
+  - name: userRole
+    type: property
+    definition: The userRole field.
+  - name: viewMode
+    type: property
+    definition: The viewMode field.
+  - name: viewReportType
+    type: property
+    definition: The viewReportType field.
+  - name: webhookUrl
+    type: property
+    definition: The webhookUrl field.
+  - name: websiteUrl
+    type: property
+    definition: The websiteUrl field.
+  - name: working24x7
+    type: property
+    definition: The working24x7 field.
+  - name: zip
+    type: property
+    definition: The zip field.

@@ -1,0 +1,12 @@
+{
+  "operationId": "update-custom-card",
+  "summary": "Update Custom card",
+  "method": "PUT",
+  "path": "/v1/business/public/card/{cardId}",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

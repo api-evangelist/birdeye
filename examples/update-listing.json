@@ -1,0 +1,12 @@
+{
+  "operationId": "update-listing",
+  "summary": "Update Listing",
+  "method": "PUT",
+  "path": "/v1/listing/{businessNumber}/update",
+  "examples": {
+    "response_200": {
+      "code": 6001,
+      "message": "The 'sub_locality' field cannot exceed 80 characters."
+    }
+  }
+}

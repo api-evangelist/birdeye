@@ -1,0 +1,12 @@
+{
+  "operationId": "get-details-of-employees",
+  "summary": "Get details of Employees",
+  "method": "GET",
+  "path": "/v1/employee/{businessId}",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

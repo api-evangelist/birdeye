@@ -1,0 +1,12 @@
+{
+  "operationId": "create-listing",
+  "summary": "Create Listing",
+  "method": "POST",
+  "path": "/v1/listing/{businessNumber}/create",
+  "examples": {
+    "response_200": {
+      "code": 6001,
+      "message": "The 'sub_locality' field cannot exceed 80 characters."
+    }
+  }
+}

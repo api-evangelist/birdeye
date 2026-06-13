@@ -1,0 +1,12 @@
+{
+  "operationId": "create-service",
+  "summary": "Create Service",
+  "method": "POST",
+  "path": "/v1/google-services/service/create",
+  "examples": {
+    "response_200": {
+      "code": 2493,
+      "message": "Duplicate Google Service is not allowed"
+    }
+  }
+}

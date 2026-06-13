@@ -1,0 +1,12 @@
+{
+  "operationId": "edit-scheduled-social-post",
+  "summary": "Edit Scheduled Social Post",
+  "method": "POST",
+  "path": "/v1/social/post/public/scheduled/edit/{accountNumber}",
+  "examples": {
+    "response_200": {
+      "code": 5557,
+      "message": "Requested Business Ids are empty."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "competitive-ranking-report",
+  "summary": "Competitive Ranking Report",
+  "method": "POST",
+  "path": "/v2/competitive/ranking",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

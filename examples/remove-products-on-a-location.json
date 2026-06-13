@@ -1,0 +1,12 @@
+{
+  "operationId": "remove-products-on-a-location",
+  "summary": "Remove Products On a Location",
+  "method": "POST",
+  "path": "/v1/listing/public/product/removeProduct",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

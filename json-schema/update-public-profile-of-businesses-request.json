@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/update-public-profile-of-businesses-request.json",
+  "title": "Update Public Profile Of Businesses Request",
+  "type": "object",
+  "properties": {
+    "profileTabs": {
+      "type": "array"
+    }
+  }
+}

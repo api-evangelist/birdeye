@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/update-request.json",
+  "title": "Update Request",
+  "type": "object",
+  "properties": {
+    "defaultValue": {
+      "type": "string"
+    },
+    "dropDownOptions": {
+      "type": "array"
+    },
+    "fieldDescription": {
+      "type": "string"
+    },
+    "filterable": {
+      "type": "boolean"
+    },
+    "isHidden": {
+      "type": "boolean"
+    }
+  }
+}

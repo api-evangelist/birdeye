@@ -1,0 +1,12 @@
+{
+  "operationId": "customer-checkin",
+  "summary": "Customer Checkin",
+  "method": "POST",
+  "path": "/v1/contact/external/preferences/checkin",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

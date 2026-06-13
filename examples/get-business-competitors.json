@@ -1,0 +1,12 @@
+{
+  "operationId": "get-business-competitors",
+  "summary": "Get Business Competitors",
+  "method": "GET",
+  "path": "/v1/business/{businessId}/competitors",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

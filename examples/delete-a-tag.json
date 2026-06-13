@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-a-tag",
+  "summary": "Delete a tag",
+  "method": "DELETE",
+  "path": "/v1/tag/{tagname}",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

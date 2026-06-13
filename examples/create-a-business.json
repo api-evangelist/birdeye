@@ -1,0 +1,12 @@
+{
+  "operationId": "create-a-business",
+  "summary": "Create a business",
+  "method": "POST",
+  "path": "/v1/signup/reseller/subaccount",
+  "examples": {
+    "response_200": {
+      "code": 2166,
+      "message": "Invalid Business Type"
+    }
+  }
+}

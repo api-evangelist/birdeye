@@ -1,0 +1,12 @@
+{
+  "operationId": "get-all-services",
+  "summary": "Get All Services",
+  "method": "POST",
+  "path": "/v1/google-services/services",
+  "examples": {
+    "response_200": {
+      "code": 2486,
+      "message": "Business Id missing or invalid"
+    }
+  }
+}

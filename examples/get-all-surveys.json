@@ -1,0 +1,12 @@
+{
+  "operationId": "get-all-surveys",
+  "summary": "Get All Surveys",
+  "method": "GET",
+  "path": "/v1/survey/business/{business_id}/all",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

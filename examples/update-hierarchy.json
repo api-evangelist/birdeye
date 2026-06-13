@@ -1,0 +1,12 @@
+{
+  "operationId": "update-hierarchy",
+  "summary": "Update Hierarchy",
+  "method": "POST",
+  "path": "/v1/business/business-hierarchy/location/update-mapping/{businessId}",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

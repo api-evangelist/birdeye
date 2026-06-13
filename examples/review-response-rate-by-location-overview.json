@@ -1,0 +1,12 @@
+{
+  "operationId": "review-response-rate-by-location-overview",
+  "summary": "Review Response Rate By Location Overview",
+  "method": "POST",
+  "path": "/v1/review/report/response-rate/by-location/overview",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

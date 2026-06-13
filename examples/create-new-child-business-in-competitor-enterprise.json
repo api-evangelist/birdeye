@@ -1,0 +1,12 @@
+{
+  "operationId": "create-new-child-business-in-competitor-enterprise",
+  "summary": "Create New Child Business in Competitor Enterprise",
+  "method": "POST",
+  "path": "/v1/signup/competitor/{businessId}",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "update-question",
+  "summary": "Update Question",
+  "method": "PUT",
+  "path": "/v1/qna/question/update",
+  "examples": {
+    "response_200": {
+      "code": 2482,
+      "message": "Question Id is Invalid"
+    }
+  }
+}

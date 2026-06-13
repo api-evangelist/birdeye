@@ -1,0 +1,12 @@
+{
+  "operationId": "social-open-url-performance-report",
+  "summary": "Social Open URL Performance Report",
+  "method": "POST",
+  "path": "/v1/social/open-url/performance/report",
+  "examples": {
+    "response_200": {
+      "code": 400,
+      "message": "Invalid media id"
+    }
+  }
+}

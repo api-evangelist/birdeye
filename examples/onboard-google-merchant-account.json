@@ -1,0 +1,12 @@
+{
+  "operationId": "onboard-google-merchant-account",
+  "summary": "Onboard Google Merchant Account",
+  "method": "POST",
+  "path": "/v1/listing/public/product/setup/googleMerchant",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

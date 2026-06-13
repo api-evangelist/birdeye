@@ -1,0 +1,12 @@
+{
+  "operationId": "get-gmb-attributes",
+  "summary": "Get GMB Attributes",
+  "method": "GET",
+  "path": "/v1/listing/{businessNumber}/gmb-attributes-list",
+  "examples": {
+    "response_200": {
+      "code": 2286,
+      "message": "Invalid whatsapp business link"
+    }
+  }
+}

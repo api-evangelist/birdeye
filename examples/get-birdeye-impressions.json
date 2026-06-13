@@ -1,0 +1,12 @@
+{
+  "operationId": "get-birdeye-impressions",
+  "summary": "Get Birdeye Impressions",
+  "method": "POST",
+  "path": "/v1/business/{businessNumber}/birdeye/impressions",
+  "examples": {
+    "response_200": {
+      "code": 1167,
+      "message": "API key is missing"
+    }
+  }
+}

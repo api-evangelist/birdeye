@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-contact",
+  "summary": "Delete Contact",
+  "method": "POST",
+  "path": "/v1/customer-v2/external/deleteCustomer",
+  "examples": {
+    "response_200": {
+      "code": 5043,
+      "message": "Contact not found for the given request"
+    }
+  }
+}

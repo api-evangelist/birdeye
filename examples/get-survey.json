@@ -1,0 +1,12 @@
+{
+  "operationId": "get-survey",
+  "summary": "Get Survey",
+  "method": "GET",
+  "path": "/v1/survey/{survey_id}",
+  "examples": {
+    "response_200": {
+      "code": 89,
+      "message": "Rate limit exceeded"
+    }
+  }
+}

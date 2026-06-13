@@ -1,0 +1,12 @@
+{
+  "operationId": "create-tags",
+  "summary": "Create tags",
+  "method": "POST",
+  "path": "/v1/tag",
+  "examples": {
+    "response_200": {
+      "code": 1011,
+      "message": "Business id is invalid"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "edit-published-social-post",
+  "summary": "Edit Published social Post",
+  "method": "POST",
+  "path": "/v1/social/post/public/published/edit/{accountNumber}",
+  "examples": {
+    "response_200": {
+      "code": 5557,
+      "message": "Requested Business Ids are empty."
+    }
+  }
+}

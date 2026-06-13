@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/json-schema/associate-request.json",
+  "title": "Associate Request",
+  "type": "object",
+  "properties": {
+    "fieldId": {
+      "type": "number"
+    },
+    "fieldValue": {
+      "type": "string"
+    },
+    "businessNumber": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "fieldId",
+    "fieldValue",
+    "businessNumber"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-answer",
+  "summary": "Delete Answer",
+  "method": "POST",
+  "path": "/v1/qna/answer/delete",
+  "examples": {
+    "response_200": {
+      "code": 2482,
+      "message": "Question Id is Invalid"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-services",
+  "summary": "Delete Services",
+  "method": "POST",
+  "path": "/v1/google-services/service/delete",
+  "examples": {
+    "response_200": {
+      "code": 2495,
+      "message": "Invalid GBP Service Id"
+    }
+  }
+}

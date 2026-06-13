@@ -1,0 +1,12 @@
+{
+  "operationId": "get-all-questions-and-answers",
+  "summary": "Get All Questions and Answers",
+  "method": "POST",
+  "path": "/v1/qna/get",
+  "examples": {
+    "response_200": {
+      "code": 2466,
+      "message": "Invalid input request"
+    }
+  }
+}

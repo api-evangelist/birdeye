@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-a-user",
+  "summary": "Delete a user",
+  "method": "DELETE",
+  "path": "/v1/user/remove",
+  "examples": {
+    "response_200": {
+      "code": 1175,
+      "message": "No business found with the given id"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "get-reviews",
+  "summary": "Get Reviews",
+  "method": "POST",
+  "path": "/v1/review/businessId/{businessId}",
+  "examples": {
+    "response_200": {
+      "code": 1244,
+      "message": "Maximum 5 keywords can be selected for filter."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "operationId": "delete-media",
+  "summary": "Delete Media",
+  "method": "DELETE",
+  "path": "/v1/business/{businessNumber}/media/delete",
+  "examples": {
+    "response_200": {
+      "code": 400,
+      "message": "Invalid media id"
+    }
+  }
+}
