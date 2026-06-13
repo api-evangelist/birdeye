@@ -1,0 +1,59 @@
+aid: birdeye
+name: Birdeye
+description: Birdeye is an AI-powered customer experience and reputation management platform for multi-location brands. Its REST API enables developers to manage online reviews across 200+ sites, send surveys, respond to messages, automate review requests, and track reputation metrics including ratings, sentiment trends, and NPS scores. Integrations cover listings, webchat, appointments, payments, social posting, and customer insights.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/apis.yml
+created: 2026-06-13
+modified: 2026-06-13
+specificationVersion: "0.19"
+tags:
+  - Reputation Management
+  - Reviews
+  - Customer Experience
+  - Surveys
+  - Messaging
+  - Multi-Location
+  - AI
+apis:
+  - aid: birdeye:birdeye-api
+    name: Birdeye API
+    description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.birdeye.com/
+    baseURL: https://api.birdeye.com
+    tags:
+      - Reviews
+      - Surveys
+      - Reputation
+      - Messaging
+      - Locations
+    properties:
+      - type: Documentation
+        url: https://developers.birdeye.com/
+      - type: Authentication
+        url: https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+common:
+  - type: Website
+    url: https://birdeye.com/
+  - type: Documentation
+    url: https://developers.birdeye.com/
+  - type: Blog
+    url: https://birdeye.com/blog/
+  - type: Pricing
+    url: https://birdeye.com/pricing/
+  - type: StatusPage
+    url: https://status.birdeye.com/
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/birdeye
+  - type: X
+    url: https://x.com/Birdeye_
+  - type: Plans
+    url: plans/birdeye-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/birdeye-rate-limits.yml
+  - type: FinOps
+    url: finops/birdeye-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

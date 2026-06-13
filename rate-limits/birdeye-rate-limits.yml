@@ -1,0 +1,40 @@
+name: Birdeye API Rate Limits
+description: Birdeye enforces per-API-key rate limits to ensure optimal performance and fair usage across all accounts. Limits vary by account plan and are not universally published; specific thresholds must be confirmed with Birdeye support or found in account documentation.
+url: https://support.birdeye.com/en/articles/12654181-birdeye-s-developer-portal
+created: 2026-06-13
+modified: 2026-06-13
+rateLimits:
+  - name: Standard Daily Limit
+    scope: per-api-key
+    window: daily
+    limit: 10000
+    unit: requests
+    description: Default daily cap applied per API key on standard accounts. This is a reference threshold; actual limits depend on the account plan.
+    notes: Not universal — some accounts may have higher or lower limits based on contract terms.
+
+  - name: Enterprise Custom Limit
+    scope: per-api-key
+    window: negotiated
+    limit: custom
+    unit: requests
+    description: Enterprise and Premium plan API keys receive custom rate limit allocations negotiated at contract time. Contact Birdeye account management to adjust.
+
+headers:
+  - name: X-RateLimit-Limit
+    description: Maximum number of requests permitted in the current window (if returned).
+  - name: X-RateLimit-Remaining
+    description: Number of requests remaining in the current window (if returned).
+
+errorCodes:
+  - code: 429
+    message: Too Many Requests
+    description: Returned when the API key has exceeded its configured rate limit. Implement exponential backoff before retrying.
+
+bestPractices:
+  - Batch API calls where possible to reduce total request count.
+  - Cache frequently-requested data (e.g., business details, review aggregates) on the client side.
+  - Monitor real-time usage through the Birdeye dashboard.
+  - Plan for account upgrades or limit increases if integration volume grows beyond the default threshold.
+  - Consult your account documentation or contact Birdeye support to confirm the exact limits for your plan.
+
+contactForLimits: https://support.birdeye.com/

@@ -1,0 +1,67 @@
+name: Birdeye Plans & Pricing
+description: Birdeye uses location-based pricing configured through a custom quote tool. API access is available on higher-tier plans. The platform is structured around the number of business locations and the suite of features deployed.
+url: https://birdeye.com/pricing/
+created: 2026-06-13
+modified: 2026-06-13
+plans:
+  - name: Starter
+    description: Core reputation management for single or small multi-location businesses. Includes reviews, listings, and basic messaging.
+    pricePerLocation: contact-sales
+    priceMonthly: contact-sales
+    features:
+      - Online review management
+      - Listings management
+      - Webchat
+      - Basic reporting
+    apiAccess: false
+
+  - name: Growth
+    description: Expanded plan adding surveys, social media management, and enhanced reporting for growing multi-location brands.
+    pricePerLocation: contact-sales
+    priceMonthly: contact-sales
+    features:
+      - All Starter features
+      - Surveys (NPS, CSAT)
+      - Social media management
+      - Advanced insights
+      - Campaign automation
+    apiAccess: false
+
+  - name: Dominate
+    description: Full-suite plan for large multi-location brands with advanced AI features, competitor analysis, and full platform access.
+    pricePerLocation: contact-sales
+    priceMonthly: contact-sales
+    features:
+      - All Growth features
+      - AI-powered review responses
+      - Competitor intelligence
+      - Ticketing
+      - Appointments
+      - Payments
+      - Referrals
+    apiAccess: false
+
+  - name: Premium / Enterprise
+    description: Enterprise tier for 4+ locations that unlocks full API access, custom integrations, dedicated account management, and multi-location dashboards. API access is part of this tier.
+    pricePerLocation: contact-sales
+    priceMonthly: contact-sales
+    features:
+      - All Dominate features
+      - REST API access
+      - Webhooks
+      - OAuth 2.0 and API key authentication
+      - MCP server access
+      - Custom integrations (CRM, POS, data lake)
+      - Multi-location dashboards
+      - Dedicated account manager
+      - Custom rate limits
+      - SLA support
+    apiAccess: true
+    apiRateLimit: custom
+    notes: Pricing is determined via the interactive configurator at birdeye.com/pricing or by contacting sales at 1-800-561-3357. Third-party review platform estimates place API-enabled plans starting near $500/month above base plan costs.
+
+notes:
+  - Birdeye does not publish flat-rate tiers publicly; all pricing is quote-driven based on number of locations and features selected.
+  - The pricing configurator requires contact information submission.
+  - API access is only available on the Premium/Enterprise tier.
+  - An additional daily API call limit of approximately 10,000 requests applies per API key on standard accounts; higher limits are negotiated on enterprise plans.

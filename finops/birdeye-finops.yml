@@ -1,0 +1,52 @@
+name: Birdeye FinOps
+description: Financial operations guidance for teams consuming the Birdeye API. Covers cost structure, usage monitoring, optimization strategies, and budget planning for API-enabled integrations.
+url: https://birdeye.com/pricing/
+created: 2026-06-13
+modified: 2026-06-13
+
+costModel:
+  type: location-based-subscription
+  billingCadence: monthly
+  pricingVisibility: quote-driven
+  description: Birdeye charges per business location per month. API access is gated behind Premium/Enterprise tier contracts. There are no published per-call API usage fees; cost is driven by the base subscription plan and the number of locations enrolled.
+  notes:
+    - No metered/pay-per-call API billing has been publicly documented.
+    - All pricing requires a custom quote via the configurator at birdeye.com/pricing or sales engagement.
+    - Third-party analyses estimate API-enabled plans starting from approximately $500/month above base plan costs, with base plans ranging from $299–$449 per location per month.
+
+costOptimization:
+  - strategy: Minimize location footprint
+    description: Because billing scales with the number of enrolled locations, audit which locations genuinely require API-driven automation versus those that can use dashboard-only features.
+  - strategy: Batch review requests
+    description: Consolidate review request sends into batched API calls rather than per-customer calls to reduce request volume against daily limits and avoid unnecessary overage discussions.
+  - strategy: Cache review aggregates
+    description: Store and reuse review summary and rating trend data locally rather than polling the API on every page load or report refresh.
+  - strategy: Monitor daily API usage
+    description: Track API call volume in the Birdeye dashboard to avoid approaching the ~10,000/day standard limit, which may trigger support escalation or plan upgrade conversations.
+  - strategy: Negotiate enterprise limits upfront
+    description: For high-volume integrations (CRM sync, data lake pipelines), negotiate custom rate limits and any volume discounts at contract signing rather than after deployment.
+  - strategy: Leverage MCP server for read operations
+    description: For AI agent and LLM use cases that require read-only access to review, survey, or rating data, the Birdeye MCP server may be a cost-neutral alternative to direct API calls under the same enterprise plan.
+
+budgetPlanning:
+  - item: Base platform subscription
+    driver: Number of enrolled locations x plan tier
+    frequency: monthly
+    notes: Confirm per-location rate and tier with Birdeye sales. Expect multi-year contract discounts on large location counts.
+  - item: API access add-on (if separate)
+    driver: Contract negotiation
+    frequency: monthly
+    notes: API access may be bundled into the Premium/Enterprise tier or priced as an add-on. Clarify at contract time.
+  - item: Implementation and integration costs
+    driver: Engineering hours for custom integration
+    frequency: one-time
+    notes: Budget for developer time to integrate Birdeye REST API with CRM, POS, or data lake systems.
+  - item: Overage or limit increase fees
+    driver: API call volume growth
+    frequency: as-needed
+    notes: If standard daily limits (approx. 10,000 calls/key/day) are insufficient, negotiate higher limits through account management.
+
+contacts:
+  sales: 1-800-561-3357
+  support: https://support.birdeye.com/
+  pricingPage: https://birdeye.com/pricing/
