@@ -2,7 +2,7 @@ aid: birdeye
 name: Birdeye
 description: Birdeye is an AI-powered customer experience and reputation management platform for multi-location brands. Its REST API enables developers to manage online reviews across 200+ sites, send surveys, respond to messages, automate review requests, and track reputation metrics including ratings, sentiment trends, and NPS scores. Integrations cover listings, webchat, appointments, payments, social posting, and customer insights.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/apis.yml
 created: 2026-06-13
 modified: 2026-06-13
@@ -19,7 +19,7 @@ apis:
   - aid: birdeye:birdeye-api
     name: Birdeye API
     description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.birdeye.com/
     baseURL: https://api.birdeye.com
     tags:
