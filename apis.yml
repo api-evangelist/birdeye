@@ -40,6 +40,10 @@ apis:
       - type: JSONLDContext
         url: json-ld/birdeye-context.jsonld
 common:
+  - type: DomainSecurity
+    url: security/birdeye-domain-security.yml
+  - type: Authentication
+    url: authentication/birdeye-authentication.yml
   - type: Website
     url: https://birdeye.com/
   - type: Documentation

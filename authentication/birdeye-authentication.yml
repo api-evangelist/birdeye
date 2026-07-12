@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/birdeye-birdeye-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  description: Partner specific API key provided by Birdeye for data exchange.
+  sources:
+  - openapi/birdeye-birdeye-api-openapi.yml
