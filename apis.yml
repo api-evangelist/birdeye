@@ -40,6 +40,8 @@ apis:
       - type: JSONLDContext
         url: json-ld/birdeye-context.jsonld
 common:
+  - type: AgenticAccess
+    url: agentic-access/birdeye-agentic-access.yml
   - type: DomainSecurity
     url: security/birdeye-domain-security.yml
   - type: Authentication
