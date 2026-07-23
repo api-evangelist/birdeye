@@ -1,0 +1,434 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Survey API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Survey
+  description: Engage each customer at the right time with NPS or CSAT surveys to improve your service.
+paths:
+  /v1/survey/{survey_id}:
+    get:
+      summary: Get Survey
+      operationId: get-survey
+      tags:
+      - Survey
+      parameters:
+      - name: survey_id
+        in: path
+        required: true
+        description: Id of the Survey.
+        schema:
+          type: integer
+        example: '123'
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      - name: lang
+        in: query
+        required: false
+        description: The survey locale, default is english
+        schema:
+          type: string
+        example: english
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+  /v1/survey/{survey_id}/submit:
+    post:
+      summary: Post a survey response
+      operationId: post-a-survey-response
+      tags:
+      - Survey
+      parameters:
+      - name: survey_id
+        in: path
+        required: true
+        description: Id of the Survey.
+        schema:
+          type: integer
+        example: '123'
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+  /v1/survey/ext/list/responses/{survey_id}:
+    post:
+      summary: List Responses for a Survey
+      operationId: list-responses-for-a-survey
+      tags:
+      - Survey
+      parameters:
+      - name: survey_id
+        in: path
+        required: true
+        description: Id of the Survey.
+        schema:
+          type: integer
+        example: '123'
+      - name: businessNumber
+        in: query
+        required: true
+        description: The Business Number of Enterprise
+        schema:
+          type: string
+        example: '169744180007807'
+      - name: page
+        in: query
+        required: false
+        description: The page number, starts with 0.
+        schema:
+          type: integer
+        example: '0'
+      - name: size
+        in: query
+        required: false
+        description: The size of the page.
+        schema:
+          type: integer
+        example: '30'
+      - name: sortby
+        in: query
+        required: false
+        description: The sort by parameter.
+        schema:
+          type: string
+        example: date
+      - name: sorder
+        in: query
+        required: false
+        description: The sort order parameter.
+        schema:
+          type: string
+        example: asc
+      - name: includeTicketId
+        in: query
+        required: false
+        description: The field to fetch ticketIds associated with the response.
+        schema:
+          type: boolean
+        example: 'false'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+  /v1/survey/business/{business_id}/all:
+    get:
+      summary: Get All Surveys
+      operationId: get-all-surveys
+      tags:
+      - Survey
+      parameters:
+      - name: sortby
+        in: query
+        required: false
+        description: Sort results by lastModified[modified], Created[created], Response Count[response].
+        schema:
+          type: string
+        example: modified
+      - name: sorder
+        in: query
+        required: false
+        description: Sort order ascending (0) and descending (1).
+        schema:
+          type: string
+        example: '0'
+      - name: searchStr
+        in: query
+        required: false
+        description: Search survey by name or business location.
+        schema:
+          type: string
+        example: abc
+      - name: business_id
+        in: path
+        required: true
+        description: Business ID.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+  /v1/survey/external/create/{businessId}:
+    post:
+      summary: Create Survey
+      operationId: create-survey
+      tags:
+      - Survey
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2095
+                  message: ownerEmailId cannot be null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                surveyName: Experience Survey
+                thankYouMessage: Thank you for taking the survey!
+                surveyType: traditional
+                ownerEmailId: testmail@gmail.com
+                pages:
+                - questions:
+                  - title: Text1
+                    type: text
+                  - title: Paragraph
+                    type: textarea
+                - title: Page 2-optional
+                  questions:
+                  - title: Questionnumber1
+                    type: checkbox
+                    required: true
+                    choices:
+                    - Choice 1
+                    - Choice 2
+                    - Choice 3
+                  - title: Q2
+                    type: dropdown
+                    choices:
+                    - Dropdown 1
+                    - Dropdown 2
+                    - Dropdown 3
+                  - title: ratingQn
+                    type: rating
+                    minLabel: Strongly Disagree
+                    maxLabel: Strongly Agree
+                    maxValue: 10
+                - questions:
+                  - title: P3-Q1-Radio
+                    type: radio
+                    choices:
+                    - radio 1
+                    - radio 2
+                    - radio 3
+                  - title: npsQn
+                    type: nps
+                    minLabel: Strongly Disagree
+                - questions:
+                  - title: Datetime question
+                    type: datetime
+                    required: true
+                    showTime: true
+                    showDate: true
+                    interval: 60
+                    minValue: '12'
+                    maxValue: '36'
+                  - title: Please enter your contact information
+                    type: contact
+                    required: true
+                    contactRows:
+                    - required: true
+                      title: First name
+                      type: text
+                    - required: true
+                      title: Email
+                      type: email
+                    - required: true
+                      title: Phone
+                      type: phone
+                - title: Page 4
+                  questions:
+                  - title: P4-Q1
+                    type: matrixrating
+                    minLabel: Strongly Disagree
+                    maxLabel: Strongly Agree
+                    maxValue: 5
+                    rows:
+                    - Row label 1
+                    - Row label 2
+                  - title: P4-Q2
+                    type: matrixradio
+                    required: true
+                    choices:
+                    - c1
+                    - c2
+                    - c3
+                    rows:
+                    - Row 1
+                    - Row2
+                  - title: p4-Q3
+                    type: matrixdropdown
+                    required: true
+                    choices:
+                    - c1
+                    - c2
+                    - c3
+                    rows:
+                    - Row label 1
+                    - Row label 2
+                  - title: Label type ques
+                    type: label
+                - questions:
+                  - title: please review us on one of these sites
+                    type: review
+                    required: true
+                    contactUsMessage: ContactUs test message
+                    reviewSources:
+                    - Google
+                    - Facebook
+                    - CitySearch
+  /v1/survey/{surveyId}/settings/update:
+    post:
+      summary: Update Survey Settings
+      operationId: update-survey-settings
+      tags:
+      - Survey
+      parameters:
+      - name: surveyId
+        in: path
+        required: true
+        description: Survey ID
+        schema:
+          type: integer
+        example: '123'
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2096
+                  message: Detected conflicting user-access request!
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                surveySettings:
+                  type: object
+                  properties:
+                    showSurveyTitle:
+                      type: boolean
+                    showQuestionNumber:
+                      type: boolean
+                    showProgressBar:
+                      type: boolean
+                    progressbarPosition:
+                      type: string
+                    showLogo:
+                      type: string
+                    showTitle:
+                      type: string
+                    customTitle:
+                      type: string
+                    themeColor:
+                      type: string
+                    themeTextColor:
+                      type: string
+                    subject:
+                      type: string
+                    message:
+                      type: string
+                    signature:
+                      type: string
+                    enableThankyouEmail:
+                      type: boolean
+                accessControl:
+                  type: object
+                  properties:
+                    userAccessList:
+                      type: array
+                    surveyAccess:
+                      type: object
+                      properties:
+                        role:
+                          type: string
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

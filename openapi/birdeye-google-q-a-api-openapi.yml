@@ -1,0 +1,363 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Google Q&A API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Google Q&A
+  description: 'Note
+
+
+    Applicable to be used only by paid listings clients, for their active locations, for the Google Q&amp;A section, in the Google listing'
+paths:
+  /v1/qna/question/create:
+    post:
+      summary: Create Question
+      operationId: create-question
+      tags:
+      - Google Q&A
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2483
+                  message: Question should have minimum 3 words
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                question:
+                  type: string
+                answer:
+                  type: string
+              required:
+              - question
+              - answer
+  /v1/qna/answer/create:
+    post:
+      summary: Create Answer
+      operationId: create-answer
+      tags:
+      - Google Q&A
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2462
+                  message: Owner answer already added please edit answer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                questionId:
+                  type: number
+                answer:
+                  type: string
+              required:
+              - questionId
+              - answer
+  /v1/qna/question/update:
+    put:
+      summary: Update Question
+      operationId: update-question
+      tags:
+      - Google Q&A
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2482
+                  message: Question Id is Invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                questionId:
+                  type: number
+                question:
+                  type: string
+              required:
+              - questionId
+              - question
+  /v1/qna/answer/update:
+    put:
+      summary: Update Answer
+      operationId: update-answer
+      tags:
+      - Google Q&A
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2482
+                  message: Question Id is Invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                questionId:
+                  type: number
+                answerId:
+                  type: number
+                answer:
+                  type: string
+              required:
+              - questionId
+              - answerId
+              - answer
+  /v1/qna/question/delete:
+    post:
+      summary: Delete Question
+      operationId: delete-question
+      tags:
+      - Google Q&A
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2482
+                  message: Question Id is Invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                questionId:
+                  type: number
+              required:
+              - questionId
+  /v1/qna/answer/delete:
+    post:
+      summary: Delete Answer
+      operationId: delete-answer
+      tags:
+      - Google Q&A
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2482
+                  message: Question Id is Invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                questionId:
+                  type: number
+                answerId:
+                  type: number
+              required:
+              - questionId
+              - answerId
+  /v1/qna/question/deleteAll:
+    delete:
+      summary: Delete All Questions and Answers
+      operationId: delete-all-questions-and-answers
+      tags:
+      - Google Q&A
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2482
+                  message: Question Id is Invalid
+  /v1/qna/get:
+    post:
+      summary: Get All Questions and Answers
+      operationId: get-all-questions-and-answers
+      tags:
+      - Google Q&A
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2466
+                  message: Invalid input request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                startIndex:
+                  type: number
+                pageSize:
+                  type: number
+              required:
+              - startIndex
+              - pageSize
+  /v1/qna/unanswered/get:
+    post:
+      summary: Get All Unanswered Questions and Answers
+      operationId: get-all-unanswered-questions-and-answers
+      tags:
+      - Google Q&A
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2466
+                  message: Invalid input request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                startIndex:
+                  type: number
+                pageSize:
+                  type: number
+              required:
+              - startIndex
+              - pageSize
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

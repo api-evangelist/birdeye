@@ -1,0 +1,94 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Campaign API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Campaign
+  description: Create a short link for review requests and set review sources in the template.
+paths:
+  /v1/campaign/external/campaign-request-url:
+    post:
+      summary: Fetch Request URL
+      operationId: fetch-request-url
+      tags:
+      - Campaign
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessId:
+                  type: number
+                customerId:
+                  type: number
+                surveyId:
+                  type: number
+                templateId:
+                  type: number
+                checkinId:
+                  type: number
+              required:
+              - businessId
+              - customerId
+  /v1/campaign/external/default-review-sources:
+    post:
+      summary: Set Defaullt Review Sources
+      operationId: set-defaullt-review-sources
+      tags:
+      - Campaign
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessId:
+                  type: number
+                customerId:
+                  type: array
+              required:
+              - businessId
+              - customerId
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

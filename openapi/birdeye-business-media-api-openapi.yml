@@ -1,0 +1,167 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Business Media API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Business Media
+  description: 'Add, delete and manage business media.
+
+
+    Supported Media Size
+
+
+    Photo: JPG or PNG. 720 x 720px. 10KB min.
+
+    Video: 30 sec long. 720p or more upto 75MB.
+
+
+
+
+    Note
+
+
+    Uploaded media will be pushed to your google business profile (if connected) and other long tail directories only.'
+paths:
+  /v1/business/{businessNumber}/upload/media:
+    post:
+      summary: Add Media
+      operationId: add-media
+      tags:
+      - Business Media
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Location Number, in case of SMB it will be Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2175
+                  message: Provided media category is not supported
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                media:
+                  type: array
+              required:
+              - media
+  /v1/business/{businessNumber}/media/get:
+    get:
+      summary: Get Media
+      operationId: get-media
+      tags:
+      - Business Media
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Location Number, in case of SMB it will be Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+  /v1/business/{businessNumber}/update/media/{mediaId}:
+    put:
+      summary: Update Media
+      operationId: update-media
+      tags:
+      - Business Media
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Location Number, in case of SMB it will be Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      - name: mediaId
+        in: path
+        required: true
+        description: Id of the media item.
+        schema:
+          type: string
+        example: '62185029212'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 400
+                  message: Invalid media id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                mediaCategory:
+                  type: string
+              required:
+              - mediaCategory
+  /v1/business/{businessNumber}/media/delete:
+    delete:
+      summary: Delete Media
+      operationId: delete-media
+      tags:
+      - Business Media
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Location Number, in case of SMB it will be Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 400
+                  message: Invalid media id
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

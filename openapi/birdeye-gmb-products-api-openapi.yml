@@ -1,0 +1,362 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation GMB Products API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: GMB Products
+  description: To manage products, locations, and business details through Listing GMB platform
+paths:
+  /v1/listing/public/product/setup/googleMerchant:
+    post:
+      summary: Onboard Google Merchant Account
+      operationId: onboard-google-merchant-account
+      tags:
+      - GMB Products
+      parameters:
+      - name: merchantId
+        in: query
+        required: true
+        description: Google Merchant Center account ID.
+        schema:
+          type: string
+        example: '1234567'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {}
+  /v1/listing/public/product:
+    post:
+      summary: Create Product Listing
+      operationId: create-product-listing
+      tags:
+      - GMB Products
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                title:
+                  type: string
+                description:
+                  type: string
+                imageLink:
+                  type: string
+                additionalImageLinks:
+                  type: array
+                brandName:
+                  type: string
+                googleProductCategoryId:
+                  type: string
+                price:
+                  type: object
+                  properties:
+                    amount:
+                      type: string
+                    currencyCode:
+                      type: string
+                  required:
+                  - amount
+                  - currencyCode
+                salePrice:
+                  type: object
+                  properties:
+                    amount:
+                      type: string
+                    currencyCode:
+                      type: string
+                  required:
+                  - amount
+                  - currencyCode
+                productSku:
+                  type: string
+                productTypes:
+                  type: array
+                productUrl:
+                  type: string
+                status:
+                  type: string
+              required:
+              - title
+              - imageLink
+              - googleProductCategoryId
+              - price
+              - status
+  /v1/listing/public/product/{productId}:
+    put:
+      summary: Update Product Listing
+      operationId: update-product-listing
+      tags:
+      - GMB Products
+      parameters:
+      - name: productId
+        in: path
+        required: true
+        description: Unique identifier of the product to update.
+        schema:
+          type: string
+        example: 68767cb39ebf51000815ab39
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                title:
+                  type: string
+                description:
+                  type: string
+                imageLink:
+                  type: string
+                additionalImageLinks:
+                  type: array
+                brandName:
+                  type: string
+                googleProductCategoryId:
+                  type: string
+                price:
+                  type: object
+                  properties:
+                    amount:
+                      type: string
+                    currencyCode:
+                      type: string
+                  required:
+                  - amount
+                  - currencyCode
+                salePrice:
+                  type: object
+                  properties:
+                    amount:
+                      type: string
+                    currencyCode:
+                      type: string
+                  required:
+                  - amount
+                  - currencyCode
+                productTypes:
+                  type: array
+                productUrl:
+                  type: string
+                status:
+                  type: string
+              required:
+              - title
+              - imageLink
+              - googleProductCategoryId
+              - price
+              - status
+  /v1/listing/public/product/{productIdentifier}:
+    get:
+      summary: Get Product Listing
+      operationId: get-product-listing
+      tags:
+      - GMB Products
+      parameters:
+      - name: productIdentifier
+        in: path
+        required: true
+        description: Product identifier.
+        schema:
+          type: string
+        example: 68767cb39ebf51000815ab39
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+  /v1/listing/public/product/deleteProduct:
+    post:
+      summary: Delete Product Listings
+      operationId: delete-product-listings
+      tags:
+      - GMB Products
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                productIds:
+                  type: array
+              required:
+              - productIds
+  /v1/listing/public/product/getList:
+    post:
+      summary: Get List Product Listing
+      operationId: get-list-product-listing
+      tags:
+      - GMB Products
+      parameters:
+      - name: pageSize
+        in: query
+        required: false
+        description: Number of records per page. Default 50.
+        schema:
+          type: number
+        example: '50'
+      - name: pageNumber
+        in: query
+        required: false
+        description: 0-based page index. Default 0.
+        schema:
+          type: number
+        example: '0'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                search:
+                  type: string
+                status:
+                  type: array
+                businessNumbers:
+                  type: array
+  /v1/listing/public/product/addProduct:
+    post:
+      summary: Add Products On a Location
+      operationId: add-products-on-a-location
+      tags:
+      - GMB Products
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                productIds:
+                  type: array
+              required:
+              - productIds
+  /v1/listing/public/product/removeProduct:
+    post:
+      summary: Remove Products On a Location
+      operationId: remove-products-on-a-location
+      tags:
+      - GMB Products
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                productIds:
+                  type: array
+              required:
+              - productIds
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

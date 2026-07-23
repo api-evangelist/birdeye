@@ -1,0 +1,58 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Integration API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Integration
+  description: Birdeye integrates with various software or tools you use.
+paths:
+  /v1/integrations/add/businessintegrationmapping:
+    put:
+      summary: Add locations
+      operationId: add-locations
+      tags:
+      - Integration
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumber:
+                  type: number
+                integrationGroupId:
+                  type: number
+                active:
+                  type: boolean
+                integrationProperties:
+                  type: object
+              required:
+              - businessNumber
+              - integrationGroupId
+              - active
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

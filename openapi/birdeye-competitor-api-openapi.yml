@@ -1,0 +1,428 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Competitor API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Competitor
+  description: Make competitive insights your unfair advantage.
+paths:
+  /v1/business/{EnterpriseBusinessNumber}/child:
+    get:
+      summary: Get Competitor Business
+      operationId: get-competitor-business
+      tags:
+      - Competitor
+      parameters:
+      - name: EnterpriseBusinessNumber
+        in: path
+        required: true
+        description: Enterprise Business id.
+        schema:
+          type: string
+        example: '231123123'
+      - name: isCompetitor
+        in: query
+        required: true
+        description: True for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business.
+        schema:
+          type: boolean
+        example: 'true'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+  /v1/business/{EnterpriseCompetitorBusinessId}/child:
+    get:
+      summary: Get Competitor Child Business
+      operationId: get-competitor-child-business
+      tags:
+      - Competitor
+      parameters:
+      - name: isCompetitor
+        in: query
+        required: true
+        description: True for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business.
+        schema:
+          type: boolean
+        example: 'true'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+  /v1/business/{businessId}/competitors:
+    get:
+      summary: Get Business Competitors
+      operationId: get-business-competitors
+      tags:
+      - Competitor
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: Account Business Number.
+        schema:
+          type: string
+        example: '986031488'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+  /v1/signup/competitor/{businessNumber}:
+    post:
+      summary: Create New Competitor Enterprise
+      operationId: create-new-competitor-enterprise
+      tags:
+      - Competitor
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Account Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessName:
+                  type: string
+                userEmailId:
+                  type: string
+                countryCode:
+                  type: string
+                phone:
+                  type: string
+                zip:
+                  type: string
+                competitorId:
+                  type: string
+                type:
+                  type: string
+  /v1/signup/competitor/{businessId}:
+    post:
+      summary: Create New Child Business in Competitor Enterprise
+      operationId: create-new-child-business-in-competitor-enterprise
+      tags:
+      - Competitor
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: Account Business Number.
+        schema:
+          type: string
+        example: '986031488'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+  /v1/aggregation/competitor/{compAccountId}/{businessNumber}:
+    post:
+      summary: Add new Competitor Aggregation URL
+      operationId: add-new-competitor-aggregation-url
+      tags:
+      - Competitor
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Id of the business.
+        schema:
+          type: number
+        example: '169744180007807'
+      - name: compAccountId
+        in: path
+        required: true
+        description: Competitor Account Id.
+        schema:
+          type: number
+        example: '234567'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                sourceAlias:
+                  type: string
+                url:
+                  type: string
+              required:
+              - sourceAlias
+  /v1/review/businessId/{CompetitorEnterpriseBusinessId}:
+    post:
+      summary: Get Competitor Reviews
+      operationId: get-competitor-reviews
+      tags:
+      - Competitor
+      parameters:
+      - name: sindex
+        in: query
+        required: true
+        description: Start index of the reviews.
+        schema:
+          type: integer
+        example: '10'
+      - name: count
+        in: query
+        required: true
+        description: Number of reviews to query.
+        schema:
+          type: integer
+        example: '30'
+      - name: isCompetitor
+        in: query
+        required: true
+        description: True for Competitor Review.
+        schema:
+          type: boolean
+        example: 'false'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1228
+                  message: Invalid updated to date. Allowed format is MM/dd/yyyy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                fromDate:
+                  type: string
+                toDate:
+                  type: string
+                updateFromDate:
+                  type: string
+                updateToDate:
+                  type: string
+                sources:
+                  type: string
+                ratings:
+                  type: array
+                searchStr:
+                  type: string
+                subBusinessIds:
+                  type: array
+                statuses:
+                  type: array
+  /v1/competitors/competitive-insight/categories/{businessNumber}:
+    post:
+      summary: Get Score
+      operationId: get-score
+      tags:
+      - Competitor
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Account Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                sourceType:
+                  type: string
+                sources:
+                  type: array
+                timePeriodSelected:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                competitors:
+                  type: array
+  /v1/competitors/competitive-insight/themes/{businessNumber}:
+    post:
+      summary: Get Theme Statistics
+      operationId: get-theme-statistics
+      tags:
+      - Competitor
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Account Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                sourceType:
+                  type: string
+                sources:
+                  type: array
+                timePeriodSelected:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                competitors:
+                  type: array
+                topThm:
+                  type: number
+                orderBy:
+                  type: string
+                sentiment:
+                  type: number
+  /v1/competitors/competitive-insight/keywords/{businessNumber}:
+    post:
+      summary: Get Keyword Statistics
+      operationId: get-keyword-statistics
+      tags:
+      - Competitor
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Account Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                sourceType:
+                  type: string
+                sources:
+                  type: array
+                timePeriodSelected:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                competitors:
+                  type: array
+                topKW:
+                  type: number
+                topAd:
+                  type: number
+                orderBy:
+                  type: string
+                sentiment:
+                  type: number
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

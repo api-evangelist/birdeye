@@ -1,0 +1,282 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Custom Fields API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Custom Fields
+  description: Create, delete , update , associate and get custom fields easily.
+paths:
+  /v1/business/public/custom-fields/create:
+    post:
+      summary: Create
+      operationId: create
+      tags:
+      - Custom Fields
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 5040
+                  message: Max limit reached for custom fields.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                defaultValue:
+                  type: string
+                dropDownOptions:
+                  type: array
+                fieldDescription:
+                  type: string
+                fieldName:
+                  type: string
+                filterable:
+                  type: boolean
+                type:
+                  type: string
+              required:
+              - fieldName
+              - type
+  /v1/business/public/custom-fields/update/{fieldId}:
+    put:
+      summary: Update
+      operationId: update
+      tags:
+      - Custom Fields
+      parameters:
+      - name: fieldId
+        in: path
+        required: true
+        description: fieldId of the custom field created earlier.
+        schema:
+          type: number
+        example: '376'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 5026
+                  message: Custom field updation failed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                defaultValue:
+                  type: string
+                dropDownOptions:
+                  type: array
+                fieldDescription:
+                  type: string
+                filterable:
+                  type: boolean
+                isHidden:
+                  type: boolean
+  /v1/business/public/custom-fields/get/{fieldId}?locationBizNumber={locationBizNumber}:
+    get:
+      summary: Get
+      operationId: get
+      tags:
+      - Custom Fields
+      parameters:
+      - name: fieldId
+        in: path
+        required: true
+        description: fieldId of the custom field created earlier.
+        schema:
+          type: number
+        example: '376'
+      - name: locationBizNumber
+        in: path
+        required: true
+        description: Long Location number of the Location
+        schema:
+          type: number
+        example: '123456789'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 5025
+                  message: Custom field not found.
+  /v1/business/public/custom-fields/getList?locationBizNumber={locationBizNumber}:
+    post:
+      summary: POST
+      operationId: post
+      tags:
+      - Custom Fields
+      parameters:
+      - name: locationBizNumber
+        in: path
+        required: true
+        description: Long Location number of the Location.
+        schema:
+          type: number
+        example: '123456789'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1027
+                  message: Invalid business number.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                page:
+                  type: number
+                size:
+                  type: number
+                searchStr:
+                  type: string
+                sortBy:
+                  type: string
+                orderBy:
+                  type: string
+              required:
+              - page
+              - size
+  /v1/business/public/custom-fields/delete/{fieldId}:
+    delete:
+      summary: Delete
+      operationId: delete
+      tags:
+      - Custom Fields
+      parameters:
+      - name: fieldId
+        in: path
+        required: true
+        description: fieldId of the custom field created earlier.
+        schema:
+          type: number
+        example: '376'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 5028
+                  message: Custom field delete failed.
+  /v1/business/public/custom-fields/associate:
+    put:
+      summary: Associate
+      operationId: associate
+      tags:
+      - Custom Fields
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 5028
+                  message: Custom field delete failed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                fieldId:
+                  type: number
+                fieldValue:
+                  type: string
+                businessNumber:
+                  type: number
+              required:
+              - fieldId
+              - fieldValue
+              - businessNumber
+  /v1/business/public/card:
+    post:
+      summary: Create Custom card
+      operationId: create-custom-card
+      tags:
+      - Custom Fields
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                imageURL:
+                  type: string
+                imagePosition:
+                  type: number
+                isVisible:
+                  type: number
+                isPinOnTop:
+                  type: number
+                clickURL:
+                  type: string
+              required:
+              - title
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

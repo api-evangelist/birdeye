@@ -1,0 +1,76 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Webhook API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Webhook
+  description: Configure multiple webhooks with different URLs for a subscription and deliver real-time notifications.
+paths:
+  /v1/messenger/webhook/event:
+    get:
+      summary: Get events
+      operationId: get-events
+      tags:
+      - Webhook
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-07/schema#
+                type: array
+  /v1/messenger/subscribe/webhook/event:
+    post:
+      summary: Create webhook subscription
+      operationId: create-webhook-subscription
+      tags:
+      - Webhook
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumber:
+                  type: number
+                apiKey:
+                  type: string
+                events:
+                  type: array
+                endpoint:
+                  type: string
+              required:
+              - businessNumber
+              - apiKey
+              - events
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

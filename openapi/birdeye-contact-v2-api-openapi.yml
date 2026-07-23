@@ -1,0 +1,269 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Contact V2 API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Contact V2
+  description: Easily manage contacts across multiple locations using enhanced Contact APIs, featuring built-in support for communication preference flags.
+paths:
+  /v1/contact/external/preferences/saveCustomer:
+    post:
+      summary: Upsert Contact
+      operationId: upsert-contact
+      tags:
+      - Contact V2
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 5043
+                  message: Contact not found for the given request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                id:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                countryCode:
+                  type: string
+                smsOptin:
+                  type: boolean
+                blocked:
+                  type: boolean
+                businessIds:
+                  type: array
+                tags:
+                  type: array
+                customFields:
+                  type: array
+                externalId:
+                  type: string
+                emailPreferences:
+                  type: object
+                  properties:
+                    marketingOptin:
+                      type: boolean
+                    feedbackOptin:
+                      type: boolean
+                    serviceOptin:
+                      type: boolean
+                smsPreferences:
+                  type: object
+                  properties:
+                    marketingOptin:
+                      type: boolean
+                    feedbackOptin:
+                      type: boolean
+                    serviceOptin:
+                      type: boolean
+  /v1/contact/external/preferences/getCustomer:
+    post:
+      summary: Retrieve Contact
+      operationId: retrieve-contact
+      tags:
+      - Contact V2
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 5043
+                  message: Contact not found for the given request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                id:
+                  type: string
+                cid:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+  /v1/contact/external/preferences/checkin:
+    post:
+      summary: Customer Checkin
+      operationId: customer-checkin
+      tags:
+      - Contact V2
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                name:
+                  type: string
+                emailId:
+                  type: string
+                phone:
+                  type: string
+                smsEnabled:
+                  type: number
+                additionalParams:
+                  type: object
+                employees:
+                  type: array
+                externalId:
+                  type: string
+                emailPreferences:
+                  type: object
+                  properties:
+                    marketingOptin:
+                      type: boolean
+                    feedbackOptin:
+                      type: boolean
+                    serviceOptin:
+                      type: boolean
+                smsPreferences:
+                  type: object
+                  properties:
+                    marketingOptin:
+                      type: boolean
+                    feedbackOptin:
+                      type: boolean
+                    serviceOptin:
+                      type: boolean
+  /v1/contact/external/preferences/change-permission:
+    post:
+      summary: Update Communication Preferences
+      operationId: update-communication-preferences
+      tags:
+      - Contact V2
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1089
+                  message: Customer id is invalid.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                emailPreferences:
+                  type: object
+                  properties:
+                    marketingOptin:
+                      type: boolean
+                    feedbackOptin:
+                      type: boolean
+                    serviceOptin:
+                      type: boolean
+                smsPreferences:
+                  type: object
+                  properties:
+                    marketingOptin:
+                      type: boolean
+                    feedbackOptin:
+                      type: boolean
+                    serviceOptin:
+                      type: boolean
+                smsOptin:
+                  type: boolean
+                email:
+                  type: array
+                phone:
+                  type: array
+                accountNumber:
+                  type: number
+              required:
+              - accountNumber
+  /v1/contact/external/preferences/update-feed:
+    post:
+      summary: Retrieve Opted-Out Contacts
+      operationId: retrieve-opted-out-contacts
+      tags:
+      - Contact V2
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 20083
+                  message: End date can't be before start date
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                start:
+                  type: number
+                end:
+                  type: number
+                subscriptionStatus:
+                  type: array
+              required:
+              - start
+              - end
+              - subscriptionStatus
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

@@ -1,0 +1,261 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Ticketing API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Ticketing
+  description: Create standout customer support with ticketing across reviews, untagged, and survey responses.
+paths:
+  /v1/ticket/{businessNumber}/create-ticket:
+    put:
+      summary: Create ticket
+      operationId: create-ticket
+      tags:
+      - Ticketing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business number of the location on which we want to create a ticket.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                externalId:
+                  type: number
+                assignedTo:
+                  type: string
+                ticketType:
+                  type: string
+                customer:
+                  type: object
+                  properties:
+                    emailId:
+                      type: string
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                    location:
+                      type: object
+                      properties:
+                        city:
+                          type: string
+                        state:
+                          type: string
+                    phone:
+                      type: number
+                description:
+                  type: string
+                sourceType:
+                  type: string
+                surveyId:
+                  type: number
+                surveyResponseId:
+                  type: number
+                additionalParams:
+                  type: array
+              required:
+              - assignedTo
+              - ticketType
+  /v1/ticket/{businessNumber}/comment-activity:
+    post:
+      summary: Add Ticket Comments
+      operationId: add-ticket-comments
+      tags:
+      - Ticketing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business number of the location.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                comment:
+                  type: string
+                ticketId:
+                  type: number
+                userEmail:
+                  type: string
+              required:
+              - comment
+              - ticketId
+              - userEmail
+  /v1/ticket/{businessNumber}/update:
+    put:
+      summary: Update ticket
+      operationId: update-ticket
+      tags:
+      - Ticketing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business number of the location.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                ticketUpdateMessages:
+                  type: array
+  /v1/ticket/{businessNumber}/get/all?:
+    post:
+      summary: Get All Ticket Data
+      operationId: get-all-ticket-data
+      tags:
+      - Ticketing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business number of the account.
+        schema:
+          type: number
+        example: '169744180007807'
+      - name: op
+        in: query
+        required: true
+        description: 'Possible values are: [1] will display ticket count only, [3] will display all the data of the ticket. Default value - 3.'
+        schema:
+          type: number
+        example: '3'
+      - name: sIndex
+        in: query
+        required: true
+        description: Start index of the response. Default value - 0
+        schema:
+          type: number
+        example: '0'
+      - name: count
+        in: query
+        required: true
+        description: Number of tickets want to get in the response. Default value - 25
+        schema:
+          type: number
+        example: '25'
+      - name: sortBy
+        in: query
+        required: true
+        description: Sort options, Possible values [2] will sort on the basis of ticket creation date. [3] will sort on the basis of characters of business aliases. Default value 2.
+        schema:
+          type: number
+        example: '2'
+      - name: sortOrder
+        in: query
+        required: true
+        description: Sort Order [0] will sort the data in ascending order. [1] this will sort the data in descending order. Default value - 1
+        schema:
+          type: number
+        example: '1'
+      - name: totalCount
+        in: query
+        required: true
+        description: ''
+        schema:
+          type: Boolean
+        example: 'true'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                assignees:
+                  type: array
+                businessNumbers:
+                  type: array
+                fromDate:
+                  type: number
+                toDate:
+                  type: number
+                sourceAliases:
+                  type: array
+                sourceTypes:
+                  type: array
+                tagNames:
+                  type: array
+                ticketStatuses:
+                  type: array
+                ticketTypes:
+                  type: array
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

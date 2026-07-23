@@ -1,0 +1,140 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Competitor AI API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Competitor AI
+  description: Competitive intelligence, simplified by AI.
+paths:
+  /v1/competitors/review:
+    post:
+      summary: Retrieve Competitor Reviews
+      operationId: retrieve-competitor-reviews
+      tags:
+      - Competitor AI
+      parameters:
+      - name: startIndex
+        in: query
+        required: false
+        description: The starting index for pagination (0-based). Default is 0.
+        schema:
+          type: number
+        example: '0'
+      - name: pageSize
+        in: query
+        required: false
+        description: 'Number of records to return per page (max recommended: 100). Default is 25.'
+        schema:
+          type: number
+        example: '25'
+      - name: sortOrder
+        in: query
+        required: false
+        description: 'Sort order: 0 = Ascending, 1 = Descending order of review date. Default is 1.'
+        schema:
+          type: number
+        example: '1'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                fromDate:
+                  type: string
+                toDate:
+                  type: string
+                sources:
+                  type: array
+                brandIds:
+                  type: array
+                competitorLocationIds:
+                  type: array
+  /v1/competitors/review/metrics:
+    post:
+      summary: Retrieve Competitor Review metrics
+      operationId: retrieve-competitor-review-metrics
+      tags:
+      - Competitor AI
+      parameters:
+      - name: startIndex
+        in: query
+        required: false
+        description: The starting index for pagination (0-based). Default is 0.
+        schema:
+          type: number
+        example: '0'
+      - name: pageSize
+        in: query
+        required: false
+        description: 'Number of records to return per page (max recommended: 100). Default is 25.'
+        schema:
+          type: number
+        example: '25'
+      - name: sortOrder
+        in: query
+        required: false
+        description: 'Sort order: 0 = Ascending, 1 = Descending order of review date. Default is 0.'
+        schema:
+          type: number
+        example: '0'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                fromDate:
+                  type: string
+                toDate:
+                  type: string
+                sources:
+                  type: array
+                brandIds:
+                  type: array
+                competitorLocationIds:
+                  type: array
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

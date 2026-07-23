@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Search AI API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Search AI
+  description: Search AI provides a comprehensive view of your business performance across AI-powered search platforms, including data accuracy, sentiment analysis, citations, brand ranking, and overall visibility.
+paths:
+  /v1/listing/searchAi/account-setup:
+    get:
+      summary: Get Search AI Configuration
+      operationId: get-search-ai-configuration
+      tags:
+      - Search AI
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+  /v1/listing/searchAi/available-runs:
+    get:
+      summary: Get Search AI Available Runs
+      operationId: get-search-ai-available-runs
+      tags:
+      - Search AI
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+  /v1/listing/searchAi/public/citations:
+    post:
+      summary: Get Search AI Citations
+      operationId: get-search-ai-citations
+      tags:
+      - Search AI
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: string
+                aiModel:
+                  type: string
+                theme:
+                  type: string
+                pageNo:
+                  type: string
+                pageSize:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                viewReportType:
+                  type: string
+  /v1/listing/searchAi/public/business:
+    post:
+      summary: Get Search AI Businesses
+      operationId: get-search-ai-businesses
+      tags:
+      - Search AI
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: string
+                aiModel:
+                  type: string
+                theme:
+                  type: string
+                pageNo:
+                  type: string
+                pageSize:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                viewReportType:
+                  type: string
+  /v1/listing/searchAi/public/aio-details?page-size=100&start-index=0:
+    post:
+      summary: Get Accuracy Report
+      operationId: get-accuracy-report
+      tags:
+      - Search AI
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: string
+                aiModels:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+  /v1/listing/searchAi/public/swot-details?page-size=100&start-index=0:
+    post:
+      summary: Get Sentiment Report
+      operationId: get-sentiment-report
+      tags:
+      - Search AI
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: string
+                aiModels:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                viewReportType:
+                  type: string
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

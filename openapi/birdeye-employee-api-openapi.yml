@@ -1,0 +1,48 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Employee API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Employee
+  description: ''
+paths:
+  /v1/employee/{businessId}:
+    get:
+      summary: Get details of Employees
+      operationId: get-details-of-employees
+      tags:
+      - Employee
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

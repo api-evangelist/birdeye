@@ -1,0 +1,716 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Business API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Business
+  description: Create and maintain your business on Birdeye.
+paths:
+  /v1/signup/reseller/subaccount:
+    post:
+      summary: Create a business
+      operationId: create-a-business
+      tags:
+      - Business
+      parameters:
+      - name: rid
+        in: query
+        required: true
+        description: Id of the Reseller.
+        schema:
+          type: number
+        example: '12334667201'
+      - name: email_id
+        in: query
+        required: true
+        description: Business Email id.
+        schema:
+          type: string
+        example: sample@birdeye.com
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2166
+                  message: Invalid Business Type
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessName:
+                  type: string
+                zip:
+                  type: string
+                type:
+                  type: string
+                phone:
+                  type: number
+                entityCategory:
+                  type: string
+                countryCode:
+                  type: string
+                aggrOptions:
+                  type: number
+              required:
+              - businessName
+              - zip
+              - phone
+  /v1/business/{businessNumber}/search:
+    post:
+      summary: Search Business
+      operationId: search-business
+      tags:
+      - Business
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Long id of the business, under which user wants to search for.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 400
+                  message: Page size must not be less than one!
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                searchStr:
+                  type: string
+                sortBy:
+                  type: string
+                sortOrder:
+                  type: string
+                startIndex:
+                  type: number
+                pageSize:
+                  type: number
+  /v1/business/{business_id}:
+    get:
+      summary: Get Business
+      operationId: get-business
+      tags:
+      - Business
+      parameters:
+      - name: business_id
+        in: path
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+  /v1/business/{businessId}:
+    put:
+      summary: Update Business
+      operationId: update-business
+      tags:
+      - Business
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: The Business Number
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 6001
+                  message: The 'sub_locality' field cannot exceed 80 characters.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                name:
+                  type: string
+                alias:
+                  type: string
+                isAddressHidden:
+                  type: number
+                location:
+                  type: object
+                  properties:
+                    address1:
+                      type: string
+                    address2:
+                      type: string
+                    subLocality:
+                      type: string
+                    city:
+                      type: string
+                    state:
+                      type: string
+                    countryCode:
+                      type: string
+                    zip:
+                      type: string
+                  required:
+                  - zip
+                emailId:
+                  type: string
+                phone:
+                  type: string
+                fax:
+                  type: string
+                websiteUrl:
+                  type: string
+                establishedYear:
+                  type: number
+                timezone:
+                  type: string
+                languages:
+                  type: array
+                isServiceAreaProvider:
+                  type: string
+                serviceAreas:
+                  type: array
+                working24x7:
+                  type: number
+                hoursOfOperations:
+                  type: array
+                specialHours:
+                  type: array
+                businessStatus:
+                  type: string
+                reopenDate:
+                  type: string
+                services:
+                  type: string
+                keywords:
+                  type: string
+                products:
+                  type: string
+                appointmentLink:
+                  type: string
+                reservationLink:
+                  type: string
+                menuLink:
+                  type: string
+                orderAheadLink:
+                  type: string
+                impressum:
+                  type: string
+                payment:
+                  type: string
+                localPhoneNumber:
+                  type: string
+                tollFreePhoneNumber:
+                  type: string
+                androidAppURL:
+                  type: string
+                iosAppURL:
+                  type: string
+                logoUrl:
+                  type: string
+                gmbLogoOptOut:
+                  type: number
+                fbLogoOptOut:
+                  type: number
+                gmbCoverOptOut:
+                  type: number
+                fbCoverOptOut:
+                  type: number
+                coverImageUrl:
+                  type: string
+                gmbCover:
+                  type: string
+                facebookCover:
+                  type: string
+                coverBusinessInfoLayout:
+                  type: string
+                covidInfo:
+                  type: object
+                  properties:
+                    postDescription:
+                      type: string
+                    covid19SupportLink:
+                      type: string
+                    virtualCareLink:
+                      type: string
+                bingListing:
+                  type: object
+                  properties:
+                    primaryCategoryBing:
+                      type: string
+                    bingPhoneNumber:
+                      type: string
+                    categories:
+                      type: string
+                    bingDescription:
+                      type: string
+                internalListing:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    category:
+                      type: string
+                    subcategory:
+                      type: string
+                    displayCategory:
+                      type: string
+                  required:
+                  - category
+                  - subcategory
+                facebookListing:
+                  type: object
+                  properties:
+                    category:
+                      type: string
+                    facebookDescription:
+                      type: string
+                    facebookPhoneNumber:
+                      type: string
+                gmbListing:
+                  type: object
+                  properties:
+                    googleWebsiteUrl:
+                      type: string
+                    googlePhoneNumber:
+                      type: string
+                    googleStoreId:
+                      type: string
+                    primaryCategoryGmb:
+                      type: string
+                    additionalCategory:
+                      type: string
+                    googleDescription:
+                      type: string
+                    attributes:
+                      type: object
+                    foodDelivery:
+                      type: string
+                    foodTakeout:
+                      type: string
+                socialProfileURLs:
+                  type: object
+                  properties:
+                    facebookUrl:
+                      type: string
+                    twitterUrl:
+                      type: string
+                    linkedInUrl:
+                      type: string
+                    googleUrl:
+                      type: string
+                    youTubeUrl:
+                      type: string
+                isSEOEnabled:
+                  type: boolean
+                externalReferenceId:
+                  type: string
+                customFields:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    fieldValue:
+                      type: string
+                    fieldName:
+                      type: string
+                    id:
+                      type: number
+                  required:
+                  - fieldName
+                  - id
+                entityCategory:
+                  type: string
+              required:
+              - emailId
+              - phone
+              - services
+  /v1/business/{business_Id}:
+    delete:
+      summary: Delete Business
+      operationId: delete-business
+      tags:
+      - Business
+      parameters:
+      - name: business_Id
+        in: path
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+  /v1/business/{business_id}/status:
+    put:
+      summary: Update the status
+      operationId: update-the-status
+      tags:
+      - Business
+      parameters:
+      - name: business_id
+        in: path
+        required: true
+        description: Business id whose status has to be changed. Returned by create business API
+        schema:
+          type: string
+        example: '12345678'
+      - name: astatus
+        in: query
+        required: true
+        description: New status for the business. Valid values are &quot;active/inactive&quot;.
+        schema:
+          type: string
+        example: inactive
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1191
+                  message: Invalid status.
+  /v1/business/child/all:
+    get:
+      summary: Get Child Businesses
+      operationId: get-child-businesses
+      tags:
+      - Business
+      parameters:
+      - name: pid
+        in: query
+        required: true
+        description: Reseller/Sub-reseller/Enterprise Id.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                $schema: http://json-schema.org/draft-07/schema#
+                type: array
+  /v1/business/tabs:
+    post:
+      summary: Update public profile of Businesses
+      operationId: update-public-profile-of-businesses
+      tags:
+      - Business
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1191
+                  message: Invalid status.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                profileTabs:
+                  type: array
+  /v1/business/{businessId}/hierarchy:
+    get:
+      summary: Get hierarchy for an enterprise
+      operationId: get-hierarchy-for-an-enterprise
+      tags:
+      - Business
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+  /v1/business/business-hierarchy/location/update-mapping/{businessId}:
+    post:
+      summary: Update Hierarchy
+      operationId: update-hierarchy
+      tags:
+      - Business
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                Level:
+                  type: string
+  /v1/business/{businessNumber}/profile/customcard:
+    get:
+      summary: Get Custom card details
+      operationId: get-custom-card-details
+      tags:
+      - Business
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Id of a business (Long).
+        schema:
+          type: number
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+  /v1/business/public/card/{cardId}:
+    put:
+      summary: Update Custom card
+      operationId: update-custom-card
+      tags:
+      - Business
+      parameters:
+      - name: cardId
+        in: path
+        required: true
+        description: Id of the custom card to update.
+        schema:
+          type: number
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                cardId:
+                  type: number
+                title:
+                  type: string
+                description:
+                  type: string
+                imageURL:
+                  type: string
+                imagePosition:
+                  type: string
+                isVisible:
+                  type: number
+                isPinOnTop:
+                  type: number
+                clickURL:
+                  type: string
+                linkText:
+                  type: string
+                type:
+                  type: string
+              required:
+              - cardId
+              - title
+    delete:
+      summary: Delete Custom card
+      operationId: delete-custom-card
+      tags:
+      - Business
+      parameters:
+      - name: cardId
+        in: path
+        required: true
+        description: Id of the custom card to delete.
+        schema:
+          type: number
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+  /v1/business/{businessNumber}/timezones:
+    get:
+      summary: Get Timezone List
+      operationId: get-timezone-list
+      tags:
+      - Business
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Id of a business (Long).
+        schema:
+          type: number
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+  /v1/business/{businessNumber}/birdeye/impressions:
+    post:
+      summary: Get Birdeye Impressions
+      operationId: get-birdeye-impressions
+      tags:
+      - Business
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Account Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: string
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                limit:
+                  type: number
+                startIndex:
+                  type: number
+                sortby:
+                  type: string
+                order:
+                  type: string
+              required:
+              - businessNumbers
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

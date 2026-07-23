@@ -1,0 +1,1038 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Listing API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Listing
+  description: Keep your business information accurate and consistent across 50+ websites.
+paths:
+  /v1/listing/fix:
+    post:
+      summary: Fix Listing
+      operationId: fix-listing
+      tags:
+      - Listing
+      parameters:
+      - name: b_id
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {}
+  /v1/listing/status/location:
+    get:
+      summary: Get Location Status Report
+      operationId: get-location-status-report
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1043
+                  message: Business should be either SMB or Enterprise sub account
+  /v1/listing/insights:
+    post:
+      summary: Listings Insights
+      operationId: listings-insights
+      tags:
+      - Listing
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the account.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                viewMode:
+                  type: array
+              required:
+              - viewMode
+  /v1/listing/report/{reportType}/datapoints:
+    post:
+      summary: Listings Insights Datapoints
+      operationId: listings-insights-datapoints
+      tags:
+      - Listing
+      parameters:
+      - name: reportType
+        in: path
+        required: true
+        description: Report type, Possible values [google_view_search_map, gmb_customer_actions_map, fb_users_reached,fb_users_engaged, bing_impression_count,bing_customer_actions]
+        schema:
+          type: string
+        example: google_view_search_map
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the account.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                viewMode:
+                  type: array
+                groupByType:
+                  type: string
+  /v1/listing/{businessNumber}/gmb-attributes-list:
+    get:
+      summary: Get GMB Attributes
+      operationId: get-gmb-attributes
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business Number.
+        schema:
+          type: number
+        example: '169744180007807'
+      - name: categoryId
+        in: query
+        required: true
+        description: Category id.
+        schema:
+          type: string
+        example: gcid:electrical_installation_service
+      - name: countryCode
+        in: query
+        required: true
+        description: Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT.
+        schema:
+          type: string
+        example: US
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2286
+                  message: Invalid whatsapp business link
+  /v1/listing/{businessNumber}/apple-location-attributes-list:
+    get:
+      summary: Get Apple Attributes
+      operationId: get-apple-attributes
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business Number.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 400
+                  message: Invalid country code
+  /v1/listing/{businessNumber}/apple-action-links:
+    get:
+      summary: Get Apple Action Links
+      operationId: get-apple-action-links
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business Number.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 400
+                  message: Invalid country code
+  /v1/listing/{businessNumber}/category-list:
+    get:
+      summary: Get Category List
+      operationId: get-category-list
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business Number.
+        schema:
+          type: number
+        example: '169744180007807'
+      - name: sourceName
+        in: query
+        required: true
+        description: Source name for which category data needs to be fetched. Possible values are BING, HEALTHCARE, GMB, VENDOR, FACEBOOK, APPLE.
+        schema:
+          type: string
+        example: BING
+      - name: countryCode
+        in: query
+        required: true
+        description: Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT.
+        schema:
+          type: string
+        example: US
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 400
+                  message: Invalid Source Name
+  /v1/listing/{businessNumber}/create:
+    post:
+      summary: Create Listing
+      operationId: create-listing
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business Number.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 6001
+                  message: The 'sub_locality' field cannot exceed 80 characters.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessInfo:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    phone:
+                      type: string
+                    websiteUrl:
+                      type: string
+                    emailId:
+                      type: string
+                    isAddressHidden:
+                      type: string
+                    isServiceAreaProvider:
+                      type: string
+                    mainBusinessDescription:
+                      type: string
+                    serviceAreas:
+                      type: array
+                    location:
+                      type: object
+                      properties:
+                        address1:
+                          type: string
+                        address2:
+                          type: string
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        countryCode:
+                          type: string
+                        zip:
+                          type: string
+                        subLocality:
+                          type: string
+                      required:
+                      - zip
+                  required:
+                  - name
+                  - phone
+                additionalInfo:
+                  type: object
+                  properties:
+                    establishedYear:
+                      type: number
+                    timezone:
+                      type: string
+                    languages:
+                      type: array
+                    moreHours:
+                      type: array
+                    appleMoreHours:
+                      type: array
+                    wholeWeekOperating:
+                      type: number
+                    hoursOfOperations:
+                      type: array
+                    specialHours:
+                      type: array
+                    businessStatus:
+                      type: string
+                    reopenDate:
+                      type: string
+                    services:
+                      type: string
+                    keywords:
+                      type: string
+                    products:
+                      type: string
+                    appointmentLink:
+                      type: string
+                    reservationLink:
+                      type: string
+                    menuLink:
+                      type: string
+                    orderAheadLink:
+                      type: string
+                    impressum:
+                      type: string
+                    paymentTypes:
+                      type: array
+                    additionalPaymentTypes:
+                      type: string
+                    localPhoneNumber:
+                      type: string
+                    tollFreePhoneNumber:
+                      type: string
+                    androidAppURL:
+                      type: string
+                    iosAppURL:
+                      type: string
+                  required:
+                  - hoursOfOperations
+                  - services
+                media:
+                  type: object
+                  properties:
+                    logoUrl:
+                      type: string
+                    coverImageUrl:
+                      type: string
+                    gmbCover:
+                      type: string
+                    facebookCover:
+                      type: string
+                optOut:
+                  type: object
+                  properties:
+                    gmbLogoOptOut:
+                      type: boolean
+                    fbLogoOptOut:
+                      type: boolean
+                    gmbCoverOptOut:
+                      type: boolean
+                    fbCoverOptOut:
+                      type: boolean
+                    gmbProfileOptOut:
+                      type: boolean
+                    businessProfileOptOut:
+                      type: boolean
+                covidInfo:
+                  type: object
+                  properties:
+                    postDescription:
+                      type: string
+                    covid19SupportLink:
+                      type: string
+                    virtualCareLink:
+                      type: string
+                bingListing:
+                  type: object
+                  properties:
+                    primaryCategoryBing:
+                      type: string
+                    bingCategories:
+                      type: array
+                    bingPhoneNumber:
+                      type: string
+                    bingDescription:
+                      type: string
+                internalListing:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    category:
+                      type: string
+                    subCategories:
+                      type: array
+                    displayCategory:
+                      type: string
+                  required:
+                  - description
+                  - category
+                  - subCategories
+                facebookListing:
+                  type: object
+                  properties:
+                    facebookPhoneNumber:
+                      type: string
+                    categories:
+                      type: array
+                    facebookDescription:
+                      type: string
+                gmbListing:
+                  type: object
+                  properties:
+                    googleWebsiteUrl:
+                      type: string
+                    googlePhoneNumber:
+                      type: string
+                    googleStoreId:
+                      type: string
+                    primaryCategoryGmb:
+                      type: string
+                    additionalCategories:
+                      type: array
+                    googleDescription:
+                      type: string
+                    attributes:
+                      type: object
+                    foodDelivery:
+                      type: string
+                    foodTakeout:
+                      type: string
+                    whatsappBusinessLink:
+                      type: string
+                    textMessageNumber:
+                      type: string
+                appleListing:
+                  type: object
+                  properties:
+                    phoneNumber:
+                      type: string
+                    appleWebsiteUrl:
+                      type: string
+                    primaryCategory:
+                      type: string
+                    additionalCategories:
+                      type: array
+                    appleLocationAttributes:
+                      type: object
+                    appleActionLinks:
+                      type: object
+                    appleBusinessName:
+                      type: string
+                    appleBusinessDescription:
+                      type: string
+                thirdPartyListing:
+                  type: object
+                  properties:
+                    thirdPartyCategory:
+                      type: string
+                    thirdPartySubCategories:
+                      type: string
+                socialProfileURLs:
+                  type: object
+                  properties:
+                    facebookUrl:
+                      type: string
+                    twitterUrl:
+                      type: string
+                    linkedInUrl:
+                      type: string
+                    googleUrl:
+                      type: string
+                    youTubeUrl:
+                      type: string
+                    instagramUrl:
+                      type: string
+                    pintrestUrl:
+                      type: string
+                    bbbUrl:
+                      type: string
+                    lendingtreeUrl:
+                      type: string
+                healthcare:
+                  type: object
+                  properties:
+                    doctorCategories:
+                      type: string
+                    isProvider:
+                      type: boolean
+                    practiceName:
+                      type: string
+                    firstName:
+                      type: string
+                    middleName:
+                      type: string
+                    surName:
+                      type: string
+                    npi:
+                      type: number
+                    credentials:
+                      type: string
+                    university:
+                      type: string
+                    hospitalAffiliations:
+                      type: string
+                    insurancesAccepted:
+                      type: string
+  /v1/listing/{businessNumber}/update:
+    put:
+      summary: Update Listing
+      operationId: update-listing
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business Number.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 6001
+                  message: The 'sub_locality' field cannot exceed 80 characters.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessInfo:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    phone:
+                      type: string
+                    websiteUrl:
+                      type: string
+                    emailId:
+                      type: string
+                    isAddressHidden:
+                      type: string
+                    isServiceAreaProvider:
+                      type: string
+                    mainBusinessDescription:
+                      type: string
+                    serviceAreas:
+                      type: array
+                    location:
+                      type: object
+                      properties:
+                        address1:
+                          type: string
+                        address2:
+                          type: string
+                        city:
+                          type: string
+                        state:
+                          type: string
+                        countryCode:
+                          type: string
+                        zip:
+                          type: string
+                        subLocality:
+                          type: string
+                      required:
+                      - zip
+                  required:
+                  - name
+                  - phone
+                additionalInfo:
+                  type: object
+                  properties:
+                    establishedYear:
+                      type: number
+                    timezone:
+                      type: string
+                    languages:
+                      type: array
+                    moreHours:
+                      type: array
+                    appleMoreHours:
+                      type: array
+                    wholeWeekOperating:
+                      type: number
+                    hoursOfOperations:
+                      type: array
+                    specialHours:
+                      type: array
+                    businessStatus:
+                      type: string
+                    reopenDate:
+                      type: string
+                    services:
+                      type: string
+                    keywords:
+                      type: string
+                    products:
+                      type: string
+                    appointmentLink:
+                      type: string
+                    reservationLink:
+                      type: string
+                    menuLink:
+                      type: string
+                    orderAheadLink:
+                      type: string
+                    impressum:
+                      type: string
+                    paymentTypes:
+                      type: array
+                    additionalPaymentTypes:
+                      type: string
+                    localPhoneNumber:
+                      type: string
+                    tollFreePhoneNumber:
+                      type: string
+                    androidAppURL:
+                      type: string
+                    iosAppURL:
+                      type: string
+                  required:
+                  - hoursOfOperations
+                  - services
+                media:
+                  type: object
+                  properties:
+                    logoUrl:
+                      type: string
+                    coverImageUrl:
+                      type: string
+                    gmbCover:
+                      type: string
+                    facebookCover:
+                      type: string
+                optOut:
+                  type: object
+                  properties:
+                    gmbLogoOptOut:
+                      type: boolean
+                    fbLogoOptOut:
+                      type: boolean
+                    gmbCoverOptOut:
+                      type: boolean
+                    fbCoverOptOut:
+                      type: boolean
+                    gmbProfileOptOut:
+                      type: boolean
+                    businessProfileOptOut:
+                      type: boolean
+                covidInfo:
+                  type: object
+                  properties:
+                    postDescription:
+                      type: string
+                    covid19SupportLink:
+                      type: string
+                    virtualCareLink:
+                      type: string
+                bingListing:
+                  type: object
+                  properties:
+                    primaryCategoryBing:
+                      type: string
+                    bingCategories:
+                      type: array
+                    bingPhoneNumber:
+                      type: string
+                    bingDescription:
+                      type: string
+                internalListing:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    category:
+                      type: string
+                    subCategories:
+                      type: array
+                    displayCategory:
+                      type: string
+                  required:
+                  - description
+                  - category
+                  - subCategories
+                facebookListing:
+                  type: object
+                  properties:
+                    facebookPhoneNumber:
+                      type: string
+                    categories:
+                      type: array
+                    facebookDescription:
+                      type: string
+                gmbListing:
+                  type: object
+                  properties:
+                    googleWebsiteUrl:
+                      type: string
+                    googlePhoneNumber:
+                      type: string
+                    googleStoreId:
+                      type: string
+                    primaryCategoryGmb:
+                      type: string
+                    additionalCategories:
+                      type: array
+                    googleDescription:
+                      type: string
+                    attributes:
+                      type: object
+                    foodDelivery:
+                      type: string
+                    foodTakeout:
+                      type: string
+                    whatsappBusinessLink:
+                      type: string
+                    textMessageNumber:
+                      type: string
+                appleListing:
+                  type: object
+                  properties:
+                    phoneNumber:
+                      type: string
+                    appleWebsiteUrl:
+                      type: string
+                    primaryCategory:
+                      type: string
+                    additionalCategories:
+                      type: array
+                    appleLocationAttributes:
+                      type: object
+                    appleActionLinks:
+                      type: object
+                    appleBusinessName:
+                      type: string
+                    appleBusinessDescription:
+                      type: string
+                thirdPartyListing:
+                  type: object
+                  properties:
+                    thirdPartyCategory:
+                      type: string
+                    thirdPartySubCategories:
+                      type: string
+                socialProfileURLs:
+                  type: object
+                  properties:
+                    facebookUrl:
+                      type: string
+                    twitterUrl:
+                      type: string
+                    linkedInUrl:
+                      type: string
+                    googleUrl:
+                      type: string
+                    youTubeUrl:
+                      type: string
+                    instagramUrl:
+                      type: string
+                    pintrestUrl:
+                      type: string
+                    bbbUrl:
+                      type: string
+                    lendingtreeUrl:
+                      type: string
+                healthcare:
+                  type: object
+                  properties:
+                    doctorCategories:
+                      type: string
+                    isProvider:
+                      type: boolean
+                    practiceName:
+                      type: string
+                    firstName:
+                      type: string
+                    middleName:
+                      type: string
+                    surName:
+                      type: string
+                    npi:
+                      type: number
+                    credentials:
+                      type: string
+                    university:
+                      type: string
+                    hospitalAffiliations:
+                      type: string
+                    insurancesAccepted:
+                      type: string
+  /v1/listing/{businessNumber}/get:
+    get:
+      summary: Get Listing
+      operationId: get-listing
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business Number.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+  /v1/listing/{businessNumber}/more-hours-type:
+    get:
+      summary: Get More Hours Type
+      operationId: get-more-hours-type
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business Number.
+        schema:
+          type: number
+        example: '169744180007807'
+      - name: channel
+        in: query
+        required: true
+        description: Source name for which more hours type needs to be fetched. Possible values are gmb, apple. Default value will be gmb if not passed
+        schema:
+          type: string
+        example: gmb
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 400
+                  message: Invalid Source Name
+  /v1/listing/{businessNumber}/gmb/keywords:
+    post:
+      summary: Get Google Keywords Count
+      operationId: get-google-keywords-count
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Account Business Number.
+        schema:
+          type: string
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2458
+                  message: Invalid order value. Allowed values are 'asc' or 'desc'.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                selectedMonth:
+                  type: array
+                selectedkeywords:
+                  type: array
+                keywordsSearch:
+                  type: string
+                limit:
+                  type: number
+                startIndex:
+                  type: number
+                sortby:
+                  type: string
+                order:
+                  type: string
+                businessNumbers:
+                  type: array
+              required:
+              - selectedMonth
+  /v1/listing/{businessNumber}/deactivate:
+    post:
+      summary: Deactivate Listing
+      operationId: deactivate-listing
+      tags:
+      - Listing
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Business Number.
+        schema:
+          type: number
+        example: '169744180007807'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+  /v1/listing/menu-details:
+    post:
+      summary: Retrieve Menu Details
+      operationId: retrieve-menu-details
+      tags:
+      - Listing
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2458
+                  message: Invalid order value. Allowed values are 'asc' or 'desc'.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

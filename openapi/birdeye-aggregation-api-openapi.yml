@@ -1,0 +1,141 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Aggregation
+  description: Access your public data from 150+ review sites.
+paths:
+  /v1/aggregation/business/{businessId}:
+    get:
+      summary: Get all aggregation source
+      operationId: get-all-aggregation-source
+      tags:
+      - Aggregation
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+  /v1/survey/reviewsites-alias:
+    get:
+      summary: Get all aggregation source
+      operationId: get-all-aggregation-source
+      tags:
+      - Aggregation
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+  /v1/aggregation/business/{business_id}:
+    post:
+      summary: Add aggregation URL
+      operationId: add-aggregation-url
+      tags:
+      - Aggregation
+      parameters:
+      - name: business_id
+        in: path
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1032
+                  message: Invalid source id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                sourceAlias:
+                  type: string
+                url:
+                  type: string
+              required:
+              - sourceAlias
+  /v1/aggregation/business/{businessID}/aggregation/{aggregationID}:
+    delete:
+      summary: Delete aggregation URL
+      operationId: delete-aggregation-url
+      tags:
+      - Aggregation
+      parameters:
+      - name: businessID
+        in: path
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      - name: aggregationID
+        in: path
+        required: true
+        description: Id of the aggregation to be deleted.
+        schema:
+          type: number
+        example: abcdefgh
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1039
+                  message: Invalid business aggregation id
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

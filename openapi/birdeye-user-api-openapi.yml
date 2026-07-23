@@ -1,0 +1,286 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation User API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: User
+  description: Delete and manage user profiles and permissions easily.
+paths:
+  /v1/user/signup/v2:
+    post:
+      summary: Create User
+      operationId: create-user
+      tags:
+      - User
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1059
+                  message: Last name cannot be more than 50 characters
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                userEmailId:
+                  type: string
+                phone:
+                  type: string
+                userRole:
+                  type: string
+                sendInvite:
+                  type: boolean
+              required:
+              - userEmailId
+              - userRole
+  /v1/user/updateUser:
+    put:
+      summary: Update User
+      operationId: update-user
+      tags:
+      - User
+      parameters:
+      - name: userEmailId
+        in: query
+        required: true
+        description: Email id of the user to be updated
+        schema:
+          type: string
+        example: abc@test.com
+      - name: entUser
+        in: query
+        required: true
+        description: 'true if the user needs to provide enterprise level access in case of all locations.
+
+          entUser needs to be passed as true if user needs to be provided access to all locations otherwise by default its false.'
+        schema:
+          type: boolean
+        example: 'false'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1189
+                  message: User with given email id not found.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                locationsNumberAccess:
+                  type: array
+                user:
+                  type: object
+                  properties:
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                userRole:
+                  type: string
+                notification:
+                  type: object
+                  properties:
+                    sendReviewEmailAlert:
+                      type: number
+                    sendDailyReviewDigest:
+                      type: number
+                    dailyDigestAbsoluteTime:
+                      type: string
+                    dailyDigestRunHour:
+                      type: number
+                    dailyDigestRunMinute:
+                      type: number
+                    sendWeeklyReviewDigest:
+                      type: number
+                    weeklyDigestAbsoluteTime:
+                      type: string
+                    weeklyDigestRunDay:
+                      type: number
+                    weeklyDigestRunHour:
+                      type: number
+                    weeklyDigestRunMinute:
+                      type: number
+                    sendReviewSmsAlert:
+                      type: number
+                    sendDailySocialDigest:
+                      type: number
+                    sendTicketAlert:
+                      type: number
+                    sendTicketStatusAlert:
+                      type: number
+                    sendTicketAssigneeChangeAlert:
+                      type: number
+                    sendTicketCommentAlert:
+                      type: number
+                    sendTicketStartOrStoppedWatchingAlert:
+                      type: number
+                    sendSurveyAlert:
+                      type: number
+                    sendReferralAlert:
+                      type: number
+                    sendScanToolSignUpAlert:
+                      type: number
+                    webChatEmailInterval:
+                      type: string
+                    webChatEmailAbsoluteTime:
+                      type: string
+                    enableWebchat:
+                      type: number
+                    enableTeamAlert:
+                      type: number
+                    reviewAlertRatings:
+                      type: array
+                    messengerEmailConversationType:
+                      type: string
+                    assignedToMeAlert:
+                      type: number
+                    enableBrowserNotification:
+                      type: number
+                    messengerReportEnable:
+                      type: number
+                    appointmentBooking:
+                      type: number
+                    appointmentFormsEnabled:
+                      type: number
+                    enableAIPostSuggestions:
+                      type: number
+                    enablePostFailureEmail:
+                      type: number
+                    enableDirectMessageEmail:
+                      type: number
+                    enablePostCommentsEmail:
+                      type: number
+                    enableMentionsEmail:
+                      type: number
+                    enableStoryMentionsEmail:
+                      type: number
+                    enableNewFollowersEmail:
+                      type: number
+                    enableRetweetEmail:
+                      type: number
+                    enableQuoteTweetEmail:
+                      type: number
+                    enablePostFailureBrowserNotification:
+                      type: number
+                    paymentAlert:
+                      type: number
+                    sendBrokenIntegrationAlert:
+                      type: number
+                    sendBrokenIntegrationEmail:
+                      type: number
+  /v1/user/remove:
+    delete:
+      summary: Delete a user
+      operationId: delete-a-user
+      tags:
+      - User
+      parameters:
+      - name: bid
+        in: query
+        required: true
+        description: Business Id from which user access has to be revoked
+        schema:
+          type: string
+        example: '123'
+      - name: email
+        in: query
+        required: true
+        description: Email id of the user whose access has to be revoked
+        schema:
+          type: string
+        example: abc@test.com
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1175
+                  message: No business found with the given id
+  /v1/user/forgotpassword:
+    post:
+      summary: Forgot Password
+      operationId: forgot-password
+      tags:
+      - User
+      parameters:
+      - name: email
+        in: query
+        required: true
+        description: Email Id of the user whose access has to be revoked
+        schema:
+          type: string
+        example: abc@test.com
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1189
+                  message: User with given email id not found.
+  /v1/user/details:
+    get:
+      summary: Get details of a user
+      operationId: get-details-of-a-user
+      tags:
+      - User
+      parameters:
+      - name: email
+        in: query
+        required: true
+        description: Email Id of the user whose details to be retrieved
+        schema:
+          type: string
+        example: abc@test.com
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1010
+                  message: No user found with the given id
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

@@ -1,0 +1,460 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Reviews API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Reviews
+  description: Consistently generate more reviews and higher ratings.
+paths:
+  /v1/review/businessId/{businessId}:
+    post:
+      summary: Get Reviews
+      operationId: get-reviews
+      tags:
+      - Reviews
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      - name: sindex
+        in: query
+        required: true
+        description: Start index of the reviews. Refer API note for max permissible value.
+        schema:
+          type: integer
+        example: '10'
+      - name: count
+        in: query
+        required: true
+        description: Number of reviews to query. Refer API note for max permissible value.
+        schema:
+          type: integer
+        example: '30'
+      - name: includeNonAggregatedReviews
+        in: query
+        required: false
+        description: Include Reviews whose auto-crawling is blocked e.g. PressGaney
+        schema:
+          type: boolean
+        example: 'false'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1244
+                  message: Maximum 5 keywords can be selected for filter.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                fromDate:
+                  type: string
+                toDate:
+                  type: string
+                fromTimestamp:
+                  type: number
+                toTimestamp:
+                  type: number
+                updateFromDate:
+                  type: string
+                updateToDate:
+                  type: string
+                sources:
+                  type: string
+                ratings:
+                  type: array
+                searchStr:
+                  type: string
+                subBusinessIds:
+                  type: array
+                statuses:
+                  type: array
+                allChild:
+                  type: boolean
+                tags:
+                  type: array
+                fetchExtraParams:
+                  type: boolean
+                needCustomerInfo:
+                  type: boolean
+                fetchAssitedByDetails:
+                  type: boolean
+  /v1/review/archive/public:
+    post:
+      summary: Archived Get Reviews
+      operationId: archived-get-reviews
+      tags:
+      - Reviews
+      parameters:
+      - name: includeNonAggregatedReviews
+        in: query
+        required: false
+        description: Include reviews whose auto-crawling is blocked. Default is false.
+        schema:
+          type: boolean
+        example: 'false'
+      - name: sindex
+        in: query
+        required: false
+        description: Start index of the reviews. Default is 0.
+        schema:
+          type: integer
+        example: '0'
+      - name: count
+        in: query
+        required: false
+        description: Number of reviews to fetch. Default is 10000.
+        schema:
+          type: integer
+        example: '10000'
+      - name: sortby
+        in: query
+        required: false
+        description: Sort field identifier. Default is 7.
+        schema:
+          type: integer
+        example: '7'
+      - name: sortorder
+        in: query
+        required: false
+        description: Sort order identifier. Default is 1.
+        schema:
+          type: integer
+        example: '1'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 400
+                  message: Invalid media id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                startDate:
+                  type: number
+                endDate:
+                  type: number
+                sourceAlias:
+                  type: array
+                deleteStartDate:
+                  type: number
+                deleteEndDate:
+                  type: number
+                ratings:
+                  type: array
+                statuses:
+                  type: array
+                searchStr:
+                  type: string
+  /v1/review/businessid/{businessId}/summary:
+    get:
+      summary: Get reviews summary
+      operationId: get-reviews-summary
+      tags:
+      - Reviews
+      parameters:
+      - name: businessId
+        in: path
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      - name: statuses
+        in: query
+        required: false
+        description: List of review status. Status “published” refers to featured reviews, while “parked” refers to non-featured reviews.
+        schema:
+          type: string[]
+        example: published,parked
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+  /v1/review/reply/business/{businessNumber}/review/{reviewId}:
+    put:
+      summary: Post Review Reply
+      operationId: post-review-reply
+      tags:
+      - Reviews
+      parameters:
+      - name: businessNumber
+        in: path
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '169744180007807'
+      - name: reviewId
+        in: path
+        required: true
+        description: Review Id.
+        schema:
+          type: string
+        example: '88778877'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2078
+                  message: Error while posting a reply to Rent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                response:
+                  type: string
+                isPrivateResponse:
+                  type: string
+  /v1/tag:
+    post:
+      summary: Create tags
+      operationId: create-tags
+      tags:
+      - Reviews
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                tags:
+                  type: array
+  /v1/tag/{tagname}:
+    delete:
+      summary: Delete a tag
+      operationId: delete-a-tag
+      tags:
+      - Reviews
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Business Number.
+        schema:
+          type: string
+        example: '12345678'
+      - name: tagname
+        in: path
+        required: true
+        description: Tag name to be deleted.
+        schema:
+          type: string
+        example: positive2022
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+  /v1/tag/all:
+    get:
+      summary: Get all tags
+      operationId: get-all-tags
+      tags:
+      - Reviews
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Business Number.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+  /v1/tag/add/review:
+    post:
+      summary: Assign tags to filtered reviews
+      operationId: assign-tags-to-filtered-reviews
+      tags:
+      - Reviews
+      parameters:
+      - name: bid
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      - name: tag
+        in: query
+        required: true
+        description: List of tags.
+        schema:
+          type: string
+        example: positive2022&negative2022
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+  /v1/tag/remove/review:
+    post:
+      summary: Remove tags from filtered reviews
+      operationId: remove-tags-from-filtered-reviews
+      tags:
+      - Reviews
+      parameters:
+      - name: bid
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      - name: tag
+        in: query
+        required: true
+        description: List of tags to be removed from reviews.
+        schema:
+          type: string
+        example: positive2022&negative2022
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+  /v1/tag/remove/all/review:
+    post:
+      summary: Remove particular tags from all reviews
+      operationId: remove-particular-tags-from-all-reviews
+      tags:
+      - Reviews
+      parameters:
+      - name: bid
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1011
+                  message: Business id is invalid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                tags:
+                  type: array
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.

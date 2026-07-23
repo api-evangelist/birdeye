@@ -1,0 +1,809 @@
+openapi: 3.1.0
+info:
+  title: Birdeye Aggregation Report API
+  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
+  version: 1.0.0
+  termsOfService: https://birdeye.com/terms-of-service/
+  contact:
+    url: https://developers.birdeye.com/
+servers:
+- url: https://api.birdeye.com
+  description: Production
+security:
+- apiKey: []
+tags:
+- name: Report
+  description: Various reporting data points across Birdeye modules like reviews, insights and competitors etc for all your data visualisation
+paths:
+  /v1/reports/smb:
+    get:
+      summary: Get Dashboard data
+      operationId: get-dashboard-data
+      tags:
+      - Report
+      parameters:
+      - name: bid
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+  /v1/reports/business/analytics/email:
+    get:
+      summary: Get Review conversion report
+      operationId: get-review-conversion-report
+      tags:
+      - Report
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      - name: fromDate
+        in: query
+        required: false
+        description: Date from result is expected. Format MM/DD/YYYY.
+        schema:
+          type: string
+        example: 01/13/2021
+      - name: toDate
+        in: query
+        required: false
+        description: Date up to result is expected. Format MM/DD/YYYY.
+        schema:
+          type: string
+        example: 01/21/2021
+      - name: days
+        in: query
+        required: false
+        description: Use to get results for last some days.
+        schema:
+          type: number
+        example: '120'
+      - name: months
+        in: query
+        required: false
+        description: Use to get results for last some months.
+        schema:
+          type: number
+        example: '2'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1039
+                  message: Invalid business aggregation id
+  /v1/reports/review/analytic/time:
+    post:
+      summary: Review and rating over time Report
+      operationId: review-and-rating-over-time-report
+      tags:
+      - Report
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      - name: sortby
+        in: query
+        required: false
+        description: Values can be 'count' or 'rating'.
+        schema:
+          type: string
+        example: rating
+      - name: sorder
+        in: query
+        required: false
+        description: '''0'' for ascending and ''1'' for descending order.'
+        schema:
+          type: number
+        example: '0'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                sourceAliases:
+                  type: array
+                businessNumbers:
+                  type: array
+                days:
+                  type: number
+  /v1/reports/rating/location:
+    post:
+      summary: Reviews & Rating By Location Report
+      operationId: reviews-rating-by-location-report
+      tags:
+      - Report
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      - name: sortby
+        in: query
+        required: false
+        description: Values can be 'count' or 'rating'.
+        schema:
+          type: string
+        example: rating
+      - name: sorder
+        in: query
+        required: false
+        description: '''0'' for ascending and ''1'' for descending order.'
+        schema:
+          type: number
+        example: '0'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                sourceAliases:
+                  type: array
+                businessNumbers:
+                  type: array
+                months:
+                  type: number
+  /v1/review/report/count-by-rating/{BusinessId}:
+    post:
+      summary: Review Count & Rating
+      operationId: review-count-rating
+      tags:
+      - Report
+      parameters:
+      - name: BusinessId
+        in: path
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                sourceAlias:
+                  type: string
+                fromDate:
+                  type: string
+                toDate:
+                  type: string
+  /v1/review/report/count-by-rating/employee/{BusinessId}:
+    post:
+      summary: Review Count & Rating By Employee
+      operationId: review-count-rating-by-employee
+      tags:
+      - Report
+      parameters:
+      - name: BusinessId
+        in: path
+        required: true
+        description: Id of the business.
+        schema:
+          type: string
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                sourceAlias:
+                  type: string
+                fromDate:
+                  type: string
+                toDate:
+                  type: string
+                employees:
+                  type: array
+  /v1/keywords/opmetric/location:
+    post:
+      summary: Insights Category Report by location report
+      operationId: insights-category-report-by-location-report
+      tags:
+      - Report
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                reviewSites:
+                  type: array
+                businessNumbers:
+                  type: array
+  /v2/competitive/ranking:
+    post:
+      summary: Competitive Ranking Report
+      operationId: competitive-ranking-report
+      tags:
+      - Report
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                reviewSites:
+                  type: array
+  /v1/reports/nps/time/elst:
+    post:
+      summary: NPS Over time Report
+      operationId: nps-over-time-report
+      tags:
+      - Report
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                reviewSites:
+                  type: array
+  /v1/reports/nps/location/elst:
+    post:
+      summary: NPS By Location Report
+      operationId: nps-by-location-report
+      tags:
+      - Report
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                reviewSites:
+                  type: array
+                businessNumbers:
+                  type: array
+  /v1/reports/count/reviewsite:
+    post:
+      summary: Review By Source Report
+      operationId: review-by-source-report
+      tags:
+      - Report
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                sourceAliases:
+                  type: array
+                businessNumbers:
+                  type: array
+                months:
+                  type: number
+  /v1/reports/count/visitors:
+    post:
+      summary: Visitor report
+      operationId: visitor-report
+      tags:
+      - Report
+      parameters:
+      - name: businessId
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                sourceAliases:
+                  type: array
+                businessNumbers:
+                  type: array
+                months:
+                  type: number
+  /v1/reports/usage:
+    post:
+      summary: Usage report
+      operationId: usage-report
+      tags:
+      - Report
+      parameters:
+      - name: business_id
+        in: query
+        required: true
+        description: Id of the Business.
+        schema:
+          type: number
+        example: '12345678'
+      - name: reportType
+        in: query
+        required: true
+        description: The type of Report - Summary or Tabular.
+        schema:
+          type: string
+        example: rating
+      - name: sindex
+        in: query
+        required: true
+        description: The starting index of the reviews
+        schema:
+          type: number
+        example: '0'
+      - name: count
+        in: query
+        required: true
+        description: The number of reviews to query
+        schema:
+          type: string
+        example: '100'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 89
+                  message: Rate limit exceeded
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                reviewSites:
+                  type: array
+                ratings:
+                  type: array
+                days:
+                  type: number
+                groupByDays:
+                  type: number
+                reviewSiteAllFlag:
+                  type: boolean
+  /v1/review/report/response-rate/time/rate-over-time:
+    post:
+      summary: Review Response Rate Over Time
+      operationId: review-response-rate-over-time
+      tags:
+      - Report
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                reviewSites:
+                  type: array
+                ratings:
+                  type: array
+                businessNumbers:
+                  type: array
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                comparisonFilter:
+                  type: object
+                  properties:
+                    startDate:
+                      type: string
+                    endDate:
+                      type: string
+  /v1/review/report/response-rate/by-location/overview:
+    post:
+      summary: Review Response Rate By Location Overview
+      operationId: review-response-rate-by-location-overview
+      tags:
+      - Report
+      parameters:
+      - name: order
+        in: query
+        required: false
+        description: Sort order. 1 for descending, 0 for ascending.
+        schema:
+          type: number
+        example: '1'
+      - name: sortBy
+        in: query
+        required: false
+        description: Field used for sorting, for example rate.
+        schema:
+          type: string
+        example: rate
+      - name: startIndex
+        in: query
+        required: false
+        description: Starting index for pagination.
+        schema:
+          type: number
+        example: '0'
+      - name: size
+        in: query
+        required: false
+        description: Number of records to return.
+        schema:
+          type: number
+        example: '100'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                reviewSites:
+                  type: array
+                ratings:
+                  type: array
+                businessNumbers:
+                  type: array
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                comparisonFilter:
+                  type: object
+                  properties:
+                    startDate:
+                      type: string
+                    endDate:
+                      type: string
+  /v1/review/report/avg-response-time/by-location:
+    post:
+      summary: Average Response Time By Location
+      operationId: average-response-time-by-location
+      tags:
+      - Report
+      parameters:
+      - name: order
+        in: query
+        required: false
+        description: Sort order. 1 for descending, 0 for ascending.
+        schema:
+          type: number
+        example: '1'
+      - name: sortBy
+        in: query
+        required: true
+        description: resp-time (string, optional) - Field used for sorting.
+        schema:
+          type: string
+        example: avg
+      - name: startIndex
+        in: query
+        required: false
+        description: Starting index for pagination.
+        schema:
+          type: number
+        example: '0'
+      - name: size
+        in: query
+        required: false
+        description: Number of records to return.
+        schema:
+          type: number
+        example: '100'
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                reviewSites:
+                  type: array
+                ratings:
+                  type: array
+                businessNumbers:
+                  type: array
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                comparisonFilter:
+                  type: object
+                  properties:
+                    startDate:
+                      type: string
+                    endDate:
+                      type: string
+  /v1/review/report/avg-response-time/time:
+    post:
+      summary: Average Response Time Over Time
+      operationId: average-response-time-over-time
+      tags:
+      - Report
+      parameters: []
+      responses:
+        '200':
+          description: HTTP 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 1167
+                  message: API key is missing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $schema: http://json-schema.org/draft-07/schema#
+              type: object
+              properties:
+                reviewSites:
+                  type: array
+                ratings:
+                  type: array
+                businessNumbers:
+                  type: array
+                startDate:
+                  type: string
+                endDate:
+                  type: string
+                comparisonFilter:
+                  type: object
+                  properties:
+                    startDate:
+                      type: string
+                    endDate:
+                      type: string
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Partner specific API key provided by Birdeye for data exchange.
