@@ -18,7 +18,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/birdeye.png
 url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/apis.yml
 created: 2026-06-13
-modified: 2026-06-13
+modified: 2026-08-13
 specificationVersion: "0.19"
 tags:
   - Reputation Management
@@ -32,7 +32,7 @@ apis:
 - aid: birdeye:birdeye-aggregation-api
   name: Birdeye Aggregation API
   description: Access your public data from 150+ review sites.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Aggregation
@@ -40,10 +40,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-aggregation-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -51,7 +50,7 @@ apis:
 - aid: birdeye:birdeye-business-api
   name: Birdeye Business API
   description: Create and maintain your business on Birdeye.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Business
@@ -59,10 +58,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-business-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -88,7 +86,7 @@ apis:
 
     Uploaded media will be pushed to your google business profile (if connected) and other long tail directories
     only.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Business Media
@@ -96,10 +94,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-business-media-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -107,7 +104,7 @@ apis:
 - aid: birdeye:birdeye-campaign-api
   name: Birdeye Campaign API
   description: Create a short link for review requests and set review sources in the template.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Campaign
@@ -115,10 +112,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-campaign-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -126,7 +122,7 @@ apis:
 - aid: birdeye:birdeye-competitor-ai-api
   name: Birdeye Competitor AI API
   description: Competitive intelligence, simplified by AI.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Competitor AI
@@ -134,10 +130,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-competitor-ai-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -145,7 +140,7 @@ apis:
 - aid: birdeye:birdeye-competitor-api
   name: Birdeye Competitor API
   description: Make competitive insights your unfair advantage.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Competitor
@@ -153,10 +148,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-competitor-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -164,7 +158,7 @@ apis:
 - aid: birdeye:birdeye-contact-api
   name: Birdeye Contact API
   description: Manage contacts across locations effortlessly with a robust Contact Management System.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Contact
@@ -172,10 +166,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-contact-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -185,7 +178,7 @@ apis:
   description: >-
     Easily manage contacts across multiple locations using enhanced Contact APIs, featuring built-in support
     for communication preference flags.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Contact V2
@@ -193,10 +186,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-contact-v2-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -204,7 +196,7 @@ apis:
 - aid: birdeye:birdeye-conversation-api
   name: Birdeye Conversation API
   description: Connect with customers across a range of digital channels from one unified inbox.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Conversation
@@ -212,10 +204,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-conversation-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -223,7 +214,7 @@ apis:
 - aid: birdeye:birdeye-custom-fields-api
   name: Birdeye Custom Fields API
   description: Create, delete , update , associate and get custom fields easily.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Custom Fields
@@ -231,10 +222,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-custom-fields-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -242,7 +232,7 @@ apis:
 - aid: birdeye:birdeye-employee-api
   name: Birdeye Employee API
   description: The Employee API from Birdeye — 1 operation(s) for employee.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Employee
@@ -250,10 +240,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-employee-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -263,7 +252,7 @@ apis:
   description: >-
     To retrieve all Question and Answer (QnA) entries across locations using FAQ APIs, enabling smart
     support and knowledge features for businesses.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - FAQ
@@ -271,10 +260,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-faq-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -282,7 +270,7 @@ apis:
 - aid: birdeye:birdeye-gmb-products-api
   name: Birdeye GMB Products API
   description: To manage products, locations, and business details through Listing GMB platform
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - GMB Products
@@ -290,10 +278,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-gmb-products-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -306,7 +293,7 @@ apis:
 
     Applicable to be used only by paid listings clients, for their active locations, for the Google Q&amp;A
     section, in the Google listing
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Google Q&A
@@ -314,10 +301,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-google-q-a-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -337,7 +323,7 @@ apis:
     You CAN have the same service across two diff categories e.g.: Emergency counselling as a $100 paid
     service can be a service created &amp; mapped to category A - Mental health and category B - Psychotherapy
     - both categories being present for the same location.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Google Services
@@ -345,10 +331,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-google-services-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -356,7 +341,7 @@ apis:
 - aid: birdeye:birdeye-insight-ai-api
   name: Birdeye Insight AI API
   description: Insight intelligence, simplified by AI.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Insight AI
@@ -364,10 +349,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-insight-ai-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -375,7 +359,7 @@ apis:
 - aid: birdeye:birdeye-integration-api
   name: Birdeye Integration API
   description: Birdeye integrates with various software or tools you use.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Integration
@@ -383,10 +367,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-integration-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -394,7 +377,7 @@ apis:
 - aid: birdeye:birdeye-listing-api
   name: Birdeye Listing API
   description: Keep your business information accurate and consistent across 50+ websites.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Listing
@@ -402,10 +385,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-listing-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -415,7 +397,7 @@ apis:
   description: >-
     Various reporting data points across Birdeye modules like reviews, insights and competitors etc for
     all your data visualisation
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Report
@@ -423,10 +405,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-report-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -434,7 +415,7 @@ apis:
 - aid: birdeye:birdeye-reviews-api
   name: Birdeye Reviews API
   description: Consistently generate more reviews and higher ratings.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Reviews
@@ -442,10 +423,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-reviews-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -455,7 +435,7 @@ apis:
   description: >-
     Search AI provides a comprehensive view of your business performance across AI-powered search platforms,
     including data accuracy, sentiment analysis, citations, brand ranking, and overall visibility.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Search AI
@@ -463,10 +443,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-search-ai-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -474,7 +453,7 @@ apis:
 - aid: birdeye:birdeye-social-api
   name: Birdeye Social API
   description: Create and track Social posting for all channels.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Social
@@ -482,10 +461,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-social-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -495,7 +473,7 @@ apis:
   description: >-
     Subscribe or Unsubscribe multiple webhooks with different URLs or Events for a subscription and deliver
     real-time notifications.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Subscription
@@ -503,10 +481,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-subscription-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -514,7 +491,7 @@ apis:
 - aid: birdeye:birdeye-survey-api
   name: Birdeye Survey API
   description: Engage each customer at the right time with NPS or CSAT surveys to improve your service.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Survey
@@ -522,10 +499,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-survey-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -534,7 +510,7 @@ apis:
   name: Birdeye Ticketing API
   description: >-
     Create standout customer support with ticketing across reviews, untagged, and survey responses.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Ticketing
@@ -542,10 +518,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-ticketing-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -553,7 +528,7 @@ apis:
 - aid: birdeye:birdeye-user-api
   name: Birdeye User API
   description: Delete and manage user profiles and permissions easily.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - User
@@ -561,10 +536,9 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-user-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
@@ -573,7 +547,7 @@ apis:
   name: Birdeye Webhook API
   description: >-
     Configure multiple webhooks with different URLs for a subscription and deliver real-time notifications.
-  humanURL: https://developers.birdeye.com/
+  humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
   - Webhook
@@ -581,15 +555,71 @@ apis:
   - type: OpenAPI
     url: openapi/birdeye-webhook-api-openapi.yml
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Authentication
-    url: >-
-      https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
+    url: https://docs.birdeye.com/api/authentication
   - type: Vocabulary
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/birdeye-context.jsonld
 common:
+  - type: OpenAPI
+    name: Birdeye published OpenAPI (harvested verbatim)
+    url: openapi/_original/birdeye-openapi-original.yml
+  - type: AgentCard
+    url: a2a/birdeye-a2a.yml
+  - type: MCPServer
+    url: mcp/birdeye-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/birdeye-tool-crosswalk.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/birdeye-llms.txt
+  - type: WellKnown
+    url: well-known/birdeye-well-known.yml
+  - type: Conventions
+    url: conventions/birdeye-conventions.yml
+  - type: ErrorCatalog
+    url: errors/birdeye-error-codes.yml
+  - type: DataModel
+    url: data-model/birdeye-data-model.yml
+  - type: Overlay
+    url: overlays/birdeye-openapi-overlay.yaml
+  - type: Conformance
+    url: conformance/birdeye-conformance.yml
+  - type: Compliance
+    url: https://birdeye.com/security/
+  - type: TrustCenter
+    url: security/birdeye-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/birdeye-vulnerability-disclosure.yml
+  - type: Security
+    url: https://birdeye.com/security/
+  - type: OAuthScopes
+    url: scopes/birdeye-scopes.yml
+  - type: Lifecycle
+    url: lifecycle/birdeye-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/birdeye-changelog.yml
+  - type: Webhooks
+    url: asyncapi/birdeye-webhooks.yml
+  - type: DeveloperPortal
+    url: https://docs.birdeye.com/
+  - type: APIReference
+    url: https://docs.birdeye.com/api/introduction
+  - type: GettingStarted
+    url: https://docs.birdeye.com/mcp/quickstart
+  - type: Support
+    url: https://support.birdeye.com/
+  - type: TermsOfService
+    url: https://birdeye.com/terms/
+  - type: PrivacyPolicy
+    url: https://birdeye.com/privacy/
+  - type: Login
+    url: https://birdeye.com/login/
+  - type: GitHubOrganization
+    url: https://github.com/birdeyeinc
   - type: AgenticAccess
     url: agentic-access/birdeye-agentic-access.yml
   - type: DomainSecurity
@@ -599,7 +629,7 @@ common:
   - type: Website
     url: https://birdeye.com/
   - type: Documentation
-    url: https://developers.birdeye.com/
+    url: https://docs.birdeye.com/api/introduction
   - type: Blog
     url: https://birdeye.com/blog/
   - type: Pricing
@@ -619,3 +649,8 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1
