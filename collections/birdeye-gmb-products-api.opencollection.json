@@ -1,0 +1,180 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation GMB Products API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GMB Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Onboard Google Merchant Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/public/product/setup/googleMerchant",
+            "params": [
+              {
+                "name": "merchantId",
+                "value": "1234567",
+                "type": "query",
+                "description": "Google Merchant Center account ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Onboard Google Merchant Account"
+        },
+        {
+          "info": {
+            "name": "Create Product Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/public/product",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Product Listing"
+        },
+        {
+          "info": {
+            "name": "Update Product Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/listing/public/product/:productId",
+            "params": [
+              {
+                "name": "productId",
+                "value": "68767cb39ebf51000815ab39",
+                "type": "path",
+                "description": "Unique identifier of the product to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Product Listing"
+        },
+        {
+          "info": {
+            "name": "Get Product Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/public/product/:productIdentifier",
+            "params": [
+              {
+                "name": "productIdentifier",
+                "value": "68767cb39ebf51000815ab39",
+                "type": "path",
+                "description": "Product identifier."
+              }
+            ]
+          },
+          "docs": "Get Product Listing"
+        },
+        {
+          "info": {
+            "name": "Delete Product Listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/public/product/deleteProduct",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Product Listings"
+        },
+        {
+          "info": {
+            "name": "Get List Product Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/public/product/getList",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "50",
+                "type": "query",
+                "description": "Number of records per page. Default 50."
+              },
+              {
+                "name": "pageNumber",
+                "value": "0",
+                "type": "query",
+                "description": "0-based page index. Default 0."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get List Product Listing"
+        },
+        {
+          "info": {
+            "name": "Add Products On a Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/public/product/addProduct",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Products On a Location"
+        },
+        {
+          "info": {
+            "name": "Remove Products On a Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/public/product/removeProduct",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Products On a Location"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Contact V2 API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upsert Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/contact/external/preferences/saveCustomer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert Contact"
+        },
+        {
+          "info": {
+            "name": "Retrieve Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/contact/external/preferences/getCustomer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve Contact"
+        },
+        {
+          "info": {
+            "name": "Customer Checkin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/contact/external/preferences/checkin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Customer Checkin"
+        },
+        {
+          "info": {
+            "name": "Update Communication Preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/contact/external/preferences/change-permission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Communication Preferences"
+        },
+        {
+          "info": {
+            "name": "Retrieve Opted-Out Contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/contact/external/preferences/update-feed",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve Opted-Out Contacts"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

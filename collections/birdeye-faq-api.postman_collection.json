@@ -1,0 +1,183 @@
+{
+  "item": [
+    {
+      "id": "3e6b6efe-a811-4f56-b3be-b1169151def9",
+      "name": "FAQ",
+      "description": {
+        "content": "To retrieve all Question and Answer (QnA) entries across locations using FAQ APIs, enabling smart support and knowledge features for businesses.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0599bd1c-3b98-490f-9ee3-e4e5a7305158",
+          "name": "Get All QnA",
+          "request": {
+            "name": "Get All QnA",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "quero",
+                "external",
+                "get-all-qna"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sIndex",
+                  "value": "<number>",
+                  "description": "The starting index for the records to fetch. Default is 0 if not specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<number>",
+                  "description": "The number of QnA records to return.Default is 25 if not specified."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<number>",
+                  "description": "The ordering in which records should be returned by last updated date (0 for ascending, 1 for descending).Default is 1 if not specified."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "null",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96a5a573-16e1-4b0b-b2b8-54bd79d6589d",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "quero",
+                    "external",
+                    "get-all-qna"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sIndex",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1532,\n  \"message\": \"Business id is missing or invalid.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.birdeye.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9fc33ad4-9cca-4587-9503-08b0b1ff8062",
+    "name": "Birdeye Aggregation FAQ API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.",
+      "type": "text/plain"
+    }
+  }
+}

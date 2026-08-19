@@ -1,16 +1,96 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/birdeye-birdeye-api-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: https://docs.birdeye.com/api/authentication
+docs:
+  rest: https://docs.birdeye.com/api/authentication
+  mcp: https://docs.birdeye.com/mcp/authentication
+  key_retrieval: >-
+    https://support.birdeye.com/en/articles/12653964-where-can-i-find-the-api-key-for-my-account
 summary:
-  types:
-  - apiKey
-  api_key_in:
-  - header
+  types: [apiKey, oauth2]
+  api_key_in: [header]
+  oauth2_flows: [authorizationCode]
+  surfaces:
+    rest: apiKey
+    mcp: oauth2
+  note: >-
+    Two distinct auth models on two distinct surfaces. The REST API at api.birdeye.com is
+    API-key only. The MCP server at mcp.birdeye.com is OAuth 2.0 only. There is no OAuth
+    for the REST API and no API key for MCP.
 schemes:
 - name: apiKey
   type: apiKey
   in: header
   parameter: x-api-key
-  description: Partner specific API key provided by Birdeye for data exchange.
+  surface: rest
+  description: >-
+    Partner-specific API key provided by Birdeye for data exchange. Required and
+    mandatory on all API requests targeting business accounts. Retrieved from the Birdeye
+    dashboard; confidential.
+  handling_requirement: >-
+    Birdeye requires the key be sent only from a backend server — never from a browser
+    and never exposed in client-side code.
+  scope: per business account
+  rotation: undocumented
+  expiry: none documented
+  history: >-
+    Before 2026-02-11 the key was passed as a query parameter; the changelog records the
+    move to the x-api-key header. EU-region business accounts were called out as
+    header-mandatory on 2026-01-19.
   sources:
-  - openapi/birdeye-birdeye-api-openapi.yml
+  - openapi/birdeye-reviews-api-openapi.yml
+  - https://docs.birdeye.com/api/authentication
+  spec_note: >-
+    The provider-published OpenAPI (docs.birdeye.com/api/openapi.yaml) declares
+    `security: []` at the root and defines NO components.securitySchemes, so the API key
+    requirement lives only in prose. The refined per-tag specs in openapi/ do declare an
+    apiKey scheme and apply it — that is an API Evangelist enhancement, captured in
+    overlays/, not something Birdeye publishes.
+- name: oauth2
+  type: oauth2
+  surface: mcp
+  flow: authorizationCode
+  pkce: [S256]
+  dynamic_client_registration: true
+  authorization_server: https://mcp.birdeye.com/
+  authorization_endpoint: https://mcp.birdeye.com/authorize
+  token_endpoint: https://mcp.birdeye.com/token
+  registration_endpoint: https://mcp.birdeye.com/register
+  revocation_endpoint: https://mcp.birdeye.com/revoke
+  grant_types: [authorization_code, refresh_token]
+  token_endpoint_auth_methods: [client_secret_post, client_secret_basic]
+  scopes: [openid, profile, email]
+  scope_detail: scopes/birdeye-scopes.yml
+  protected_resource: https://mcp.birdeye.com/mcp
+  protected_resource_metadata: https://mcp.birdeye.com/.well-known/oauth-protected-resource/mcp
+  bearer_methods: [header]
+  client_id_metadata_document_supported: true
+  preauthorized_clients: [Claude (claude.ai), ChatGPT (chatgpt.com)]
+  client_registration_note: >-
+    Any other MCP client must register its redirect URI with Birdeye Support before the
+    OAuth flow will complete.
+  sources:
+  - https://mcp.birdeye.com/.well-known/oauth-authorization-server
+  - https://docs.birdeye.com/mcp/authentication
+webhook_callback_auth:
+  mechanism: HTTP Basic (subscriber-supplied username/password)
+  scope: outbound webhook delivery from Birdeye to the subscriber endpoint
+  signature: none
+  detail: asyncapi/birdeye-webhooks.yml
+enterprise_identity:
+  sso: true
+  scim: true
+  rbac: true
+  source: https://birdeye.com/security/
+  note: Platform-level SSO/SCIM/RBAC for the Birdeye application, not an API auth mode.
+x-evidence:
+- url: https://api.birdeye.com/
+  http_status: 401
+  body: '{"code":4011,"message":"User is not authorized to perform this action."}'
+  fetched: '2026-08-13'
+- url: https://mcp.birdeye.com/.well-known/oauth-authorization-server
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://docs.birdeye.com/api/authentication.md
+  http_status: 200
+  fetched: '2026-08-13'

@@ -1,0 +1,589 @@
+{
+  "item": [
+    {
+      "id": "538f03d3-62a8-4572-93ca-3f79d04606b0",
+      "name": "Ticketing",
+      "description": {
+        "content": "Create standout customer support with ticketing across reviews, untagged, and survey responses.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b1cac1d0-33a7-45b3-954e-b0f2217cc2b9",
+          "name": "Create ticket",
+          "request": {
+            "name": "Create ticket",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "ticket",
+                ":businessNumber",
+                "create-ticket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "businessNumber",
+                  "description": "(Required) Business number of the location on which we want to create a ticket."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "null",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25f32cd1-7c76-4a9e-a181-40cfdd9fc0ce",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ticket",
+                    ":businessNumber",
+                    "create-ticket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "businessNumber",
+                      "description": "(Required) Business number of the location on which we want to create a ticket."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1175,\n  \"message\": \"No business found with the given id\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "403b2909-1589-4648-8dab-a43e19385e38",
+          "name": "Add Ticket Comments",
+          "request": {
+            "name": "Add Ticket Comments",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "ticket",
+                ":businessNumber",
+                "comment-activity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "businessNumber",
+                  "description": "(Required) Business number of the location."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "null",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1dfc34d0-df0f-4f87-8b38-269c32410dc2",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ticket",
+                    ":businessNumber",
+                    "comment-activity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "businessNumber",
+                      "description": "(Required) Business number of the location."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1175,\n  \"message\": \"No business found with the given id\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64af3cb0-7873-4124-b076-eac726bc830b",
+          "name": "Update ticket",
+          "request": {
+            "name": "Update ticket",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "ticket",
+                ":businessNumber",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "businessNumber",
+                  "description": "(Required) Business number of the location."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "null",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5211c092-d3f7-48f9-8118-22082cca1646",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ticket",
+                    ":businessNumber",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "businessNumber",
+                      "description": "(Required) Business number of the location."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1175,\n  \"message\": \"No business found with the given id\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c24e3c6b-1f42-4072-b707-78efd7942082",
+          "name": "Get All Ticket Data",
+          "request": {
+            "name": "Get All Ticket Data",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "ticket",
+                ":businessNumber",
+                "get",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "",
+                  "value": "null"
+                },
+                {
+                  "disabled": false,
+                  "key": "op",
+                  "value": "<number>",
+                  "description": "(Required) Possible values are: [1] will display ticket count only, [3] will display all the data of the ticket. Default value - 3."
+                },
+                {
+                  "disabled": false,
+                  "key": "sIndex",
+                  "value": "<number>",
+                  "description": "(Required) Start index of the response. Default value - 0"
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<number>",
+                  "description": "(Required) Number of tickets want to get in the response. Default value - 25"
+                },
+                {
+                  "disabled": false,
+                  "key": "sortBy",
+                  "value": "<number>",
+                  "description": "(Required) Sort options, Possible values [2] will sort on the basis of ticket creation date. [3] will sort on the basis of characters of business aliases. Default value 2."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortOrder",
+                  "value": "<number>",
+                  "description": "(Required) Sort Order [0] will sort the data in ascending order. [1] this will sort the data in descending order. Default value - 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "totalCount",
+                  "value": "<Boolean>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "businessNumber",
+                  "description": "(Required) Business number of the account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "null",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e3e1f041-1c0c-4e16-9d31-52f275127d8d",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ticket",
+                    ":businessNumber",
+                    "get",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "op",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sIndex",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "totalCount",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "businessNumber",
+                      "description": "(Required) Business number of the account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1175,\n  \"message\": \"No business found with the given id\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.birdeye.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "96ec783b-a08a-4229-8a3e-b59d18920065",
+    "name": "Birdeye Aggregation Ticketing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.",
+      "type": "text/plain"
+    }
+  }
+}

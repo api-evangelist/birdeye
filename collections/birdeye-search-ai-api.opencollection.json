@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Search AI API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search AI",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Search AI Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/searchAi/account-setup"
+          },
+          "docs": "Get Search AI Configuration"
+        },
+        {
+          "info": {
+            "name": "Get Search AI Available Runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/searchAi/available-runs"
+          },
+          "docs": "Get Search AI Available Runs"
+        },
+        {
+          "info": {
+            "name": "Get Search AI Citations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/searchAi/public/citations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Search AI Citations"
+        },
+        {
+          "info": {
+            "name": "Get Search AI Businesses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/searchAi/public/business",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Search AI Businesses"
+        },
+        {
+          "info": {
+            "name": "Get Accuracy Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/searchAi/public/aio-details?page-size=100&start-index=0",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Accuracy Report"
+        },
+        {
+          "info": {
+            "name": "Get Sentiment Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/searchAi/public/swot-details?page-size=100&start-index=0",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Sentiment Report"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

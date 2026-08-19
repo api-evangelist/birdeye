@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Custom Fields API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/business/public/custom-fields/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create"
+        },
+        {
+          "info": {
+            "name": "Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/business/public/custom-fields/update/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "376",
+                "type": "path",
+                "description": "fieldId of the custom field created earlier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update"
+        },
+        {
+          "info": {
+            "name": "Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/public/custom-fields/get/:fieldId?locationBizNumber=:locationBizNumber",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "376",
+                "type": "path",
+                "description": "fieldId of the custom field created earlier."
+              },
+              {
+                "name": "locationBizNumber",
+                "value": "123456789",
+                "type": "path",
+                "description": "Long Location number of the Location"
+              }
+            ]
+          },
+          "docs": "Get"
+        },
+        {
+          "info": {
+            "name": "POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/business/public/custom-fields/getList?locationBizNumber=:locationBizNumber",
+            "params": [
+              {
+                "name": "locationBizNumber",
+                "value": "123456789",
+                "type": "path",
+                "description": "Long Location number of the Location."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "POST"
+        },
+        {
+          "info": {
+            "name": "Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.birdeye.com/v1/business/public/custom-fields/delete/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "376",
+                "type": "path",
+                "description": "fieldId of the custom field created earlier."
+              }
+            ]
+          },
+          "docs": "Delete"
+        },
+        {
+          "info": {
+            "name": "Associate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/business/public/custom-fields/associate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Associate"
+        },
+        {
+          "info": {
+            "name": "Create Custom card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/business/public/card",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Custom card"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

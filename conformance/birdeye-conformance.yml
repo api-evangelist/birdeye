@@ -1,0 +1,122 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.birdeye.com/api/introduction + openapi/_original/birdeye-openapi-original.yml
+  + live probes
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: >-
+    Provider-published OpenAPI 3.0.0 at https://docs.birdeye.com/api/openapi.yaml —
+    165 paths, 166 operations, 790 component schemas, tagged by module.
+- id: openapi-3.1
+  conforms: false
+  evidence: The published document declares openapi 3.0.0.
+- id: rest
+  conforms: true
+  evidence: >-
+    Resource-oriented URLs over HTTPS with JSON payloads and standard HTTP status codes,
+    as Birdeye states in its own introduction.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use a vendor envelope {code, message} with no type/title/status/instance
+    members and no application/problem+json media type.
+- id: oauth2
+  conforms: true
+  scope: MCP server only
+  evidence: >-
+    https://mcp.birdeye.com/.well-known/oauth-authorization-server returns RFC 8414
+    authorization-server metadata; authorization_code + refresh_token grants, S256 PKCE.
+- id: oauth2-rfc8414-authorization-server-metadata
+  conforms: true
+  evidence: 200 at /.well-known/oauth-authorization-server on mcp.birdeye.com.
+- id: oauth2-rfc9728-protected-resource-metadata
+  conforms: true
+  evidence: >-
+    200 at /.well-known/oauth-protected-resource/mcp, and the 401 challenge on
+    /mcp carries resource_metadata pointing back at it.
+- id: oauth2-rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint https://mcp.birdeye.com/register is advertised and documented.
+- id: oauth2-pkce-rfc7636
+  conforms: true
+  evidence: code_challenge_methods_supported [S256].
+- id: openid-connect
+  conforms: false
+  evidence: >-
+    openid/profile/email scopes are offered, but /.well-known/openid-configuration
+    returns 404 on every Birdeye host — no OIDC discovery document is published.
+- id: mcp
+  conforms: true
+  version: streamable-http
+  evidence: >-
+    https://mcp.birdeye.com/mcp answers a JSON-RPC POST with an MCP-shaped OAuth
+    challenge; documented as Streamable HTTP with stateless sessions.
+- id: a2a
+  conforms: true
+  version: '0.3'
+  grade: conformant
+  evidence: >-
+    /.well-known/agent-card.json on docs.birdeye.com — capabilities is an object,
+    protocolVersion present, skills is an array. See a2a/birdeye-a2a.yml.
+- id: agent-skills-discovery
+  conforms: true
+  version: 0.2.0
+  evidence: >-
+    /.well-known/agent-skills/index.json declares
+    https://schemas.agentskills.io/discovery/0.2.0/schema.json with one skill.
+- id: llms-txt
+  conforms: true
+  evidence: 40KB llms.txt at https://docs.birdeye.com/llms.txt indexing every docs page.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: 404 on /.well-known/security.txt on every host despite a live security@ contact.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No deprecation policy and no Sunset/Deprecation header support published.
+- id: rfc8615-well-known
+  conforms: true
+  evidence: >-
+    Well-known URIs served on mcp.birdeye.com (OAuth metadata) and docs.birdeye.com
+    (agent card, agent skills).
+- id: asyncapi
+  conforms: false
+  evidence: >-
+    Webhooks are documented and subscribable but no AsyncAPI document is published.
+- id: webhooks
+  conforms: true
+  evidence: >-
+    Two subscribable webhook surfaces (messenger events, account subscriptions) with a
+    live event-listing operation. See asyncapi/birdeye-webhooks.yml.
+- id: json-api
+  conforms: false
+- id: odata
+  conforms: false
+- id: scim
+  conforms: false
+  evidence: >-
+    SCIM is offered for Birdeye application user provisioning per
+    https://birdeye.com/security/, but no SCIM 2.0 endpoints appear in the API and no
+    SCIM schema is published.
+- id: graphql
+  conforms: false
+  evidence: No GraphQL surface found on any host.
+- id: grpc
+  conforms: false
+- id: fhir
+  conforms: false
+  note: >-
+    Healthcare is a served vertical (NPI, credentials, hospital affiliations and
+    insurances-accepted fields on listings; HIPAA on the security page) but the API is
+    not FHIR-shaped.
+- id: idempotency
+  conforms: false
+  evidence: >-
+    No idempotency key, no replay contract, no Idempotency-Key parameter in any of the
+    166 operations.
+compliance_program:
+  published: true
+  url: https://birdeye.com/security/
+  trust_center: https://trust.birdeye.com/
+  certifications: [SOC 2 Type II, ISO/IEC 27001, HIPAA, GDPR, CCPA / CPRA]
+  detail: security/birdeye-trust-center.yml

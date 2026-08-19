@@ -1,0 +1,67 @@
+generated: '2026-08-13'
+method: probed
+source: https://docs.birdeye.com/.well-known/agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: docs.birdeye.com
+  note: >-
+    Served from Birdeye's own developer documentation host (docs.birdeye.com), the
+    same host that publishes the Birdeye OpenAPI (api/openapi.yaml), llms.txt and the
+    MCP documentation. The card self-identifies as "Birdeye Developer Portal" with
+    provider.url https://docs.birdeye.com/.
+conformance:
+  spec: A2A 1.0.0
+  grade: conformant
+  protocol_version: '0.3'
+  preferred_transport: HTTP+JSON
+  hard_checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+  deviations:
+  - supportedInterfaces-instead-of-additionalInterfaces
+  notes: >-
+    Passes all three hard checks. Uses the pre-1.0 `supportedInterfaces` key rather
+    than `additionalInterfaces`; optional preferredTransport, defaultInputModes and
+    defaultOutputModes are all present.
+card:
+  name: Birdeye Developer Portal
+  url: https://docs.birdeye.com/
+  version: 1.0.0
+  documentation_url: https://docs.birdeye.com/
+  provider_organization: Birdeye Developer Portal
+  capabilities:
+    streaming: false
+    pushNotifications: false
+  default_input_modes:
+  - text/plain
+  default_output_modes:
+  - text/plain
+  skills: 1
+  skill_ids:
+  - birdeye
+  file: birdeye-agent-card.json
+related:
+  agent_skill: skills/birdeye-birdeye-skill.md
+  agent_skills_index: well-known/birdeye-agent-skills-index.json
+  mcp: mcp/birdeye-mcp.yml
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://docs.birdeye.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  negative_probes:
+  - url: https://birdeye.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://birdeye.com/.well-known/agent.json
+    http_status: 404
+  - url: https://mcp.birdeye.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://docs.birdeye.com/.well-known/agent.json
+    http_status: 404
+  - url: https://developers.birdeye.com/.well-known/agent-card.json
+    http_status: 200
+    rejected: >-
+      Next.js single-page-app catch-all returns an HTML shell (<!DOCTYPE html>) for
+      every /.well-known/* path on developers.birdeye.com. Not a document.

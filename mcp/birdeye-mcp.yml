@@ -1,0 +1,177 @@
+generated: '2026-08-13'
+method: searched
+status: published
+source: https://docs.birdeye.com/mcp/quickstart
+deployment:
+  mode: remote
+  endpoint: https://mcp.birdeye.com/mcp
+  auth: oauth
+  verified: probed
+  note: >-
+    Probed 2026-08-13. POST tools/list to https://mcp.birdeye.com/mcp returned HTTP 401
+    with WWW-Authenticate: Bearer error="invalid_token" and
+    resource_metadata="https://mcp.birdeye.com/.well-known/oauth-protected-resource/mcp",
+    which is the live MCP OAuth challenge — the endpoint is real and reachable, the tool
+    schemas are auth-gated. No stdio/npx package is published; this is a hosted remote
+    server only.
+server:
+  name: Birdeye
+  transport: streamable-http
+  url: https://mcp.birdeye.com/mcp
+  sessions: stateless
+  docs: https://docs.birdeye.com/mcp/introduction
+  quickstart: https://docs.birdeye.com/mcp/quickstart
+  announced: '2026-07-28'
+  announcement: https://birdeye.com/blog/birdeye-mcp-server/
+authentication:
+  scheme: OAuth 2.0 with Dynamic Client Registration
+  docs: https://docs.birdeye.com/mcp/authentication
+  authorization_server: https://mcp.birdeye.com/
+  authorization_endpoint: https://mcp.birdeye.com/authorize
+  token_endpoint: https://mcp.birdeye.com/token
+  registration_endpoint: https://mcp.birdeye.com/register
+  revocation_endpoint: https://mcp.birdeye.com/revoke
+  pkce: [S256]
+  grant_types: [authorization_code, refresh_token]
+  scopes: [openid, profile, email]
+  protected_resource_metadata: https://mcp.birdeye.com/.well-known/oauth-protected-resource/mcp
+  preauthorized_clients:
+  - Claude (claude.ai)
+  - ChatGPT (chatgpt.com)
+  note: >-
+    Any other MCP client must have its redirect URI registered with Birdeye Support
+    before OAuth will complete.
+posture:
+  read_only: true
+  write_access: false
+  pii_filtering: >-
+    Birdeye documents that sensitive fields such as reviewer email addresses are
+    filtered from tool responses.
+  account_scoping: >-
+    Every tool call is scoped to the Birdeye business tied to the authenticated
+    account; enterprise accounts reach all child locations.
+tool_count_published: 25
+tool_count_claimed: 31
+tool_count_note: >-
+  docs.birdeye.com/mcp/introduction says "31 available tools"; the launch blog post says
+  "30 tools across 11 product areas"; the published Tools Overview table enumerates 25.
+  Only the 25 enumerated in the docs are recorded below. Live tools/list is OAuth-gated,
+  so the authoritative count and the per-tool inputSchema require an authenticated
+  introspection.
+tools:
+- name: review_and_rating_overview
+  module: Reviews
+  description: Review and rating trends over a time period
+  docs: https://docs.birdeye.com/mcp/tools/reviews/review-and-rating-overview
+- name: get_reviews
+  module: Reviews
+  description: Individual reviews with full details
+  docs: https://docs.birdeye.com/mcp/tools/reviews/get-reviews
+- name: get_review_summary
+  module: Reviews
+  description: Review counts and averages grouped by source
+  docs: https://docs.birdeye.com/mcp/tools/reviews/get-review-summary
+- name: get_business_info
+  module: Business
+  description: Business profile of the authenticated user
+  docs: https://docs.birdeye.com/mcp/tools/business/get-business-info
+- name: get_child_locations
+  module: Business
+  description: All child locations of the enterprise account
+  docs: https://docs.birdeye.com/mcp/tools/business/get-child-locations
+- name: get_all_surveys
+  module: Surveys
+  description: All surveys for the business
+  docs: https://docs.birdeye.com/mcp/tools/surveys/get-all-surveys
+- name: get_survey_responses
+  module: Surveys
+  description: Paginated responses for a specific survey
+  docs: https://docs.birdeye.com/mcp/tools/surveys/get-survey-responses
+- name: get_listing
+  module: Listings
+  description: Full listing profile for a single location
+  docs: https://docs.birdeye.com/mcp/tools/listings/get-listing
+- name: get_listing_location_status_report
+  module: Listings
+  description: Listing sync status across sites for a location
+  docs: https://docs.birdeye.com/mcp/tools/listings/get-listing-location-status-report
+- name: get_listing_insights
+  module: Listings
+  description: Google and other listing analytics
+  docs: https://docs.birdeye.com/mcp/tools/listings/get-listing-insights
+- name: get_listing_category_list
+  module: Listings
+  description: Available listing categories by source and country
+  docs: https://docs.birdeye.com/mcp/tools/listings/get-listing-category-list
+- name: get_product_listing_list
+  module: Listings
+  description: Google Merchant product listings
+  docs: https://docs.birdeye.com/mcp/tools/listings/get-product-listing-list
+- name: get_search_ai_configuration
+  module: Search AI
+  description: Search AI themes and prompt configuration
+  docs: https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-configuration
+- name: get_search_ai_available_runs
+  module: Search AI
+  description: Past Search AI run dates and themes
+  docs: https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-available-runs
+- name: get_search_ai_citations
+  module: Search AI
+  description: URLs cited by AI engines (ChatGPT, Gemini, Perplexity)
+  docs: https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-citations
+- name: get_search_ai_businesses
+  module: Search AI
+  description: Businesses surfaced by AI engines for your prompts
+  docs: https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-businesses
+- name: get_search_ai_accuracy_report
+  module: Search AI
+  description: NAP accuracy as reported by AI engines
+  docs: https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-accuracy-report
+- name: get_search_ai_sentiment_report
+  module: Search AI
+  description: SWOT analysis from AI engine sentiment
+  docs: https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-sentiment-report
+- name: get_social_open_url_performance_report
+  module: Social
+  description: Channel-level social performance with comparison
+  docs: https://docs.birdeye.com/mcp/tools/social/get-social-open-url-performance-report
+- name: get_all_ticket_data
+  module: Ticketing
+  description: Tickets with full filtering and pagination
+  docs: https://docs.birdeye.com/mcp/tools/ticketing/get-all-ticket-data
+- name: get_all_aggregation_sources
+  module: Aggregation
+  description: Review monitoring URLs configured for the business
+  docs: https://docs.birdeye.com/mcp/tools/aggregation/get-all-aggregation-sources
+- name: retrieve_competitor_reviews
+  module: Competitor AI
+  description: Paginated individual reviews for competitor locations
+  docs: https://docs.birdeye.com/mcp/tools/competitor-ai/retrieve-competitor-reviews
+- name: retrieve_competitor_review_metrics
+  module: Competitor AI
+  description: Aggregated average rating and review count per competitor
+  docs: https://docs.birdeye.com/mcp/tools/competitor-ai/retrieve-competitor-review-metrics
+- name: get_insight_experience_score_benchmark
+  module: Insight AI
+  description: Experience scores vs industry benchmarks
+  docs: https://docs.birdeye.com/mcp/tools/insight-ai/get-insight-experience-score-benchmark
+- name: get_insight_experience_location_info
+  module: Insight AI
+  description: Location-level scores with period-over-period deltas
+  docs: https://docs.birdeye.com/mcp/tools/insight-ai/get-insight-experience-location-info
+x-evidence:
+- url: https://mcp.birdeye.com/mcp
+  method: POST
+  body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+  http_status: 401
+  www_authenticate: Bearer error="invalid_token"
+  fetched: '2026-08-13'
+- url: https://mcp.birdeye.com/.well-known/oauth-authorization-server
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://mcp.birdeye.com/.well-known/oauth-protected-resource/mcp
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://docs.birdeye.com/mcp/quickstart.md
+  http_status: 200
+  fetched: '2026-08-13'

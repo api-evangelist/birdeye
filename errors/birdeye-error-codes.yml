@@ -1,0 +1,854 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/birdeye-openapi-original.yml (https://docs.birdeye.com/api/openapi.yaml)
+docs: https://docs.birdeye.com/api/error-response
+format: vendor-code-envelope
+rfc9457: false
+envelope:
+  shape: '{ "code": <int>, "message": "<string>" }'
+  fields:
+  - code
+  - message
+  note: Birdeye returns a numeric business error code and a human-readable message. It is NOT RFC 9457
+    application/problem+json — there is no type URI, title, status or instance member.
+transport:
+  documented_http_codes:
+  - 200
+  - 202
+  - 400
+  - 404
+  - 429
+  - 500
+  spec_response_codes:
+    '200': 162
+    '400': 84
+    '401': 158
+    '404': 114
+    '429': 154
+    '403': 2
+    '406': 1
+    '409': 1
+    '500': 1
+  note: The provider-published OpenAPI (docs.birdeye.com/api/openapi.yaml) DOES carry per-operation 4xx
+    responses — 401 on 158 of 166 operations, 429 on 154, 404 on 114, 400 on 84 — each with a {code,message}
+    example. The refined per-tag specs already in openapi/ were split from an earlier, thinner harvest
+    that kept only the 200 response, so they understate error coverage. Re-refining from openapi/_original/birdeye-openapi-original.yml
+    would carry the 4xx responses through.
+  unauthenticated_response:
+    http_status: 401
+    body: '{"code":4011,"message":"User is not authorized to perform this action."}'
+    observed_at: https://api.birdeye.com/
+    fetched: '2026-08-13'
+  canonical_mappings:
+    '401': code 1161 Invalid API key / code 1167 API key is missing
+    '404': code 1011 Business id is invalid
+    '429': code 89 Rate limit exceeded
+families:
+  authentication-authorization: 8
+  integration-downstream: 13
+  rate-limit: 2
+  validation-account: 60
+  validation-address: 2
+  validation-business-ids: 2
+  validation-custom-fields-contact: 12
+  validation-date: 3
+  validation-generic: 1
+  validation-listing-business: 71
+  validation-review-survey: 21
+  validation-survey: 60
+code_count: 255
+codes:
+- code: 89
+  family: rate-limit
+  message: Rate limit exceeded
+- code: 400
+  family: validation-generic
+  message: Category Id not found
+  also_seen:
+  - Category can not be empty
+  - Country code not found
+  - Invalid Source Name
+  - Invalid country code
+  - Invalid media id
+  - Page size must not be less than one!
+  - Source name not found
+  - mediaIds can not be empty
+- code: 1001
+  family: validation-account
+  message: Name of the contact is too long.
+- code: 1005
+  family: validation-account
+  message: Subscription Not found for Particular Id
+- code: 1010
+  family: validation-account
+  message: No user found with the given id
+- code: 1011
+  family: validation-account
+  message: Business id is invalid
+  also_seen:
+  - 'Unsupported media type for URL: https://example.com/video.mp4.. Only image and video URLs are supported.'
+  - media_urls cannot be empty
+  - media_urls cannot exceed 50 items
+- code: 1013
+  family: validation-account
+  message: Unknown user role
+- code: 1014
+  family: validation-account
+  message: User role cannot be blank
+- code: 1021
+  family: validation-account
+  message: Invalid Phone Number.
+- code: 1023
+  family: validation-account
+  message: No email addresses specified
+- code: 1025
+  family: validation-account
+  message: Invalid business type
+- code: 1027
+  family: validation-account
+  message: Invalid business number.
+- code: 1029
+  family: validation-account
+  message: Aggregation source not found
+- code: 1030
+  family: validation-account
+  message: URL cannot be blank
+- code: 1031
+  family: validation-account
+  message: Source id cannot be blank
+- code: 1032
+  family: validation-account
+  message: Invalid source id
+- code: 1033
+  family: authentication-authorization
+  message: You are not authorized to perform this action
+- code: 1039
+  family: validation-account
+  message: Invalid business aggregation id
+- code: 1040
+  family: validation-account
+  message: Invalid temmplate id.
+- code: 1042
+  family: validation-account
+  message: Invalid review id
+- code: 1043
+  family: validation-account
+  message: Business should be either SMB or Enterprise sub account
+- code: 1045
+  family: validation-account
+  message: Business name cannot be blank
+- code: 1046
+  family: validation-account
+  message: Business name cannot be more than 250 characters
+- code: 1047
+  family: validation-account
+  message: Business name cannot be less than 3 characters
+- code: 1048
+  family: validation-account
+  message: Business email id cannot be blank.
+- code: 1049
+  family: validation-account
+  message: Business email id is invalid.
+- code: 1050
+  family: validation-account
+  message: Business email id cannot be more than 40 characters.
+- code: 1052
+  family: validation-account
+  message: User email id cannot be blank
+- code: 1053
+  family: validation-account
+  message: User email id is invalid
+- code: 1054
+  family: validation-account
+  message: User email id cannot be more than 40 characters
+- code: 1055
+  family: validation-account
+  message: Not a valid US phone number.
+- code: 1056
+  family: validation-account
+  message: Not a valid US fax number.
+- code: 1057
+  family: validation-account
+  message: First name cannot be more than 50 characters
+- code: 1059
+  family: validation-account
+  message: Last name cannot be more than 50 characters
+- code: 1067
+  family: validation-account
+  message: URL is invalid
+- code: 1069
+  family: validation-account
+  message: Business description cannot be more than 4000 characters.
+- code: 1070
+  family: validation-account
+  message: Business keywords cannot be more than 1000 characters.
+- code: 1075
+  family: validation-account
+  message: Business location zip cannot be more than 6 numbers
+- code: 1081
+  family: validation-account
+  message: Review comment is too long
+- code: 1082
+  family: validation-account
+  message: Review rating is missing
+- code: 1086
+  family: validation-account
+  message: Customer email id cannot be blank.
+- code: 1087
+  family: validation-account
+  message: Customer email id is invalid.
+- code: 1088
+  family: validation-account
+  message: Customer email id cannot be more than 40 characters.
+- code: 1089
+  family: validation-account
+  message: Customer id is invalid.
+- code: 1091
+  family: authentication-authorization
+  message: User id not authorized to view this customer.
+- code: 1093
+  family: validation-account
+  message: HierarchyNode is enabled for this account.
+- code: 1094
+  family: validation-account
+  message: Postal code cannot be blank.
+- code: 1142
+  family: validation-account
+  message: Customer name cannot be blank
+- code: 1150
+  family: validation-account
+  message: Business already associated with this reseller
+- code: 1151
+  family: validation-account
+  message: Business already associated with another reseller
+- code: 1160
+  family: validation-account
+  message: User is already associated with business.
+- code: 1161
+  family: authentication-authorization
+  message: Invalid API key
+- code: 1162
+  family: validation-account
+  message: Either search string or location or both should be specified
+- code: 1163
+  family: validation-account
+  message: Invalid start index value
+- code: 1164
+  family: validation-account
+  message: Invalid result count value
+- code: 1167
+  family: authentication-authorization
+  message: API key is missing
+- code: 1170
+  family: validation-account
+  message: SMS Alert flag is invalid. Valid values are 0 or 1.
+- code: 1174
+  family: validation-account
+  message: Reseller can't be removed as it has child accounts.
+- code: 1175
+  family: validation-account
+  message: No business found with the given id
+- code: 1176
+  family: validation-account
+  message: Business info cannot be blank
+- code: 1177
+  family: authentication-authorization
+  message: User is not authorized to perform any action on any business
+- code: 1184
+  family: validation-account
+  message: Status change is not allowed
+- code: 1186
+  family: validation-account
+  message: Invalid from date. Allowed format is "MM/dd/yyyy".
+- code: 1187
+  family: validation-account
+  message: Invalid to date. Allowed format is "MM/dd/yyyy".
+- code: 1188
+  family: authentication-authorization
+  message: User is not associated with the business.
+- code: 1189
+  family: validation-account
+  message: User with given email id not found.
+- code: 1190
+  family: validation-account
+  message: Invalid category
+- code: 1191
+  family: validation-account
+  message: Invalid status.
+- code: 1215
+  family: validation-review-survey
+  message: Invalid report month.
+- code: 1227
+  family: validation-review-survey
+  message: Invalid updated from date. Allowed format is MM/dd/yyyy
+- code: 1228
+  family: validation-review-survey
+  message: Invalid updated to date. Allowed format is MM/dd/yyyy
+- code: 1242
+  family: validation-review-survey
+  message: Invalid rating value. Allowed value between 0-5.
+- code: 1243
+  family: validation-review-survey
+  message: Invalid rating value. Allowed value between 1-5.
+- code: 1244
+  family: validation-review-survey
+  message: Maximum 5 keywords can be selected for filter.
+- code: 1246
+  family: validation-review-survey
+  message: Customer email or phone number is required.
+- code: 1248
+  family: validation-review-survey
+  message: Allowed limit for featured reviews exceeded.
+- code: 1251
+  family: validation-review-survey
+  message: No review to mark featured/un-featured.
+- code: 1252
+  family: validation-review-survey
+  message: Review does not belong to the business.
+- code: 1265
+  family: validation-review-survey
+  message: Value for showOnFacebook is mandatory.
+- code: 1266
+  family: validation-review-survey
+  message: Value for showOnProfile is mandatory.
+- code: 1267
+  family: validation-review-survey
+  message: Value for showOnWebsite is mandatory.
+- code: 1268
+  family: validation-review-survey
+  message: TabType is mandatory field.
+- code: 1269
+  family: validation-review-survey
+  message: Max length for lable is 30.
+- code: 1270
+  family: validation-review-survey
+  message: Max length for URL is 1000.
+- code: 1315
+  family: validation-review-survey
+  message: Invalid survey.
+- code: 1360
+  family: validation-review-survey
+  message: Hierarchy is not supported for this parent type.
+- code: 1361
+  family: validation-review-survey
+  message: Hierarchy is not supported for this child type.
+- code: 1362
+  family: validation-review-survey
+  message: '{Child type} cannot be added under {Parent type}.'
+- code: 1363
+  family: validation-review-survey
+  message: Invalid parent child mapping.
+- code: 1380
+  family: authentication-authorization
+  message: Api key or session token missing
+- code: 1523
+  family: validation-date
+  message: The correct date format should be mm/dd/yyyy.
+- code: 1524
+  family: validation-date
+  message: Date entered is invalid.
+- code: 1532
+  family: validation-date
+  message: Business id is missing or invalid.
+- code: 1541
+  family: rate-limit
+  message: Rate Limit of API has been exceeded.
+- code: 2003
+  family: validation-survey
+  message: businessNumbers are mandatory
+- code: 2037
+  family: validation-survey
+  message: The survey doesn't belong to the account.
+- code: 2038
+  family: validation-survey
+  message: Invalid value of role, expected editor, viewer or no-access
+- code: 2039
+  family: validation-survey
+  message: User email is missing in user access request!
+- code: 2040
+  family: validation-survey
+  message: Invalid value of progress bar position, expected Bottom or Top
+- code: 2041
+  family: validation-survey
+  message: Can't modify owner or existing owner's access!
+- code: 2042
+  family: validation-survey
+  message: Received no valid inputs in request body!
+- code: 2043
+  family: validation-survey
+  message: Invalid value of showTitle, accepted values are CUSTOM, LOCATION, OFF
+- code: 2044
+  family: validation-survey
+  message: Survey already completed
+- code: 2045
+  family: validation-survey
+  message: Invalid Survey Type
+- code: 2046
+  family: validation-survey
+  message: Min Value is greater then Max Value
+- code: 2047
+  family: validation-survey
+  message: Survey Fields Missing!
+- code: 2048
+  family: validation-survey
+  message: Field Rows Missing
+- code: 2049
+  family: validation-survey
+  message: Interval can only be 30 min or 60 min
+- code: 2050
+  family: validation-survey
+  message: More than one location question cannot be present
+- code: 2051
+  family: validation-survey
+  message: More than one review question cannot be present
+- code: 2052
+  family: validation-survey
+  message: Review question should be present in the last page of the survey as a single question
+- code: 2053
+  family: validation-survey
+  message: Contact Fields are not present
+- code: 2054
+  family: validation-survey
+  message: Min Value out of range
+- code: 2055
+  family: validation-survey
+  message: Max Value out of range
+- code: 2056
+  family: validation-survey
+  message: Min and Max values can only be even numbers when the interval is 60 minutes
+- code: 2057
+  family: validation-survey
+  message: Either one of Min and Max values is missing in datetime type question
+- code: 2058
+  family: validation-survey
+  message: LocationIds are not present
+- code: 2059
+  family: validation-survey
+  message: Invalid type of contact question
+- code: 2060
+  family: validation-survey
+  message: reviewSources are not present for review type question
+- code: 2061
+  family: validation-survey
+  message: Pickone type of survey can only contain pickone type questions
+- code: 2062
+  family: validation-survey
+  message: Traditional type survey cannot contain these type questions
+- code: 2063
+  family: validation-survey
+  message: Pulse(NPS) Survey can only contain radio, text, textarea(paragraph), rating and nps type questions
+- code: 2064
+  family: validation-survey
+  message: First page of the survey must contain atleast one question except review question
+- code: 2065
+  family: validation-survey
+  message: There cannot be more than 3 sourceIds for review question
+- code: 2066
+  family: validation-survey
+  message: BusinessIds passed in the location type question are invalid
+- code: 2067
+  family: validation-survey
+  message: One of the locations passed in the request is not present
+- code: 2068
+  family: validation-survey
+  message: The locationIds are Non-Parseable
+- code: 2069
+  family: validation-survey
+  message: surveyName is Mandatory
+- code: 2070
+  family: validation-survey
+  message: Question Type cannot be blank
+- code: 2071
+  family: validation-survey
+  message: Invalid ownerEmailId
+- code: 2072
+  family: validation-survey
+  message: Choice cannot be a blank string
+- code: 2073
+  family: validation-survey
+  message: Logic type is Invalid!
+- code: 2074
+  family: validation-survey
+  message: Cannot contain a logic
+- code: 2075
+  family: validation-survey
+  message: Error while claiming a provider for Care Dash
+- code: 2076
+  family: validation-survey
+  message: Value of the logic is not present in the choices of Question
+- code: 2077
+  family: validation-survey
+  message: Value of a questionLogic field cannot be blank
+- code: 2078
+  family: validation-survey
+  message: Error while posting a reply to Rent
+- code: 2079
+  family: validation-survey
+  message: Only one Skip logic is allowed for text and textarea type questions
+- code: 2080
+  family: validation-survey
+  message: Display Logic Invalid!
+- code: 2081
+  family: validation-survey
+  message: Skip Logic Invalid!
+- code: 2082
+  family: validation-survey
+  message: The API returned an empty response.
+- code: 2083
+  family: validation-survey
+  message: Source is not integrated with the business
+- code: 2084
+  family: validation-survey
+  message: Opeartor must be present for logics other than the first display logic
+- code: 2085
+  family: validation-survey
+  message: Condition cannot be null!
+- code: 2086
+  family: validation-survey
+  message: Question Number cannot be null
+- code: 2087
+  family: validation-survey
+  message: Duplicate contact sub type question is present
+- code: 2088
+  family: validation-survey
+  message: Review Source already present
+- code: 2090
+  family: validation-survey
+  message: Invalid value of showLogo, accepted values are ON, OFF
+- code: 2091
+  family: validation-survey
+  message: Operator Invalid
+- code: 2092
+  family: validation-survey
+  message: Invalid Logic!
+- code: 2093
+  family: validation-survey
+  message: Survey Field Type passed is unknown
+- code: 2094
+  family: validation-survey
+  message: ReviewSources passed are invalid
+- code: 2095
+  family: validation-survey
+  message: ownerEmailId cannot be null
+- code: 2096
+  family: validation-survey
+  message: Detected conflicting user-access request!
+- code: 2110
+  family: validation-listing-business
+  message: Your review response could not be submitted due to a temporary error on Google. Please try
+    after some time.
+- code: 2111
+  family: validation-listing-business
+  message: Your review response could not be submitted due to a temporary error on Facebook. Please try
+    after some time.
+- code: 2150
+  family: validation-listing-business
+  message: Not a valid reseller/enterprise id.
+- code: 2151
+  family: validation-listing-business
+  message: Not a valid reseller/enterprise id.
+- code: 2152
+  family: validation-listing-business
+  message: Not a valid reseller/enterprise id.
+- code: 2153
+  family: validation-listing-business
+  message: Business name should not have the word Birdeye.
+- code: 2154
+  family: validation-listing-business
+  message: Business is already an active account.
+- code: 2155
+  family: validation-listing-business
+  message: Business is already an in-active account.
+- code: 2156
+  family: validation-listing-business
+  message: Business/Location/Product already exists
+- code: 2157
+  family: validation-listing-business
+  message: Business already associated with another reseller/enterprise.
+- code: 2162
+  family: validation-listing-business
+  message: Reopen date should not be less than current date.
+- code: 2166
+  family: validation-listing-business
+  message: Invalid Business Type
+- code: 2171
+  family: validation-listing-business
+  message: URL is invalid
+- code: 2174
+  family: validation-listing-business
+  message: Unsupported media format
+- code: 2175
+  family: validation-listing-business
+  message: Provided media category is not supported
+- code: 2180
+  family: validation-listing-business
+  message: The recommended Image size for Google media image is 250 pixels wide and 250 pixels tall.
+- code: 2181
+  family: validation-listing-business
+  message: Supported video format is MP4.
+- code: 2222
+  family: validation-listing-business
+  message: Oops! Something is off on our side. We are working on it. Please check later.
+- code: 2270
+  family: validation-listing-business
+  message: Unsupported Media Category for the business
+- code: 2276
+  family: validation-listing-business
+  message: Please add upto 9 GBP additional categories only.
+- code: 2277
+  family: validation-listing-business
+  message: Duplicate GBP categories are not allowed.
+- code: 2278
+  family: validation-listing-business
+  message: Primary GBP category is not allowed in additional GBP categories.
+- code: 2285
+  family: validation-listing-business
+  message: Invalid text message number
+- code: 2286
+  family: validation-listing-business
+  message: Invalid whatsapp business link
+  also_seen:
+  - Zip code is not provided for business
+- code: 2290
+  family: validation-listing-business
+  message: Food Takeout/Food Delivery not supported for gmb primary category
+- code: 2292
+  family: validation-listing-business
+  message: sortby can only be 'total' or 'location'
+- code: 2293
+  family: validation-listing-business
+  message: order can only be 'asc' or 'desc'
+- code: 2296
+  family: validation-listing-business
+  message: Invalid Food Delivery link
+- code: 2297
+  family: validation-listing-business
+  message: Invalid Food Takeout link
+- code: 2347
+  family: validation-listing-business
+  message: Max page size allowed is 1,000
+- code: 2348
+  family: validation-listing-business
+  message: Max window size allowed is 60000 for a filter selection
+- code: 2457
+  family: validation-listing-business
+  message: Invalid sortby value. Allowed values are 'frequency' or 'keyword'
+- code: 2458
+  family: validation-listing-business
+  message: Invalid order value. Allowed values are 'asc' or 'desc'.
+- code: 2461
+  family: validation-listing-business
+  message: No question found with provided request
+- code: 2462
+  family: validation-listing-business
+  message: Owner answer already added please edit answer
+- code: 2466
+  family: validation-listing-business
+  message: Invalid input request
+- code: 2476
+  family: validation-listing-business
+  message: Question Id cannot be blank
+- code: 2477
+  family: validation-listing-business
+  message: Answer Id is required to update existing answer
+- code: 2478
+  family: validation-listing-business
+  message: Question is required
+- code: 2479
+  family: validation-listing-business
+  message: Answer is required
+- code: 2480
+  family: validation-listing-business
+  message: Cannot modify non owner Q&A
+- code: 2481
+  family: validation-listing-business
+  message: Q&A cannot be more than 4096 characters
+- code: 2482
+  family: validation-listing-business
+  message: Question Id is Invalid
+- code: 2483
+  family: validation-listing-business
+  message: Question should have minimum 3 words
+- code: 2484
+  family: validation-listing-business
+  message: Answer Id cannot be blank
+- code: 2485
+  family: validation-listing-business
+  message: Questions should be 10 characters minimum
+- code: 2486
+  family: validation-listing-business
+  message: Business Id missing or invalid
+- code: 2487
+  family: validation-listing-business
+  message: Invalid input request data
+- code: 2488
+  family: validation-listing-business
+  message: Invalid GBP Service name
+- code: 2489
+  family: validation-listing-business
+  message: Invalid GBP Service description
+- code: 2490
+  family: validation-listing-business
+  message: Invalid GBP Service price type
+- code: 2491
+  family: validation-listing-business
+  message: Invalid GBP Service price
+- code: 2492
+  family: validation-listing-business
+  message: Invalid GBP Service currency code
+- code: 2493
+  family: validation-listing-business
+  message: Duplicate Google Service is not allowed
+- code: 2494
+  family: validation-listing-business
+  message: Invalid GBP Service Id
+- code: 2495
+  family: validation-listing-business
+  message: Invalid GBP Service Id
+- code: 2496
+  family: validation-listing-business
+  message: Missing GBP category for given location
+- code: 2503
+  family: validation-listing-business
+  message: Primary category can not be included in additional category.
+- code: 2511
+  family: validation-listing-business
+  message: Cannot update business status when listing is already fixed.
+- code: 2512
+  family: validation-listing-business
+  message: Cannot update opening soon date when listing is already fixed.
+- code: 2513
+  family: validation-listing-business
+  message: Opened On date can not be in future.
+- code: 2514
+  family: validation-listing-business
+  message: Opening Soon date is mandatory when business is marked as Opening soon.
+- code: 2515
+  family: validation-listing-business
+  message: Reopen date is not supported for this date.
+- code: 2516
+  family: validation-listing-business
+  message: Opening Soon Date can not be more than 1 year from now.
+- code: 2517
+  family: validation-listing-business
+  message: Opening Soon date should not be less than current date.
+- code: 2518
+  family: validation-listing-business
+  message: Business Status is mandatory to pass with reopen, opened on and opening soon date.
+- code: 2519
+  family: validation-listing-business
+  message: Third party categories change for opening soon business is not allowed.
+- code: 2520
+  family: validation-listing-business
+  message: Open Date is not supported for this date
+- code: 2561
+  family: validation-listing-business
+  message: Products are not found with given criteria
+- code: 2564
+  family: validation-listing-business
+  message: Product not or Partial found with given productId List
+- code: 2565
+  family: validation-listing-business
+  message: Product request validation failure
+- code: 5008
+  family: validation-custom-fields-contact
+  message: RequestBody not found
+- code: 5022
+  family: validation-custom-fields-contact
+  message: Another custom field with same name already present.
+- code: 5023
+  family: validation-custom-fields-contact
+  message: Custom field request dto cannot be null.
+- code: 5024
+  family: validation-custom-fields-contact
+  message: Custom field creation failed.
+- code: 5025
+  family: validation-custom-fields-contact
+  message: Custom field not found.
+- code: 5026
+  family: validation-custom-fields-contact
+  message: Custom field updation failed.
+- code: 5028
+  family: validation-custom-fields-contact
+  message: Custom field delete failed.
+- code: 5031
+  family: validation-custom-fields-contact
+  message: Method not implemented for unknown custom field type.
+- code: 5039
+  family: validation-custom-fields-contact
+  message: Custom field name cannot be a reserved keyword.
+- code: 5040
+  family: validation-custom-fields-contact
+  message: Max limit reached for custom fields.
+- code: 5043
+  family: validation-custom-fields-contact
+  message: Contact not found for the given request
+- code: 5046
+  family: validation-custom-fields-contact
+  message: The customer is blocked
+- code: 5556
+  family: validation-business-ids
+  message: One or few BusinessIds are Invalid
+- code: 5557
+  family: validation-business-ids
+  message: Requested Business Ids are empty.
+- code: 6000
+  family: validation-address
+  message: The 'sub_locality' field is mandatory for addresses in New Zealand.
+- code: 6001
+  family: validation-address
+  message: The 'sub_locality' field cannot exceed 80 characters.
+- code: 20083
+  family: integration-downstream
+  message: End date can't be before start date
+- code: 20099
+  family: integration-downstream
+  message: Text Communication categorisation is not enabled please use smsOptin flag
+- code: 20706
+  family: integration-downstream
+  message: Error while posting a reply to Care Dash
+- code: 21101
+  family: integration-downstream
+  message: Google page is not integrated. Kindly integrate it first.
+- code: 21103
+  family: integration-downstream
+  message: Your review response could not be submitted due to a temporary error on Google.
+- code: 21104
+  family: integration-downstream
+  message: Sorry, We could not find this review on Google. Please go to your Google Business page and
+    reply to this review. Thank you.
+- code: 21112
+  family: integration-downstream
+  message: Your review response could not be submitted due to a temporary error on Facebook.
+- code: 21113
+  family: integration-downstream
+  message: Facebook page is not integrated. Kindly integrate it first.
+- code: 21114
+  family: integration-downstream
+  message: Sorry, We could not find this review on Facebook. Please go to your Facebook page and reply
+    to this review. Thank you.
+- code: 21120
+  family: integration-downstream
+  message: Invalid contact type provided in the request. Valid contact types are lead or customer
+- code: 21121
+  family: integration-downstream
+  message: Invalid contact source provided in the request.
+- code: 21122
+  family: integration-downstream
+  message: Reseller business is not supported in this request
+- code: 40001
+  family: integration-downstream
+  message: invalid start date (supported format is yyyy-MM-dd)
+- code: 4011
+  family: authentication-authorization
+  message: User is not authorized to perform this action.
+  source: live probe of https://api.birdeye.com/ (HTTP 401), 2026-08-13
+remediation:
+  rate-limit: HTTP 429 or code 89 / 1541. Back off exponentially. The per-key limit is not published;
+    Birdeye tells callers to ask support for their current limit.
+  authentication-authorization: Codes 1161 (invalid API key), 1167 (API key missing), 1380 (api key or
+    session token missing), 4011 (not authorized). Send a valid x-api-key header from a backend service,
+    never from a browser.
+  integration-downstream: 20xxx/21xxx codes are failures at a connected third party (Google, Facebook,
+    Care Dash, Rent). Retry later or reconnect the integration; they are not caller input errors.
+  validation-generic: Code 400 is reused for many distinct input problems; read the message.

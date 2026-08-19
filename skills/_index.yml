@@ -1,0 +1,31 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.birdeye.com/.well-known/agent-skills/index.json
+note: >-
+  Birdeye publishes its own Agent Skill and a discovery index at
+  /.well-known/agent-skills/. The skill file is saved verbatim — API Evangelist did not
+  author it.
+discovery:
+  index: https://docs.birdeye.com/.well-known/agent-skills/index.json
+  schema: https://schemas.agentskills.io/discovery/0.2.0/schema.json
+  local_copy: well-known/birdeye-agent-skills-index.json
+skills:
+- file: birdeye-birdeye-skill.md
+  name: Birdeye
+  id: birdeye
+  type: skill-md
+  method: searched
+  source: https://docs.birdeye.com/.well-known/agent-skills/birdeye/skill.md
+  digest: sha256:974d2602598a862ac83b9d2540af5a9c6c354492f0fe70bf2237f24760a05894
+  description: >-
+    Use when building integrations with Birdeye's reputation management platform,
+    querying review data, managing business listings, analyzing customer feedback,
+    scheduling social posts, or connecting AI assistants to Birdeye account data via MCP.
+  api: openapi/_original/birdeye-openapi-original.yml
+  mcp: mcp/birdeye-mcp.yml
+  covers:
+  - REST authentication (x-api-key) and MCP OAuth 2.0
+  - HTTP status codes and the {code, message} error envelope
+  - sindex/count pagination and the 100,000-record deep-pagination ceiling
+  - the MCP tool catalogue by category
+  referenced_by: a2a/birdeye-agent-card.json

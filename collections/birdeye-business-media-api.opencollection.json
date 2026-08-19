@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Business Media API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/business/:businessNumber/upload/media",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Location Number, in case of SMB it will be Business Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Media"
+        },
+        {
+          "info": {
+            "name": "Get Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/:businessNumber/media/get",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Location Number, in case of SMB it will be Business Number."
+              }
+            ]
+          },
+          "docs": "Get Media"
+        },
+        {
+          "info": {
+            "name": "Update Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/business/:businessNumber/update/media/:mediaId",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Location Number, in case of SMB it will be Business Number."
+              },
+              {
+                "name": "mediaId",
+                "value": "62185029212",
+                "type": "path",
+                "description": "Id of the media item."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Media"
+        },
+        {
+          "info": {
+            "name": "Delete Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.birdeye.com/v1/business/:businessNumber/media/delete",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Location Number, in case of SMB it will be Business Number."
+              }
+            ]
+          },
+          "docs": "Delete Media"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

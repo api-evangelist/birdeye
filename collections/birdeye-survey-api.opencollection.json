@@ -1,0 +1,234 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Survey API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Survey",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/survey/:survey_id",
+            "params": [
+              {
+                "name": "survey_id",
+                "value": "123",
+                "type": "path",
+                "description": "Id of the Survey."
+              },
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              },
+              {
+                "name": "lang",
+                "value": "english",
+                "type": "query",
+                "description": "The survey locale, default is english"
+              }
+            ]
+          },
+          "docs": "Get Survey"
+        },
+        {
+          "info": {
+            "name": "Post a survey response",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/survey/:survey_id/submit",
+            "params": [
+              {
+                "name": "survey_id",
+                "value": "123",
+                "type": "path",
+                "description": "Id of the Survey."
+              },
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Post a survey response"
+        },
+        {
+          "info": {
+            "name": "List Responses for a Survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/survey/ext/list/responses/:survey_id",
+            "params": [
+              {
+                "name": "survey_id",
+                "value": "123",
+                "type": "path",
+                "description": "Id of the Survey."
+              },
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "query",
+                "description": "The Business Number of Enterprise"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "The page number, starts with 0."
+              },
+              {
+                "name": "size",
+                "value": "30",
+                "type": "query",
+                "description": "The size of the page."
+              },
+              {
+                "name": "sortby",
+                "value": "date",
+                "type": "query",
+                "description": "The sort by parameter."
+              },
+              {
+                "name": "sorder",
+                "value": "asc",
+                "type": "query",
+                "description": "The sort order parameter."
+              },
+              {
+                "name": "includeTicketId",
+                "value": "false",
+                "type": "query",
+                "description": "The field to fetch ticketIds associated with the response."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "List Responses for a Survey"
+        },
+        {
+          "info": {
+            "name": "Get All Surveys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/survey/business/:business_id/all",
+            "params": [
+              {
+                "name": "sortby",
+                "value": "modified",
+                "type": "query",
+                "description": "Sort results by lastModified[modified], Created[created], Response Count[response]."
+              },
+              {
+                "name": "sorder",
+                "value": "0",
+                "type": "query",
+                "description": "Sort order ascending (0) and descending (1)."
+              },
+              {
+                "name": "searchStr",
+                "value": "abc",
+                "type": "query",
+                "description": "Search survey by name or business location."
+              },
+              {
+                "name": "business_id",
+                "value": "12345678",
+                "type": "path",
+                "description": "Business ID."
+              }
+            ]
+          },
+          "docs": "Get All Surveys"
+        },
+        {
+          "info": {
+            "name": "Create Survey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/survey/external/create/:businessId",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Survey"
+        },
+        {
+          "info": {
+            "name": "Update Survey Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/survey/:surveyId/settings/update",
+            "params": [
+              {
+                "name": "surveyId",
+                "value": "123",
+                "type": "path",
+                "description": "Survey ID"
+              },
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Survey Settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

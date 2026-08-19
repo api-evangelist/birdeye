@@ -1,0 +1,115 @@
+generated: '2026-08-13'
+method: searched
+source: live probes of every Birdeye host in apis.yml + OpenAPI servers[]
+summary:
+  hosts_probed: 5
+  documents_found: 3
+  note: >-
+    Real documents exist only on the MCP host (mcp.birdeye.com) and the documentation
+    host (docs.birdeye.com). The API host api.birdeye.com returns HTTP 401
+    {"code":4011,...} for every path including /.well-known/*, and
+    developers.birdeye.com is a Next.js single-page app that answers HTTP 200 with an
+    HTML shell for every /.well-known/* path — a soft-200, recorded as a miss, not a
+    document.
+hosts:
+- host: https://mcp.birdeye.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: birdeye-oauth-authorization-server.json
+    spec: RFC 8414
+  - path: /.well-known/oauth-protected-resource/mcp
+    status: 200
+    file: birdeye-oauth-protected-resource.json
+    spec: RFC 9728
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://docs.birdeye.com
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: ../a2a/birdeye-agent-card.json
+    spec: A2A 1.0.0 AgentCard
+  - path: /.well-known/agent-skills/index.json
+    status: 200
+    file: birdeye-agent-skills-index.json
+    spec: agentskills.io discovery 0.2.0
+  - path: /.well-known/agent-skills/birdeye/skill.md
+    status: 200
+    file: ../skills/birdeye-birdeye-skill.md
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://api.birdeye.com
+  note: Every path returns HTTP 401 {"code":4011,"message":"User is not authorized to perform this action."}
+  documents:
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/openid-configuration
+    status: 401
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/oauth-protected-resource
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+  - path: /.well-known/agent-card.json
+    status: 401
+  - path: /.well-known/agent.json
+    status: 401
+- host: https://birdeye.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://developers.birdeye.com
+  note: >-
+    SPA catch-all — every probed /.well-known/* path returned HTTP 200 with an HTML
+    document (<!DOCTYPE html>...). Treated as a miss on every path; no document saved.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    body: html-shell
+    counted: false
+  - path: /.well-known/agent-card.json
+    status: 200
+    body: html-shell
+    counted: false
+  - path: /.well-known/agent.json
+    status: 200
+    body: html-shell
+    counted: false
+security_txt:
+  served: false
+  note: >-
+    No RFC 9116 security.txt on any host. Birdeye does publish a security contact and a
+    vulnerability report path on https://birdeye.com/security/ (security@birdeye.com) —
+    see security/birdeye-vulnerability-disclosure.yml.

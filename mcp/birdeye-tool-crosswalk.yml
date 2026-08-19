@@ -1,0 +1,228 @@
+generated: '2026-08-13'
+method: derived
+source: mcp/birdeye-mcp.yml + openapi/*.yml
+note: >-
+  Live tools/list on https://mcp.birdeye.com/mcp is OAuth-gated (HTTP 401,
+  WWW-Authenticate: Bearer error="invalid_token"), so the tools were taken from the
+  published Tools Overview at https://docs.birdeye.com/mcp/tools/overview and bound to
+  REST operations by name and documented semantics. Confidence is recorded honestly per
+  row; the real inputSchema for each tool is the bound operation's parameters +
+  requestBody in the referenced spec, but only an authenticated introspection can
+  confirm the tool's own schema.
+surfaces:
+  openapi:
+    files: openapi/*.yml
+    published_source: https://docs.birdeye.com/api/openapi.yaml
+    harvested_copy: openapi/_original/birdeye-openapi-original.yml
+    base_url: https://api.birdeye.com
+    auth: apiKey header x-api-key
+    operations: 166
+    gated: false
+  mcp:
+    url: https://mcp.birdeye.com/mcp
+    transport: streamable-http
+    auth: OAuth 2.0 + Dynamic Client Registration
+    tools_list_gated: true
+    tools_documented: 25
+  graphql:
+    present: false
+crosswalk:
+- tool: review_and_rating_overview
+  category: Reviews
+  rest: [review-and-rating-over-time-report]
+  spec: openapi/birdeye-report-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_reviews
+  category: Reviews
+  rest: [get-reviews]
+  spec: openapi/birdeye-reviews-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_review_summary
+  category: Reviews
+  rest: [get-reviews-summary]
+  spec: openapi/birdeye-reviews-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_business_info
+  category: Business
+  rest: [get-business]
+  spec: openapi/birdeye-business-api-openapi.yml
+  binding: rest
+  confidence: high
+  note: >-
+    The tool resolves the business from the OAuth account context rather than taking a
+    business_id path parameter, so its inputSchema is narrower than the REST operation.
+- tool: get_child_locations
+  category: Business
+  rest: [get-child-businesses]
+  spec: openapi/birdeye-business-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_all_surveys
+  category: Surveys
+  rest: [get-all-surveys]
+  spec: openapi/birdeye-survey-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_survey_responses
+  category: Surveys
+  rest: [list-responses-for-a-survey]
+  spec: openapi/birdeye-survey-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_listing
+  category: Listings
+  rest: [get-listing]
+  spec: openapi/birdeye-listing-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_listing_location_status_report
+  category: Listings
+  rest: [get-location-status-report]
+  spec: openapi/birdeye-listing-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_listing_insights
+  category: Listings
+  rest: [listings-insights, listings-insights-datapoints]
+  spec: openapi/birdeye-listing-api-openapi.yml
+  binding: rest
+  confidence: medium
+  note: Fans out — the docs describe both the insights rollup and its datapoint series.
+- tool: get_listing_category_list
+  category: Listings
+  rest: [get-category-list]
+  spec: openapi/birdeye-listing-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_product_listing_list
+  category: Listings
+  rest: [get-list-product-listing]
+  spec: openapi/birdeye-gmb-products-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_search_ai_configuration
+  category: Search AI
+  rest: [get-search-ai-configuration]
+  spec: openapi/birdeye-search-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_search_ai_available_runs
+  category: Search AI
+  rest: [get-search-ai-available-runs]
+  spec: openapi/birdeye-search-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_search_ai_citations
+  category: Search AI
+  rest: [get-search-ai-citations]
+  spec: openapi/birdeye-search-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_search_ai_businesses
+  category: Search AI
+  rest: [get-search-ai-businesses]
+  spec: openapi/birdeye-search-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_search_ai_accuracy_report
+  category: Search AI
+  rest: [get-accuracy-report]
+  spec: openapi/birdeye-search-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_search_ai_sentiment_report
+  category: Search AI
+  rest: [get-sentiment-report]
+  spec: openapi/birdeye-search-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_social_open_url_performance_report
+  category: Social
+  rest: [social-open-url-performance-report]
+  spec: openapi/birdeye-social-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_all_ticket_data
+  category: Ticketing
+  rest: [get-all-ticket-data]
+  spec: openapi/birdeye-ticketing-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_all_aggregation_sources
+  category: Aggregation
+  rest: [get-all-aggregation-source]
+  spec: openapi/birdeye-aggregation-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: retrieve_competitor_reviews
+  category: Competitor AI
+  rest: [retrieve-competitor-reviews]
+  spec: openapi/birdeye-competitor-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: retrieve_competitor_review_metrics
+  category: Competitor AI
+  rest: [retrieve-competitor-review-metrics]
+  spec: openapi/birdeye-competitor-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_insight_experience_score_benchmark
+  category: Insight AI
+  rest: [get-insight-experience-score-benchmark]
+  spec: openapi/birdeye-insight-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+- tool: get_insight_experience_location_info
+  category: Insight AI
+  rest: [get-insight-experience-location-info]
+  spec: openapi/birdeye-insight-ai-api-openapi.yml
+  binding: rest
+  confidence: high
+mcp_only: []
+mcp_unenumerated:
+  count: 6
+  reason: >-
+    docs.birdeye.com/mcp/introduction claims 31 tools and the launch blog claims 30;
+    the Tools Overview table enumerates 25. The remaining tools are not named anywhere
+    public, and tools/list is OAuth-gated, so they are recorded as unknown rather than
+    guessed.
+rest_only:
+- capability: Write operations across every module
+  reason: >-
+    The Birdeye MCP server is documented as read-only — "No write access to your Birdeye
+    account is requested or granted." Every REST create/update/delete operation is
+    therefore REST-only by design, not by omission.
+  examples: [create-a-business, update-business, delete-business, post-review-reply,
+    create-tags, delete-a-tag, create-or-update-contact, delete-contact, create-listing,
+    update-listing, deactivate-listing, create-survey, update-survey-settings,
+    schedule-social-post, edit-scheduled-social-post, delete-public-social-post,
+    create-ticket, update-ticket, add-ticket-comments, create-webhook-subscription,
+    create-subscription, unsubscribe-subscription, create-question, create-answer,
+    create-service, create-product-listing, add-media, delete-media, create-user,
+    delete-a-user, add-aggregation-url, delete-aggregation-url]
+- capability: Reporting beyond the review/rating overview
+  reason: No MCP tool is documented for the wider Report module.
+  examples: [get-dashboard-data, get-review-conversion-report, reviews-rating-by-location-report,
+    review-count-rating, review-count-rating-by-employee, nps-over-time-report,
+    nps-by-location-report, review-by-source-report, visitor-report, usage-report,
+    review-response-rate-over-time, average-response-time-by-location]
+- capability: Competitor (non-AI) module
+  reason: Only the Competitor AI tools are exposed; the classic Competitor module is REST-only.
+  examples: [get-competitor-business, get-business-competitors, get-competitor-reviews,
+    get-score, get-theme-statistics, get-keyword-statistics]
+- capability: Contact / Contact V2, Conversation, Custom Fields, Employee, FAQ,
+    Google Q&A, Google Services, Campaign, Business Media, Integration, Webhook
+  reason: No MCP tools documented for these modules.
+coverage:
+  tools_documented: 25
+  tools_bound_to_rest: 25
+  tools_unbound: 0
+  mcp_only: 0
+  rest_operations_total: 166
+  rest_operations_with_a_tool: 26
+  rest_read_only_share: >-
+    All 25 documented tools map to read operations; the MCP surface is a read-only
+    projection of roughly 16% of the REST contract.

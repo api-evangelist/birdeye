@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation FAQ API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "FAQ",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All QnA",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/quero/external/get-all-qna",
+            "params": [
+              {
+                "name": "sIndex",
+                "value": "0",
+                "type": "query",
+                "description": "The starting index for the records to fetch. Default is 0 if not specified."
+              },
+              {
+                "name": "count",
+                "value": "25",
+                "type": "query",
+                "description": "The number of QnA records to return.Default is 25 if not specified."
+              },
+              {
+                "name": "order",
+                "value": "1",
+                "type": "query",
+                "description": "The ordering in which records should be returned by last updated date (0 for ascending, 1 for descending).Default is 1 if not specified."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get All QnA"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

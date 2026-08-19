@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Aggregation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all aggregation source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/aggregation/business/:businessId",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Business."
+              }
+            ]
+          },
+          "docs": "Get all aggregation source"
+        },
+        {
+          "info": {
+            "name": "Get all aggregation source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/survey/reviewsites-alias",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ]
+          },
+          "docs": "Get all aggregation source"
+        },
+        {
+          "info": {
+            "name": "Add aggregation URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/aggregation/business/:business_id",
+            "params": [
+              {
+                "name": "business_id",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add aggregation URL"
+        },
+        {
+          "info": {
+            "name": "Delete aggregation URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.birdeye.com/v1/aggregation/business/:businessID/aggregation/:aggregationID",
+            "params": [
+              {
+                "name": "businessID",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the business."
+              },
+              {
+                "name": "aggregationID",
+                "value": "abcdefgh",
+                "type": "path",
+                "description": "Id of the aggregation to be deleted."
+              }
+            ]
+          },
+          "docs": "Delete aggregation URL"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

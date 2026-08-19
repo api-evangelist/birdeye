@@ -1,0 +1,351 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Business API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a business",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/signup/reseller/subaccount",
+            "params": [
+              {
+                "name": "rid",
+                "value": "12334667201",
+                "type": "query",
+                "description": "Id of the Reseller."
+              },
+              {
+                "name": "email_id",
+                "value": "sample@birdeye.com",
+                "type": "query",
+                "description": "Business Email id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a business"
+        },
+        {
+          "info": {
+            "name": "Search Business",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/business/:businessNumber/search",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Long id of the business, under which user wants to search for."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Business"
+        },
+        {
+          "info": {
+            "name": "Get Business",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/:business_id",
+            "params": [
+              {
+                "name": "business_id",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Business."
+              }
+            ]
+          },
+          "docs": "Get Business"
+        },
+        {
+          "info": {
+            "name": "Update Business",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/business/:businessId",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "path",
+                "description": "The Business Number"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Business"
+        },
+        {
+          "info": {
+            "name": "Delete Business",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.birdeye.com/v1/business/:business_Id",
+            "params": [
+              {
+                "name": "business_Id",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Business."
+              }
+            ]
+          },
+          "docs": "Delete Business"
+        },
+        {
+          "info": {
+            "name": "Update the status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/business/:business_id/status",
+            "params": [
+              {
+                "name": "business_id",
+                "value": "12345678",
+                "type": "path",
+                "description": "Business id whose status has to be changed. Returned by create business API"
+              },
+              {
+                "name": "astatus",
+                "value": "inactive",
+                "type": "query",
+                "description": "New status for the business. Valid values are &quot;active/inactive&quot;."
+              }
+            ]
+          },
+          "docs": "Update the status"
+        },
+        {
+          "info": {
+            "name": "Get Child Businesses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/child/all",
+            "params": [
+              {
+                "name": "pid",
+                "value": "12345678",
+                "type": "query",
+                "description": "Reseller/Sub-reseller/Enterprise Id."
+              }
+            ]
+          },
+          "docs": "Get Child Businesses"
+        },
+        {
+          "info": {
+            "name": "Update public profile of Businesses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/business/tabs",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update public profile of Businesses"
+        },
+        {
+          "info": {
+            "name": "Get hierarchy for an enterprise",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/:businessId/hierarchy",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Business."
+              }
+            ]
+          },
+          "docs": "Get hierarchy for an enterprise"
+        },
+        {
+          "info": {
+            "name": "Update Hierarchy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/business/business-hierarchy/location/update-mapping/:businessId",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Hierarchy"
+        },
+        {
+          "info": {
+            "name": "Get Custom card details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/:businessNumber/profile/customcard",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "",
+                "type": "path",
+                "description": "Id of a business (Long)."
+              }
+            ]
+          },
+          "docs": "Get Custom card details"
+        },
+        {
+          "info": {
+            "name": "Update Custom card",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/business/public/card/:cardId",
+            "params": [
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path",
+                "description": "Id of the custom card to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Custom card"
+        },
+        {
+          "info": {
+            "name": "Delete Custom card",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.birdeye.com/v1/business/public/card/:cardId",
+            "params": [
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path",
+                "description": "Id of the custom card to delete."
+              }
+            ]
+          },
+          "docs": "Delete Custom card"
+        },
+        {
+          "info": {
+            "name": "Get Timezone List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/:businessNumber/timezones",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "",
+                "type": "path",
+                "description": "Id of a business (Long)."
+              }
+            ]
+          },
+          "docs": "Get Timezone List"
+        },
+        {
+          "info": {
+            "name": "Get Birdeye Impressions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/business/:businessNumber/birdeye/impressions",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Account Business Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Birdeye Impressions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

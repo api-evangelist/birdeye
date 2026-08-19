@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Google Services API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Google Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/google-services/service/create",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "169744180007807",
+                "type": "query",
+                "description": "Id of the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Service"
+        },
+        {
+          "info": {
+            "name": "Get All Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/google-services/services",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "169744180007807",
+                "type": "query",
+                "description": "Id of the account"
+              },
+              {
+                "name": "startIndex",
+                "value": "0",
+                "type": "query",
+                "description": "start index; default 0"
+              },
+              {
+                "name": "pageSize",
+                "value": "25",
+                "type": "query",
+                "description": "page size; default 25"
+              },
+              {
+                "name": "sortBy",
+                "value": "updated",
+                "type": "query",
+                "description": "&quot;updated&quot;, &quot;name&quot; or &quot;price&quot;; default : updated"
+              },
+              {
+                "name": "sortOrder",
+                "value": "desc",
+                "type": "query",
+                "description": "&quot;asc&quot; or &quot;desc&quot;; default: desc"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get All Services"
+        },
+        {
+          "info": {
+            "name": "Update Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/google-services/service/update",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "169744180007807",
+                "type": "query",
+                "description": "Id of the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Service"
+        },
+        {
+          "info": {
+            "name": "Delete Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/google-services/service/delete",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "169744180007807",
+                "type": "query",
+                "description": "Id of the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Services"
+        },
+        {
+          "info": {
+            "name": "Get Location Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/google-services/service/location-mapping",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "169744180007807",
+                "type": "query",
+                "description": "Id of the business"
+              }
+            ]
+          },
+          "docs": "Get Location Mapping"
+        },
+        {
+          "info": {
+            "name": "Update Location Mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/google-services/services/location-mapping",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "169744180007807",
+                "type": "query",
+                "description": "Id of the business"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Note\n\nAny change will impact the service mapped to all the locations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

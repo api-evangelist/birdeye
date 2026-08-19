@@ -1,0 +1,229 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Google Q&A API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Google Q&A",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Question",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/qna/question/create",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Question"
+        },
+        {
+          "info": {
+            "name": "Create Answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/qna/answer/create",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Answer"
+        },
+        {
+          "info": {
+            "name": "Update Question",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/qna/question/update",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Question"
+        },
+        {
+          "info": {
+            "name": "Update Answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/qna/answer/update",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Answer"
+        },
+        {
+          "info": {
+            "name": "Delete Question",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/qna/question/delete",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Question"
+        },
+        {
+          "info": {
+            "name": "Delete Answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/qna/answer/delete",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Answer"
+        },
+        {
+          "info": {
+            "name": "Delete All Questions and Answers",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.birdeye.com/v1/qna/question/deleteAll",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ]
+          },
+          "docs": "Delete All Questions and Answers"
+        },
+        {
+          "info": {
+            "name": "Get All Questions and Answers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/qna/get",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get All Questions and Answers"
+        },
+        {
+          "info": {
+            "name": "Get All Unanswered Questions and Answers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/qna/unanswered/get",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get All Unanswered Questions and Answers"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

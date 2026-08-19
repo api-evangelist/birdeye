@@ -1,0 +1,495 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Report API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Report",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Dashboard data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/reports/smb",
+            "params": [
+              {
+                "name": "bid",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ]
+          },
+          "docs": "Get Dashboard data"
+        },
+        {
+          "info": {
+            "name": "Get Review conversion report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/reports/business/analytics/email",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              },
+              {
+                "name": "fromDate",
+                "value": "01/13/2021",
+                "type": "query",
+                "description": "Date from result is expected. Format MM/DD/YYYY."
+              },
+              {
+                "name": "toDate",
+                "value": "01/21/2021",
+                "type": "query",
+                "description": "Date up to result is expected. Format MM/DD/YYYY."
+              },
+              {
+                "name": "days",
+                "value": "120",
+                "type": "query",
+                "description": "Use to get results for last some days."
+              },
+              {
+                "name": "months",
+                "value": "2",
+                "type": "query",
+                "description": "Use to get results for last some months."
+              }
+            ]
+          },
+          "docs": "Get Review conversion report"
+        },
+        {
+          "info": {
+            "name": "Review and rating over time Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/reports/review/analytic/time",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              },
+              {
+                "name": "sortby",
+                "value": "rating",
+                "type": "query",
+                "description": "Values can be 'count' or 'rating'."
+              },
+              {
+                "name": "sorder",
+                "value": "0",
+                "type": "query",
+                "description": "'0' for ascending and '1' for descending order."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Review and rating over time Report"
+        },
+        {
+          "info": {
+            "name": "Reviews & Rating By Location Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/reports/rating/location",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              },
+              {
+                "name": "sortby",
+                "value": "rating",
+                "type": "query",
+                "description": "Values can be 'count' or 'rating'."
+              },
+              {
+                "name": "sorder",
+                "value": "0",
+                "type": "query",
+                "description": "'0' for ascending and '1' for descending order."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reviews & Rating By Location Report"
+        },
+        {
+          "info": {
+            "name": "Review Count & Rating",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/review/report/count-by-rating/:BusinessId",
+            "params": [
+              {
+                "name": "BusinessId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Review Count & Rating"
+        },
+        {
+          "info": {
+            "name": "Review Count & Rating By Employee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/review/report/count-by-rating/employee/:BusinessId",
+            "params": [
+              {
+                "name": "BusinessId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Review Count & Rating By Employee"
+        },
+        {
+          "info": {
+            "name": "Insights Category Report by location report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/keywords/opmetric/location",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insights Category Report by location report"
+        },
+        {
+          "info": {
+            "name": "Competitive Ranking Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v2/competitive/ranking",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Competitive Ranking Report"
+        },
+        {
+          "info": {
+            "name": "NPS Over time Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/reports/nps/time/elst",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "NPS Over time Report"
+        },
+        {
+          "info": {
+            "name": "NPS By Location Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/reports/nps/location/elst",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "NPS By Location Report"
+        },
+        {
+          "info": {
+            "name": "Review By Source Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/reports/count/reviewsite",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Review By Source Report"
+        },
+        {
+          "info": {
+            "name": "Visitor report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/reports/count/visitors",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Visitor report"
+        },
+        {
+          "info": {
+            "name": "Usage report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/reports/usage",
+            "params": [
+              {
+                "name": "business_id",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              },
+              {
+                "name": "reportType",
+                "value": "rating",
+                "type": "query",
+                "description": "The type of Report - Summary or Tabular."
+              },
+              {
+                "name": "sindex",
+                "value": "0",
+                "type": "query",
+                "description": "The starting index of the reviews"
+              },
+              {
+                "name": "count",
+                "value": "100",
+                "type": "query",
+                "description": "The number of reviews to query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Usage report"
+        },
+        {
+          "info": {
+            "name": "Review Response Rate Over Time",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/review/report/response-rate/time/rate-over-time",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Review Response Rate Over Time"
+        },
+        {
+          "info": {
+            "name": "Review Response Rate By Location Overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/review/report/response-rate/by-location/overview",
+            "params": [
+              {
+                "name": "order",
+                "value": "1",
+                "type": "query",
+                "description": "Sort order. 1 for descending, 0 for ascending."
+              },
+              {
+                "name": "sortBy",
+                "value": "rate",
+                "type": "query",
+                "description": "Field used for sorting, for example rate."
+              },
+              {
+                "name": "startIndex",
+                "value": "0",
+                "type": "query",
+                "description": "Starting index for pagination."
+              },
+              {
+                "name": "size",
+                "value": "100",
+                "type": "query",
+                "description": "Number of records to return."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Review Response Rate By Location Overview"
+        },
+        {
+          "info": {
+            "name": "Average Response Time By Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/review/report/avg-response-time/by-location",
+            "params": [
+              {
+                "name": "order",
+                "value": "1",
+                "type": "query",
+                "description": "Sort order. 1 for descending, 0 for ascending."
+              },
+              {
+                "name": "sortBy",
+                "value": "avg",
+                "type": "query",
+                "description": "resp-time (string, optional) - Field used for sorting."
+              },
+              {
+                "name": "startIndex",
+                "value": "0",
+                "type": "query",
+                "description": "Starting index for pagination."
+              },
+              {
+                "name": "size",
+                "value": "100",
+                "type": "query",
+                "description": "Number of records to return."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Average Response Time By Location"
+        },
+        {
+          "info": {
+            "name": "Average Response Time Over Time",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/review/report/avg-response-time/time",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Average Response Time Over Time"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

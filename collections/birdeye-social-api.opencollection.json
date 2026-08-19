@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Social API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Social",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Schedule Social Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/social/:accountNumber/schedule",
+            "params": [
+              {
+                "name": "accountNumber",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedule Social Post"
+        },
+        {
+          "info": {
+            "name": "Edit Scheduled Social Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/social/post/public/scheduled/edit/:accountNumber",
+            "params": [
+              {
+                "name": "accountNumber",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit Scheduled Social Post"
+        },
+        {
+          "info": {
+            "name": "Edit Published social Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/social/post/public/published/edit/:accountNumber",
+            "params": [
+              {
+                "name": "accountNumber",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit Published social Post"
+        },
+        {
+          "info": {
+            "name": "Delete public social Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/social/post/public/delete/:accountNumber",
+            "params": [
+              {
+                "name": "accountNumber",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete public social Post"
+        },
+        {
+          "info": {
+            "name": "Track Social Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/social/:accountNumber/post/track/:trackingId",
+            "params": [
+              {
+                "name": "accountNumber",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Account."
+              },
+              {
+                "name": "trackingId",
+                "value": "abcdefdhs",
+                "type": "path",
+                "description": "The tracking ID to track the status of the post.\n\nError message: Tracking Id not present in System"
+              }
+            ]
+          },
+          "docs": "Track Social Post"
+        },
+        {
+          "info": {
+            "name": "Social Open URL Performance Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/social/open-url/performance/report",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Social Open URL Performance Report"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

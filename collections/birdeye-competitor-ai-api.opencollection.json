@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Competitor AI API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Competitor AI",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Competitor Reviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/competitors/review",
+            "params": [
+              {
+                "name": "startIndex",
+                "value": "0",
+                "type": "query",
+                "description": "The starting index for pagination (0-based). Default is 0."
+              },
+              {
+                "name": "pageSize",
+                "value": "25",
+                "type": "query",
+                "description": "Number of records to return per page (max recommended: 100). Default is 25."
+              },
+              {
+                "name": "sortOrder",
+                "value": "1",
+                "type": "query",
+                "description": "Sort order: 0 = Ascending, 1 = Descending order of review date. Default is 1."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve Competitor Reviews"
+        },
+        {
+          "info": {
+            "name": "Retrieve Competitor Review metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/competitors/review/metrics",
+            "params": [
+              {
+                "name": "startIndex",
+                "value": "0",
+                "type": "query",
+                "description": "The starting index for pagination (0-based). Default is 0."
+              },
+              {
+                "name": "pageSize",
+                "value": "25",
+                "type": "query",
+                "description": "Number of records to return per page (max recommended: 100). Default is 25."
+              },
+              {
+                "name": "sortOrder",
+                "value": "0",
+                "type": "query",
+                "description": "Sort order: 0 = Ascending, 1 = Descending order of review date. Default is 0."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve Competitor Review metrics"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

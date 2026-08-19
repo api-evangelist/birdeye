@@ -1,0 +1,76 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.birdeye.com/api/webhook/overview
+spec_type: none
+asyncapi_published: false
+asyncapi_note: >-
+  Birdeye publishes no AsyncAPI document. Probed https://docs.birdeye.com/asyncapi.yaml,
+  /asyncapi.json and the developer portal — no event spec exists. The webhook surface
+  below is captured from the provider's own REST documentation and OpenAPI; nothing is
+  fabricated.
+docs:
+  webhook: https://docs.birdeye.com/api/webhook/overview
+  subscription: https://docs.birdeye.com/api/subscription/overview
+delivery:
+  transport: HTTP POST to a subscriber-supplied endpoint
+  auth_to_subscriber: >-
+    Optional HTTP Basic credentials supplied by the subscriber at subscribe time
+    (`auth.username` / `auth.password`); send null for no auth.
+  signature_header: null
+  signature_note: >-
+    Birdeye documents no webhook signing secret or signature header. Verification of
+    inbound events relies on the optional Basic credentials and endpoint secrecy.
+  retries: undocumented
+  ordering: undocumented
+surfaces:
+- name: Messenger webhooks
+  scope: Conversation / unified inbox
+  subscribe_operation: create-webhook-subscription
+  subscribe_path: POST /v1/messenger/subscribe/webhook/event
+  list_events_operation: get-events
+  list_events_path: GET /v1/messenger/webhook/event
+  spec: openapi/birdeye-webhook-api-openapi.yml
+  scope_note: >-
+    businessNumber must be the ACCOUNT business number, not a location business number.
+  events:
+  - name: conversation.created
+    id: 1
+    description: A conversation was opened.
+  - name: conversation.updated
+    id: 2
+    description: A conversation was updated.
+  - name: message.added
+    id: 3
+    description: A new message was added to a conversation.
+  - name: conversation.closed
+    id: 4
+    description: A conversation was closed.
+  events_source: >-
+    Enumerated from the GET /v1/messenger/webhook/event response example in the
+    published OpenAPI. That operation is the authoritative live list — Birdeye documents
+    it as the way to discover available events rather than publishing a static catalog.
+- name: Subscription webhooks
+  scope: Account-level business events
+  subscribe_operation: create-subscription
+  subscribe_path: POST /v1/subscriptions/subscribe
+  unsubscribe_operation: unsubscribe-subscription
+  unsubscribe_path: GET /v1/subscriptions/unsubscribe/{subscriptionId}
+  spec: openapi/birdeye-subscription-api-openapi.yml
+  fanout: >-
+    A subscription may deliver to a webhookUrl and/or to a list of email addresses.
+  events:
+  - name: APPOINTMENT_BOOKED
+    description: >-
+      The only event name published in the documentation, appearing as the
+      `eventName` example on the Create subscription request body.
+  events_note: >-
+    Birdeye does not publish the full enumeration of subscription `eventName` values;
+    the field is a free-form string in the spec. Only the one documented value is
+    recorded here — the rest require account access to enumerate.
+event_count_documented: 5
+gaps:
+- No AsyncAPI document
+- No webhook payload schemas published for any event
+- No signature/HMAC verification contract
+- No published retry, backoff or replay policy
+- Subscription event names not enumerated

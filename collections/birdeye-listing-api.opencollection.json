@@ -1,0 +1,367 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Listing API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Listing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fix Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/fix",
+            "params": [
+              {
+                "name": "b_id",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fix Listing"
+        },
+        {
+          "info": {
+            "name": "Get Location Status Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/status/location",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ]
+          },
+          "docs": "Get Location Status Report"
+        },
+        {
+          "info": {
+            "name": "Listings Insights",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/insights",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Listings Insights"
+        },
+        {
+          "info": {
+            "name": "Listings Insights Datapoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/report/:reportType/datapoints",
+            "params": [
+              {
+                "name": "reportType",
+                "value": "google_view_search_map",
+                "type": "path",
+                "description": "Report type, Possible values [google_view_search_map, gmb_customer_actions_map, fb_users_reached,fb_users_engaged, bing_impression_count,bing_customer_actions]"
+              },
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Listings Insights Datapoints"
+        },
+        {
+          "info": {
+            "name": "Get GMB Attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/gmb-attributes-list",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business Number."
+              },
+              {
+                "name": "categoryId",
+                "value": "gcid:electrical_installation_service",
+                "type": "query",
+                "description": "Category id."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT."
+              }
+            ]
+          },
+          "docs": "Get GMB Attributes"
+        },
+        {
+          "info": {
+            "name": "Get Apple Attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/apple-location-attributes-list",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business Number."
+              }
+            ]
+          },
+          "docs": "Get Apple Attributes"
+        },
+        {
+          "info": {
+            "name": "Get Apple Action Links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/apple-action-links",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business Number."
+              }
+            ]
+          },
+          "docs": "Get Apple Action Links"
+        },
+        {
+          "info": {
+            "name": "Get Category List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/category-list",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business Number."
+              },
+              {
+                "name": "sourceName",
+                "value": "BING",
+                "type": "query",
+                "description": "Source name for which category data needs to be fetched. Possible values are BING, HEALTHCARE, GMB, VENDOR, FACEBOOK, APPLE."
+              },
+              {
+                "name": "countryCode",
+                "value": "US",
+                "type": "query",
+                "description": "Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT."
+              }
+            ]
+          },
+          "docs": "Get Category List"
+        },
+        {
+          "info": {
+            "name": "Create Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/create",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Listing"
+        },
+        {
+          "info": {
+            "name": "Update Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/update",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Listing"
+        },
+        {
+          "info": {
+            "name": "Get Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/get",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business Number."
+              }
+            ]
+          },
+          "docs": "Get Listing"
+        },
+        {
+          "info": {
+            "name": "Get More Hours Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/more-hours-type",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business Number."
+              },
+              {
+                "name": "channel",
+                "value": "gmb",
+                "type": "query",
+                "description": "Source name for which more hours type needs to be fetched. Possible values are gmb, apple. Default value will be gmb if not passed"
+              }
+            ]
+          },
+          "docs": "Get More Hours Type"
+        },
+        {
+          "info": {
+            "name": "Get Google Keywords Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/gmb/keywords",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Account Business Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Google Keywords Count"
+        },
+        {
+          "info": {
+            "name": "Deactivate Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/:businessNumber/deactivate",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business Number."
+              }
+            ]
+          },
+          "docs": "Deactivate Listing"
+        },
+        {
+          "info": {
+            "name": "Retrieve Menu Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/listing/menu-details",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve Menu Details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

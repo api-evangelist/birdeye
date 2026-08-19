@@ -1,0 +1,126 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.birdeye.com/api/changelog
+url: https://docs.birdeye.com/api/changelog
+scheme: dated
+date_format: MM/DD/YYYY
+versioning: uri-path (v1, v2) — the changelog is not versioned or tagged
+current_version: v1
+entry_count_published: 41
+oldest_entry: '2023-06-30'
+latest_entry: '2026-08-05'
+cadence: >-
+  Irregular but active — 20 dated entries in 2026 through 2026-08-05, and a documented
+  change on 8 of the last 12 months.
+breaking_changes_flagged: false
+breaking_changes_note: >-
+  Birdeye does not mark entries as breaking vs additive. The 2026-02-11 entry — moving
+  the API key from a query parameter to the x-api-key request header — is a breaking
+  change for callers, published as an ordinary line item with no deprecation window,
+  sunset date or migration guide.
+entries:
+- date: '2026-08-05'
+  type: addition
+  summary: >-
+    Added Social Media Upload and Track Upload Status APIs under the Social group for
+    async two-step media ingestion — submit up to 50 image/video URLs and poll for
+    per-item results.
+  ref: V2BIRD-16118
+- date: '2026-08-04'
+  type: addition
+  summary: >-
+    Extended hotel attributes support in Create, Update and Get Listing plus Get Hotel
+    Attributes — added Property category (builtYear, lastRenovatedYear, roomsCount,
+    floorsCount) and an attributeValueType field with enum BOOLEAN, INTEGER, YEAR, TIME,
+    SINGLE_SELECT, MULTI_SELECT.
+  ref: BIRD-12343
+- date: '2026-08-03'
+  type: addition
+  summary: >-
+    Added Insight Experience Over Time API (POST /v1/insight/experience/over-time) for
+    time-series insight scores with hierarchy-level filtering and grouping.
+- date: '2026-08-03'
+  type: addition
+  summary: Get Insight Experience Location Info now accepts a userEmail field in the request body.
+- date: '2026-08-03'
+  type: addition
+  summary: Added userRole to the Get User Details (GET /v1/user/details) response.
+- date: '2026-07-03'
+  type: relaxation
+  summary: >-
+    mainBusinessDescription and internalListing.description became optional in Create,
+    Update and Get Listing, with an empty string clearing the existing value.
+  ref: V2BIRD-1690
+- date: '2026-06-10'
+  type: addition
+  summary: >-
+    Get Contact accepts an optional experienceScore boolean (default false) that adds the
+    customer's experience score and source to the response.
+- date: '2026-05-25'
+  type: addition
+  summary: Documented Update Custom card (PUT) and Delete Custom card (DELETE).
+- date: '2026-05-11'
+  type: addition
+  summary: >-
+    POST Survey Response accepts a backdated `created` field (UTC epoch milliseconds);
+    defaults to now when omitted.
+- date: '2026-04-22'
+  type: addition
+  summary: subLocality support in Get, Create and Update Listings for NZ locations.
+- date: '2026-04-16'
+  type: addition
+  summary: Added Archived Get Reviews API under the Reviews group.
+- date: '2026-04-06'
+  type: documentation
+  summary: Clarified review statuses and how to retrieve all review types in Get Reviews.
+- date: '2026-03-24'
+  type: addition
+  summary: >-
+    Added Social Open URL Performance Report and the Insight AI APIs for location-wise
+    metrics and benchmark scores.
+- date: '2026-03-18'
+  type: addition
+  summary: Added Create Custom Card Time API under custom fields.
+- date: '2026-03-03'
+  type: addition
+  summary: >-
+    Added Response Time and Response Rate reports (over-time and by-location) and created
+    the Competitor AI group.
+- date: '2026-03-02'
+  type: addition
+  summary: Added sendInvite (boolean, default true) to Create User Signup v2.
+- date: '2026-02-11'
+  type: breaking
+  summary: >-
+    Moved the API key identifier for applicable APIs from a query parameter to the
+    x-api-key request header.
+  breaking_note: >-
+    Classified as breaking by API Evangelist, not by Birdeye — the changelog does not
+    flag it. Callers still passing the key as a query parameter are affected.
+- date: '2026-02-03'
+  type: addition
+  summary: Added the Get All QnA API under the FAQ group.
+- date: '2026-01-19'
+  type: documentation
+  summary: >-
+    Noted that x-api-key is mandatory for all API requests targeting EU-region business
+    accounts.
+- date: '2026-01-13'
+  type: addition
+  summary: Added Create User (Signup) API under the User module.
+- date: '2025-09-22'
+  type: addition
+  summary: Added GMB Products APIs for Google Merchant onboarding and product listing actions.
+- date: '2025-08-21'
+  type: addition
+  summary: Added single main business description support.
+- date: '2025-08-19'
+  type: addition
+  summary: Added competitor /raptor public APIs for review aggregates.
+- date: '2025-06-26'
+  type: addition
+  summary: Added Contact V2 APIs with communication-preference flag support.
+older_entries_note: >-
+  The published changelog runs back to 2023-06-30 (17 further entries covering Ticket
+  APIs, Google Q&A, Business Media, Listing CRUD, Apple chat and hierarchy). Only the
+  recent window is structured here; the live page is the source of truth.

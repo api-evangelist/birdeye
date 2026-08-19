@@ -1,0 +1,264 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Competitor API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Competitor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Competitor Business",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/:EnterpriseBusinessNumber/child",
+            "params": [
+              {
+                "name": "EnterpriseBusinessNumber",
+                "value": "231123123",
+                "type": "path",
+                "description": "Enterprise Business id."
+              },
+              {
+                "name": "isCompetitor",
+                "value": "true",
+                "type": "query",
+                "description": "True for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business."
+              }
+            ]
+          },
+          "docs": "Get Competitor Business"
+        },
+        {
+          "info": {
+            "name": "Get Competitor Child Business",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/:EnterpriseCompetitorBusinessId/child",
+            "params": [
+              {
+                "name": "isCompetitor",
+                "value": "true",
+                "type": "query",
+                "description": "True for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business."
+              }
+            ]
+          },
+          "docs": "Get Competitor Child Business"
+        },
+        {
+          "info": {
+            "name": "Get Business Competitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/business/:businessId/competitors",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "986031488",
+                "type": "path",
+                "description": "Account Business Number."
+              }
+            ]
+          },
+          "docs": "Get Business Competitors"
+        },
+        {
+          "info": {
+            "name": "Create New Competitor Enterprise",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/signup/competitor/:businessNumber",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Account Business Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create New Competitor Enterprise"
+        },
+        {
+          "info": {
+            "name": "Create New Child Business in Competitor Enterprise",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/signup/competitor/:businessId",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "986031488",
+                "type": "path",
+                "description": "Account Business Number."
+              }
+            ]
+          },
+          "docs": "Create New Child Business in Competitor Enterprise"
+        },
+        {
+          "info": {
+            "name": "Add new Competitor Aggregation URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/aggregation/competitor/:compAccountId/:businessNumber",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Id of the business."
+              },
+              {
+                "name": "compAccountId",
+                "value": "234567",
+                "type": "path",
+                "description": "Competitor Account Id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add new Competitor Aggregation URL"
+        },
+        {
+          "info": {
+            "name": "Get Competitor Reviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/review/businessId/:CompetitorEnterpriseBusinessId",
+            "params": [
+              {
+                "name": "sindex",
+                "value": "10",
+                "type": "query",
+                "description": "Start index of the reviews."
+              },
+              {
+                "name": "count",
+                "value": "30",
+                "type": "query",
+                "description": "Number of reviews to query."
+              },
+              {
+                "name": "isCompetitor",
+                "value": "false",
+                "type": "query",
+                "description": "True for Competitor Review."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Competitor Reviews"
+        },
+        {
+          "info": {
+            "name": "Get Score",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/competitors/competitive-insight/categories/:businessNumber",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Account Business Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Score"
+        },
+        {
+          "info": {
+            "name": "Get Theme Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/competitors/competitive-insight/themes/:businessNumber",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Account Business Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Theme Statistics"
+        },
+        {
+          "info": {
+            "name": "Get Keyword Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/competitors/competitive-insight/keywords/:businessNumber",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Account Business Number."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Keyword Statistics"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

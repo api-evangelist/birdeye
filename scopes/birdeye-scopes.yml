@@ -1,0 +1,59 @@
+generated: '2026-08-13'
+method: probed
+source: https://mcp.birdeye.com/.well-known/oauth-authorization-server
+docs: https://docs.birdeye.com/mcp/authentication
+applies_to: the Birdeye MCP server only
+not_applicable_to: >-
+  The Birdeye REST API at api.birdeye.com has no OAuth surface — it is API-key only, so
+  it has no scope model. Permissions there are carried by the account the key belongs to.
+schemes:
+- name: oauth2
+  surface: https://mcp.birdeye.com/mcp
+  source: https://mcp.birdeye.com/.well-known/oauth-authorization-server
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://mcp.birdeye.com/authorize
+    tokenUrl: https://mcp.birdeye.com/token
+    registrationUrl: https://mcp.birdeye.com/register
+    revocationUrl: https://mcp.birdeye.com/revoke
+    code_challenge_methods: [S256]
+scopes:
+- scope: openid
+  description: Verify your identity.
+  flows: [authorizationCode]
+  sources: [https://mcp.birdeye.com/.well-known/oauth-authorization-server,
+    https://docs.birdeye.com/mcp/authentication]
+- scope: profile
+  description: Access your name and profile info.
+  flows: [authorizationCode]
+  sources: [https://mcp.birdeye.com/.well-known/oauth-authorization-server,
+    https://docs.birdeye.com/mcp/authentication]
+- scope: email
+  description: Identify your Birdeye account.
+  flows: [authorizationCode]
+  sources: [https://mcp.birdeye.com/.well-known/oauth-authorization-server,
+    https://docs.birdeye.com/mcp/authentication]
+scope_count: 3
+analysis:
+  granularity: identity-only
+  finding: >-
+    All three scopes are OIDC identity scopes. Birdeye publishes NO resource scopes —
+    nothing that distinguishes review access from listing access from ticket access, and
+    nothing that names a data domain at all. Authorization is enforced entirely by the
+    Birdeye account behind the login: "Every tool call is scoped to the Birdeye business
+    associated with your account." An agent granted access gets everything that account
+    can read.
+  write_access: >-
+    None requested or granted. Birdeye documents every MCP tool as read-only, which is
+    what keeps the coarse scope model from being dangerous.
+  consent_granularity: >-
+    A user cannot consent to a subset of their Birdeye data through OAuth; the only
+    consent decision is all-or-nothing per account.
+x-evidence:
+- url: https://mcp.birdeye.com/.well-known/oauth-authorization-server
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://mcp.birdeye.com/.well-known/oauth-protected-resource/mcp
+  http_status: 200
+  scopes_supported: [openid, profile, email]
+  fetched: '2026-08-13'

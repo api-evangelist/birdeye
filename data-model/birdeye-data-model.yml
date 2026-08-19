@@ -1,0 +1,320 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/birdeye-openapi-original.yml (https://docs.birdeye.com/api/openapi.yaml)
+derivation: >-
+  Entities and relationships were derived from the 790 component schemas and the
+  id-reference fields carried across request/response bodies in the published OpenAPI.
+  The spec uses inline schemas rather than a $ref graph between entities, so
+  relationships were read from id-field naming (businessNumber, businessId, customerId,
+  reviewId, surveyId, ticketId, competitorId, productId, subscriptionId, trackingId) and
+  from the path hierarchy. Cardinalities the docs do not state are marked assumed.
+identity_model:
+  root: Business
+  finding: >-
+    Almost everything in Birdeye hangs off a business identifier, and the API uses at
+    least three names for it — `businessId`, `businessNumber` and `accountNumber` —
+    sometimes for the same value and sometimes for different levels of the hierarchy.
+    This is the single biggest modelling hazard for an integrator.
+  identifier_variants:
+  - field: businessNumber
+    usage: >-
+      Long numeric account/location identifier (example 169744180007807). Several
+      operations require the ACCOUNT business number specifically, not a location's —
+      create-webhook-subscription says so explicitly.
+    occurrences: 22
+  - field: businessId
+    usage: Short numeric business identifier (example 12345678); also appears as business_id and business_Id.
+    occurrences: 15
+  - field: accountNumber
+    usage: Used by the Social module for the same account-level concept.
+    occurrences: 4
+  - field: subBusinessNumbers / subBusinessIds
+    usage: Child location identifiers for fan-out operations (social posting, review filters).
+  - field: externalId / externalReferenceId
+    usage: Caller-owned correlation key on contacts, tickets and businesses.
+  path_case_inconsistency: >-
+    The same concept appears as {businessId}, {business_id}, {business_Id} and
+    {businessNumber} across different paths in the same specification.
+entities:
+- name: Business
+  description: An account, reseller, enterprise, or individual location. The root of the graph.
+  ids: [businessId, businessNumber, business_id]
+  operations: [create-a-business, get-business, update-business, delete-business,
+    search-business, update-the-status, get-child-businesses, get-hierarchy-for-an-enterprise,
+    update-hierarchy, get-timezone-list, get-birdeye-impressions]
+  spec: openapi/birdeye-business-api-openapi.yml
+- name: Location
+  description: >-
+    A child Business under an enterprise or reseller parent. Not a separate schema —
+    Birdeye models locations as businesses in a self-referencing hierarchy.
+  parent: Business
+- name: Hierarchy
+  description: >-
+    Named levels mapping parent businesses to child businesses. Errors 1360-1363 govern
+    which parent/child type pairs are legal.
+  ids: [levelId]
+- name: Review
+  description: A review aggregated from one of 150+ external review sources.
+  ids: [reviewId]
+  operations: [get-reviews, archived-get-reviews, get-reviews-summary, post-review-reply]
+  spec: openapi/birdeye-reviews-api-openapi.yml
+- name: ReviewReply
+  description: A business response to a Review, published back to the source platform.
+  operations: [post-review-reply]
+- name: Tag
+  description: Free-form label applied to reviews, account-scoped.
+  ids: [tagname]
+  operations: [create-tags, delete-a-tag, get-all-tags, assign-tags-to-filtered-reviews,
+    remove-tags-from-filtered-reviews, remove-particular-tags-from-all-reviews]
+- name: AggregationSource
+  description: A monitored review-source URL configured for a location.
+  ids: [sourceId, aggregationID]
+  operations: [get-all-aggregation-source, add-aggregation-url, delete-aggregation-url]
+  spec: openapi/birdeye-aggregation-api-openapi.yml
+- name: Contact
+  description: A customer or lead. Two generations coexist — Contact and Contact V2.
+  ids: [customerId, cid, externalId]
+  operations: [create-or-update-contact, get-contact, delete-contact, customer-checkin,
+    customer-activity-log, customer-delete, subscribe-unsubscribe-customer, contact,
+    customer-or-lead-list, get-opt-out-contact-data]
+  spec: openapi/birdeye-contact-api-openapi.yml
+- name: CustomField
+  description: Account-defined field attachable to contacts and businesses.
+  operations: [create, update, get, post, delete, associate]
+  spec: openapi/birdeye-custom-fields-api-openapi.yml
+- name: CustomCard
+  description: A card on the public business profile.
+  ids: [cardId]
+- name: Survey
+  description: An NPS, CSAT, pulse or traditional survey definition with pages and questions.
+  ids: [surveyId, survey_id]
+  operations: [get-survey, get-all-surveys, create-survey, update-survey-settings]
+  spec: openapi/birdeye-survey-api-openapi.yml
+- name: SurveyResponse
+  description: One submitted set of answers to a Survey.
+  operations: [post-a-survey-response, list-responses-for-a-survey]
+- name: Ticket
+  description: A support ticket raised from a review, survey response or untagged source.
+  ids: [ticketId, externalId]
+  operations: [create-ticket, update-ticket, get-all-ticket-data]
+  spec: openapi/birdeye-ticketing-api-openapi.yml
+- name: TicketComment
+  description: A comment activity on a Ticket.
+  operations: [add-ticket-comments]
+- name: Listing
+  description: >-
+    The business record published to 50+ directories, with per-platform sub-objects
+    (gmbListing, facebookListing, bingListing, appleListing, internalListing,
+    thirdPartyListing) plus healthcare and hotel attribute blocks.
+  operations: [create-listing, update-listing, get-listing, fix-listing, deactivate-listing,
+    get-location-status-report, listings-insights, listings-insights-datapoints,
+    get-category-list, get-gmb-attributes, get-apple-attributes, get-apple-action-links,
+    get-more-hours-type, get-google-keywords-count, retrieve-menu-details]
+  spec: openapi/birdeye-listing-api-openapi.yml
+- name: Product
+  description: A Google Merchant Center product listing linked to the account.
+  ids: [productId, productIdentifier, googleProductCategoryId]
+  operations: [onboard-google-merchant-account, create-product-listing, update-product-listing,
+    get-product-listing, delete-product-listings, get-list-product-listing,
+    add-products-on-a-location, remove-products-on-a-location]
+  spec: openapi/birdeye-gmb-products-api-openapi.yml
+- name: GoogleService
+  description: A service offered by a location, mapped to Google Business Profile categories.
+  ids: [serviceId]
+  spec: openapi/birdeye-google-services-api-openapi.yml
+- name: GoogleQuestion
+  description: A Google Business Profile Q&A question.
+  ids: [questionId]
+  spec: openapi/birdeye-google-q-a-api-openapi.yml
+- name: GoogleAnswer
+  description: An answer to a GoogleQuestion. Owner may add only one answer per question.
+  ids: [answerId]
+- name: SocialPost
+  description: A post scheduled or published to Google Business Profile, Facebook, Instagram, LinkedIn or X.
+  ids: [trackingId]
+  operations: [schedule-social-post, edit-scheduled-social-post, edit-published-social-post,
+    delete-public-social-post, track-social-post, social-open-url-performance-report]
+  spec: openapi/birdeye-social-api-openapi.yml
+- name: MediaAsset
+  description: >-
+    An image or video in the Birdeye media library. Business Media is synchronous; the
+    Social media upload path is an async batch (batch_id, asset_id).
+  ids: [asset_id, batch_id]
+  spec: openapi/birdeye-business-media-api-openapi.yml
+- name: Conversation
+  description: A unified-inbox thread across digital channels.
+  operations: [list-conversations]
+  spec: openapi/birdeye-conversation-api-openapi.yml
+- name: Message
+  description: A message inside a Conversation. Surfaced through webhook events, not a REST resource.
+- name: Subscription
+  description: A webhook/email subscription to account events.
+  ids: [subscriptionId]
+  operations: [create-subscription, unsubscribe-subscription]
+  spec: openapi/birdeye-subscription-api-openapi.yml
+- name: WebhookSubscription
+  description: A messenger-event webhook registration.
+  operations: [create-webhook-subscription, get-events]
+  spec: openapi/birdeye-webhook-api-openapi.yml
+- name: Competitor
+  description: A competitor enterprise with its own child locations and aggregation URLs.
+  ids: [competitorId, compAccountId, competitorLocationIds]
+  spec: openapi/birdeye-competitor-api-openapi.yml
+- name: User
+  description: A Birdeye platform user with a role on a business.
+  ids: [userEmailId]
+  spec: openapi/birdeye-user-api-openapi.yml
+- name: Employee
+  description: A staff member a review can be attributed to.
+  spec: openapi/birdeye-employee-api-openapi.yml
+- name: SearchAIRun
+  description: >-
+    A dated run of AI-search monitoring producing citations, surfaced businesses,
+    accuracy and sentiment/SWOT reports.
+  spec: openapi/birdeye-search-ai-api-openapi.yml
+- name: Campaign
+  description: A review-request campaign template and its short link.
+  spec: openapi/birdeye-campaign-api-openapi.yml
+- name: Integration
+  description: A mapping between a Birdeye location and an external software integration.
+  spec: openapi/birdeye-integration-api-openapi.yml
+relationships:
+- from: Business
+  to: Business
+  type: has_many
+  via: parent/child hierarchy (pid, businessId)
+  note: Self-referencing. Reseller -> Enterprise -> Location.
+- from: Business
+  to: Review
+  type: has_many
+  via: businessId
+- from: Business
+  to: AggregationSource
+  type: has_many
+  via: businessId
+- from: AggregationSource
+  to: Review
+  type: has_many
+  via: sourceAlias / sources
+  confidence: assumed
+- from: Review
+  to: ReviewReply
+  type: has_one
+  via: reviewId
+- from: Review
+  to: Tag
+  type: has_many
+  via: tags
+- from: Review
+  to: Employee
+  type: belongs_to
+  via: fetchAssitedByDetails / assisted employee
+  confidence: assumed
+- from: Review
+  to: Ticket
+  type: has_many
+  via: sourceType = review
+- from: Business
+  to: Contact
+  type: has_many
+  via: businessIds
+- from: Contact
+  to: CustomField
+  type: has_many
+  via: customFields
+- from: Contact
+  to: SurveyResponse
+  type: has_many
+  via: customer on the response
+  confidence: assumed
+- from: Survey
+  to: SurveyResponse
+  type: has_many
+  via: survey_id
+- from: SurveyResponse
+  to: Ticket
+  type: has_one
+  via: surveyResponseId (includeTicketId surfaces it)
+- from: Ticket
+  to: TicketComment
+  type: has_many
+  via: ticketId
+- from: Ticket
+  to: Contact
+  type: belongs_to
+  via: customer
+- from: Business
+  to: Listing
+  type: has_one
+  via: businessNumber
+- from: Listing
+  to: Product
+  type: has_many
+  via: Google Merchant account linkage
+- from: Listing
+  to: GoogleService
+  type: has_many
+  via: location-category mapping
+- from: Listing
+  to: GoogleQuestion
+  type: has_many
+  via: businessId
+- from: GoogleQuestion
+  to: GoogleAnswer
+  type: has_one
+  via: questionId
+  note: Owner may post only one answer per question.
+- from: Business
+  to: SocialPost
+  type: has_many
+  via: accountNumber
+- from: SocialPost
+  to: Business
+  type: has_many
+  via: subBusinessNumbers
+  note: One post fans out to many child locations; trackingId tracks the fan-out.
+- from: SocialPost
+  to: MediaAsset
+  type: has_many
+  via: asset_id
+- from: Business
+  to: Conversation
+  type: has_many
+  via: businessNumber
+- from: Conversation
+  to: Message
+  type: has_many
+  via: conversation events
+- from: Business
+  to: Subscription
+  type: has_many
+  via: businessId
+- from: Business
+  to: Competitor
+  type: has_many
+  via: businessId
+- from: Competitor
+  to: Competitor
+  type: has_many
+  via: child locations
+- from: Competitor
+  to: Review
+  type: has_many
+  via: competitor aggregation URLs
+- from: Business
+  to: User
+  type: has_many
+  via: business association
+- from: Business
+  to: SearchAIRun
+  type: has_many
+  via: businessId
+- from: Business
+  to: CustomCard
+  type: has_many
+  via: businessNumber
+gaps:
+- No $ref graph between entities — 790 schemas are largely inline and per-operation.
+- No canonical object reference page; entity shapes must be read per operation.
+- No id-prefix scheme (unlike Stripe's cus_/inv_); all identifiers are bare numerics.
+- Three names for the business identifier, four path-parameter spellings.

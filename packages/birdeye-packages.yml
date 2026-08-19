@@ -1,0 +1,85 @@
+generated: '2026-08-13'
+method: searched
+source: registry searches across npm, PyPI, RubyGems, Packagist, crates.io, NuGet,
+  Maven Central and pkg.go.dev, plus the Birdeye developer docs and GitHub org
+package_count: 0
+official_sdk_count: 0
+packages: []
+finding: >-
+  Birdeye publishes no first-party client library in any package registry. The developer
+  documentation at docs.birdeye.com carries no SDK section, no install instructions and
+  no code-generation offer — integration is raw HTTP with an x-api-key header, or the
+  hosted MCP server for agents.
+registries_checked:
+- registry: npm
+  query: birdeye
+  result: no first-party package
+  note: >-
+    Every "birdeye" hit belongs to a DIFFERENT company — Birdeye Data Services
+    (birdeye.so), the Solana/DeFi analytics provider: @birdeye-so/tokenswap,
+    @birdeye-so/tokenlist, @birdeye-so/birdeye-skills, @elizaos/plugin-birdeye,
+    @goat-sdk/plugin-birdeye, node-birdeye. None are published by Birdeye Inc.
+    (birdeye.com), the reputation-management platform this repo profiles. Recorded
+    explicitly because the name collision is the obvious way to mis-attribute an SDK.
+  version: null
+  published: null
+- registry: pypi
+  query: birdeye
+  result: no first-party package
+  note: The pypi "birdeye" project is not published by Birdeye Inc.
+  version: null
+  published: null
+- registry: rubygems
+  result: no first-party package
+  version: null
+  published: null
+- registry: packagist
+  result: no first-party package
+  version: null
+  published: null
+- registry: crates.io
+  result: no first-party package
+  version: null
+  published: null
+- registry: nuget
+  result: no first-party package
+  version: null
+  published: null
+- registry: maven-central
+  result: no first-party package
+  version: null
+  published: null
+- registry: pkg.go.dev
+  result: no first-party package
+  version: null
+  published: null
+github:
+  org: https://github.com/birdeyeinc
+  public_repos: 3
+  repos:
+  - name: birdeye-api-docs
+    url: https://github.com/birdeyeinc/birdeye-api-docs
+    description: V2BIRD-10945
+    last_push: '2026-08-13'
+    note: >-
+      The source repository behind docs.birdeye.com. Actively pushed the day this pass
+      ran. Documentation, not a client library.
+  - name: birdeyev1
+    url: https://github.com/birdeyeinc/birdeyev1
+    description: Birdeye v1 prototype — Elemental sync, no Aero DS npm dependency
+    language: TypeScript
+    last_push: '2026-07-08'
+    note: Internal prototype, not a published client library.
+  - name: yelp-api
+    url: https://github.com/birdeyeinc/yelp-api
+    description: Examples of code using our API
+    language: Objective-C
+    last_push: '2012-05-15'
+    note: Dormant since 2012.
+  finding: >-
+    No SDK repository, no release tags, no packaged client. The org is a docs-source org.
+consequence: >-
+  With no SDK and no CLI, every Birdeye integration is hand-rolled HTTP. That raises the
+  cost of the API's own inconsistencies — three pagination conventions, five date
+  formats, and business errors returned inside HTTP 200 bodies — because no first-party
+  library absorbs them for the caller.

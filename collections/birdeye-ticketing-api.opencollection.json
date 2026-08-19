@@ -1,0 +1,153 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Ticketing API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ticketing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/ticket/:businessNumber/create-ticket",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business number of the location on which we want to create a ticket."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create ticket"
+        },
+        {
+          "info": {
+            "name": "Add Ticket Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/ticket/:businessNumber/comment-activity",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business number of the location."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Ticket Comments"
+        },
+        {
+          "info": {
+            "name": "Update ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/ticket/:businessNumber/update",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business number of the location."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update ticket"
+        },
+        {
+          "info": {
+            "name": "Get All Ticket Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/ticket/:businessNumber/get/all?",
+            "params": [
+              {
+                "name": "businessNumber",
+                "value": "169744180007807",
+                "type": "path",
+                "description": "Business number of the account."
+              },
+              {
+                "name": "op",
+                "value": "3",
+                "type": "query",
+                "description": "Possible values are: [1] will display ticket count only, [3] will display all the data of the ticket. Default value - 3."
+              },
+              {
+                "name": "sIndex",
+                "value": "0",
+                "type": "query",
+                "description": "Start index of the response. Default value - 0"
+              },
+              {
+                "name": "count",
+                "value": "25",
+                "type": "query",
+                "description": "Number of tickets want to get in the response. Default value - 25"
+              },
+              {
+                "name": "sortBy",
+                "value": "2",
+                "type": "query",
+                "description": "Sort options, Possible values [2] will sort on the basis of ticket creation date. [3] will sort on the basis of characters of business aliases. Default value 2."
+              },
+              {
+                "name": "sortOrder",
+                "value": "1",
+                "type": "query",
+                "description": "Sort Order [0] will sort the data in ascending order. [1] this will sort the data in descending order. Default value - 1"
+              },
+              {
+                "name": "totalCount",
+                "value": "true",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get All Ticket Data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation User API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/user/signup/v2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create User"
+        },
+        {
+          "info": {
+            "name": "Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.birdeye.com/v1/user/updateUser",
+            "params": [
+              {
+                "name": "userEmailId",
+                "value": "abc@test.com",
+                "type": "query",
+                "description": "Email id of the user to be updated"
+              },
+              {
+                "name": "entUser",
+                "value": "false",
+                "type": "query",
+                "description": "true if the user needs to provide enterprise level access in case of all locations.\nentUser needs to be passed as true if user needs to be provided access to all locations otherwise by default its false."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update User"
+        },
+        {
+          "info": {
+            "name": "Delete a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.birdeye.com/v1/user/remove",
+            "params": [
+              {
+                "name": "bid",
+                "value": "123",
+                "type": "query",
+                "description": "Business Id from which user access has to be revoked"
+              },
+              {
+                "name": "email",
+                "value": "abc@test.com",
+                "type": "query",
+                "description": "Email id of the user whose access has to be revoked"
+              }
+            ]
+          },
+          "docs": "Delete a user"
+        },
+        {
+          "info": {
+            "name": "Forgot Password",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/user/forgotpassword",
+            "params": [
+              {
+                "name": "email",
+                "value": "abc@test.com",
+                "type": "query",
+                "description": "Email Id of the user whose access has to be revoked"
+              }
+            ]
+          },
+          "docs": "Forgot Password"
+        },
+        {
+          "info": {
+            "name": "Get details of a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/user/details",
+            "params": [
+              {
+                "name": "email",
+                "value": "abc@test.com",
+                "type": "query",
+                "description": "Email Id of the user whose details to be retrieved"
+              }
+            ]
+          },
+          "docs": "Get details of a user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

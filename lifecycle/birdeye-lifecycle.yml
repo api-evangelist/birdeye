@@ -1,0 +1,61 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.birdeye.com/api/changelog
+versioning:
+  scheme: uri-path
+  current: v1
+  also_live: v2
+  v2_operations:
+  - contact (POST /v2/customer/list)
+  - competitive-ranking-report (POST /v2/competitive/ranking)
+  policy_url: null
+  policy_published: false
+  note: >-
+    v1 and v2 coexist with no published version policy, no version-support window and no
+    statement of what v2 means. Contact V2 is a separate documented module rather than a
+    version of the whole API.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    Birdeye publishes no deprecation policy, no sunset schedule and no RFC 8594
+    Sunset/Deprecation header support. No operation in the 166-operation published
+    OpenAPI carries `deprecated: true`. The one breaking change in the recent changelog
+    (2026-02-11, API key moved from query parameter to x-api-key header) shipped with no
+    deprecation window. Recorded as an honest absence — no Deprecation pointer is emitted.
+change_log:
+  url: https://docs.birdeye.com/api/changelog
+  artifact: changelog/birdeye-changelog.yml
+  dated: true
+  latest_entry: '2026-08-05'
+status_page:
+  url: https://status.birdeye.com/
+  http_status: 200
+  probed: '2026-08-13'
+  linked_from: https://birdeye.com/security/
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No public SLA or uptime target. Birdeye's plans artifact records SLA support as an
+    enterprise-tier contract item, not a published document.
+support:
+  help_center: https://support.birdeye.com/
+  developer_docs: https://docs.birdeye.com/
+  security_contact: security@birdeye.com
+  privacy_contact: privacy@birdeye.com
+surface_changes_observed_this_pass:
+- change: >-
+    Birdeye moved its developer documentation from developers.birdeye.com to
+    docs.birdeye.com and now publishes an OpenAPI at
+    https://docs.birdeye.com/api/openapi.yaml, an llms.txt, an A2A agent card and an
+    Agent Skill. developers.birdeye.com still resolves (HTTP 200) but is a JS shell that
+    returns HTML for every path including /openapi.json.
+  observed: '2026-08-13'
+- change: >-
+    A hosted MCP server went live at https://mcp.birdeye.com/mcp, announced 2026-07-28.
+  observed: '2026-08-13'

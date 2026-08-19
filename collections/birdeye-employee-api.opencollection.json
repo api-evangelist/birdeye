@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Employee API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Employee",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get details of Employees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/employee/:businessId",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the Business."
+              }
+            ]
+          },
+          "docs": "Get details of Employees"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

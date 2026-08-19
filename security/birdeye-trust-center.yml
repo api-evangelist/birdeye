@@ -1,0 +1,71 @@
+generated: '2026-08-13'
+method: searched
+probe: true
+url: https://trust.birdeye.com/
+security_page: https://birdeye.com/security/
+certifications:
+- SOC 2 Type II
+- ISO/IEC 27001
+- HIPAA
+- GDPR
+- CCPA / CPRA
+certification_detail:
+- name: SOC 2 Type II
+  description: >-
+    Independent audit of security, availability and confidentiality controls evaluated
+    over time. Birdeye links the report from the Trust Center.
+  report_location: https://trust.birdeye.com/
+- name: ISO/IEC 27001
+  description: >-
+    Information Security Management System certification maintained through annual
+    third-party audits.
+- name: HIPAA
+  description: Named on the security page alongside the healthcare customer base.
+- name: GDPR
+  description: EU data protection; a dedicated page exists at https://birdeye.com/privacy/gdpr/.
+- name: CCPA / CPRA
+  description: California consumer privacy.
+inherited_controls:
+  hosting: AWS, United States
+  note: >-
+    Birdeye states its AWS datacenters maintain SOC 1/2/3, ISO 27001, PCI DSS Level 1 and
+    FedRAMP-aligned controls. These are INHERITED infrastructure controls, not Birdeye
+    certifications — recorded separately so they are not miscredited.
+practices_published:
+- Network segmentation and least-privilege access
+- Secure SDLC with code review and dependency scanning
+- Annual third-party penetration testing
+- SSO, SCIM and role-based access control (RBAC)
+- SCIM deprovisioning on offboarding
+documents:
+- name: Data Processing Agreement
+  url: https://trust.birdeye.com/#/controls/Data%20Processing%20Agreement
+- name: Sub-processors
+  url: https://birdeye.com/terms/subprocessors/
+- name: Privacy Policy
+  url: https://birdeye.com/privacy/
+- name: GDPR
+  url: https://birdeye.com/privacy/gdpr/
+- name: AI Policy
+  url: https://birdeye.com/ai-policy/
+- name: Terms
+  url: https://birdeye.com/terms/
+contacts:
+  security: security@birdeye.com
+  privacy: privacy@birdeye.com
+regional_variants:
+- https://birdeye.com/uk/security/
+- https://birdeye.com/au/security/
+- https://birdeye.com/sg/security/
+evidence:
+- source: https://birdeye.com/security/
+  http_status: 200
+  fetched: '2026-08-13'
+  keywords: [soc 2 type ii, iso 27001, hipaa, gdpr, ccpa, penetration testing, scim]
+- source: https://trust.birdeye.com/
+  http_status: 200
+  fetched: '2026-08-13'
+  note: >-
+    trust.birdeye.com is a client-rendered "Trust Vault" application; certifications are
+    not readable from the served HTML. The named certifications above were taken from the
+    static https://birdeye.com/security/ page, which lists them in markup.

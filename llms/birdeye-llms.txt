@@ -1,0 +1,246 @@
+# Birdeye Developer Portal
+
+## Docs
+
+- [Introduction](https://docs.birdeye.com/mcp/introduction.md): The Birdeye MCP server gives AI assistants direct access to your Birdeye data — Reviews, Listings, Surveys, Social, Ticketing, Search AI, Insights, and more
+- [Quickstart](https://docs.birdeye.com/mcp/quickstart.md): Connect your AI assistant to Birdeye in under 5 minutes.
+- [Authentication](https://docs.birdeye.com/mcp/authentication.md): The Birdeye MCP Server uses OAuth 2.0 to authenticate requests. No API keys or manual token management required.
+- [Troubleshooting](https://docs.birdeye.com/mcp/troubleshooting.md): Common issues and how to resolve them when using the Birdeye MCP Server.
+- [Tools Overview](https://docs.birdeye.com/mcp/tools/overview.md): Birdeye MCP provides a variety of read-only tools across different categories. All tools use your authenticated Birdeye account context
+- [Reviews Overview](https://docs.birdeye.com/mcp/tools/reviews/overview.md): Tools for accessing review data, rating trends, and per-source summaries.
+- [Review and Rating Overview](https://docs.birdeye.com/mcp/tools/reviews/review-and-rating-overview.md): Get a report on review and rating trends over a specified time period.
+- [Get Reviews](https://docs.birdeye.com/mcp/tools/reviews/get-reviews.md): Fetch individual reviews with full details including rating, comment, reviewer info, source, and status.
+- [Get Review Summary](https://docs.birdeye.com/mcp/tools/reviews/get-review-summary.md): Fetch review summary grouped by review source — total counts and average ratings per platform.
+- [Business Overview](https://docs.birdeye.com/mcp/tools/business/overview.md): Tools for fetching business profile and location data.
+- [Get Business Info](https://docs.birdeye.com/mcp/tools/business/get-business-info.md): Fetch the business profile of the currently authenticated user.
+- [Get Child Locations](https://docs.birdeye.com/mcp/tools/business/get-child-locations.md): Fetch all child locations of the current enterprise account.
+- [Surveys Overview](https://docs.birdeye.com/mcp/tools/surveys/overview.md): Tools for accessing survey definitions and responses.
+- [Get All Surveys](https://docs.birdeye.com/mcp/tools/surveys/get-all-surveys.md): Get all available surveys for the business.
+- [Get Survey Responses](https://docs.birdeye.com/mcp/tools/surveys/get-survey-responses.md): Fetch paginated responses for a specific survey.
+- [Listings Overview](https://docs.birdeye.com/mcp/tools/listings/overview.md): Tools for managing and analyzing your business listings across Google, Facebook, Bing, Apple, and other platforms.
+- [Get Listing](https://docs.birdeye.com/mcp/tools/listings/get-listing.md): Get the full listing profile for a single location, including hours, categories, photos, and per-site listing data.
+- [Get Listing Location Status Report](https://docs.birdeye.com/mcp/tools/listings/get-listing-location-status-report.md): Get a detailed listing status report for a single location across all connected sites.
+- [Get Listing Insights](https://docs.birdeye.com/mcp/tools/listings/get-listing-insights.md): Get analytics for your Google and other listings — map views, searches, calls, direction requests, and website visits.
+- [Get Listing Category List](https://docs.birdeye.com/mcp/tools/listings/get-listing-category-list.md): Get the list of available listing categories for a given platform and country.
+- [Get Product Listing List](https://docs.birdeye.com/mcp/tools/listings/get-product-listing-list.md): Get a paginated list of Google Merchant product listings linked to your account.
+- [Search AI Overview](https://docs.birdeye.com/mcp/tools/search-ai/overview.md): Tools for tracking how AI engines like ChatGPT, Gemini, and Perplexity represent your business.
+- [Get Search AI Configuration](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-configuration.md): Get the Search AI configuration — themes and the exact prompts being monitored for your business.
+- [Get Search AI Available Runs](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-available-runs.md): Get the list of available Search AI run dates for your account.
+- [Get Search AI Citations](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-citations.md): Get the URLs cited by AI engines (ChatGPT, Gemini, Perplexity) when answering your monitored prompts.
+- [Get Search AI Businesses](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-businesses.md): Get the businesses that AI engines surface when answering your monitored prompts.
+- [Get Search AI Accuracy Report](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-accuracy-report.md): Get a NAP accuracy report — how correctly AI engines report your business name, address, phone, hours, and website.
+- [Get Search AI Sentiment Report](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-sentiment-report.md): Get a SWOT analysis — Strengths, Weaknesses, Opportunities, and Threats as perceived by AI engines about your business.
+- [Social Overview](https://docs.birdeye.com/mcp/tools/social/overview.md): Tools for measuring social channel performance across platforms.
+- [Get Social Performance Report](https://docs.birdeye.com/mcp/tools/social/get-social-open-url-performance-report.md): Get channel-level social media performance metrics with optional period-over-period comparison.
+- [Ticketing Overview](https://docs.birdeye.com/mcp/tools/ticketing/overview.md): Tools for retrieving support ticket data from Birdeye.
+- [Get All Ticket Data](https://docs.birdeye.com/mcp/tools/ticketing/get-all-ticket-data.md): Retrieve tickets for the business with comprehensive filtering and pagination.
+- [Aggregation Overview](https://docs.birdeye.com/mcp/tools/aggregation/overview.md): Tools for accessing review source configuration and site aliases.
+- [Get All Aggregation Sources](https://docs.birdeye.com/mcp/tools/aggregation/get-all-aggregation-sources.md): List all review aggregation sources (monitoring URLs) configured for the business.
+- [Competitor AI Overview](https://docs.birdeye.com/mcp/tools/competitor-ai/overview.md): Tools for retrieving individual competitor reviews and aggregated review metrics.
+- [Retrieve Competitor Reviews](https://docs.birdeye.com/mcp/tools/competitor-ai/retrieve-competitor-reviews.md): Retrieve paginated individual reviews left for competitor locations.
+- [Retrieve Competitor Review Metrics](https://docs.birdeye.com/mcp/tools/competitor-ai/retrieve-competitor-review-metrics.md): Retrieve aggregated average rating and review count per competitor location and source.
+- [Insight AI Overview](https://docs.birdeye.com/mcp/tools/insight-ai/overview.md): Tools for experience score benchmarks and location-level performance metrics.
+- [Get Insight Experience Score Benchmark](https://docs.birdeye.com/mcp/tools/insight-ai/get-insight-experience-score-benchmark.md): Compare your experience, sentiment, reputation, and listing scores against industry benchmarks.
+- [Get Insight Experience Location Info](https://docs.birdeye.com/mcp/tools/insight-ai/get-insight-experience-location-info.md): Get location-level experience metrics with delta comparisons vs a prior period.
+- [Introduction](https://docs.birdeye.com/api/introduction.md)
+- [Authentication and Rate limiting](https://docs.birdeye.com/api/authentication.md)
+- [Pagination](https://docs.birdeye.com/api/pagination.md)
+- [HTTP Status Codes](https://docs.birdeye.com/api/http-status-codes.md)
+- [Error Response](https://docs.birdeye.com/api/error-response.md)
+- [Change Logs](https://docs.birdeye.com/api/changelog.md)
+- [Business](https://docs.birdeye.com/api/business/overview.md)
+- [Create Business](https://docs.birdeye.com/api/business/create-a-business.md): Create a business API creates a new business under a reseller.
+- [Search](https://docs.birdeye.com/api/business/search-business.md): Search Business API searches a business using a name or number. Partial name matching is also supported by API.
+- [Get](https://docs.birdeye.com/api/business/get-business.md): Get Business API gets business information, including product features opted and profile information.
+- [Update](https://docs.birdeye.com/api/business/update-business.md): Update Business API updates business information.
+- [Delete](https://docs.birdeye.com/api/business/delete-business.md): Delete Business API deletes an account or sub-reseller under a reseller.
+- [Status Update](https://docs.birdeye.com/api/business/update-the-status.md): Status Update Business API updates the activation status of a business. Activation status signifies whether an account is active or inactive.
+- [Child Businesses](https://docs.birdeye.com/api/business/get-child-businesses.md): Child Businesses API gets all the businesses under an account.
+- [Public profile tabs](https://docs.birdeye.com/api/business/update-public-profile-of-businesses.md): Public profile tabs API saves information on business profile tabs.
+- [Get Hierarchy](https://docs.birdeye.com/api/business/get-hierarchy-for-an-enterprise.md): Get Hierarchy API gets business hierarchy. Hierarchical information contains the parent-child relationship information between businesses.
+- [Update Hierarchy](https://docs.birdeye.com/api/business/update-hierarchy.md): The Update Hierarchy API maps the hierarchical level to its corresponding level value for a given location. This API is used to update the hierarchical structure of locations, ensuring that each location is correctly placed within the hierarchy based on its level and value. It is important to avoid…
+- [Get Custom card details](https://docs.birdeye.com/api/business/get-custom-card-details.md): Get Customer card API returns the detail of customer card of the location
+- [Manage Custom card](https://docs.birdeye.com/api/business/update-custom-card.md): Manage Custom card API supports updating and deleting a custom card for a business profile.
+- [Manage Custom card](https://docs.birdeye.com/api/business/delete-custom-card.md): Manage Custom card API supports updating and deleting a custom card for a business profile.
+- [Get Timezone List](https://docs.birdeye.com/api/business/get-timezone-list.md): Get Timezone List API fetches the list of all available timezones.
+- [Get Birdeye Impressions](https://docs.birdeye.com/api/business/get-birdeye-impressions.md): Returns only birdeye (source: website) impressions by location as well as total.
+- [Custom Fields](https://docs.birdeye.com/api/custom-fields/overview.md)
+- [Create Custom Fields](https://docs.birdeye.com/api/custom-fields/create.md): Create custom Fields
+- [Update Custom Fields](https://docs.birdeye.com/api/custom-fields/update.md): Update custom Fields
+- [Get Custom Fields](https://docs.birdeye.com/api/custom-fields/get.md): Get custom Fields
+- [Get Custom Fields List](https://docs.birdeye.com/api/custom-fields/post.md): Get custom Fields List
+- [Delete Custom Fields](https://docs.birdeye.com/api/custom-fields/delete.md): Delete custom Fields
+- [Associate Custom Fields](https://docs.birdeye.com/api/custom-fields/associate.md): Associate custom Fields
+- [Create Custom card](https://docs.birdeye.com/api/custom-fields/create-custom-card.md): Create Custom card API creates a custom card for a business profile.
+- [User](https://docs.birdeye.com/api/user/overview.md)
+- [Signup](https://docs.birdeye.com/api/user/create-user.md): Create User API creates a new user for a business. By default, an invitation is sent to the user via email.
+- [Update User](https://docs.birdeye.com/api/user/update-user.md): Updates an existing user’s access, notifications, and role.
+- [Delete](https://docs.birdeye.com/api/user/delete-a-user.md): Delete User API removes user access from a business.
+- [Password](https://docs.birdeye.com/api/user/forgot-password.md): Forgot Password API generates forgot password mail to reset the password.
+- [Get](https://docs.birdeye.com/api/user/get-details-of-a-user.md): Get User API gets details of a user.
+- [Reviews](https://docs.birdeye.com/api/reviews/overview.md)
+- [Get](https://docs.birdeye.com/api/reviews/get-reviews.md): Get Reviews returns reviews for a business account with detailed review fields.
+- [Archived Get Reviews](https://docs.birdeye.com/api/reviews/archived-get-reviews.md): Archived Get Reviews returns archived public reviews for the requested business and date range, with optional filters for source, delete date, ratings, status, and search text.
+- [Review Summary](https://docs.birdeye.com/api/reviews/get-reviews-summary.md): Review Summary API returns the number of reviews based on the review source. It also returns the list of review sources and review ratings.
+- [Review Reply](https://docs.birdeye.com/api/reviews/post-review-reply.md): Eligible reviews can be replied to from the Birdeye platform using Review Reply API.
+- [Create Tags](https://docs.birdeye.com/api/reviews/create-tags.md): Create Tags creates new tag(s) in the account.
+- [Delete Tag](https://docs.birdeye.com/api/reviews/delete-a-tag.md): Delete Tag deletes any tag from the account.
+- [Fetch Tags](https://docs.birdeye.com/api/reviews/get-all-tags.md): Fetch Tags returns the list of tags associated with the account.
+- [Search reviews and assign tags](https://docs.birdeye.com/api/reviews/assign-tags-to-filtered-reviews.md): Assign the list of tags to the reviews on the basis of review filter.
+- [Search reviews and remove tags](https://docs.birdeye.com/api/reviews/remove-tags-from-filtered-reviews.md): Search reviews and remove tags removes the list of tags from reviews on the basis of review filter.
+- [Remove tags from all reviews](https://docs.birdeye.com/api/reviews/remove-particular-tags-from-all-reviews.md): Remove particular tags from all reviews removes the list of tags from all the reviews of an account.
+- [Contact](https://docs.birdeye.com/api/contact/overview.md)
+- [Create or Update Contact](https://docs.birdeye.com/api/contact/create-or-update-contact.md): Customers can be created & updated using Create or Update Contact API.
+- [Get Contact](https://docs.birdeye.com/api/contact/get-contact.md): Get Contact fetches Customer details.
+- [Delete Contact](https://docs.birdeye.com/api/contact/delete-contact.md): Customers can be deleted using Delete Contact API.
+- [Check in](https://docs.birdeye.com/api/contact/customer-checkin.md): Customer check-in can be done using Check in API.
+- [Activity log](https://docs.birdeye.com/api/contact/customer-activity-log.md): You can retrieve the customer history or customer activity log using the Customer activity log API.
+- [Delete Customer](https://docs.birdeye.com/api/contact/customer-delete.md): Customer can be deleted using this API.
+- [Subscribe/Unsubscribe Customer](https://docs.birdeye.com/api/contact/subscribe-unsubscribe-customer.md): Customer can be subscribe/unsubscribe from Email & SMS using this API.
+- [Contacts list](https://docs.birdeye.com/api/contact/contact.md): Contact list API fetches contact list for a business.
+- [Customer or Lead list](https://docs.birdeye.com/api/contact/customer-or-lead-list.md): Customer or Lead list fetches the contact list for a business, which can be filtered based on contact type (Lead or Customer) & source of the contact.
+- [Contact Us](https://docs.birdeye.com/api/contact/contact-us-request.md): Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
+- [Get opt-out Contacts](https://docs.birdeye.com/api/contact/get-opt-out-contact-data.md): API to fetch the daily opt-out or blocked contact data for a business
+- [Contact V2](https://docs.birdeye.com/api/contact-v2/overview.md)
+- [Upsert Contact](https://docs.birdeye.com/api/contact-v2/upsert-contact.md): Customers can Create or Update Contact API.
+- [Retrieve Contact](https://docs.birdeye.com/api/contact-v2/retrieve-contact.md): Retrieve a customer's contact profile and associated details.
+- [Customer Check in](https://docs.birdeye.com/api/contact-v2/customer-checkin.md): Customer check-in can be done using Check in API.
+- [Update Communication Preferences](https://docs.birdeye.com/api/contact-v2/update-communication-preferences.md): Customer can be subscribe/unsubscribe from Email & SMS using this API.
+- [Retrieve Opted-Out Contacts](https://docs.birdeye.com/api/contact-v2/retrieve-opted-out-contacts.md): API to fetch the daily opt-out or blocked contact data for a business
+- [Campaign](https://docs.birdeye.com/api/campaign/overview.md)
+- [Fetch Request URL](https://docs.birdeye.com/api/campaign/fetch-request-url.md): Fetch Request URL gets the short link of the requested URL for the customer.
+- [Set Defaullt Review Sources](https://docs.birdeye.com/api/campaign/set-defaullt-review-sources.md): Set Default Review Sources API updates default templates of businesses under a reseller with default review sources (i.e., Google/Facebook).
+- [Aggregation](https://docs.birdeye.com/api/aggregation/overview.md)
+- [Get source list](https://docs.birdeye.com/api/aggregation/get-business-aggregation-sources.md): Get source list API returns the list of aggregations associated with the location/SMB.
+- [Get Source List-lite](https://docs.birdeye.com/api/aggregation/get-all-aggregation-source.md): Get Source List-lite returns a list of aggregation aliases associated with the location/SMB.
+- [Add Aggregation Link](https://docs.birdeye.com/api/aggregation/add-aggregation-url.md): Add Aggregation Link adds the aggregation URL to the location.
+- [Delete](https://docs.birdeye.com/api/aggregation/delete-aggregation-url.md): Delete Aggregation API deletes aggregation from the location/SMB.
+- [Report](https://docs.birdeye.com/api/report/overview.md)
+- [Dashboard](https://docs.birdeye.com/api/report/get-dashboard-data.md): Get Dashboard Data API gives you an overview of business data with data points like review & rating count, sentiment of reviews, negative/positive reviews, and past 30 days' reviews with review responses.
+- [Review conversion report](https://docs.birdeye.com/api/report/get-review-conversion-report.md): Review conversion report API gives you the detail overview of the review request send to the customer.
+- [Review and rating over time](https://docs.birdeye.com/api/report/review-and-rating-over-time-report.md): Review and rating over time API gives you the number of reviews and average rating in accordance with the time.
+- [Reviews & Rating By Location](https://docs.birdeye.com/api/report/reviews-rating-by-location-report.md): Reviews & Rating By Location gives an overall view of how many reviews, and the average ratings are associated with each location.
+- [Review Count & Rating](https://docs.birdeye.com/api/report/review-count-rating.md): Review Count & Rating API fetches the review count according to the rating.
+- [Review Count & Rating By Employee](https://docs.birdeye.com/api/report/review-count-rating-by-employee.md): Review Count & Rating By Employee returns review count by rating associated with each assisted employee.
+- [Insights Category Report by location](https://docs.birdeye.com/api/report/insights-category-report-by-location-report.md): Insights Category Report by location provides the location-wise insights category data in the response.
+- [Competitive Ranking](https://docs.birdeye.com/api/report/competitive-ranking-report.md): Competitive Ranking Report provides the competitors ranking & rating data in the response for a business.
+- [NPS Over time](https://docs.birdeye.com/api/report/nps-over-time-report.md): NPS Over time gives you the NPS score for a selected period of time for all locations across businesses and the count of promoters, passives, and detractors for this business. The report can be grouped per day/week/month/year.
+- [NPS By Location](https://docs.birdeye.com/api/report/nps-by-location-report.md): NPS By Location gives you the NPS score for each location and the count of promoters, passives, and detractors for the business.
+- [Review By Source](https://docs.birdeye.com/api/report/review-by-source-report.md): Review By Source  API groups the number of reviews and average ratings in an account according to the aggregation source.
+- [Visitor report](https://docs.birdeye.com/api/report/visitor-report.md): Visitor report groups the data according to source.
+- [Usage report](https://docs.birdeye.com/api/report/usage-report.md): Usage report gives the usage details for the review requests, and the number of requests sent, opened and clicked.
+- [Review Response Rate Over Time](https://docs.birdeye.com/api/report/review-response-rate-over-time.md): Review Response Rate Over Time API returns response-rate trends over time, with optional previous-period comparison.
+- [Review Response Rate By Location Overview](https://docs.birdeye.com/api/report/review-response-rate-by-location-overview.md): Review Response Rate By Location Overview API returns location-wise response-rate metrics.
+- [Average Response Time By Location](https://docs.birdeye.com/api/report/average-response-time-by-location.md): Average Response Time By Location API returns location-wise average response-time metrics.
+- [Average Response Time Over Time](https://docs.birdeye.com/api/report/average-response-time-over-time.md): Average Response Time Over Time API returns average response-time trends over time, with optional previous-period comparison.
+- [Survey](https://docs.birdeye.com/api/survey/overview.md)
+- [Get](https://docs.birdeye.com/api/survey/get-survey.md): Get Survey fetches the survey designer page details for a particular survey. It provides all the questions which are available in the requested survey ID.
+- [Submit](https://docs.birdeye.com/api/survey/post-a-survey-response.md): Post a survey response API submits the survey response for a particular survey using JSON structure.
+- [List Responses](https://docs.birdeye.com/api/survey/list-responses-for-a-survey.md): List Responses for a Survey API fetches all the responses available for a particular survey ID.
+- [Get All](https://docs.birdeye.com/api/survey/get-all-surveys.md): Get All Surveys fetches the list of all available surveys on the business.
+- [Create Survey](https://docs.birdeye.com/api/survey/create-survey.md): Create Survey API helps create a new survey for the required question structure and further displays it on the survey list page.
+- [Update Settings](https://docs.birdeye.com/api/survey/update-survey-settings.md): Update Survey Settings helps update the survey page appearance settings like Logo, Title, ProgessBar setting, Theme Colour, User Acess, and many more.
+- [Business Media](https://docs.birdeye.com/api/business-media/overview.md)
+- [Add Media](https://docs.birdeye.com/api/business-media/add-media.md): API to upload the Business Media.
+- [Get Media](https://docs.birdeye.com/api/business-media/get-media.md): API to get the Business Media details.
+- [Update Media](https://docs.birdeye.com/api/business-media/update-media.md): API to update the Business Media.
+- [Delete Media](https://docs.birdeye.com/api/business-media/delete-media.md): API to delete the Business Medias.
+- [Social](https://docs.birdeye.com/api/social/overview.md)
+- [Schedule Social Post](https://docs.birdeye.com/api/social/schedule-social-post.md): This API allows users to schedule or immediately post content on supported social sites. Users can specify the content, media, and schedule a specific time for the post. Supported social sites include Google Business Profile, Facebook, Instagram, LinkedIn, and Twitter.
+- [Edit scheduled Social Post](https://docs.birdeye.com/api/social/edit-scheduled-social-post.md): This api will edit a scheduled post created through public api. Users can specify the content, media, and schedule a specific time for the post. Supported social sites include Google Business Profile, Facebook, Instagram and LinkedIn. If extra locations are included in subBusinessNumbers, the post w…
+- [Edit published social Post](https://docs.birdeye.com/api/social/edit-published-social-post.md): This api will edit a published post created through public api. Only text can be updated for a published post. Editing published post is only supported for these channels: Facebook, Google and LinedIn.
+- [Delete public social Post](https://docs.birdeye.com/api/social/delete-public-social-post.md): This api will delete a post created through public api. It can delete both scheduled and published posts. Deleting published post is only supported for these channels: Facebook, Google, LinedIn
+- [Track Social Post](https://docs.birdeye.com/api/social/track-social-post.md): This API allows users to track the status of a social post that was previously scheduled or published using the Schedule Social Post API. By providing the trackingId from the response of the scheduling API, users can query the status and details of the post across different social sites.
+- [Social Open URL Performance Report](https://docs.birdeye.com/api/social/social-open-url-performance-report.md): Social Open URL Performance Report API returns channel-level social performance metrics with optional comparison data for the selected date range.
+- [Upload Social Media](https://docs.birdeye.com/api/social/upload-social-media.md): Accepts a batch of publicly accessible image or video URLs and queues them for asynchronous upload to the Birdeye media library. Returns a batch_id immediately; poll the Track Upload Status endpoint to retrieve per-item results. Accepts 1–50 URLs per request. Supported image formats — .jpg, .jpeg, .…
+- [Track Social Media Upload](https://docs.birdeye.com/api/social/track-social-media-upload.md): Returns the current processing status for a media upload batch submitted via the Upload Social Media endpoint. Poll until pending_count reaches 0 or the batch status is no longer PENDING. The asset_id returned for successfully uploaded items should be used when attaching media to a Social Post.
+- [Get](https://docs.birdeye.com/api/employee/get-details-of-employees.md): Get details of Employees is a lite version API that retrieves a sorted list of all active employees for an account.
+- [Conversation](https://docs.birdeye.com/api/conversation/overview.md)
+- [List Conversations](https://docs.birdeye.com/api/conversation/list-conversations.md): List Conversations retrieves conversations for a business.
+- [Subscription](https://docs.birdeye.com/api/subscription/overview.md)
+- [Subscribe](https://docs.birdeye.com/api/subscription/create-subscription.md): Create webhook subscription listens to subscribed webhook events on a specific passed URL.
+- [Unsubscribe](https://docs.birdeye.com/api/subscription/unsubscribe-subscription.md): Delete webhook subscription to stop listening to subscribed webhook events on the subscribed url.
+- [Webhook](https://docs.birdeye.com/api/webhook/overview.md)
+- [List webhook events](https://docs.birdeye.com/api/webhook/get-events.md): List webhook events get events via webhook on multiple activities, whether the conversation is open, updated, closed, or a new message has been added.
+- [Create webhook subscription](https://docs.birdeye.com/api/webhook/create-webhook-subscription.md): Create webhook subscription listens to webhook events on a specific passed URL.
+- [Competitor](https://docs.birdeye.com/api/competitor/overview.md)
+- [Competitor of Enterprise Business](https://docs.birdeye.com/api/competitor/get-competitor-business.md): Competitor of Enterprise Business retrieves list of all competitor businesses for an enterprise.
+- [Child Business of Competitor](https://docs.birdeye.com/api/competitor/get-competitor-child-business.md): Get Competitor Child Business retrieves all child locations.
+- [Get Competitors](https://docs.birdeye.com/api/competitor/get-business-competitors.md): Get Business Competitors retrieves competitor’s details for an enterprise.
+- [Create Competitor Enterprise](https://docs.birdeye.com/api/competitor/create-new-competitor-enterprise.md): Create New Competitor Enterprise creates a new competitor for an enterprise.
+- [Create Child Business](https://docs.birdeye.com/api/competitor/create-new-child-business-in-competitor-enterprise.md): Create New Child Business in Competitor Enterprise creates a new child business for a competitor enterprise.
+- [Add Aggregation Link](https://docs.birdeye.com/api/competitor/add-new-competitor-aggregation-url.md): Add new Competitor Aggregation URL adds an aggregation URL for a competitor location.
+- [Get Competitor Review](https://docs.birdeye.com/api/competitor/get-competitor-reviews.md): Get Competitor Review returns the list of review(s) of competitors for an account.
+- [Competitive Insight Category](https://docs.birdeye.com/api/competitor/get-score.md): Get Score retrieves Insights category details for a competitor.
+- [Competitive Insight Themes](https://docs.birdeye.com/api/competitor/get-theme-statistics.md): Get Theme Statistics retrieves Insights topic details for a competitor.
+- [Competitive Insight Keywords](https://docs.birdeye.com/api/competitor/get-keyword-statistics.md): Get Keyword Statistics retrieves Insights keywords details for a competitor.
+- [Competitor AI](https://docs.birdeye.com/api/competitor-ai/overview.md)
+- [Retrieve Competitor Reviews](https://docs.birdeye.com/api/competitor-ai/retrieve-competitor-reviews.md): This API retrieves competitor review data for specified business numbers and date ranges.
+- [Retrieve Competitor Review Metrics](https://docs.birdeye.com/api/competitor-ai/retrieve-competitor-review-metrics.md): This API retrieves competitor metrics review data (average rating and total reviews) for specified business numbers and date ranges.
+- [Insight AI](https://docs.birdeye.com/api/insight-ai/overview.md)
+- [Insight Experience Score Benchmark](https://docs.birdeye.com/api/insight-ai/get-insight-experience-score-benchmark.md): Insight Experience Score Benchmark API retrieves benchmark scores comparing actual performance against industry standards and specified comparison periods for sentiment, reputation, experience, and listing metrics.
+- [Insight Experience Location Info](https://docs.birdeye.com/api/insight-ai/get-insight-experience-location-info.md): Insight Experience Location Info API retrieves location-wise experience metrics including sentiment, reputation, experience, and listing scores along with delta comparisons for specified business locations and date ranges.
+- [Insight Experience Over Time](https://docs.birdeye.com/api/insight-ai/get-insight-experience-over-time.md): The Insight Experience Over Time API provides a time-series view of experience scores at the account level. It aggregates sentiment, reputation, listing, and call scores across configurable time intervals — day, week, month, quarter, or year — enabling trend analysis and performance tracking over cu…
+- [Google Q&A](https://docs.birdeye.com/api/google-q-a/overview.md)
+- [Create Question](https://docs.birdeye.com/api/google-q-a/create-question.md): Create a new question and associated answer
+- [Create Answer](https://docs.birdeye.com/api/google-q-a/create-answer.md): Add an answer to an existing question. Owner can add only one answer per question. This API would be needed when you wish to answer a third party raised question. In this use case, you would need to do a GET all Q&A API call, identify the unanswered Q’s and then use this Create Answer API to answer…
+- [Update Question](https://docs.birdeye.com/api/google-q-a/update-question.md): Update an existing question. You can edit/ update an existing question posted / created by you. Google does not allow you to edit/ update a third party posted Question.
+- [Update Answer](https://docs.birdeye.com/api/google-q-a/update-answer.md): Update an answer to an existing question. You can edit/ update an existing answer posted / created by you. Google does not allow you to edit/ update a third party posted answer
+- [Delete Question](https://docs.birdeye.com/api/google-q-a/delete-question.md): Delete existing questions. Only those questions can be deleted which are created by the owner.
+- [Delete Answer](https://docs.birdeye.com/api/google-q-a/delete-answer.md): Delete answers to existing questions. Only that answer can be deleted which is posted by the owner.
+- [Delete All Questions and Answers](https://docs.birdeye.com/api/google-q-a/delete-all-questions-and-answers.md): Delete all Q&A on the businessId provided.
+- [Get All Questions and Answers](https://docs.birdeye.com/api/google-q-a/get-all-questions-and-answers.md): Get all Questions and Answers for a Location
+- [Get All Unanswered Q&A](https://docs.birdeye.com/api/google-q-a/get-all-unanswered-questions-and-answers.md): Get all Unanswered Questions and Answers for a Location
+- [Google Services](https://docs.birdeye.com/api/google-services/overview.md)
+- [Create Service](https://docs.birdeye.com/api/google-services/create-service.md): Create a new service for the account
+- [Get All Services](https://docs.birdeye.com/api/google-services/get-all-services.md): Get all services for an account
+- [Update Service](https://docs.birdeye.com/api/google-services/update-service.md): Update an existing service of an account.
+- [Delete Services](https://docs.birdeye.com/api/google-services/delete-services.md): Delete existing services of an account
+- [Get Location Mapping](https://docs.birdeye.com/api/google-services/get-location-mapping.md): Get location level service - category mapping
+- [Update Location Mapping](https://docs.birdeye.com/api/google-services/update-location-mapping.md): Map services to categories at location level
+- [FAQ](https://docs.birdeye.com/api/faq/overview.md)
+- [Get All QnA](https://docs.birdeye.com/api/faq/get-all-qna.md): Customers can fetch a paginated, ordered list of all QnA entries available for a business.
+- [Listing](https://docs.birdeye.com/api/listing/overview.md)
+- [Fix Listing](https://docs.birdeye.com/api/listing/fix-listing.md): Fix Listing publishes information on online listing sources. We post presence information on more than 50 online directories.
+- [Get Location Status Report](https://docs.birdeye.com/api/listing/get-location-status-report.md): A detailed view of the listings status at location level
+- [Listings Insights](https://docs.birdeye.com/api/listing/listings-insights.md): Insights/Analytics for Google Listings of a given business.
+- [Listings Insights Datapoints](https://docs.birdeye.com/api/listing/listings-insights-datapoints.md): Datapoints of report graph is date/label mapped to value/data of a given business.
+- [Get GMB Attributes](https://docs.birdeye.com/api/listing/get-gmb-attributes.md): The Get GMB Attributes API fetches the list of applicable GMB attributes for the selected GMB category ID
+- [Get Apple Attributes](https://docs.birdeye.com/api/listing/get-apple-attributes.md): The Get Apple Attributes API fetches the list of applicable Apple attributes. An attribute is typically something that helps describe your location better. E.g.: You provide paid parking or that your location is kid friendly etc.
+- [Get Apple Action Links](https://docs.birdeye.com/api/listing/get-apple-action-links.md): The Get Apple Action Links fetches the list of applicable Apple Action Link Types. Apple action links are the click throughs that are displayed in the action row on your Apple Maps listings also known as the Apple Maps Placecard.
+- [Get Category List](https://docs.birdeye.com/api/listing/get-category-list.md): The Get Category List API fetches the list of category values for the selected source.
+- [Create Listing](https://docs.birdeye.com/api/listing/create-listing.md): Create Listing API publishes information on online listing sources. We post presence information on more than 50+ online directories. You can use this API to not just create your detailed listing but also fix/ publish/ sync/ make live at the same time.
+- [Update Listing](https://docs.birdeye.com/api/listing/update-listing.md): The Update Listing API will update the location details on all your listings sites.
+- [Get Listing](https://docs.birdeye.com/api/listing/get-listing.md): The Get Listing API will get the listing information for the given business number/ ID.
+- [Get More Hours Type](https://docs.birdeye.com/api/listing/get-more-hours-type.md): Get supported more hours type for a location. This will depend on the country and gmb primary category for the particular location.
+- [Get Google Keywords Count](https://docs.birdeye.com/api/listing/get-google-keywords-count.md): Get’s Google keywords count for an account. Google keyword: Top keywords searched for which your business is ranked.
+- [Deactivate Listing](https://docs.birdeye.com/api/listing/deactivate-listing.md): Deactivate Listing API stops publishing any information on the given online directories/ listings sites (as per your plan/ package chosen).
+- [Retrieve Menu Details](https://docs.birdeye.com/api/listing/retrieve-menu-details.md): This API retrieves structured menu information for specified business numbers.
+- [Get Hotel Attributes](https://docs.birdeye.com/api/listing/get-hotel-attributes.md): The Get Hotel Attributes API fetches the list of applicable hotel attributes configured for the selected business.
+- [GMB Products](https://docs.birdeye.com/api/gmb-products/overview.md)
+- [Onboard Google Merchant Account](https://docs.birdeye.com/api/gmb-products/onboard-google-merchant-account.md): Onboards/connects a Google Merchant account for products listing.
+- [Create Product Listing](https://docs.birdeye.com/api/gmb-products/create-product-listing.md): Creates a product listing on the Google Merchant account linked to the Birdeye account.
+- [Update Product Listing](https://docs.birdeye.com/api/gmb-products/update-product-listing.md): Operations related to update a product listing.
+- [Get Product Listing](https://docs.birdeye.com/api/gmb-products/get-product-listing.md): Operations related to get a product listing.
+- [Delete Product Listings](https://docs.birdeye.com/api/gmb-products/delete-product-listings.md): Deletes products from Google Merchant Center and Birdeye for the provided product IDs.
+- [Get List Product Listing](https://docs.birdeye.com/api/gmb-products/get-list-product-listing.md): Returns paginated product listings for the account/locations based on search and filters.
+- [Add Products On a Location](https://docs.birdeye.com/api/gmb-products/add-products-on-a-location.md): Adds products (by IDs) to the Google profile of the business provided in headers.
+- [Remove Products On a Location](https://docs.birdeye.com/api/gmb-products/remove-products-on-a-location.md): Removes products (by IDs) to the Google profile of the business provided in headers.
+- [Search AI](https://docs.birdeye.com/api/search-ai/overview.md)
+- [Get Search AI Configuration](https://docs.birdeye.com/api/search-ai/get-search-ai-configuration.md): Retrieves the Search AI configuration for the specified business.
+- [Get Search AI Available Runs](https://docs.birdeye.com/api/search-ai/get-search-ai-available-runs.md): Retrieves the Search AI available runs for the specified business.
+- [Get Search AI Citations](https://docs.birdeye.com/api/search-ai/get-search-ai-citations.md): Retrieves Search AI citations for the specified business, including sources referenced by AI models for given prompts and themes.
+- [Get Search AI Businesses](https://docs.birdeye.com/api/search-ai/get-search-ai-businesses.md): Retrieves Search AI business results for the specified business, including businesses identified by AI models for given prompts and themes.
+- [Get Accuracy Report](https://docs.birdeye.com/api/search-ai/get-accuracy-report.md): Provides an accuracy report for the specified business, highlighting how consistent and reliable the business information is across platforms.
+- [Get Sentiment Report](https://docs.birdeye.com/api/search-ai/get-sentiment-report.md): Returns the sentiment report for the specified business, providing insights into customer sentiment across supported platforms.
+- [Ticketing](https://docs.birdeye.com/api/ticketing/overview.md)
+- [Create ticket](https://docs.birdeye.com/api/ticketing/create-ticket.md): Create reviews, untagged, and survey responses tickets.
+- [Add Ticket Comments](https://docs.birdeye.com/api/ticketing/add-ticket-comments.md): Add comment activity on tickets.
+- [Update ticket](https://docs.birdeye.com/api/ticketing/update-ticket.md): Update the ticket status or ticket assignee.
+- [Get All Ticket Data](https://docs.birdeye.com/api/ticketing/get-all-ticket-data.md): Get tickets
+- [Integration](https://docs.birdeye.com/api/integration/overview.md)
+- [Add Business Integration Mapping](https://docs.birdeye.com/api/integration/add-locations.md): Add Business Integration Mapping adds locations to integrations and set them active.
+
+## OpenAPI Specs
+
+- [openapi](https://docs.birdeye.com/api/openapi.yaml)

@@ -1,0 +1,305 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Birdeye Aggregation Contact API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-api-key",
+      "value": "{{x-api-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or Update Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/customer-v2/external/saveCustomer",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or Update Contact"
+        },
+        {
+          "info": {
+            "name": "Get Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/customer-v2/external/getCustomer",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Contact"
+        },
+        {
+          "info": {
+            "name": "Delete Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/customer-v2/external/deleteCustomer",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete Contact"
+        },
+        {
+          "info": {
+            "name": "Customer Checkin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/customer/checkin",
+            "params": [
+              {
+                "name": "bid",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Customer Checkin"
+        },
+        {
+          "info": {
+            "name": "Customer activity log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.birdeye.com/v1/customer/history/:customerId",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the business."
+              },
+              {
+                "name": "startDate",
+                "value": "12/30/2021",
+                "type": "query",
+                "description": "The start date format should be MM/dd/yyyy. if start date is not set, then we will use the date customer was created."
+              },
+              {
+                "name": "endDate",
+                "value": "12/30/2022",
+                "type": "query",
+                "description": "The end date format should be MM/dd/yyyy. if end date is not set, then we will use the current date."
+              },
+              {
+                "name": "customerId",
+                "value": "12344",
+                "type": "path",
+                "description": "Id of the customer."
+              }
+            ]
+          },
+          "docs": "Customer activity log"
+        },
+        {
+          "info": {
+            "name": "Customer Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.birdeye.com/v1/customer/id/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of enterprise customer."
+              }
+            ]
+          },
+          "docs": "Customer Delete"
+        },
+        {
+          "info": {
+            "name": "Subscribe/Unsubscribe Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/customer-v2/change-permission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribe/Unsubscribe Customer"
+        },
+        {
+          "info": {
+            "name": "Contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v2/customer/list",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "query",
+                "description": "Id of the Business."
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query",
+                "description": "The page number."
+              },
+              {
+                "name": "size",
+                "value": "30",
+                "type": "query",
+                "description": "Maximum number of contacts return in response."
+              },
+              {
+                "name": "sortby",
+                "value": "lastActivityOn",
+                "type": "query",
+                "description": "The sorting order of the list."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Contact"
+        },
+        {
+          "info": {
+            "name": "Customer or Lead list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/contact/details",
+            "params": [
+              {
+                "name": "tags",
+                "value": "true",
+                "type": "query",
+                "description": "If tag data is required send true, default value is false."
+              },
+              {
+                "name": "customfields",
+                "value": "true",
+                "type": "query",
+                "description": "If custom fields data is required send true, default is false."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Customer or Lead list"
+        },
+        {
+          "info": {
+            "name": "Contact Us Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/contactUs/:businessId",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "12345678",
+                "type": "path",
+                "description": "Id of the business."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Contact Us Request"
+        },
+        {
+          "info": {
+            "name": "Get opt-out contact data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.birdeye.com/v1/contact/:businessId/update-feed",
+            "params": [
+              {
+                "name": "businessId",
+                "value": "123456",
+                "type": "path",
+                "description": "Id of a business (Long)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get opt-out contact data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

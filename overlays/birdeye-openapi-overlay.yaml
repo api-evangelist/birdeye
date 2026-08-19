@@ -1,0 +1,96 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Birdeye
+  version: 1.0.0
+extends: openapi/_original/birdeye-openapi-original.yml
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: openapi/_original/birdeye-openapi-original.yml
+  note: >-
+    One provider-level overlay rather than one per refined per-tag file. The refined
+    specs in openapi/ are already API Evangelist output split by tag; the enhancements
+    below apply to the provider-published document at
+    https://docs.birdeye.com/api/openapi.yaml, which is the thing we do not own and must
+    never mutate. The single largest enhancement is declaring the security scheme:
+    Birdeye's published spec sets `security: []` at the root and defines no
+    `components.securitySchemes`, so the mandatory x-api-key header exists only in prose
+    and no generated client would send it.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-slug: birdeye
+    x-apievangelist-profile: https://apis.io/provider/birdeye/
+    x-apievangelist-reviewed: '2026-08-13'
+    contact:
+      name: Birdeye Developer Support
+      url: https://docs.birdeye.com/
+    termsOfService: https://birdeye.com/terms/
+- target: $.info
+  description: >-
+    Birdeye's published info.version is an empty string. Set a resolvable value so
+    tooling that keys on version does not silently treat every fetch as the same
+    document.
+  update:
+    version: '1.0.0'
+- target: $.components
+  description: >-
+    Declare the apiKey security scheme Birdeye documents in prose but omits from the
+    machine-readable contract.
+  update:
+    securitySchemes:
+      apiKey:
+        type: apiKey
+        in: header
+        name: x-api-key
+        description: >-
+          Partner-specific API key provided by Birdeye. Mandatory on all requests
+          targeting business accounts. Must be sent from a backend server only — never
+          from a browser or client-side code. Retrieved from the Birdeye dashboard.
+- target: $
+  description: Apply the declared scheme globally, replacing the empty root security array.
+  update:
+    security:
+    - apiKey: []
+- target: $.info
+  description: >-
+    Attach the runtime semantics Birdeye documents on separate pages so an agent reading
+    only the spec still gets them.
+  update:
+    x-conventions:
+      pagination:
+        style: offset
+        params: [sindex, count]
+        max_window: 100000
+        alternates: ['page + size', 'startIndex + pageSize', 'start-index + page-size']
+      error_envelope:
+        shape: '{ "code": <int>, "message": "<string>" }'
+        rfc9457: false
+        catalog: errors/birdeye-error-codes.yml
+        gotcha: >-
+          Business failures may be returned inside a 200 body carrying a non-success
+          `code`; inspect the body, not only the HTTP status.
+      rate_limits:
+        published: false
+        exhaustion_status: 429
+        exhaustion_code: 89
+        headers: null
+      idempotency:
+        supported: false
+      versioning:
+        scheme: uri-path
+        current: v1
+        also_live: v2
+- target: $.info
+  description: Record the agent surfaces Birdeye ships alongside this REST contract.
+  update:
+    x-agent-surfaces:
+      mcp:
+        url: https://mcp.birdeye.com/mcp
+        transport: streamable-http
+        auth: oauth2
+        read_only: true
+      agent_card: https://docs.birdeye.com/.well-known/agent-card.json
+      agent_skill: https://docs.birdeye.com/.well-known/agent-skills/birdeye/skill.md
+      llms_txt: https://docs.birdeye.com/llms.txt
+      crosswalk: mcp/birdeye-tool-crosswalk.yml

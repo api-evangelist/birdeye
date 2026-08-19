@@ -1,0 +1,863 @@
+{
+  "item": [
+    {
+      "id": "9a57bad4-1053-47cc-bcca-9333067c3c75",
+      "name": "Survey",
+      "description": {
+        "content": "Engage each customer at the right time with NPS or CSAT surveys to improve your service.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4bf85b66-3f36-4480-8402-764ca022a6ea",
+          "name": "Get Survey",
+          "request": {
+            "name": "Get Survey",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "survey",
+                ":survey_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "businessId",
+                  "value": "<number>",
+                  "description": "(Required) Id of the Business."
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "The survey locale, default is english"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "survey_id",
+                  "description": "(Required) Id of the Survey."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d7c2157-0630-4530-bbe2-6fb3fedf166f",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "survey",
+                    ":survey_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "businessId",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "english"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "survey_id",
+                      "description": "(Required) Id of the Survey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 89,\n  \"message\": \"Rate limit exceeded\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e72c23a3-8606-484c-8e54-896e8feb917f",
+          "name": "Post a survey response",
+          "request": {
+            "name": "Post a survey response",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "survey",
+                ":survey_id",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "businessId",
+                  "value": "<string>",
+                  "description": "(Required) Id of the Business."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "survey_id",
+                  "description": "(Required) Id of the Survey."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50929e86-9087-4b15-afc4-586f26d7185b",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "survey",
+                    ":survey_id",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "businessId",
+                      "value": "12345678"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "survey_id",
+                      "description": "(Required) Id of the Survey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1011,\n  \"message\": \"Business id is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b8df5ac-01b9-45e8-8fe3-ccea553e1133",
+          "name": "List Responses for a Survey",
+          "request": {
+            "name": "List Responses for a Survey",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "survey",
+                "ext",
+                "list",
+                "responses",
+                ":survey_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "businessNumber",
+                  "value": "<string>",
+                  "description": "(Required) The Business Number of Enterprise"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "The page number, starts with 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "<integer>",
+                  "description": "The size of the page."
+                },
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "The sort by parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "sorder",
+                  "value": "<string>",
+                  "description": "The sort order parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeTicketId",
+                  "value": "<boolean>",
+                  "description": "The field to fetch ticketIds associated with the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "survey_id",
+                  "description": "(Required) Id of the Survey."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "null",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "23dd3a40-eb72-4021-acc9-a1c8abd7aec2",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "survey",
+                    "ext",
+                    "list",
+                    "responses",
+                    ":survey_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "businessNumber",
+                      "value": "169744180007807"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sortby",
+                      "value": "date"
+                    },
+                    {
+                      "key": "sorder",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "includeTicketId",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "survey_id",
+                      "description": "(Required) Id of the Survey."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1011,\n  \"message\": \"Business id is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ed51023-c962-4d6e-a88a-95226b67894f",
+          "name": "Get All Surveys",
+          "request": {
+            "name": "Get All Surveys",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "survey",
+                "business",
+                ":business_id",
+                "all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sortby",
+                  "value": "<string>",
+                  "description": "Sort results by lastModified[modified], Created[created], Response Count[response]."
+                },
+                {
+                  "disabled": false,
+                  "key": "sorder",
+                  "value": "<string>",
+                  "description": "Sort order ascending (0) and descending (1)."
+                },
+                {
+                  "disabled": false,
+                  "key": "searchStr",
+                  "value": "<string>",
+                  "description": "Search survey by name or business location."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "business_id",
+                  "description": "(Required) Business ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3cb4ecc-d012-44b3-b8ba-42e13d44554f",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "survey",
+                    "business",
+                    ":business_id",
+                    "all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sortby",
+                      "value": "modified"
+                    },
+                    {
+                      "key": "sorder",
+                      "value": "0"
+                    },
+                    {
+                      "key": "searchStr",
+                      "value": "abc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "business_id",
+                      "description": "(Required) Business ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 89,\n  \"message\": \"Rate limit exceeded\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b04f0377-6e98-4154-bb44-37ff4fe7872c",
+          "name": "Create Survey",
+          "request": {
+            "name": "Create Survey",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "survey",
+                "external",
+                "create",
+                ":businessId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "businessId",
+                  "description": "(Required) Id of the Business."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e68a819-95ce-4ab5-914f-72d5a2aff2bf",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "survey",
+                    "external",
+                    "create",
+                    ":businessId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "businessId",
+                      "description": "(Required) Id of the Business."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"surveyName\": \"Experience Survey\",\n  \"thankYouMessage\": \"Thank you for taking the survey!\",\n  \"surveyType\": \"traditional\",\n  \"ownerEmailId\": \"testmail@gmail.com\",\n  \"pages\": [\n    {\n      \"questions\": [\n        {\n          \"title\": \"Text1\",\n          \"type\": \"text\"\n        },\n        {\n          \"title\": \"Paragraph\",\n          \"type\": \"textarea\"\n        }\n      ]\n    },\n    {\n      \"title\": \"Page 2-optional\",\n      \"questions\": [\n        {\n          \"title\": \"Questionnumber1\",\n          \"type\": \"checkbox\",\n          \"required\": true,\n          \"choices\": [\n            \"Choice 1\",\n            \"Choice 2\",\n            \"Choice 3\"\n          ]\n        },\n        {\n          \"title\": \"Q2\",\n          \"type\": \"dropdown\",\n          \"choices\": [\n            \"Dropdown 1\",\n            \"Dropdown 2\",\n            \"Dropdown 3\"\n          ]\n        },\n        {\n          \"title\": \"ratingQn\",\n          \"type\": \"rating\",\n          \"minLabel\": \"Strongly Disagree\",\n          \"maxLabel\": \"Strongly Agree\",\n          \"maxValue\": 10\n        }\n      ]\n    },\n    {\n      \"questions\": [\n        {\n          \"title\": \"P3-Q1-Radio\",\n          \"type\": \"radio\",\n          \"choices\": [\n            \"radio 1\",\n            \"radio 2\",\n            \"radio 3\"\n          ]\n        },\n        {\n          \"title\": \"npsQn\",\n          \"type\": \"nps\",\n          \"minLabel\": \"Strongly Disagree\"\n        }\n      ]\n    },\n    {\n      \"questions\": [\n        {\n          \"title\": \"Datetime question\",\n          \"type\": \"datetime\",\n          \"required\": true,\n          \"showTime\": true,\n          \"showDate\": true,\n          \"interval\": 60,\n          \"minValue\": \"12\",\n          \"maxValue\": \"36\"\n        },\n        {\n          \"title\": \"Please enter your contact information\",\n          \"type\": \"contact\",\n          \"required\": true,\n          \"contactRows\": [\n            {\n              \"required\": true,\n              \"title\": \"First name\",\n              \"type\": \"text\"\n            },\n            {\n              \"required\": true,\n              \"title\": \"Email\",\n              \"type\": \"email\"\n            },\n            {\n              \"required\": true,\n              \"title\": \"Phone\",\n              \"type\": \"phone\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"title\": \"Page 4\",\n      \"questions\": [\n        {\n          \"title\": \"P4-Q1\",\n          \"type\": \"matrixrating\",\n          \"minLabel\": \"Strongly Disagree\",\n          \"maxLabel\": \"Strongly Agree\",\n          \"maxValue\": 5,\n          \"rows\": [\n            \"Row label 1\",\n            \"Row label 2\"\n          ]\n        },\n        {\n          \"title\": \"P4-Q2\",\n          \"type\": \"matrixradio\",\n          \"required\": true,\n          \"choices\": [\n            \"c1\",\n            \"c2\",\n            \"c3\"\n          ],\n          \"rows\": [\n            \"Row 1\",\n            \"Row2\"\n          ]\n        },\n        {\n          \"title\": \"p4-Q3\",\n          \"type\": \"matrixdropdown\",\n          \"required\": true,\n          \"choices\": [\n            \"c1\",\n            \"c2\",\n            \"c3\"\n          ],\n          \"rows\": [\n            \"Row label 1\",\n            \"Row label 2\"\n          ]\n        },\n        {\n          \"title\": \"Label type ques\",\n          \"type\": \"label\"\n        }\n      ]\n    },\n    {\n      \"questions\": [\n        {\n          \"title\": \"please review us on one of these sites\",\n          \"type\": \"review\",\n          \"required\": true,\n          \"contactUsMessage\": \"ContactUs test message\",\n          \"reviewSources\": [\n            \"Google\",\n            \"Facebook\",\n            \"CitySearch\"\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2095,\n  \"message\": \"ownerEmailId cannot be null\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83e29d85-c9ec-4bc4-b5fd-0b2fbb699e7e",
+          "name": "Update Survey Settings",
+          "request": {
+            "name": "Update Survey Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "survey",
+                ":surveyId",
+                "settings",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "businessId",
+                  "value": "<string>",
+                  "description": "(Required) Id of the Business."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "surveyId",
+                  "description": "(Required) Survey ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "null",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50185e99-699a-41dd-a3e2-e896bd1bbc17",
+              "name": "HTTP 200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "survey",
+                    ":surveyId",
+                    "settings",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "businessId",
+                      "value": "12345678"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "surveyId",
+                      "description": "(Required) Survey ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "null",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2096,\n  \"message\": \"Detected conflicting user-access request!\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.birdeye.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aa962246-1230-4d27-bc29-614a7a8761df",
+    "name": "Birdeye Aggregation Survey API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.",
+      "type": "text/plain"
+    }
+  }
+}
