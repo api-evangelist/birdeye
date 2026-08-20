@@ -27,6 +27,14 @@ tags:
   - Surveys
   - Messaging
   - Multi-Location
+  - Artificial Intelligence
+tags_raw:
+  - Reputation Management
+  - Reviews
+  - Customer Experience
+  - Surveys
+  - Messaging
+  - Multi-Location
   - AI
 apis:
 - aid: birdeye:birdeye-aggregation-api
