@@ -583,6 +583,9 @@ apis:
   - type: JSONLDContext
     url: json-ld/birdeye-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/birdeye-capability-edges.yml
+    name: Birdeye Business Capability Map
   - type: OpenAPI
     name: Birdeye published OpenAPI (harvested verbatim)
     url: openapi/_original/birdeye-openapi-original.yml

@@ -1,0 +1,103 @@
+slug: birdeye
+provider: Birdeye
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: Survey
+  spec_file: birdeye-survey-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.85
+  evidence: POST /v1/survey/{survey_id}/submit  Post a survey response; POST /v1/survey/ext/list/responses/{survey_id}  List
+    Responses for a Survey
+  reason: Creation, distribution and response collection of customer surveys is directly Customer Feedback
+    Management (surveys, NPS, VoC).
+- tag: Social
+  spec_file: birdeye-social-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.82
+  evidence: POST /v1/social/{accountNumber}/schedule  Schedule Social Post; POST /v1/social/open-url/performance/report  Social
+    Open URL Performance Report
+  reason: Scheduling, editing, publishing and performance-tracking of social posts is squarely social/digital
+    marketing execution.
+- tag: Contact
+  spec_file: birdeye-contact-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.8
+  evidence: Create or Update Contact; Get Contact; Delete Contact; Subscribe/Unsubscribe Customer
+  reason: CRUD on customer/contact records plus communication permission — customer data management.
+- tag: Competitor
+  spec_file: birdeye-competitor-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.78
+  evidence: '"get-business-competitors  Get Business Competitors"; "get-competitor-reviews  Get Competitor
+    Reviews"; "/v1/competitors/competitive-insight/themes/{businessNumber}  get-theme-statistics"'
+  reason: Operations register competitor businesses and return competitive-insight scores, themes and
+    keyword statistics from competitor reviews — squarely competitive intelligence and customer insight,
+    i.e. market intelligence management.
+- tag: Contact V2
+  spec_file: birdeye-contact-v2-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.78
+  evidence: Upsert Contact; Retrieve Contact; Update Communication Preferences; Retrieve Opted-Out Contacts
+  reason: Same contact master-record surface with communication preference/opt-out management; customer
+    data management.
+- tag: Competitor AI
+  spec_file: birdeye-competitor-ai-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.75
+  evidence: POST /v1/competitors/review  Retrieve Competitor Reviews; POST /v1/competitors/review/metrics  Retrieve
+    Competitor Review metrics
+  reason: Operations retrieve competitor review data and metrics — competitive intelligence / market insight,
+    mapping to Market Intelligence Management.
+- tag: Reviews
+  spec_file: birdeye-reviews-api-openapi.yml
+  capability_id: BC-430.50
+  capability_id_l1: BC-430
+  capability_name: Customer Feedback Management
+  confidence: 0.75
+  evidence: POST /v1/review/businessId/{businessId}  Get Reviews; PUT /v1/review/reply/business/{businessNumber}/review/{reviewId}  Post
+    Review Reply
+  reason: Retrieval, tagging and response to customer reviews is voice-of-customer / feedback handling
+    rather than a transactional business capability.
+- tag: GMB Products
+  spec_file: birdeye-gmb-products-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: Create Product Listing; Onboard Google Merchant Account; Add Products On a Location
+  reason: Publishing and maintaining product listings on Google Business/Merchant channels — digital marketing
+    presence management, not internal PLM.
+- tag: Ticketing
+  spec_file: birdeye-ticketing-api-openapi.yml
+  capability_id: BC-430
+  capability_id_l1: BC-430
+  capability_name: Customer Service Management
+  confidence: 0.7
+  evidence: PUT /v1/ticket/{businessNumber}/create-ticket  Create ticket; POST /v1/ticket/{businessNumber}/comment-activity  Add
+    Ticket Comments
+  reason: Ticket creation, commenting and update on a customer-experience platform is customer service
+    case handling; the evidence does not distinguish inquiry vs complaint sub-capability, so only the
+    L1 is asserted.
