@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Listing API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Listing API
+  version: '1.0'
+  description: 'Operations tagged Listing across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Listing
   description: Keep your business information accurate and consistent across 50+ websites.
@@ -46,6 +42,11 @@ paths:
             schema:
               type: object
               example: {}
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/status/location:
     get:
       summary: Get Location Status Report
@@ -70,6 +71,11 @@ paths:
                 example:
                   code: 1043
                   message: Business should be either SMB or Enterprise sub account
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/insights:
     post:
       summary: Listings Insights
@@ -112,6 +118,11 @@ paths:
                   type: array
               required:
               - viewMode
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/report/{reportType}/datapoints:
     post:
       summary: Listings Insights Datapoints
@@ -161,6 +172,11 @@ paths:
                   type: array
                 groupByType:
                   type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/gmb-attributes-list:
     get:
       summary: Get GMB Attributes
@@ -199,6 +215,11 @@ paths:
                 example:
                   code: 2286
                   message: Invalid whatsapp business link
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/apple-location-attributes-list:
     get:
       summary: Get Apple Attributes
@@ -223,6 +244,11 @@ paths:
                 example:
                   code: 400
                   message: Invalid country code
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/apple-action-links:
     get:
       summary: Get Apple Action Links
@@ -247,6 +273,11 @@ paths:
                 example:
                   code: 400
                   message: Invalid country code
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/category-list:
     get:
       summary: Get Category List
@@ -285,6 +316,11 @@ paths:
                 example:
                   code: 400
                   message: Invalid Source Name
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/create:
     post:
       summary: Create Listing
@@ -579,6 +615,11 @@ paths:
                       type: string
                     insurancesAccepted:
                       type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/update:
     put:
       summary: Update Listing
@@ -873,6 +914,11 @@ paths:
                       type: string
                     insurancesAccepted:
                       type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/get:
     get:
       summary: Get Listing
@@ -897,6 +943,11 @@ paths:
                 example:
                   code: 89
                   message: Rate limit exceeded
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/more-hours-type:
     get:
       summary: Get More Hours Type
@@ -928,6 +979,11 @@ paths:
                 example:
                   code: 400
                   message: Invalid Source Name
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/gmb/keywords:
     post:
       summary: Get Google Keywords Count
@@ -978,6 +1034,11 @@ paths:
                   type: array
               required:
               - selectedMonth
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/{businessNumber}/deactivate:
     post:
       summary: Deactivate Listing
@@ -1002,6 +1063,11 @@ paths:
                 example:
                   code: 89
                   message: Rate limit exceeded
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/menu-details:
     post:
       summary: Retrieve Menu Details
@@ -1029,10 +1095,3117 @@ paths:
               properties:
                 businessNumbers:
                   type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
+  /v1/listing/get/hotel-attributes:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Apiary_getHotelAttributes_Response200'
+              example:
+                hotelAttributes:
+                  services:
+                    services:
+                      frontDesk:
+                        attributeId: frontDesk
+                        attributeName: Front desk
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20001
+                        attributeValueType: BOOLEAN
+                      twentyFourHourFrontDesk:
+                        attributeId: twentyFourHourFrontDesk
+                        attributeName: Twenty four hour front desk
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20002
+                        attributeValueType: BOOLEAN
+                      giftShop:
+                        attributeId: giftShop
+                        attributeName: Gift shop
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20011
+                        attributeValueType: BOOLEAN
+                      languagesSpoken:
+                        attributeId: languagesSpoken
+                        attributeName: Languages Spoken
+                        possibleValues:
+                        - value: Arabic
+                          name: Arabic
+                        - value: English
+                          name: English
+                        - value: French
+                          name: French
+                        - value: Spanish
+                          name: Spanish
+                        columnId: 20170
+                        attributeValueType: MULTI_SELECT
+                  policies:
+                    policies:
+                      checkinTime:
+                        attributeId: checkinTime
+                        attributeName: Check-In Time
+                        possibleValues: []
+                        columnId: 20173
+                        attributeValueType: TIME
+                      checkoutTime:
+                        attributeId: checkoutTime
+                        attributeName: Check-Out Time
+                        possibleValues: []
+                        columnId: 20174
+                        attributeValueType: TIME
+                  parking:
+                    parking:
+                      parkingAvailable:
+                        attributeId: parkingAvailable
+                        attributeName: Parking available
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20097
+                        attributeValueType: BOOLEAN
+                      freeParking:
+                        attributeId: freeParking
+                        attributeName: Free parking
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20098
+                        attributeValueType: BOOLEAN
+                  business:
+                    business:
+                      meetingRooms:
+                        attributeId: meetingRooms
+                        attributeName: Meeting rooms
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20088
+                        attributeValueType: BOOLEAN
+                      meetingRoomsCount:
+                        attributeId: meetingRoomsCount
+                        attributeName: Number of meeting rooms
+                        possibleValues: []
+                        columnId: 20172
+                        attributeValueType: INTEGER
+                  sustainability:
+                    energyEfficiency:
+                      energyConservationProgram:
+                        attributeId: energyConservationProgram
+                        attributeName: Energy conservation program
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20134
+                        attributeValueType: BOOLEAN
+                  property:
+                    property:
+                      builtYear:
+                        attributeId: builtYear
+                        attributeName: Built Year
+                        possibleValues: []
+                        columnId: 20177
+                        attributeValueType: YEAR
+                      lastRenovatedYear:
+                        attributeId: lastRenovatedYear
+                        attributeName: Last Renovated Year
+                        possibleValues: []
+                        columnId: 20178
+                        attributeValueType: YEAR
+                      roomsCount:
+                        attributeId: roomsCount
+                        attributeName: Rooms Count
+                        possibleValues: []
+                        columnId: 20179
+                        attributeValueType: INTEGER
+                      floorsCount:
+                        attributeId: floorsCount
+                        attributeName: Floors Count
+                        possibleValues: []
+                        columnId: 20180
+                        attributeValueType: INTEGER
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/2521Model'
+              x-apiary-response-models:
+              - $ref: '#/components/schemas/2521Model'
+              - $ref: '#/components/schemas/2522Model'
+              x-apiary-response-examples:
+                error_2521:
+                  value:
+                    code: 2285
+                    message: Invalid text message number
+                error_2522:
+                  value:
+                    code: 2286
+                    message: Invalid whatsapp business link
+              examples:
+                response:
+                  value:
+                    code: 2285
+                    message: Invalid text message number
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+      summary: Get Hotel Attributes
+      operationId: getHotelAttributes
+      description: The Get Hotel Attributes API fetches the list of applicable hotel attributes configured for the selected business.
+      tags:
+      - Listing
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye for data exchange.
+        required: false
+        example: '[Required] Partner specific API key provided by Birdeye for data exchange.'
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] Business Number for which hotel attributes are to be fetched.
+        required: false
+        example: '[Required] Business Number for which hotel attributes are to be fetched.'
+        schema:
+          type: string
+    servers:
+    - url: https://api.birdeye.com/resources
 components:
+  schemas:
+    2520Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2520
+        message: Open Date is not supported for this date
+    2521Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2285
+        message: Invalid text message number
+    3337Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2278
+        message: Primary GBP category is not allowed in additional GBP categories.
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    Apiary_retrieveMenuDetails_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            description: Unique identifier of the record
+          businessNumber:
+            type: number
+            description: Unique business ID
+          accountNumber:
+            type: number
+            description: Account ID associated with the business
+          menuDetails:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Business display name
+              error:
+                type: string
+                description: Error details if retrieval failed
+              menus:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    cuisines:
+                      type: array
+                      items: {}
+                      description: List of cuisines served
+                    labels:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          displayName:
+                            type: string
+                          description:
+                            type: string
+                          languageCode:
+                            type: string
+                    sections:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          labels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                displayName:
+                                  type: string
+                                description:
+                                  type: string
+                                languageCode:
+                                  type: string
+                          items:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                labels:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      displayName:
+                                        type: string
+                                      description:
+                                        type: string
+                                      languageCode:
+                                        type: string
+                                attributes:
+                                  type: object
+                                  properties:
+                                    price:
+                                      type: object
+                                      properties:
+                                        currencyCode:
+                                          type: string
+                                        units:
+                                          type: number
+                                        nanos:
+                                          type: number
+                                    allergen:
+                                      type: array
+                                      items: {}
+                                    dietaryRestriction:
+                                      type: array
+                                      items: {}
+                                    nutritionFacts:
+                                      type: object
+                                      properties:
+                                        calories:
+                                          type: number
+                                        fatContent:
+                                          type: string
+                                        proteinContent:
+                                          type: string
+                                        carbohydrateContent:
+                                          type: string
+                                    ingredients:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          name:
+                                            type: string
+                                    servesNumPeople:
+                                      type: number
+                                    preparationMethods:
+                                      type: array
+                                      items: {}
+                                    portionSize:
+                                      type: object
+                                      properties:
+                                        amount:
+                                          type: number
+                                        unit:
+                                          type: string
+                                    mediaKeys:
+                                      type: array
+                                      items: {}
+                                options:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      labels:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            displayName:
+                                              type: string
+                                            description:
+                                              type: string
+                                            languageCode:
+                                              type: string
+                                      attributes:
+                                        type: object
+                                        properties:
+                                          price:
+                                            type: object
+                                            properties:
+                                              currencyCode:
+                                                type: string
+                                              units:
+                                                type: number
+                                              nanos:
+                                                type: number
+              businessNumber:
+                type: number
+              correlationId:
+                type: string
+                description: 456 (string)
+          createdAt:
+            type: string
+            description: Creation timestamp
+          updatedAt:
+            type: string
+            description: Last update timestamp
+          crmName:
+            type: string
+    Apiary_listingsInsights_Request:
+      type: object
+      properties:
+        businessNumbers:
+          type: array
+          description: Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+          items: {}
+        startDate:
+          type: string
+          description: 'Start Date, Format: yyyy-MM-dd.'
+        endDate:
+          type: string
+          description: 'End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen.'
+        viewMode:
+          description: for mobile or desktop or both (if none is provided then data for both will be displayed) Example “Desktop”, ”Mobile”
+          type: array
+          items: {}
+      required:
+      - viewMode
+      example:
+        businessNumbers:
+        - 156387109031976
+        startDate: 2010-02-01
+        endDate: 2022-02-01
+        viewMode:
+        - Mobile
+        - Desktop
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    Apiary_createListing_Request:
+      type: object
+      properties:
+        businessInfo:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of the Business/Product (Max 250 character long).
+            phone:
+              type: string
+              description: Your official Business Phone number. Format is (xxx) xxx-xxxx.
+            websiteUrl:
+              type: string
+              description: Business website url.
+            emailId:
+              type: string
+              description: Business Email ID.
+            isAddressHidden:
+              type: string
+              description: If your business doesn’t have a place for your customers to visit, then you can hide your street address.
+            isServiceAreaProvider:
+              type: string
+              description: If you deliver or provide service at customer locations.
+            mainBusinessDescription:
+              type: string
+              description: Business Description is optional. If this field is included with an empty value in the API request, the existing Business Description will be cleared for the location. If a value is provided, it must contain at least 200 characters. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
+            serviceAreas:
+              type: array
+              description: 'Locations where you deliver or provide service (applicable if isServiceAreaProvider is ''Yes'').NOTE: Maximum service areas that can be provided are 10.'
+              items:
+                type: object
+                properties:
+                  description:
+                    type: string
+                    description: Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
+            location:
+              type: object
+              properties:
+                address1:
+                  type: string
+                  description: Address of the business/location.
+                address2:
+                  type: string
+                  description: Address of the business/location.
+                city:
+                  type: string
+                  description: City (Max 1000 character long).
+                state:
+                  type: string
+                  description: State (2 character state code).
+                countryCode:
+                  type: string
+                  description: Country Code (2 character country code).
+                zip:
+                  type: string
+                  description: Zip Code.
+                subLocality:
+                  type: string
+                  description: '(Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.'
+              required:
+              - zip
+              description: Business address
+          required:
+          - name
+          - phone
+          description: Business Information
+        additionalInfo:
+          type: object
+          properties:
+            establishedYear:
+              type: number
+              description: Year established
+            timezone:
+              type: string
+              description: Timezone of the business.
+            languages:
+              type: array
+              description: Languages.
+              items: {}
+            moreHours:
+              description: 'Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.'
+              type: array
+              items: {}
+            appleMoreHours:
+              description: 'Apple more hours for specific services you offer such as Dining, Bar and Delivery. Apple more hours can only be added if apple primary category is added. To get specific types of apple more hours, please refer to Get supported more hours type api.  NOTE: In apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.'
+              type: array
+              items: {}
+            wholeWeekOperating:
+              type: number
+              description: Whether your business is open 24/7, Possible Values - 0 or 1.
+            hoursOfOperations:
+              type: array
+              description: 'Regular hours: Regular working hours of the business for each day from Monday to Sunday.'
+              items:
+                type: object
+                properties:
+                  day:
+                    type: number
+                    description: 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+                  workingHours:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        startHour:
+                          type: string
+                          description: Start hour 9:00 (9 AM), 18:00 (6 PM)
+                        endHour:
+                          type: string
+                          description: End hour  9:00 (9 AM), 18:00 (6 PM)
+                    description: Working hours of the business
+                  isOpen:
+                    type: number
+                    description: 0 (Business closed today), 1 (open)
+                  comment:
+                    type: string
+                    description: Add the special instruction.
+            specialHours:
+              type: array
+              description: For special holiday days, where you may have limited hours of operation and don’t want to change your preset regular hours. These would only be applicable only for the dates they are set for.
+              items:
+                type: object
+                properties:
+                  specialDate:
+                    type: string
+                    description: It should be "MM/DD/YYYY".
+                  startHour:
+                    type: string
+                    description: Start hour 9:00 (9 AM), 18:00 (6 PM)
+                  endHour:
+                    type: string
+                    description: End hour  9:00 (9 AM), 18:00 (6 PM)
+                  isOpen:
+                    type: number
+                    description: 0(Business closed today), 1 (open)
+            businessStatus:
+              type: string
+              description: The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+            reopenDate:
+              type: string
+              description: Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
+            services:
+              type: string
+              description: Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
+            keywords:
+              type: string
+              description: Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
+            products:
+              type: string
+              description: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
+            appointmentLink:
+              type: string
+              description: Let customers book appointments by redirecting them to your appointments page.
+            reservationLink:
+              type: string
+              description: Let customers reserve tables by linking them to your reservations page.
+            menuLink:
+              type: string
+              description: Show customers what you serve by linking them to your menu.
+            orderAheadLink:
+              type: string
+              description: Let customers place delivery and pick-up orders by linking them to your ordering page.
+            impressum:
+              type: string
+              description: In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
+            paymentTypes:
+              description: "List of payment types accepted by the business.\n\n+ (Members)\n    + China Union Pay\n    + Bitcoin\n    + Cash Accepted\n    + MasterCard\n    + PayPal\n    + Check / Cheque\n    + Contactless Payment\n    + Debit Card\n    + Diners Club\n    + JCB\n    + Financing\n    + Visa\n    + American Express\n    + Cash Only\n    + Rupay\n    + Credit Card\n    + Discover"
+              type: array
+              items: {}
+            additionalPaymentTypes:
+              type: string
+              description: Additional Payment Type (Max 250 character long).
+            localPhoneNumber:
+              type: string
+              description: Local phone number.
+            tollFreePhoneNumber:
+              type: string
+              description: Tollfree number.
+            androidAppURL:
+              type: string
+              description: Android app url.
+            iosAppURL:
+              type: string
+              description: IOS app url.
+          required:
+          - hoursOfOperations
+          - services
+          description: Business Additional Information
+        media:
+          type: object
+          properties:
+            logoUrl:
+              type: string
+              description: 'This logo will pushed to your listings sites such as Google, Facebook, Bing, Birdeye and all the other secondary listings sites. Format: JPG, JPEG, PNG. Minimum 250 x 250px. Recommended: 720 X 720 px. 10 KB min.'
+            coverImageUrl:
+              type: string
+              description: 'This cover photo will pushed to your listings sites such as Birdeye and all the other secondary listings sites. Cover image URL for business will be displayed on custom review site.  Format: JPG, JPEG, PNG. Minimum 1110 x 374px. 10 KB min.'
+            gmbCover:
+              type: string
+              description: Google Cover Image Url.
+            facebookCover:
+              type: string
+              description: Facebook Cover Image Url.
+          description: Media details.
+        optOut:
+          type: object
+          properties:
+            gmbLogoOptOut:
+              type: boolean
+              description: Update profile photo on your google my business page.
+            fbLogoOptOut:
+              type: boolean
+              description: Update profile photo on your facebook profile.
+            gmbCoverOptOut:
+              type: boolean
+              description: Update cover photo on your google my business page.
+            fbCoverOptOut:
+              type: boolean
+              description: Update cover photo on your facebook profile.
+            gmbProfileOptOut:
+              type: boolean
+              description: Opt out from the google specific section on the profile page.
+            businessProfileOptOut:
+              type: boolean
+              description: Opt out from the business profile section.
+          description: Opt out section
+        covidInfo:
+          type: object
+          properties:
+            postDescription:
+              type: string
+              description: This information is posted and updated on your Google business profile page and your FB business page.
+            covid19SupportLink:
+              type: string
+              description: Should be a valid covid19 support url
+            virtualCareLink:
+              type: string
+              description: Should be a valid url virtual care link
+          description: Provide this data for updating any COVID specific information you want to share with your customers.
+        bingListing:
+          type: object
+          properties:
+            primaryCategoryBing:
+              type: string
+              description: Primary category of bing.
+            bingCategories:
+              description: You can add a maximum of up to 3 categories.
+              type: array
+              items: {}
+            bingPhoneNumber:
+              type: string
+              description: You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
+            bingDescription:
+              type: string
+              description: An ‘About the business description’. Bing description cannot be more than 4096 characters.
+          description: This data will be used to update your Bing listing.
+        internalListing:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Microsite Override Business Description is optional. If this field is included with an empty value in the API request, the existing Microsite Override Business Description will be cleared for the location. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
+            category:
+              type: string
+              description: Primary category of business.
+            subCategories:
+              description: You can add up to 3 subcategories.
+              type: array
+              items: {}
+            displayCategory:
+              type: string
+              description: Choose one of the category either from primary category or from sub categories.
+          required:
+          - category
+          - subCategories
+          description: Provide data for microsite listing purpose.
+        facebookListing:
+          type: object
+          properties:
+            facebookPhoneNumber:
+              type: string
+              description: Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
+            categories:
+              description: You can add up to 3 categories.
+              type: array
+              items: {}
+            facebookDescription:
+              type: string
+              description: An ‘about your business’ description. Facebook description cannot be more than 255 characters.
+          description: This data will be used to update your Facebook business page/ listing.
+        gmbListing:
+          type: object
+          properties:
+            googleWebsiteUrl:
+              type: string
+              description: Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            googlePhoneNumber:
+              type: string
+              description: You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
+            googleStoreId:
+              type: string
+              description: Store id for google.
+            primaryCategoryGmb:
+              type: string
+              description: Primary category of google.
+            additionalCategories:
+              description: You can add up to 9 subcategories.
+              type: array
+              items: {}
+            googleDescription:
+              type: string
+              description: An ‘about your business’ description. Google description cannot be more than 750 characters.
+            attributes:
+              type: object
+              properties: {}
+              description: Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
+            hotelAttributes:
+              type: object
+              properties: {}
+              description: Hotel attributes are key characteristics and amenities of your property that help guests discover and understand what your hotel offers. These attributes enhance your hotel's visibility and searchability across booking platforms and travel sites. Supported attribute categories are Services, Policies, FoodAndDrink, Pools, Wellness, Activities, Transportation, Families, Connectivity, Business, Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability, Property. Each attribute carries an attributeValueType field indicating the expected value format. Supported formats are BOOLEAN (true/false), INTEGER (positive number), YEAR (year string), TIME (HH:mm string), SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT (comma-separated values from possibleValues).
+            foodDelivery:
+              type: string
+              description: Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            foodTakeout:
+              type: string
+              description: 'Enter the redirect URL where customers can place ''takeout'' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com'
+            whatsappBusinessLink:
+              type: string
+              description: Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
+            textMessageNumber:
+              type: string
+              description: Enter a valid phone number to enable a text message chat option on your live Google Business Profile, allowing customers to easily reach you via SMS.
+          description: This data will be used to update your Google Business Profile/ listing.
+        appleListing:
+          type: object
+          properties:
+            phoneNumber:
+              type: string
+              description: This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            appleWebsiteUrl:
+              type: string
+              description: Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
+            primaryCategory:
+              type: string
+              description: Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
+            additionalCategories:
+              description: You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
+              type: array
+              items: {}
+            appleLocationAttributes:
+              type: object
+              properties: {}
+              description: 'Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:'
+            appleActionLinks:
+              type: object
+              properties: {}
+              description: Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
+            appleBusinessName:
+              type: string
+              description: Business name shown on your Apple Business listing. Must be between 3 and 250 characters.
+            appleBusinessDescription:
+              type: string
+              description: Business description shown on your Apple Business listing. Must be between 20 and 500 characters.
+          description: This data will be used to update your Google Business Profile/ listing.
+        thirdPartyListing:
+          type: object
+          properties:
+            thirdPartyCategory:
+              type: string
+              description: 'Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.'
+            thirdPartySubCategories:
+              type: string
+              description: 'Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.'
+          description: This data will be used to update your secondary listings sites.
+        socialProfileURLs:
+          type: object
+          properties:
+            facebookUrl:
+              type: string
+              description: Facebook URL.
+            twitterUrl:
+              type: string
+              description: Business Twitter URL.
+            linkedInUrl:
+              type: string
+              description: Business LinkedId URL.
+            googleUrl:
+              type: string
+              description: Business Google URL.
+            youTubeUrl:
+              type: string
+              description: Business Youtube URL.
+            instagramUrl:
+              type: string
+              description: Business Instagram URL.
+            pintrestUrl:
+              type: string
+              description: Business Pinterest URL.
+            bbbUrl:
+              type: string
+              description: Business BB URL.
+            lendingtreeUrl:
+              type: string
+              description: Business Lending Tree URL.
+          description: Profile URLs for business on top rated social sites
+        healthcare:
+          type: object
+          properties:
+            doctorCategories:
+              type: array
+              description: This is the doctor specific category your business belongs to. Please refer to the sheet "Doctor Specific Categories" to get the possible values.
+              items: {}
+            isProvider:
+              type: boolean
+              description: If provider then select value true. If practice then select value false. This is a true/false toggle for determining if the location is a provider or not.
+            practiceName:
+              type: string
+              description: Name of the practice.Must be less than 191 characters.
+            firstName:
+              type: string
+              description: First name of the provider.
+            middleName:
+              type: string
+              description: Middle name of the provider.
+            surName:
+              type: string
+              description: Surname of the provider
+            npi:
+              type: number
+              description: National Provider Identifier - NPI. Must be 10 digits
+            credentials:
+              type: string
+              description: University of the provider/practice. Must be less than 25 characters
+            university:
+              type: string
+              description: University of the provider/practice. Must be less than 255 characters
+            hospitalAffiliations:
+              type: string
+              description: Hospital Affiliations of the provider/practice. Must be less than 150 characters
+            insurancesAccepted:
+              type: string
+              description: Insurance Accepted of the provider/practice.  Must be less than 50 characters
+          description: This section is only applicable if you have purchased the health care listings plan and have been onboarded on the same.
+      example:
+        businessInfo:
+          name: Dieci Lifestyle Spa
+          phone: (973) 716-0007
+          websiteUrl: http://www.diecispa.org/
+          emailId: example@birdeye.com
+          isAddressHidden: false
+          isServiceAreaProvider: false
+          mainBusinessDescription: A cozy neighborhood café serving freshly roasted coffee, artisan teas, and homemade pastries in a friendly atmos
+          serviceAreas:
+          - description: Van An, Berryessa Road, San Jose, CA, USA
+          - description: Santa Clara, CA, USA
+          location:
+            address1: 90 W Mount Pleasant Ave
+            address2: (btwn Preston Dr. &amp; N. Mitchell Ave.)
+            subLocality: Auckland CBD
+            city: Livingston
+            state: NJ
+            zip: 7039
+            countryCode: US
+        additionalInfo:
+          establishedYear: '2022'
+          timezone: America/Los_Angeles
+          languages:
+          - English
+          - Hindi
+          moreHours:
+            Dinner:
+            - day: 0
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+            - day: 1
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+            - day: 2
+              isOpen: 1
+              workingHours:
+              - startHour: 32400
+                endHour: 72600
+            - day: 3
+              isOpen: 1
+              workingHours:
+              - startHour: 32400
+                endHour: 41400
+            - day: 4
+              isOpen: 1
+              workingHours:
+              - startHour: 32400
+                endHour: 41400
+            - day: 5
+              isOpen: 1
+              workingHours:
+              - startHour: 32400
+                endHour: 41400
+            - day: 6
+              isOpen: 1
+              workingHours:
+              - startHour: 0
+                endHour: 73800
+            Delivery:
+            - day: 0
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+            - day: 1
+              isOpen: 1
+              workingHours:
+              - startHour: 25200
+                endHour: 34200
+            - day: 2
+              isOpen: 1
+              workingHours:
+              - startHour: 7200
+                endHour: 34200
+            - day: 3
+              isOpen: 1
+              workingHours:
+              - startHour: 0
+                endHour: 41400
+            - day: 4
+              isOpen: 1
+              workingHours:
+              - startHour: 0
+                endHour: 41400
+            - day: 5
+              isOpen: 1
+              workingHours:
+              - startHour: 0
+                endHour: 41400
+            - day: 6
+              isOpen: 1
+              workingHours:
+              - startHour: 3600
+                endHour: 3600
+          appleMoreHours:
+            Dining Hours:
+            - day: 0
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 1
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 2
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 3
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 4
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 5
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+            - day: 6
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+          wholeWeekOperating: 0
+          hoursOfOperations:
+          - day: 0
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 1
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 2
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 3
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 4
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 5
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 6
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 64800
+          specialHours:
+          - specialDate: 12/31/2020
+            startHour: 32400
+            endHour: 43200
+            isOpen: 0
+          - specialDate: 01/01/2021
+            startHour: ''
+            endHour: ''
+            isOpen: 1
+          businessStatus: Open
+          reopenDate: 01/01/2021
+          keywords: HairSalons,DaySpas,BeautySalon,BeautySalons,Salons, MassageTherapists
+          services: BeautySalon,HairSpa
+          products: LivingProofDryShampoo,KevinMurphyBlondeAngelWash
+          appointmentLink: http://www.gmail.com
+          reservationLink: http://www.gmail.com
+          menuLink: http://www.gmail.com
+          orderAheadLink: http://www.gmail.com
+          impressum: Thisissampleimpressum
+          paymentTypes:
+          - China Union Pay
+          - Bitcoin
+          - Cash Accepted
+          - MasterCard
+          - PayPal
+          - Check / Cheque
+          - Contactless Payment
+          - Debit Card
+          - Diners Club
+          - JCB
+          - Financing
+          - Visa
+          - American Express
+          - Cash Only
+          - Rupay
+          - Credit Card
+          - Discover
+          additionalPaymentTypes: Visa,MasterCard,AmericanExpress,DebitCards,Check
+          localPhoneNumber: (973)716-0102
+          tollFreePhoneNumber: ''
+          iosAppURL: http://www.gmail.com
+          androidAppURL: http://www.gmail.com
+        media:
+          logoUrl: https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082646457/2816b900140211eb870e7bf4ed6bc766.png
+          coverImageUrl: https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082720956/GustavKlimtExpectationTreeoflifeArboldelaVidaFulfilment.jpeg
+          gmbCover: https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082807649/41cdeb014d36cb35f936152d44c4c77d.jpeg
+          facebookCover: https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082871068/IJ8Sa5.jpeg
+        optOut:
+          gmbCoverOptOut: true
+          gmbLogoOptOut: true
+          fbCoverOptOut: false
+          fbLogoOptOut: false
+          gmbProfileOptOut: false
+          businessProfileOptOut: false
+        covidInfo:
+          postDescription: SampleCovidDesc
+          covid19SupportLink: http://www.covidInfo.com
+          virtualCareLink: http://www.covidInfo.com
+        bingListing:
+          primaryCategoryBing: Art Restoration Service
+          bingDescription: Sample Bing Description
+          bingCategories:
+          - Art Restoration Service
+          bingPhoneNumber: (415) 673-0868
+        internalListing:
+          description: ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic
+          category: Beauty
+          subCategories:
+          - Eyelash Service
+          - Nail Salons
+          displayCategory: Eyelash Service
+        facebookListing:
+          facebookDescription: This is sample facebook description
+          facebookPhoneNumber: (415) 673-0868
+          categories:
+          - Science
+          - Sports
+        thirdPartyListing:
+          thirdPartyCategory: Towing Service
+          thirdPartySubCategories:
+          - Car Dealer
+          - Auto Glass Shop
+        gmbListing:
+          googleWebsiteUrl: http://www.gmail.com
+          googleStoreId: '1232133'
+          googlePhoneNumber: (973) 716-0007
+          primaryCategoryGmb: Fast Food Restaurant
+          googleDescription: This is sample description for google
+          additionalCategories:
+          - Snack bar
+          attributes:
+            Accessibility:
+            - attributeId: has_wheelchair_accessible_elevator
+              attributeName: Wheelchair accessible elevator
+              value: false
+            Crowd:
+            - attributeId: welcomes_families
+              attributeName: Family-friendly
+              value: true
+          hotelAttributes:
+            business:
+              business:
+                meetingRoomsCount:
+                  attributeId: meetingRoomsCount
+                  attributeName: Number of meeting rooms
+                  value: 20
+            policies:
+              policies:
+                checkinTime:
+                  attributeId: checkinTime
+                  attributeName: Check-In Time
+                  value: '14:00'
+                checkoutTime:
+                  attributeId: checkoutTime
+                  attributeName: Check-Out Time
+                  value: '11:00'
+            property:
+              property:
+                builtYear:
+                  attributeId: builtYear
+                  attributeName: Built Year
+                  value: 2010
+            services:
+              services:
+                frontDesk:
+                  attributeId: frontDesk
+                  attributeName: Front desk
+                  value: true
+                giftShop:
+                  attributeId: giftShop
+                  attributeName: Gift shop
+                  value: false
+                languagesSpoken:
+                  attributeId: languagesSpoken
+                  attributeName: Languages Spoken
+                  value: English,Spanish,French
+          foodDelivery: https://www.ubereats.com
+          foodTakeout: https://www.ubereats.com
+          whatsappBusinessLink: https://wa.me/9737160007
+          textMessageNumber: 973716-0007
+        appleListing:
+          primaryCategory: health_care.dentistry.dental_clinic.dentist
+          appleWebsiteUrl: https://www.apple.com
+          additionalCategories:
+          - health_care.dentistry.dental_clinic.dentist.oral_surgeon
+          appleLocationAttributes:
+            crossbusiness.accessibility_features:
+            - attributeId: accessible_elevator
+            crossbusiness.family_kids:
+            - attributeId: kidsclub
+            - attributeId: parents_waitingarea
+          appleActionLinks:
+          - id: quicklinks.schedule_appointment
+            deepLinkUrl: https://www.google.com
+            appStoreUrl: https://apps.apple.com/your_apps_store_url
+          phoneNumber: +1 201-819-7989
+          appleBusinessName: This is sample business name
+          appleBusinessDescription: This is sample business description
+        socialProfileURLs:
+          googleUrl: http://www.google.com/123
+          facebookUrl: http://www.facebook.com/123
+          twitterUrl: http://www.twitter.com/123
+          youTubeUrl: http://www.youtube.com/12
+          linkedinUrl: http://www.linkedin.com/12
+          instagramUrl: http://www.instagram.com/12
+          pintrestUrl: http://www.pinterest.com/12
+          bbbUrl: http://www.bbb.org/12
+          lendingtreeUrl: http://www.lendingtree.com/12
+        healthcare:
+          doctorCategories:
+          - Allergist-Immunologist > Allergy
+          - Allergist-Immunologist > General
+          - Addiction Medicine Specialist > General
+          isProvider: true
+          practiceName: General Medicine
+          firstName: John
+          middleName: Jack
+          surName: Doe
+          npi: '1245319599'
+          credentials: MD
+          university: Sample text
+          hospitalAffiliations: Sample text
+          insurancesAccepted: Sample text
+    Apiary_getGmbAttributes_Response200:
+      type: object
+      properties:
+        Accessibility:
+          type: array
+          items:
+            type: object
+            properties:
+              attributeId:
+                type: string
+                description: Attribute Id.
+              valueType:
+                type: string
+                description: Attribute value type.
+              displayName:
+                type: string
+                description: Attribute display name.
+              groupDisplayName:
+                type: string
+                description: Attribute group name.
+              valueMetadata:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                      description: Possible attribute value.
+                    displayName:
+                      type: string
+                      description: Attribute display name.
+                description: Contains the list of possible values for the attribute.
+          description: This is dynamic field. Depends upon request inputs.
+    Apiary_getListing_Response200:
+      type: object
+      properties:
+        businessInfo:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of the Business/Location. Should be Max 1000 characters long.
+            phone:
+              type: string
+              description: Your official Business Phone number. Format is (xxx) xxx-xxxx.
+            websiteUrl:
+              type: string
+              description: Business website url.
+            emailId:
+              type: string
+              description: Business Email ID.
+            isAddressHidden:
+              type: string
+              description: If your business doesn’t have a place for your customers to visit, then you can hide your street address.
+            isServiceAreaProvider:
+              type: string
+              description: If you deliver or provide service at customer locations.
+            mainBusinessDescription:
+              type: string
+              description: Business Description is optional. If this field is included with an empty value in the API request, the existing Business Description will be cleared for the location. If a value is provided, it must contain at least 200 characters. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
+            serviceAreas:
+              type: array
+              description: 'Locations where you deliver or provide service (applicable if isServiceAreaProvider is ''Yes'').NOTE: Maximum service areas that can be provided are 10.'
+              items:
+                type: object
+                properties:
+                  description:
+                    type: string
+                    description: Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
+                  placeId:
+                    type: string
+                    description: ChIJk8EIXIG3j4ARwL_Ao3ykdeQ
+            location:
+              type: object
+              properties:
+                address1:
+                  type: string
+                  description: Address of the business.
+                address2:
+                  type: string
+                  description: Address of the business.
+                city:
+                  type: string
+                  description: City (Max 1000 character long).
+                state:
+                  type: string
+                  description: State (2 character state code).
+                countryCode:
+                  type: string
+                  description: Country Code (2 character country code).
+                zip:
+                  type: string
+                  description: Zip Code.
+                subLocality:
+                  type: string
+                  description: '(Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.'
+              description: Business address
+          required:
+          - phone
+          description: Business Information
+        additionalInfo:
+          type: object
+          properties:
+            establishedYear:
+              type: number
+              description: Year established
+            timezone:
+              type: string
+              description: Timezone of the business.
+            languages:
+              type: array
+              description: Languages.
+              items: {}
+            moreHours:
+              description: 'Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.'
+              type: array
+              items: {}
+            appleMoreHours:
+              description: 'Apple more hours for specific services you offer such as Dining, Bar and Delivery. Apple more hours can only be added if apple primary category is added. To get specific types of apple more hours, please refer to Get supported more hours type api.  NOTE: In apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.'
+              type: array
+              items: {}
+            wholeWeekOperating:
+              type: number
+              description: Whether your business is open 24/7, Possible Values - 0 or 1.
+            hoursOfOperations:
+              type: array
+              description: 'Regular hours: Regular working hours of the business for each day from Monday to Sunday.'
+              items:
+                type: object
+                properties:
+                  day:
+                    type: number
+                    description: 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+                  workingHours:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        startHour:
+                          type: string
+                          description: Start hour 9:00 (9 AM), 18:00 (6 PM)
+                        endHour:
+                          type: string
+                          description: End hour  9:00 (9 AM), 18:00 (6 PM)
+                    description: Working hours of the business
+                  isOpen:
+                    type: number
+                    description: 0 (Business closed today), 1 (open)
+                  comment:
+                    type: string
+                    description: Add the special instruction.
+            specialHours:
+              type: array
+              description: For special holiday days, where you may have limited hours of operation and don’t want to change your preset regular hours. These would only be applicable only for the dates they are set for.
+              items:
+                type: object
+                properties:
+                  specialDate:
+                    type: string
+                    description: It should be "MM/DD/YYYY".
+                  startHour:
+                    type: string
+                    description: Start hour 9:00 (9 AM), 18:00 (6 PM)
+                  endHour:
+                    type: string
+                    description: End hour  9:00 (9 AM), 18:00 (6 PM)
+                  isOpen:
+                    type: number
+                    description: 0(Business closed today), 1 (open)
+            businessStatus:
+              type: string
+              description: The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+            reopenDate:
+              type: string
+              description: Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
+            services:
+              type: string
+              description: Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
+            keywords:
+              type: string
+              description: Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
+            products:
+              type: string
+              description: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
+            appointmentLink:
+              type: string
+              description: Let customers book appointments by redirecting them to your appointments page.
+            reservationLink:
+              type: string
+              description: Let customers reserve tables by linking them to your reservations page.
+            menuLink:
+              type: string
+              description: Show customers what you serve by linking them to your menu.
+            orderAheadLink:
+              type: string
+              description: Let customers place delivery and pick-up orders by linking them to your ordering page.
+            impressum:
+              type: string
+              description: In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
+            paymentTypes:
+              description: "List of payment types accepted by the business.\n\n+ (Members)\n    + China Union Pay\n    + Bitcoin\n    + Cash Accepted\n    + MasterCard\n    + PayPal\n    + Check / Cheque\n    + Contactless Payment\n    + Debit Card\n    + Diners Club\n    + JCB\n    + Financing\n    + Visa\n    + American Express\n    + Cash Only\n    + Rupay\n    + Credit Card\n    + Discover"
+              type: array
+              items: {}
+            additionalPaymentTypes:
+              type: string
+              description: Additional Payment Type (Max 250 character long).
+            localPhoneNumber:
+              type: string
+              description: Local phone number.
+            tollFreePhoneNumber:
+              type: string
+              description: Tollfree number.
+            androidAppURL:
+              type: string
+              description: Android app url.
+            iosAppURL:
+              type: string
+              description: IOS app url.
+          required:
+          - hoursOfOperations
+          - services
+          description: Business Additional Information
+        media:
+          type: object
+          properties:
+            logoUrl:
+              type: string
+              description: 'This logo will pushed to your listings sites such as Google, Facebook, Bing, Birdeye and all the other secondary listings sites. Format: JPG, JPEG, PNG. Minimum 250 x 250px. Recommended: 720 X 720 px. 10 KB min.'
+            coverImageUrl:
+              type: string
+              description: 'This cover photo will pushed to your listings sites such as Birdeye and all the other secondary listings sites. Cover image URL for business will be displayed on custom review site.  Format: JPG, JPEG, PNG. Minimum 1110 x 374px. 10 KB min.'
+            gmbCover:
+              type: string
+              description: Google Cover Image Url.
+            facebookCover:
+              type: string
+              description: Facebook Cover Image Url.
+          description: Media details.
+        optOut:
+          type: object
+          properties:
+            gmbLogoOptOut:
+              type: boolean
+              description: Update profile photo on your google my business page.
+            fbLogoOptOut:
+              type: boolean
+              description: Update profile photo on your facebook profile.
+            gmbCoverOptOut:
+              type: boolean
+              description: Update cover photo on your google my business page.
+            fbCoverOptOut:
+              type: boolean
+              description: Update cover photo on your facebook profile.
+            gmbProfileOptOut:
+              type: boolean
+              description: Opt out from the google specific section on the profile page.
+            businessProfileOptOut:
+              type: boolean
+              description: Opt out from the business profile section.
+          description: Opt out section
+        covidInfo:
+          type: object
+          properties:
+            postDescription:
+              type: string
+              description: This information is posted and updated on your Google business profile page and your FB business page.
+            covid19SupportLink:
+              type: string
+              description: Should be a valid covid19 support url
+            virtualCareLink:
+              type: string
+              description: Should be a valid url virtual care link
+          description: Provide this data for updating any COVID specific information you want to share with your customers.
+        bingListing:
+          type: object
+          properties:
+            primaryCategoryBing:
+              type: string
+              description: Primary category of bing.
+            bingCategories:
+              description: You can add a maximum of up to 3 categories.
+              type: array
+              items: {}
+            bingPhoneNumber:
+              type: string
+              description: You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
+            bingDescription:
+              type: string
+              description: An ‘About the business description’. Bing description cannot be more than 4096 characters.
+          description: This data will be used to update your Bing listing.
+        internalListing:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Microsite Override Business Description is optional. If this field is included with an empty value in the API request, the existing Microsite Override Business Description will be cleared for the location. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
+            category:
+              type: string
+              description: Primary category of business.
+            subCategories:
+              description: You can add up to 3 subcategories.
+              type: array
+              items: {}
+            displayCategory:
+              type: string
+              description: Choose one of the category either from primary category or from sub categories.
+          required:
+          - category
+          - subCategories
+          description: Provide data for microsite listing purpose.
+        facebookListing:
+          type: object
+          properties:
+            facebookPhoneNumber:
+              type: string
+              description: Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
+            categories:
+              description: You can add up to 3 categories.
+              type: array
+              items: {}
+            facebookDescription:
+              type: string
+              description: An ‘about your business’ description. Facebook description cannot be more than 255 characters.
+          description: This data will be used to update your Facebook business page/ listing.
+        gmbListing:
+          type: object
+          properties:
+            googleWebsiteUrl:
+              type: string
+              description: Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            googlePhoneNumber:
+              type: string
+              description: You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
+            googleStoreId:
+              type: string
+              description: Store id for google.
+            primaryCategoryGmb:
+              type: string
+              description: Primary category of google.
+            additionalCategories:
+              description: You can add up to 9 subcategories.
+              type: array
+              items: {}
+            googleDescription:
+              type: string
+              description: An ‘about your business’ description. Google description cannot be more than 750 characters.
+            attributes:
+              type: object
+              properties: {}
+              description: Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
+            hotelAttributes:
+              type: object
+              properties: {}
+              description: Hotel attributes are key characteristics and amenities of your property that help guests discover and understand what your hotel offers. These attributes enhance your hotel's visibility and searchability across booking platforms and travel sites. Supported attribute categories are Services, Policies, FoodAndDrink, Pools, Wellness, Activities, Transportation, Families, Connectivity, Business, Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability, Property. Each attribute carries an attributeValueType field indicating the expected value format. Supported formats are BOOLEAN (true/false), INTEGER (positive number), YEAR (year string), TIME (HH:mm string), SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT (comma-separated values from possibleValues).
+            foodDelivery:
+              type: string
+              description: Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            foodTakeout:
+              type: string
+              description: 'Enter the redirect URL where customers can place ''takeout'' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com'
+            whatsappBusinessLink:
+              type: string
+              description: Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
+            textMessageNumber:
+              type: string
+              description: Enter a valid phone number to enable a text message chat option on your live Google Business Profile, allowing customers to easily reach you via SMS.
+          description: This data will be used to update your Google Business Profile/ listing.
+        appleListing:
+          type: object
+          properties:
+            phoneNumber:
+              type: string
+              description: This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            appleWebsiteUrl:
+              type: string
+              description: Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
+            primaryCategory:
+              type: string
+              description: Primary category Id for Apple.
+            additionalCategories:
+              description: Additional categories Id for Apple.
+              type: array
+              items: {}
+            primaryCategoryName:
+              type: string
+              description: Primary category Name for Apple.
+            additionalCategoriesNames:
+              description: Additional categories Name for Apple.
+              type: array
+              items: {}
+            appleLocationAttributes:
+              type: object
+              properties: {}
+              description: 'Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:'
+            appleActionLinks:
+              type: object
+              properties: {}
+              description: Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
+            appleBusinessName:
+              type: string
+              description: Business name shown on your Apple Business listing. Must be between 3 and 250 characters.
+            appleBusinessDescription:
+              type: string
+              description: Business description shown on your Apple Business listing. Must be between 20 and 500 characters.
+          description: This data will be used to update your Google Business Profile/ listing.
+        thirdPartyListing:
+          type: object
+          properties:
+            thirdPartyCategory:
+              type: string
+              description: 'Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.'
+            thirdPartySubCategories:
+              type: string
+              description: 'Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.'
+          description: This data will be used to update your secondary listings sites.
+        socialProfileURLs:
+          type: object
+          properties:
+            facebookUrl:
+              type: string
+              description: Facebook URL.
+            twitterUrl:
+              type: string
+              description: Business Twitter URL.
+            linkedInUrl:
+              type: string
+              description: Business LinkedId URL.
+            googleUrl:
+              type: string
+              description: Business Google URL.
+            youTubeUrl:
+              type: string
+              description: Business Youtube URL.
+            pintrestUrl:
+              type: string
+              description: Business Pinterest URL.
+            bbbUrl:
+              type: string
+              description: Business BB URL.
+            lendingtreeUrl:
+              type: string
+              description: Business Lending Tree URL.
+          description: Profile URLs for business on top rated social sites
+        healthcare:
+          type: object
+          properties:
+            doctorCategories:
+              type: array
+              description: This is the doctor specific category your business belongs to. Please refer to the sheet "Doctor Specific Categories" to get the possible values.
+              items: {}
+            isProvider:
+              type: boolean
+              description: If provider then select value true. If practice then select value false. This is a true/false toggle for determining if the location is a provider or not.
+            practiceName:
+              type: string
+              description: Name of the practice.Must be less than 191 characters.
+            firstName:
+              type: string
+              description: First name of the provider.
+            middleName:
+              type: string
+              description: Middle name of the provider.
+            surName:
+              type: string
+              description: Surname of the provider
+            npi:
+              type: number
+              description: National Provider Identifier - NPI. Must be 10 digits
+            credentials:
+              type: string
+              description: University of the provider/practice. Must be less than 25 characters
+            university:
+              type: string
+              description: University of the provider/practice. Must be less than 255 characters
+            hospitalAffiliations:
+              type: string
+              description: Hospital Affiliations of the provider/practice. Must be less than 150 characters
+            insurancesAccepted:
+              type: string
+              description: Insurance Accepted of the provider/practice.  Must be less than 50 characters
+          description: This section is only applicable if you have purchased the health care listings plan and have been onboarded on the same.
+    2513Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2513
+        message: Opened On date can not be in future.
+    Apiary_getGoogleKeywordsCount_Response200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+                description: Business/location name. Total, for sum of all locations keyword count
+              frequency:
+                type: string
+                description: Keywords count
+          description: Returns business/location name along with its keywords count.
+    2519Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2519
+        message: Third party categories change for opening soon business is not allowed.
+    Apiary_getHotelAttributes_Response200:
+      type: object
+      properties:
+        hotelAttributes:
+          type: object
+          properties:
+            services:
+              type: object
+              properties:
+                services:
+                  type: object
+                  properties:
+                    frontDesk:
+                      type: object
+                      properties:
+                        attributeId:
+                          type: string
+                          example: frontDesk
+                          description: Attribute Id.
+                        attributeName:
+                          type: string
+                          example: Front desk
+                          description: Attribute display name.
+                        columnId:
+                          type: number
+                          example: 20001
+                          description: Internal column identifier.
+                        possibleValues:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: boolean
+                                description: Possible attribute value.
+                              name:
+                                type: string
+                                description: Attribute value display name.
+                          description: Contains the list of possible values for the attribute.
+                        attributeValueType:
+                          type: string
+                          example: BOOLEAN
+                          description: Defines the expected value format for the attribute.
+                          enum:
+                          - BOOLEAN
+                          - INTEGER
+                          - YEAR
+                          - TIME
+                          - SINGLE_SELECT
+                          - MULTI_SELECT
+          description: This is a dynamic field. Depends upon the hotel attributes supported for the selected business.
+    4014Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Source name not found
+    3334Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2503
+        message: Primary category can not be included in additional category.
+    2514Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2514
+        message: Opening Soon date is mandatory when business is marked as Opening soon.
+    4015Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Invalid Source Name
+    2518Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2518
+        message: Business Status is mandatory to pass with reopen, opened on and opening soon date.
+    Apiary_getLocationStatusReport_Response200:
+      type: object
+      properties:
+        businessName:
+          type: string
+          description: Name of the Business/Location.
+        activationStatus:
+          type: string
+          example: active/demo/inactive
+          description: Activation Status of Business/Location
+        lastUpdated:
+          type: string
+          example: Mon Jun 10 09:49:30 GMT 2024
+          description: Last Updated Date of a Business/Location.
+        locationStatus:
+          type: string
+          example: Possible Values “Published”,“Scan State” or “Disabled“
+          description: Return the state of Business/Location.
+        totalSites:
+          type: number
+          example: 44
+          description: Total no. of Sites.
+        syncedCount:
+          type: number
+          example: 30
+          description: Total no. of Synced sites count.
+        submittedCount:
+          type: number
+          example: 13
+          description: Total no. of Submitted sites Count.
+        needUpdatesCount:
+          type: number
+          description: Total no. of Sites where Action is required.
+        optedOutCount:
+          type: number
+          description: Total no. of Opted out sites count.
+        notConnectedCount:
+          type: number
+          example: 1
+          description: Total no. of Not connected sites count.
+        syncedPercentage:
+          type: string
+          example: 68.18%
+          description: Total no. of Synced Sites Percentage.
+        submittedPercentage:
+          type: string
+          example: 29.55%
+          description: Total no. of Submitted Sites Percentage.
+        needUpdatesPercentage:
+          type: string
+          example: 0.00%
+          description: Total no. of Need Updates Sites Percentage.
+        optedOutPercentage:
+          type: string
+          example: 0.00%
+          description: Total no. of Opted out sites percentage.
+        notConnectedPercentage:
+          type: string
+          example: 2.27%
+          description: Total no. of Not Connected Sites Percentage.
+        publishListings:
+          type: string
+          example: Please initiate Publish for this locations listings.
+          description: Message to initiate publish locations listings.
+        errors:
+          type: array
+          items: {}
+          description: List of Error messages in case of Not Published state if exists.
+        sites:
+          type: array
+          items:
+            type: object
+            properties:
+              siteName:
+                type: string
+                description: Name of listing source.
+              status:
+                type: string
+                description: 'Status of the location on that source. Possible values are :'
+              url:
+                type: string
+                description: Location source link.
+              errors:
+                type: array
+                items: {}
+                description: Possible errors would be come when status of directory is 'Action Required'
+          description: List of location status.
+    2517Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2517
+        message: Opening Soon date should not be less than current date.
+    3333Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1043
+        message: Business should be either SMB or Enterprise sub account
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    3348Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2162
+        message: Reopen date should not be less than current date.
+    2516Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2516
+        message: Opening Soon Date can not be more than 1 year from now.
+    2515Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2515
+        message: Reopen date is not supported for this date.
+    Apiary_listingsInsightsDatapoints_Request:
+      type: object
+      properties:
+        businessNumbers:
+          type: array
+          description: Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+          items: {}
+        startDate:
+          type: string
+          description: 'Start Date, Format: yyyy-MM-dd.'
+        endDate:
+          type: string
+          description: 'End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.'
+        viewMode:
+          description: is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
+          type: array
+          items: {}
+        groupByType:
+          type: string
+          description: Group the data accordingly. The default value will be the week. Possible values are
+      example:
+        businessNumbers:
+        - 156387109031976
+        startDate: 2010-02-01
+        endDate: 2022-02-01
+        groupByType: year
+        viewMode:
+        - Mobile
+        - Desktop
+    2512Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2512
+        message: Cannot update opening soon date when listing is already fixed.
+    4012Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Country code not found
+    2457Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2457
+        message: Invalid sortby value. Allowed values are 'frequency' or 'keyword'
+    3335Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2276
+        message: Please add upto 9 GBP additional categories only.
+    3336Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2277
+        message: Duplicate GBP categories are not allowed.
+    Apiary_listingsInsightsDatapoints_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          label:
+            type: string
+            description: The business counts data on a particular date.
+          wsiteVisitsCount:
+            type: number
+            description: The number of times the business profile website was clicked.
+          directionsCount:
+            type: number
+            description: The number of times a direction request was requested to the business location.
+          callsCount:
+            type: number
+            description: The number of times the business profile call button was clicked.
+    6000Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 6000
+        message: The 'sub_locality' field is mandatory for addresses in New Zealand.
+    Apiary_updateListing_Request:
+      type: object
+      properties:
+        businessInfo:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of the Business/Product (Max 250 character long).
+            phone:
+              type: string
+              description: Your official Business Phone number. Format is (xxx) xxx-xxxx.
+            websiteUrl:
+              type: string
+              description: Business website url.
+            emailId:
+              type: string
+              description: Business Email ID.
+            isAddressHidden:
+              type: string
+              description: If your business doesn’t have a place for your customers to visit, then you can hide your street address.
+            isServiceAreaProvider:
+              type: string
+              description: If you deliver or provide service at customer locations.
+            mainBusinessDescription:
+              type: string
+              description: Business Description is optional. If this field is included with an empty value in the API request, the existing Business Description will be cleared for the location. If a value is provided, it must contain at least 200 characters. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
+            serviceAreas:
+              type: array
+              description: 'Locations where you deliver or provide service (applicable if isServiceAreaProvider is ''Yes'').NOTE: Maximum service areas that can be provided are 10.'
+              items:
+                type: object
+                properties:
+                  description:
+                    type: string
+                    description: Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
+            location:
+              type: object
+              properties:
+                address1:
+                  type: string
+                  description: Address of the business/location.
+                address2:
+                  type: string
+                  description: Address of the business/location.
+                city:
+                  type: string
+                  description: City (Max 1000 character long).
+                state:
+                  type: string
+                  description: State (2 character state code).
+                countryCode:
+                  type: string
+                  description: Country Code (2 character country code).
+                zip:
+                  type: string
+                  description: Zip Code.
+                subLocality:
+                  type: string
+                  description: '(Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.'
+              required:
+              - zip
+              description: Business address
+          required:
+          - name
+          - phone
+          description: Business Information
+        additionalInfo:
+          type: object
+          properties:
+            establishedYear:
+              type: number
+              description: Year established
+            timezone:
+              type: string
+              description: Timezone of the business.
+            languages:
+              type: array
+              description: Languages.
+              items: {}
+            moreHours:
+              description: 'Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.'
+              type: array
+              items: {}
+            appleMoreHours:
+              description: 'Apple more hours for specific services you offer such as Dining, Bar and Delivery. Apple more hours can only be added if apple primary category is added. To get specific types of apple more hours, please refer to Get supported more hours type api.  NOTE: In apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.'
+              type: array
+              items: {}
+            wholeWeekOperating:
+              type: number
+              description: Whether your business is open 24/7, Possible Values - 0 or 1.
+            hoursOfOperations:
+              type: array
+              description: 'Regular hours: Regular working hours of the business for each day from Monday to Sunday.'
+              items:
+                type: object
+                properties:
+                  day:
+                    type: number
+                    description: 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+                  workingHours:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        startHour:
+                          type: string
+                          description: Start hour 9:00 (9 AM), 18:00 (6 PM)
+                        endHour:
+                          type: string
+                          description: End hour  9:00 (9 AM), 18:00 (6 PM)
+                    description: Working hours of the business
+                  isOpen:
+                    type: number
+                    description: 0 (Business closed today), 1 (open)
+                  comment:
+                    type: string
+                    description: Add the special instruction.
+            specialHours:
+              type: array
+              description: For special holiday days, where you may have limited hours of operation and don’t want to change your preset regular hours. These would only be applicable only for the dates they are set for.
+              items:
+                type: object
+                properties:
+                  specialDate:
+                    type: string
+                    description: It should be "MM/DD/YYYY".
+                  startHour:
+                    type: string
+                    description: Start hour 9:00 (9 AM), 18:00 (6 PM)
+                  endHour:
+                    type: string
+                    description: End hour  9:00 (9 AM), 18:00 (6 PM)
+                  isOpen:
+                    type: number
+                    description: 0(Business closed today), 1 (open)
+            businessStatus:
+              type: string
+              description: The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+            reopenDate:
+              type: string
+              description: Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
+            services:
+              type: string
+              description: Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
+            keywords:
+              type: string
+              description: Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
+            products:
+              type: string
+              description: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
+            appointmentLink:
+              type: string
+              description: Let customers book appointments by redirecting them to your appointments page.
+            reservationLink:
+              type: string
+              description: Let customers reserve tables by linking them to your reservations page.
+            menuLink:
+              type: string
+              description: Show customers what you serve by linking them to your menu.
+            orderAheadLink:
+              type: string
+              description: Let customers place delivery and pick-up orders by linking them to your ordering page.
+            impressum:
+              type: string
+              description: In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
+            paymentTypes:
+              description: "List of payment types accepted by the business.\n\n+ (Members)\n    + China Union Pay\n    + Bitcoin\n    + Cash Accepted\n    + MasterCard\n    + PayPal\n    + Check / Cheque\n    + Contactless Payment\n    + Debit Card\n    + Diners Club\n    + JCB\n    + Financing\n    + Visa\n    + American Express\n    + Cash Only\n    + Rupay\n    + Credit Card\n    + Discover"
+              type: array
+              items: {}
+            additionalPaymentTypes:
+              type: string
+              description: Additional Payment Type (Max 250 character long).
+            localPhoneNumber:
+              type: string
+              description: Local phone number.
+            tollFreePhoneNumber:
+              type: string
+              description: Tollfree number.
+            androidAppURL:
+              type: string
+              description: Android app url.
+            iosAppURL:
+              type: string
+              description: IOS app url.
+          required:
+          - hoursOfOperations
+          - services
+          description: Business Additional Information
+        media:
+          type: object
+          properties:
+            logoUrl:
+              type: string
+              description: 'This logo will pushed to your listings sites such as Google, Facebook, Bing, Birdeye and all the other secondary listings sites. Format: JPG, JPEG, PNG. Minimum 250 x 250px. Recommended: 720 X 720 px. 10 KB min.'
+            coverImageUrl:
+              type: string
+              description: 'This cover photo will pushed to your listings sites such as Birdeye and all the other secondary listings sites. Cover image URL for business will be displayed on custom review site.  Format: JPG, JPEG, PNG. Minimum 1110 x 374px. 10 KB min.'
+            gmbCover:
+              type: string
+              description: Google Cover Image Url.
+            facebookCover:
+              type: string
+              description: Facebook Cover Image Url.
+          description: Media details.
+        optOut:
+          type: object
+          properties:
+            gmbLogoOptOut:
+              type: boolean
+              description: Update profile photo on your google my business page.
+            fbLogoOptOut:
+              type: boolean
+              description: Update profile photo on your facebook profile.
+            gmbCoverOptOut:
+              type: boolean
+              description: Update cover photo on your google my business page.
+            fbCoverOptOut:
+              type: boolean
+              description: Update cover photo on your facebook profile.
+            gmbProfileOptOut:
+              type: boolean
+              description: Opt out from the google specific section on the profile page.
+            businessProfileOptOut:
+              type: boolean
+              description: Opt out from the business profile section.
+          description: Opt out section
+        covidInfo:
+          type: object
+          properties:
+            postDescription:
+              type: string
+              description: This information is posted and updated on your Google business profile page and your FB business page.
+            covid19SupportLink:
+              type: string
+              description: Should be a valid covid19 support url
+            virtualCareLink:
+              type: string
+              description: Should be a valid url virtual care link
+          description: Provide this data for updating any COVID specific information you want to share with your customers.
+        bingListing:
+          type: object
+          properties:
+            primaryCategoryBing:
+              type: string
+              description: Primary category of bing.
+            bingCategories:
+              description: You can add a maximum of up to 3 categories.
+              type: array
+              items: {}
+            bingPhoneNumber:
+              type: string
+              description: You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
+            bingDescription:
+              type: string
+              description: An ‘About the business description’. Bing description cannot be more than 4096 characters.
+          description: This data will be used to update your Bing listing.
+        internalListing:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Microsite Override Business Description is optional. If this field is included with an empty value in the API request, the existing Microsite Override Business Description will be cleared for the location. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
+            category:
+              type: string
+              description: Primary category of business.
+            subCategories:
+              description: You can add up to 3 subcategories.
+              type: array
+              items: {}
+            displayCategory:
+              type: string
+              description: Choose one of the category either from primary category or from sub categories.
+          required:
+          - category
+          - subCategories
+          description: Provide data for microsite listing purpose.
+        facebookListing:
+          type: object
+          properties:
+            facebookPhoneNumber:
+              type: string
+              description: Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
+            categories:
+              description: You can add up to 3 categories.
+              type: array
+              items: {}
+            facebookDescription:
+              type: string
+              description: An ‘about your business’ description. Facebook description cannot be more than 255 characters.
+          description: This data will be used to update your Facebook business page/ listing.
+        gmbListing:
+          type: object
+          properties:
+            googleWebsiteUrl:
+              type: string
+              description: Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            googlePhoneNumber:
+              type: string
+              description: You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
+            googleStoreId:
+              type: string
+              description: Store id for google.
+            primaryCategoryGmb:
+              type: string
+              description: Primary category of google.
+            additionalCategories:
+              description: You can add up to 9 subcategories.
+              type: array
+              items: {}
+            googleDescription:
+              type: string
+              description: An ‘about your business’ description. Google description cannot be more than 750 characters.
+            attributes:
+              type: object
+              properties: {}
+              description: Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
+            hotelAttributes:
+              type: object
+              properties: {}
+              description: Hotel attributes are key characteristics and amenities of your property that help guests discover and understand what your hotel offers. These attributes enhance your hotel's visibility and searchability across booking platforms and travel sites. Supported attribute categories are Services, Policies, FoodAndDrink, Pools, Wellness, Activities, Transportation, Families, Connectivity, Business, Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability, Property. Each attribute carries an attributeValueType field indicating the expected value format. Supported formats are BOOLEAN (true/false), INTEGER (positive number), YEAR (year string), TIME (HH:mm string), SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT (comma-separated values from possibleValues).
+            foodDelivery:
+              type: string
+              description: Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            foodTakeout:
+              type: string
+              description: 'Enter the redirect URL where customers can place ''takeout'' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com'
+            whatsappBusinessLink:
+              type: string
+              description: Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
+            textMessageNumber:
+              type: string
+              description: Enter a valid phone number to enable a text message chat option on your live Google Business Profile, allowing customers to easily reach you via SMS.
+          description: This data will be used to update your Google Business Profile/ listing.
+        appleListing:
+          type: object
+          properties:
+            phoneNumber:
+              type: string
+              description: This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            appleWebsiteUrl:
+              type: string
+              description: Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
+            primaryCategory:
+              type: string
+              description: Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
+            additionalCategories:
+              description: You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
+              type: array
+              items: {}
+            appleLocationAttributes:
+              type: object
+              properties: {}
+              description: 'Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:'
+            appleActionLinks:
+              type: object
+              properties: {}
+              description: Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
+            appleBusinessName:
+              type: string
+              description: Business name shown on your Apple Business listing. Must be between 3 and 250 characters.
+            appleBusinessDescription:
+              type: string
+              description: Business description shown on your Apple Business listing. Must be between 20 and 500 characters.
+          description: This data will be used to update your Google Business Profile/ listing.
+        thirdPartyListing:
+          type: object
+          properties:
+            thirdPartyCategory:
+              type: string
+              description: 'Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.'
+            thirdPartySubCategories:
+              type: string
+              description: 'Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.'
+          description: This data will be used to update your secondary listings sites.
+        socialProfileURLs:
+          type: object
+          properties:
+            facebookUrl:
+              type: string
+              description: Facebook URL.
+            twitterUrl:
+              type: string
+              description: Business Twitter URL.
+            linkedInUrl:
+              type: string
+              description: Business LinkedId URL.
+            googleUrl:
+              type: string
+              description: Business Google URL.
+            youTubeUrl:
+              type: string
+              description: Business Youtube URL.
+            instagramUrl:
+              type: string
+              description: Business Instagram URL.
+            pintrestUrl:
+              type: string
+              description: Business Pinterest URL.
+            bbbUrl:
+              type: string
+              description: Business BB URL.
+            lendingtreeUrl:
+              type: string
+              description: Business Lending Tree URL.
+          description: Profile URLs for business on top rated social sites
+        healthcare:
+          type: object
+          properties:
+            doctorCategories:
+              type: array
+              description: This is the doctor specific category your business belongs to. Please refer to the sheet "Doctor Specific Categories" to get the possible values.
+              items: {}
+            isProvider:
+              type: boolean
+              description: If provider then select value true. If practice then select value false. This is a true/false toggle for determining if the location is a provider or not.
+            practiceName:
+              type: string
+              description: Name of the practice.Must be less than 191 characters.
+            firstName:
+              type: string
+              description: First name of the provider.
+            middleName:
+              type: string
+              description: Middle name of the provider.
+            surName:
+              type: string
+              description: Surname of the provider
+            npi:
+              type: number
+              description: National Provider Identifier - NPI. Must be 10 digits
+            credentials:
+              type: string
+              description: University of the provider/practice. Must be less than 25 characters
+            university:
+              type: string
+              description: University of the provider/practice. Must be less than 255 characters
+            hospitalAffiliations:
+              type: string
+              description: Hospital Affiliations of the provider/practice. Must be less than 150 characters
+            insurancesAccepted:
+              type: string
+              description: Insurance Accepted of the provider/practice.  Must be less than 50 characters
+          description: This section is only applicable if you have purchased the health care listings plan and have been onboarded on the same.
+      example:
+        businessInfo:
+          name: Dieci Lifestyle Spa
+          phone: (973) 716-0007
+          websiteUrl: http://www.diecispa.org/
+          emailId: example@birdeye.com
+          isAddressHidden: false
+          isServiceAreaProvider: false
+          mainBusinessDescription: A cozy neighborhood café serving freshly roasted coffee, artisan teas, and homemade pastries in a friendly atmos
+          serviceAreas:
+          - description: Van An, Berryessa Road, San Jose, CA, USA
+          - description: Santa Clara, CA, USA
+          location:
+            address1: 90 W Mount Pleasant Ave
+            address2: (btwn Preston Dr. &amp; N. Mitchell Ave.)
+            subLocality: Auckland CBD
+            city: Livingston
+            state: NJ
+            zip: 7039
+            countryCode: US
+        additionalInfo:
+          establishedYear: '2022'
+          timezone: America/Los_Angeles
+          languages:
+          - English
+          - Hindi
+          moreHours:
+            Dinner:
+            - day: 0
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+            - day: 1
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+            - day: 2
+              isOpen: 1
+              workingHours:
+              - startHour: 32400
+                endHour: 72600
+            - day: 3
+              isOpen: 1
+              workingHours:
+              - startHour: 32400
+                endHour: 41400
+            - day: 4
+              isOpen: 1
+              workingHours:
+              - startHour: 32400
+                endHour: 41400
+            - day: 5
+              isOpen: 1
+              workingHours:
+              - startHour: 32400
+                endHour: 41400
+            - day: 6
+              isOpen: 1
+              workingHours:
+              - startHour: 0
+                endHour: 73800
+            Delivery:
+            - day: 0
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+            - day: 1
+              isOpen: 1
+              workingHours:
+              - startHour: 25200
+                endHour: 34200
+            - day: 2
+              isOpen: 1
+              workingHours:
+              - startHour: 7200
+                endHour: 34200
+            - day: 3
+              isOpen: 1
+              workingHours:
+              - startHour: 0
+                endHour: 41400
+            - day: 4
+              isOpen: 1
+              workingHours:
+              - startHour: 0
+                endHour: 41400
+            - day: 5
+              isOpen: 1
+              workingHours:
+              - startHour: 0
+                endHour: 41400
+            - day: 6
+              isOpen: 1
+              workingHours:
+              - startHour: 3600
+                endHour: 3600
+          appleMoreHours:
+            Dining Hours:
+            - day: 0
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 1
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 2
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 3
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 4
+              isOpen: 1
+              workingHours:
+              - startHour: 36000
+                endHour: 57600
+            - day: 5
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+            - day: 6
+              isOpen: 0
+              workingHours:
+              - startHour: ''
+                endHour: ''
+          wholeWeekOperating: 0
+          hoursOfOperations:
+          - day: 0
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 1
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 2
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 3
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 4
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 5
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 68400
+          - day: 6
+            isOpen: 1
+            workingHours:
+            - startHour: 32400
+              endHour: 48600
+            - startHour: 52200
+              endHour: 64800
+          specialHours:
+          - specialDate: 12/31/2020
+            startHour: 32400
+            endHour: 43200
+            isOpen: 0
+          - specialDate: 01/01/2021
+            startHour: ''
+            endHour: ''
+            isOpen: 1
+          businessStatus: Open
+          reopenDate: 01/01/2021
+          keywords: HairSalons,DaySpas,BeautySalon,BeautySalons,Salons, MassageTherapists
+          services: BeautySalon,HairSpa
+          products: LivingProofDryShampoo,KevinMurphyBlondeAngelWash
+          appointmentLink: http://www.gmail.com
+          reservationLink: http://www.gmail.com
+          menuLink: http://www.gmail.com
+          orderAheadLink: http://www.gmail.com
+          impressum: Thisissampleimpressum
+          paymentTypes:
+          - China Union Pay
+          - Bitcoin
+          - Cash Accepted
+          - MasterCard
+          - PayPal
+          - Check / Cheque
+          - Contactless Payment
+          - Debit Card
+          - Diners Club
+          - JCB
+          - Financing
+          - Visa
+          - American Express
+          - Cash Only
+          - Rupay
+          - Credit Card
+          - Discover
+          additionalPaymentTypes: Visa,MasterCard,AmericanExpress,DebitCards,Check
+          localPhoneNumber: (973)716-0102
+          tollFreePhoneNumber: ''
+          iosAppURL: http://www.gmail.com
+          androidAppURL: http://www.gmail.com
+        media:
+          logoUrl: https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082646457/2816b900140211eb870e7bf4ed6bc766.png
+          coverImageUrl: https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082720956/GustavKlimtExpectationTreeoflifeArboldelaVidaFulfilment.jpeg
+          gmbCover: https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082807649/41cdeb014d36cb35f936152d44c4c77d.jpeg
+          facebookCover: https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082871068/IJ8Sa5.jpeg
+        optOut:
+          gmbCoverOptOut: true
+          gmbLogoOptOut: true
+          fbCoverOptOut: false
+          fbLogoOptOut: false
+          gmbProfileOptOut: false
+          businessProfileOptOut: false
+        covidInfo:
+          postDescription: SampleCovidDesc
+          covid19SupportLink: http://www.covidInfo.com
+          virtualCareLink: http://www.covidInfo.com
+        bingListing:
+          primaryCategoryBing: Art Restoration Service
+          bingDescription: Sample Bing Description
+          bingCategories:
+          - Art Restoration Service
+          bingPhoneNumber: (415) 673-0868
+        internalListing:
+          description: ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic
+          category: Beauty
+          subCategories:
+          - Eyelash Service
+          - Nail Salons
+          displayCategory: Eyelash Service
+        facebookListing:
+          facebookDescription: This is sample facebook description
+          facebookPhoneNumber: (415) 673-0868
+          categories:
+          - Science
+          - Sports
+        thirdPartyListing:
+          thirdPartyCategory: Towing Service
+          thirdPartySubCategories:
+          - Car Dealer
+          - Auto Glass Shop
+        gmbListing:
+          googleWebsiteUrl: http://www.gmail.com
+          googleStoreId: '1232133'
+          googlePhoneNumber: (973) 716-0007
+          primaryCategoryGmb: Fast Food Restaurant
+          googleDescription: This is sample description for google
+          additionalCategories:
+          - Snack bar
+          attributes:
+            Accessibility:
+            - attributeId: has_wheelchair_accessible_elevator
+              attributeName: Wheelchair accessible elevator
+              value: false
+            Crowd:
+            - attributeId: welcomes_families
+              attributeName: Family-friendly
+              value: true
+          hotelAttributes:
+            business:
+              business:
+                meetingRoomsCount:
+                  attributeId: meetingRoomsCount
+                  attributeName: Number of meeting rooms
+                  value: 20
+            policies:
+              policies:
+                checkinTime:
+                  attributeId: checkinTime
+                  attributeName: Check-In Time
+                  value: '14:00'
+                checkoutTime:
+                  attributeId: checkoutTime
+                  attributeName: Check-Out Time
+                  value: '11:00'
+            property:
+              property:
+                builtYear:
+                  attributeId: builtYear
+                  attributeName: Built Year
+                  value: 2010
+            services:
+              services:
+                frontDesk:
+                  attributeId: frontDesk
+                  attributeName: Front desk
+                  value: true
+                giftShop:
+                  attributeId: giftShop
+                  attributeName: Gift shop
+                  value: false
+                languagesSpoken:
+                  attributeId: languagesSpoken
+                  attributeName: Languages Spoken
+                  value: English,Spanish,French
+          foodDelivery: https://www.ubereats.com
+          foodTakeout: https://www.ubereats.com
+          whatsappBusinessLink: https://wa.me/9737160007
+          textMessageNumber: 973716-0007
+        appleListing:
+          primaryCategory: health_care.dentistry.dental_clinic.dentist
+          appleWebsiteUrl: https://www.apple.com
+          additionalCategories:
+          - health_care.dentistry.dental_clinic.dentist.oral_surgeon
+          appleLocationAttributes:
+            crossbusiness.accessibility_features:
+            - attributeId: accessible_elevator
+            crossbusiness.family_kids:
+            - attributeId: kidsclub
+            - attributeId: parents_waitingarea
+          appleActionLinks:
+          - id: quicklinks.schedule_appointment
+            deepLinkUrl: https://www.google.com
+            appStoreUrl: https://apps.apple.com/your_apps_store_url
+          phoneNumber: +1 201-819-7989
+          appleBusinessName: This is sample business name
+          appleBusinessDescription: This is sample business description
+        socialProfileURLs:
+          googleUrl: http://www.google.com/123
+          facebookUrl: http://www.facebook.com/123
+          twitterUrl: http://www.twitter.com/123
+          youTubeUrl: http://www.youtube.com/12
+          linkedinUrl: http://www.linkedin.com/12
+          instagramUrl: http://www.instagram.com/12
+          pintrestUrl: http://www.pinterest.com/12
+          bbbUrl: http://www.bbb.org/12
+          lendingtreeUrl: http://www.lendingtree.com/12
+        healthcare:
+          doctorCategories:
+          - Allergist-Immunologist > Allergy
+          - Allergist-Immunologist > General
+          - Addiction Medicine Specialist > General
+          isProvider: true
+          practiceName: General Medicine
+          firstName: John
+          middleName: Jack
+          surName: Doe
+          npi: '1245319599'
+          credentials: MD
+          university: Sample text
+          hospitalAffiliations: Sample text
+          insurancesAccepted: Sample text
+    2297Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2297
+        message: Invalid Food Takeout link
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    2511Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2511
+        message: Cannot update business status when listing is already fixed.
+    Apiary_getCategoryList_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            description: Category Id.
+          name:
+            type: string
+            description: Category Name.
+          primary:
+            type: boolean
+            description: It will be present in response only in case when sourceName = “VENDOR”
+    2290Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2290
+        message: Food Takeout/Food Delivery not supported for gmb primary category
+    2458Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2458
+        message: Invalid order value. Allowed values are 'asc' or 'desc'.
+    2296Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2296
+        message: Invalid Food Delivery link
+    4013Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Invalid country code
+    2522Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2286
+        message: Invalid whatsapp business link
+    4011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Category Id not found
+    6001Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 6001
+        message: The 'sub_locality' field cannot exceed 80 characters.
+  requestBodies:
+    Fix_ListingBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: {}
+            example: {}
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

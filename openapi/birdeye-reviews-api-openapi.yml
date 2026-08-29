@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Reviews API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Reviews API
+  version: '1.0'
+  description: 'Operations tagged Reviews across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Reviews
   description: Consistently generate more reviews and higher ratings.
@@ -100,6 +96,11 @@ paths:
                   type: boolean
                 fetchAssitedByDetails:
                   type: boolean
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/review/archive/public:
     post:
       summary: Archived Get Reviews
@@ -178,6 +179,11 @@ paths:
                   type: array
                 searchStr:
                   type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/review/businessid/{businessId}/summary:
     get:
       summary: Get reviews summary
@@ -209,6 +215,11 @@ paths:
                 example:
                   code: 1167
                   message: API key is missing
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/review/reply/business/{businessNumber}/review/{reviewId}:
     put:
       summary: Post Review Reply
@@ -252,6 +263,11 @@ paths:
                   type: string
                 isPrivateResponse:
                   type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/tag:
     post:
       summary: Create tags
@@ -286,6 +302,11 @@ paths:
               properties:
                 tags:
                   type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/tag/{tagname}:
     delete:
       summary: Delete a tag
@@ -317,6 +338,11 @@ paths:
                 example:
                   code: 1011
                   message: Business id is invalid
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/tag/all:
     get:
       summary: Get all tags
@@ -341,6 +367,11 @@ paths:
                 example:
                   code: 1011
                   message: Business id is invalid
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/tag/add/review:
     post:
       summary: Assign tags to filtered reviews
@@ -379,6 +410,11 @@ paths:
             schema:
               $schema: http://json-schema.org/draft-07/schema#
               type: object
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/tag/remove/review:
     post:
       summary: Remove tags from filtered reviews
@@ -417,6 +453,11 @@ paths:
             schema:
               $schema: http://json-schema.org/draft-07/schema#
               type: object
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/tag/remove/all/review:
     post:
       summary: Remove particular tags from all reviews
@@ -451,10 +492,658 @@ paths:
               properties:
                 tags:
                   type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    1228Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1228
+        message: Invalid updated to date. Allowed format is MM/dd/yyyy
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    21103Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 21103
+        message: Your review response could not be submitted due to a temporary error on Google.
+    1187Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1187
+        message: Invalid to date. Allowed format is "MM/dd/yyyy".
+    2177Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Invalid media id
+    2078Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2078
+        message: Error while posting a reply to Rent
+    1244Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1244
+        message: Maximum 5 keywords can be selected for filter.
+    1163Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1163
+        message: Invalid start index value
+    Apiary_getReviewsSummary_Response200:
+      type: object
+      properties:
+        sources:
+          type: array
+          description: Source detail list.
+          items:
+            type: object
+            properties:
+              sourceName:
+                type: string
+                description: Name of the source.
+              sourceAlias:
+                type: string
+                description: Alias of the source.
+              avgRating:
+                type: number
+                description: Average rating of the source.
+              reviewCount:
+                type: number
+                description: Total number of reviews.
+        ratings:
+          type: array
+          items:
+            type: object
+            properties:
+              rating:
+                type: number
+                enum:
+                - 5
+                description: Review Rating.
+              reviewCount:
+                type: number
+                enum:
+                - 140
+                description: Number of reviews according to rating.
+            required:
+            - rating
+            - reviewCount
+            additionalProperties: false
+          description: Review count against each possible review rating.
+      required:
+      - ratings
+    2075Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2075
+        message: Error while claiming a provider for Care Dash
+    21113Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 21113
+        message: Facebook page is not integrated. Kindly integrate it first.
+    Apiary_removeTagsFromFilteredReviews_Request:
+      type: object
+      properties:
+        reviewIds:
+          type: array
+          items: {}
+          description: List of reviewIds.
+        fromDate:
+          type: string
+          description: Review Start date format MM/dd/YYYY.
+        toDate:
+          type: string
+          description: Review End date format MM/dd/YYYY.
+        updateFromDate:
+          type: string
+          description: Review update from date format MM/dd/YYYY.
+        updateToDate:
+          type: string
+          description: Review update end date format MM/dd/YYYY.
+        sources:
+          type: string
+          description: List of sources.
+        ratings:
+          type: string
+          description: List of Review Ratings.
+        keywords:
+          type: string
+          description: List Review keywords.
+        searchStr:
+          type: string
+          description: Search string.
+        subBusinessIds:
+          type: string
+          description: List of location numbers.
+      example:
+        reviewIds:
+        - 3901784402334
+        - 3901744402337
+        fromDate: 04/01/2013
+        toDate: 05/3/2015
+        updateFromDate: 04/01/2013
+        updateToDate: 05/3/2015
+        sources:
+        - google
+        - citysearch
+        ratings:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 0
+        keywords:
+        - water
+        searchStr: Awesome
+        subBusinessIds:
+        - 134387654345
+        - 134387654346
+        - 13438765437
+    Apiary_archivedGetReviews_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          reviewId:
+            type: string
+            description: Unique identifier of the archived review.
+          rating:
+            type: number
+            description: Rating given in the review.
+          comments:
+            type: string
+            description: Review comment text.
+          recommended:
+            type: number
+            description: Recommendation flag for supported sources.
+          status:
+            type: string
+            description: Review status label returned for the review record.
+          reviewer:
+            type: object
+            properties:
+              firstName:
+                type: string
+                description: Reviewer's first name, if available.
+              lastName:
+                type: string
+                description: Reviewer's last name, if available.
+              nickName:
+                type: string
+                description: Reviewer's display name, if available.
+              thumbnailUrl:
+                type: string
+                description: Reviewer's profile image URL.
+            description: Reviewer details.
+          sourceType:
+            type: string
+            description: Human-readable source name.
+          reviewDate:
+            type: string
+            description: Review creation date.
+          rDate:
+            type: number
+            description: Review creation timestamp in milliseconds.
+          archiveDate:
+            type: string
+            description: Date when the review was archived.
+          deleteDate:
+            type: string
+            description: Date when the review will be deleted from archive.
+          response:
+            type: string
+            description: Business response text, if available.
+          responseDate:
+            type: string
+            description: Business response date, if available.
+          businessId:
+            type: string
+            description: Business identifier linked to the review.
+          businessName:
+            type: string
+            description: Business name linked to the review.
+          businessType:
+            type: string
+            description: Business type linked to the review.
+          customerId:
+            type: number
+            description: Customer identifier mapped to the review, if available.
+          medias:
+            type: array
+            items:
+              type: object
+              properties:
+                url:
+                  type: string
+                  description: Media URL.
+                thumbnailUrl:
+                  type: string
+                  description: Thumbnail URL.
+                type:
+                  type: string
+                  description: Media type.
+            description: Media attached to the review.
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1186Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1186
+        message: Invalid from date. Allowed format is "MM/dd/yyyy".
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    2111Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2111
+        message: Your review response could not be submitted due to a temporary error on Facebook. Please try after some time.
+    21114Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 21114
+        message: Sorry, We could not find this review on Facebook. Please go to your Facebook page and reply to this review. Thank you.
+    Apiary_assignTagsToFilteredReviews_Request:
+      type: object
+      properties:
+        reviewIds:
+          type: array
+          items: {}
+          description: List of reviewIds.
+        fromDate:
+          type: string
+          description: Review Start date format MM/dd/YYYY.
+        toDate:
+          type: string
+          description: Review End date format MM/dd/YYYY.
+        updateFromDate:
+          type: string
+          description: Review update from date format MM/dd/YYYY.
+        updateToDate:
+          type: string
+          description: Review update end date format MM/dd/YYYY.
+        sources:
+          type: string
+          description: List of sources.
+        ratings:
+          type: string
+          description: List of Review Ratings.
+        keywords:
+          type: string
+          description: List Review keywords.
+        searchStr:
+          type: string
+          description: Search string.
+        subBusinessIds:
+          type: string
+          description: List of location numbers.
+      example:
+        reviewIds:
+        - '3901784402334'
+        - '3901744402337'
+        - '3902344402875'
+        fromDate: 04/01/2013
+        toDate: 05/3/2015
+        updateFromDate: 04/01/2013
+        updateToDate: 05/3/2015
+        sources:
+        - google
+        - citysearch
+        ratings:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 0
+        keywords:
+        - water
+        searchStr: Awesome
+        subBusinessIds:
+        - 134387654345
+        - 134387654346
+        - 13438765437
+    21101Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 21101
+        message: Google page is not integrated. Kindly integrate it first.
+    Apiary_archivedGetReviews_Request:
+      type: object
+      properties:
+        businessNumbers:
+          description: List of business numbers to filter the report. If empty, all accessible business numbers are considered.
+          type: array
+          items: {}
+        startDate:
+          type: number
+          description: Review Start date in milliseconds, pass epoch timestamp.
+        endDate:
+          type: number
+          description: Review End date in milliseconds, pass epoch timestamp.
+        sourceAlias:
+          type: array
+          description: List of review source aliases to include.
+          items: {}
+        deleteStartDate:
+          type: number
+          description: Review deletion start date in milliseconds, pass epoch timestamp.
+        deleteEndDate:
+          type: number
+          description: Review deletion end date in milliseconds, pass epoch timestamp.
+        ratings:
+          type: array
+          description: Review ratings to filter. Possible values are `0,1,2,3,4,5`.
+          items: {}
+        statuses:
+          type: array
+          description: Review status filter. Valid values are "published", "parked". If omitted, default is "published" only (featured reviews). "published" refers to featured reviews and "parked" refers to non-featured reviews.
+          items: {}
+        searchStr:
+          type: string
+          description: Free-text search term for review content.
+      example:
+        businessNumbers: []
+        startDate: 1712986782000
+        endDate: 1715578782000
+        sourceAlias:
+        - google
+        - facebook
+        deleteStartDate: 1712986782000
+        deleteEndDate: 1715578782000
+        ratings:
+        - 4
+        - 5
+        statuses:
+        - published
+        - parked
+        searchStr: great service
+    1227Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1227
+        message: Invalid updated from date. Allowed format is MM/dd/yyyy
+    1164Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1164
+        message: Invalid result count value
+    21104Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 21104
+        message: Sorry, We could not find this review on Google. Please go to your Google Business page and reply to this review. Thank you.
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    20706Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 20706
+        message: Error while posting a reply to Care Dash
+    21112Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 21112
+        message: Your review response could not be submitted due to a temporary error on Facebook.
+    1541Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1541
+        message: Rate Limit of API has been exceeded.
+    Apiary_getReviews_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          reviewId:
+            type: number
+            description: Id of the review.
+          rating:
+            type: number
+            description: Overall rating for the review, in case of direct feedback and facebook recommendations it will be 0. For Facebook recommendations, value will be 1, Non recommended review will have value set as 0.
+          comments:
+            type: string
+            description: User comment.
+          reviewer:
+            type: object
+            properties:
+              firstName:
+                type: string
+                description: Reviewer first name.
+              lastName:
+                type: string
+                description: Reviewer last name.
+              nickName:
+                type: string
+                description: Reviewer full name.
+              thumbnailUrl:
+                type: string
+                description: Thumbnail URL
+            description: Reviewer details
+          sourceType:
+            type: string
+            description: Source of the review if it is an aggregated review.
+          reviewURL:
+            type: string
+            description: Review url
+          reviewDate:
+            type: string
+            description: Review posted date.
+          response:
+            type: string
+            description: Review response text.
+          responseDate:
+            type: string
+            description: Response date.
+          inlineReplyEnabled:
+            type: boolean
+            description: If true, you can post replies through the dashboard.
+          enableReply:
+            type: boolean
+            description: Whether a review reply is supported via Birdeye API or not.
+          customerId:
+            type: number
+            description: Customer's Id attributed with this review (if any).
+          extraParams:
+            type: object
+            description: Key value pair of custom field(s) associated with the customer attributed to the review (if any)
+          assitedByUser:
+            type: object
+            properties:
+              firstName:
+                type: string
+                description: Employee first name.
+              lastName:
+                type: string
+                description: Employee last name.
+              emailId:
+                type: string
+                description: Employee email id.
+              phoneNum:
+                type: string
+                description: Employee phone number.
+            description: Employees associated with the review
+    2110Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2110
+        message: Your review response could not be submitted due to a temporary error on Google. Please try after some time.
+    2222Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2222
+        message: Oops! Something is off on our side. We are working on it. Please check later.
+    1042Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1042
+        message: Invalid review id
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

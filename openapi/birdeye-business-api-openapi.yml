@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Business API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Business API
+  version: '1.0'
+  description: 'Operations tagged Business across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Business
   description: Create and maintain your business on Birdeye.
@@ -72,6 +68,11 @@ paths:
               - businessName
               - zip
               - phone
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{businessNumber}/search:
     post:
       summary: Search Business
@@ -114,6 +115,11 @@ paths:
                   type: number
                 pageSize:
                   type: number
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{business_id}:
     get:
       summary: Get Business
@@ -138,6 +144,11 @@ paths:
                 example:
                   code: 1167
                   message: API key is missing
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{businessId}:
     put:
       summary: Update Business
@@ -368,6 +379,11 @@ paths:
               - emailId
               - phone
               - services
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{business_Id}:
     delete:
       summary: Delete Business
@@ -392,6 +408,11 @@ paths:
                 example:
                   code: 1175
                   message: No business found with the given id
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{business_id}/status:
     put:
       summary: Update the status
@@ -423,6 +444,11 @@ paths:
                 example:
                   code: 1191
                   message: Invalid status.
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/child/all:
     get:
       summary: Get Child Businesses
@@ -445,6 +471,11 @@ paths:
               schema:
                 $schema: http://json-schema.org/draft-07/schema#
                 type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/tabs:
     post:
       summary: Update public profile of Businesses
@@ -479,6 +510,11 @@ paths:
               properties:
                 profileTabs:
                   type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{businessId}/hierarchy:
     get:
       summary: Get hierarchy for an enterprise
@@ -503,6 +539,11 @@ paths:
                 example:
                   code: 1167
                   message: API key is missing
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/business-hierarchy/location/update-mapping/{businessId}:
     post:
       summary: Update Hierarchy
@@ -537,6 +578,11 @@ paths:
               properties:
                 Level:
                   type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{businessNumber}/profile/customcard:
     get:
       summary: Get Custom card details
@@ -560,6 +606,11 @@ paths:
                 example:
                   code: 1011
                   message: Business id is invalid
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/public/card/{cardId}:
     put:
       summary: Update Custom card
@@ -614,6 +665,8 @@ paths:
               required:
               - cardId
               - title
+      security:
+      - apiKey: []
     delete:
       summary: Delete Custom card
       operationId: delete-custom-card
@@ -636,6 +689,11 @@ paths:
                 example:
                   code: 1011
                   message: Business id is invalid
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{businessNumber}/timezones:
     get:
       summary: Get Timezone List
@@ -659,6 +717,11 @@ paths:
                 example:
                   code: 1011
                   message: Business id is invalid
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{businessNumber}/birdeye/impressions:
     post:
       summary: Get Birdeye Impressions
@@ -707,10 +770,1436 @@ paths:
                   type: string
               required:
               - businessNumbers
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    2520Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2520
+        message: Open Date is not supported for this date
+    1069Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1069
+        message: Business description cannot be more than 4000 characters.
+    3337Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2278
+        message: Primary GBP category is not allowed in additional GBP categories.
+    Apiary_getChildBusinesses_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+            description: Id of the Business
+          name:
+            type: string
+            description: Name of the Business/Product (Max 1000 character long).
+          alias:
+            type: string
+            description: Alias, Your internal way of identifying this location.
+          phone:
+            type: string
+            description: Business Phone (Required) Format is (xxx) xxx-xxxx.
+          address:
+            type: object
+            properties:
+              address1:
+                type: string
+                description: Address of the business.
+              address2:
+                type: string
+                description: Address of the business.
+              subLocality:
+                type: string
+                description: '(Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.'
+              city:
+                type: string
+                description: City (Max 1000 character long).
+              state:
+                type: string
+                description: State (2 character state code).
+              countryCode:
+                type: string
+                description: Country Code (2 character country code).
+              zip:
+                type: string
+                description: Zip Code.
+            required:
+            - zip
+            description: Business address
+          status:
+            type: string
+            description: Business status. Valid values are demo, active, inactive. Default is
+          type:
+            type: string
+            description: 'Business type. Valid values are "Business, Enterprise-Location, Enterprise-Product, Reseller or a existing custom hierarchy type". Default is:'
+          createdOn:
+            type: string
+            description: Business singup date.
+          createdBy:
+            type: string
+            description: Full name of the user who created the business (or location).
+          childCount:
+            type: number
+            description: 'Child account count. note: applicable only for Reseller, Enterprise-Location, Enterprise-Product.'
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1045Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1045
+        message: Business name cannot be blank
+    2151Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2151
+        message: Not a valid reseller/enterprise id.
+    1056Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1056
+        message: Not a valid US fax number.
+    1047Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1047
+        message: Business name cannot be less than 3 characters
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1093Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1093
+        message: HierarchyNode is enabled for this account.
+    1033Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1033
+        message: You are not authorized to perform this action
+    1150Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1150
+        message: Business already associated with this reseller
+    1076Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1176
+        message: Business info cannot be blank
+    2166Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2166
+        message: Invalid Business Type
+    1184Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1184
+        message: Status change is not allowed
+    2513Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2513
+        message: Opened On date can not be in future.
+    Apiary_getTimezoneList_Response200:
+      type: object
+      properties:
+        timezones:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: number
+                description: The timezone value.
+              label:
+                type: string
+                description: The timezone label.
+    2519Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2519
+        message: Third party categories change for opening soon business is not allowed.
+    Apiary_searchBusiness_Response200:
+      type: object
+      properties:
+        totalCount:
+          type: number
+          description: The total number of search matches.
+        accounts:
+          type: array
+          description: Search results
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The business name
+              status:
+                type: string
+                description: The business status - active, demo, paid, suspended etc.
+              createdAt:
+                type: string
+                description: The date of business (or location) creation.
+              createdBy:
+                type: string
+                description: Full name of the user who created the business (or location).
+              businessNumber:
+                type: string
+                description: Unique number associated with every business (or location).
+              type:
+                type: string
+                description: Returned in case of resellers, specifies whether account is SMB, enterprise, or reseller
+    1070Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1070
+        message: Business keywords cannot be more than 1000 characters.
+    3334Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2503
+        message: Primary category can not be included in additional category.
+    1010Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1010
+        message: No user found with the given id
+    2157Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2157
+        message: Business already associated with another reseller/enterprise.
+    Apiary_updateCustomCard_Request:
+      type: object
+      properties:
+        cardId:
+          type: number
+          description: Id of the custom card to update.
+        title:
+          type: string
+          description: Title shown on the custom card.
+        description:
+          type: string
+          description: Description/content shown on the custom card.
+        imageURL:
+          type: string
+          description: Public image URL displayed on the card.
+        imagePosition:
+          type: string
+          description: 'Image position value. Possible values are:'
+        isVisible:
+          type: number
+          description: 'Visibility status of card on the microsite. Possible values are:'
+        isPinOnTop:
+          type: number
+          description: Pin status of card on the microsite.
+        clickURL:
+          type: string
+          description: Redirect URL for card click action.
+        linkText:
+          type: string
+          description: Text displayed for the link.
+        type:
+          type: string
+          description: Type/category of the custom card.
+      required:
+      - cardId
+      - title
+      example:
+        cardId: 14744
+        title: title
+        description: desc
+        imageURL: https://d1py4eyp5hehj0.cloudfront.net/upload/1475208/1737886366109/Screenshot20250109040058.png
+        imagePosition: '1'
+        isVisible: 1
+        isPinOnTop: 1
+        clickURL: https://www.google.com/
+        linkText: ''
+        type: Link type
+    2150Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2150
+        message: Not a valid reseller/enterprise id.
+    2518Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2518
+        message: Business Status is mandatory to pass with reopen, opened on and opening soon date.
+    2286Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2286
+        message: Zip code is not provided for business
+    1052Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1052
+        message: User email id cannot be blank
+    2517Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2517
+        message: Opening Soon date should not be less than current date.
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    2154Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2154
+        message: Business is already an active account.
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    3348Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2162
+        message: Reopen date should not be less than current date.
+    2156Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2156
+        message: Business/Location/Product already exists
+    2516Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2516
+        message: Opening Soon Date can not be more than 1 year from now.
+    2515Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2515
+        message: Reopen date is not supported for this date.
+    1094Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1094
+        message: Postal code cannot be blank.
+    Apiary_createABusiness_Request:
+      type: object
+      properties:
+        businessName:
+          type: string
+          description: Name of the Business that needs to be added
+        zip:
+          type: string
+          description: Postal code of the business location
+        type:
+          type: string
+          description: Type of the Business. Valid values are
+        phone:
+          type: number
+          description: Phone number of the Business.
+        entityCategory:
+          type: string
+          description: 'Specifies the category of the business entity being created or updated. Valid values are:'
+        countryCode:
+          type: string
+          description: This field is mandatory for non US locations.
+        aggrOptions:
+          type: number
+          description: Aggregation Options to enable/disable aggregations. Possible values are [0,1]
+      required:
+      - businessName
+      - zip
+      - phone
+      example:
+        businessName: The Business Name
+        zip: 32323
+        type: Business
+        phone: '4032365164'
+        entityCategory: physical_location
+        countryCode: US
+        aggrOptions: 1
+    2512Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2512
+        message: Cannot update opening soon date when listing is already fixed.
+    2153Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2153
+        message: Business name should not have the word Birdeye.
+    2155Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2155
+        message: Business is already an in-active account.
+    2292Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2292
+        message: sortby can only be 'total' or 'location'
+    3335Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2276
+        message: Please add upto 9 GBP additional categories only.
+    Apiary_getBirdeyeImpressions_Request:
+      type: object
+      properties:
+        businessNumbers:
+          type: string
+          description: 'list of the unique business ids associated with a business eg: [123456789, 987656789]'
+        startDate:
+          type: string
+          description: 'yyyy-MM-dd eg: "2020-11-10"'
+        endDate:
+          type: string
+          description: 'yyyy-MM-dd eg: "2020-11-10"'
+        limit:
+          type: number
+          description: 'page size. default: 25'
+        startIndex:
+          type: number
+          description: 'default: 0'
+        sortby:
+          type: string
+          description: '"location" or "total" default: total.'
+        order:
+          type: string
+          description: '"asc" or "desc" default: desc'
+      required:
+      - businessNumbers
+      - startDate
+      - endDate
+      example:
+        businessNumbers:
+        - 147286063579104
+        - 147286063579108
+        startDate: 2022-11-23
+        endDate: 2023-11-23
+        limit: 5
+        order: desc
+        sortby: location
+        startIndex: 0
+    1025Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1025
+        message: Invalid business type
+    3336Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2277
+        message: Duplicate GBP categories are not allowed.
+    6000Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 6000
+        message: The 'sub_locality' field is mandatory for addresses in New Zealand.
+    Apiary_updateBusiness_Request:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the Business/Product (Max 250 character long).
+        alias:
+          type: string
+          description: Alias, Your internal way of identifying this location.
+        isAddressHidden:
+          type: number
+          description: If your business doesn’t have a place for your customers to visit, then you can hide your street address. 1 -> hide, 0 -> unhide (Note that this isn’t supported by all sites).
+        location:
+          type: object
+          properties:
+            address1:
+              type: string
+              description: Address of the business/location.
+            address2:
+              type: string
+              description: Address of the business/location.
+            subLocality:
+              type: string
+              description: '(Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.'
+            city:
+              type: string
+              description: City (Max 1000 character long).
+            state:
+              type: string
+              description: State (2 character state code).
+            countryCode:
+              type: string
+              description: Country Code (2 character country code).
+            zip:
+              type: string
+              description: Zip Code.
+          required:
+          - zip
+          description: Business address
+        emailId:
+          type: string
+          description: Business Email ID.
+        phone:
+          type: string
+          description: Business Phone (Required) Format is (xxx) xxx-xxxx.
+        fax:
+          type: string
+          description: Fax number Format is (xxx) xxx-xxxx.
+        websiteUrl:
+          type: string
+          description: Business website url.
+        establishedYear:
+          type: number
+          description: Year established
+        timezone:
+          type: string
+          description: Timezone of the business.
+        languages:
+          type: array
+          description: Language.
+          items: {}
+        isServiceAreaProvider:
+          type: string
+          description: 'To select whether the business is Service Area Business Type. Default value is : No.'
+        serviceAreas:
+          type: array
+          description: Service Area information. You can enter upto 10 service area addresses in one request
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                description: 'For supported service areas, Possible formats:'
+        working24x7:
+          type: number
+          description: Whether business is 24x7 open or not (0-false, 1-true).
+        hoursOfOperations:
+          type: array
+          description: Working hours of business for each day.
+          items:
+            type: object
+            properties:
+              day:
+                type: number
+                description: 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+              workingHours:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    startHour:
+                      type: string
+                      description: Start hour 9:00 (9 AM), 18:00 (6 PM)
+                    endHour:
+                      type: string
+                      description: End hour  9:00 (9 AM), 18:00 (6 PM)
+                description: Working hours of the business
+              isOpen:
+                type: number
+                description: 0 (Business closed today), 1 (open)
+              comment:
+                type: string
+                description: Add the special instruction.
+        specialHours:
+          type: array
+          description: Special hours of business.
+          items:
+            type: object
+            properties:
+              specialDate:
+                type: string
+                description: It should be "MM/DD/YYYY".
+              startHour:
+                type: string
+                description: Start hour 9:00 (9 AM), 18:00 (6 PM)
+              endHour:
+                type: string
+                description: End hour  9:00 (9 AM), 18:00 (6 PM)
+              isOpen:
+                type: number
+                description: 0(Business closed today), 1 (open)
+        businessStatus:
+          type: string
+          description: The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+        reopenDate:
+          type: string
+          description: Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
+        services:
+          type: string
+          description: Services (Comma separated list of services offered; used for SEO).
+        keywords:
+          type: string
+          description: Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
+        products:
+          type: string
+        appointmentLink:
+          type: string
+          description: Let customers book appointments by redirecting them to your appointments page.
+        reservationLink:
+          type: string
+          description: Let customers reserve tables by linking them to your reservations page.
+        menuLink:
+          type: string
+          description: Show customers what you serve by linking them to your menu.
+        orderAheadLink:
+          type: string
+          description: Let customers place delivery and pick-up orders by linking them to your ordering page.
+        impressum:
+          type: string
+          description: In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
+        payment:
+          type: string
+          description: Payment Type (Max 250 character long).
+        localPhoneNumber:
+          type: string
+          description: Local phone number.
+        tollFreePhoneNumber:
+          type: string
+          description: Tollfree number.
+        androidAppURL:
+          type: string
+          description: Android app url.
+        iosAppURL:
+          type: string
+          description: IOS app url.
+        logoUrl:
+          type: string
+          description: 'Logo Image. Minimum 250 x 250px. Recommended: 720 X 720 px. 10 KB min.'
+        gmbLogoOptOut:
+          type: number
+          description: Update profile photo on your google my business page. (1-false,0-true).
+        fbLogoOptOut:
+          type: number
+          description: Update profile photo on your facebook profile. (1-false,0-true).
+        gmbCoverOptOut:
+          type: number
+          description: Update cover photo on your google my business page. (1-false,0-true).
+        fbCoverOptOut:
+          type: number
+          description: Update cover photo on your facebook profile. (1-false,0-true).
+        coverImageUrl:
+          type: string
+          description: 'Cover image URL for business displayed on custom review site. Format: JPG, JPEG, PNG. Minimum 1296 x 367px.'
+        gmbCover:
+          type: string
+          description: Google Cover Image Url.
+        facebookCover:
+          type: string
+          description: Facebook Cover Image Url.
+        coverBusinessInfoLayout:
+          type: string
+          description: Show on your Birdeye profile. Possible value will be
+        covidInfo:
+          type: object
+          properties:
+            postDescription:
+              type: string
+              description: Post will be update on gmb & FB
+            covid19SupportLink:
+              type: string
+              description: Should be a valid covid19 support url
+            virtualCareLink:
+              type: string
+              description: Should be a valid url virtual care link
+          description: Provide covid related update in.
+        bingListing:
+          type: object
+          properties:
+            primaryCategoryBing:
+              type: string
+              description: Primary category of bing.
+            bingPhoneNumber:
+              type: string
+              description: You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
+            categories:
+              type: string
+              description: You can add up to 3 categories.
+            bingDescription:
+              type: string
+              description: Bing description cannot be more than 4096 characters.
+          description: Provide bing data for listing purpose.
+        internalListing:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Business description cannot be more than 5000 characters.
+            category:
+              type: string
+              description: Primary category of business.
+            subcategory:
+              type: string
+              description: You can add up to 3 subcategories.
+            displayCategory:
+              type: string
+              description: Choose one of the category either from primary category or from sub categories.
+          required:
+          - category
+          - subcategory
+          description: Provide data for microsite listing purpose.
+        facebookListing:
+          type: object
+          properties:
+            category:
+              type: string
+              description: You can add up to 3 categories.
+            facebookDescription:
+              type: string
+              description: Facebook description cannot be more than 255 characters.
+            facebookPhoneNumber:
+              type: string
+              description: Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
+          description: Provide data for facebook listing purpose.
+        gmbListing:
+          type: object
+          properties:
+            googleWebsiteUrl:
+              type: string
+              description: Website url will update on google listing.
+            googlePhoneNumber:
+              type: string
+              description: You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
+            googleStoreId:
+              type: string
+              description: Store id for google.
+            primaryCategoryGmb:
+              type: string
+              description: Primary category of google.
+            additionalCategory:
+              type: string
+              description: You can add up to 9 subcategories.
+            googleDescription:
+              type: string
+              description: Google description cannot be more than 750 characters.
+            attributes:
+              type: object
+              properties: {}
+              description: Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
+            foodDelivery:
+              type: string
+              description: Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            foodTakeout:
+              type: string
+              description: 'Enter the redirect URL where customers can place ''takeout'' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com'
+          description: Provide data for gmb listing purpose.
+        socialProfileURLs:
+          type: object
+          properties:
+            facebookUrl:
+              type: string
+              description: Facebook URL.
+            twitterUrl:
+              type: string
+              description: Business Twitter URL.
+            linkedInUrl:
+              type: string
+              description: Business LinkedId URL.
+            googleUrl:
+              type: string
+              description: Business Google URL.
+            youTubeUrl:
+              type: string
+              description: Business Youtube URL.
+          description: Profile URLs for business on top rated social sites
+        isSEOEnabled:
+          type: boolean
+          description: Enable/Disbale search engine indexing of business profile. Valid values are "true","false". Default is "true".
+        externalReferenceId:
+          type: string
+          description: It should be a unique value for location identifier.
+        customFields:
+          type: object
+          properties:
+            type:
+              type: string
+              description: Type of field.
+            fieldValue:
+              type: string
+              description: Custom field value.
+            fieldName:
+              type: string
+              description: Name of custom field (Make sure to enter the same fieldName or else the new field will be created).
+            id:
+              type: number
+              description: fieldId of the custom field created earlier.
+          required:
+          - fieldName
+          - id
+          description: Custom Field To be Updated
+        entityCategory:
+          type: string
+          description: 'Specifies the category of the business entity being created or updated. Valid values are:'
+      required:
+      - emailId
+      - phone
+      - services
+    1151Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1151
+        message: Business already associated with another reseller
+    2152Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2152
+        message: Not a valid reseller/enterprise id.
+    1046Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1046
+        message: Business name cannot be more than 250 characters
+    1075Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1075
+        message: Business location zip cannot be more than 6 numbers
+    2297Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2297
+        message: Invalid Food Takeout link
+    1190Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1190
+        message: Invalid category
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    Apiary_getBusiness_Response200:
+      type: object
+      properties:
+        businessId:
+          type: number
+          description: Id of the Business (Long).
+        name:
+          type: string
+          description: Name of the Business/Product (Max 1000 character long).
+        alias:
+          type: string
+          description: Alias, Your internal way of identifying this location.
+        emailId:
+          type: string
+          description: Business Email ID.
+        phone:
+          type: string
+          description: Business Phone (Required) Format is (xxx) xxx-xxxx.
+        fax:
+          type: string
+          description: Fax number Format is (xxx) xxx-xxxx.
+        websiteUrl:
+          type: string
+          description: Business website url.
+        description:
+          type: string
+          description: Description of the business (10 to 4000 character long).
+        services:
+          type: string
+          description: Services (Comma separated list of services offered; used for SEO).
+        keywords:
+          type: string
+          description: Keywords (Comma separated list of keywords; Max 10 keywords; used for SEO).
+        logoUrl:
+          type: string
+          description: 'Logo Image. Minimum 250 x 250px. Recommended: 720 X 720 px. 10 KB min.'
+        coverImageUrl:
+          type: string
+          description: Cover Image (Dimension should be 1296 x 367 px).
+        gmbCover:
+          type: string
+          description: Google Cover Image Url.
+        facebookCover:
+          type: string
+          description: Facebook Cover Image Url.
+        timezone:
+          type: string
+          description: Timezone of the business.
+        languages:
+          type: array
+          description: Language.
+          items: {}
+        isServiceAreaProvider:
+          type: string
+          description: 'To select whether the business is Service Area Business Type. Default value is : No. Possible values are:'
+        serviceAreas:
+          type: array
+          description: Service Area information.
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                description: Description about the Service Area.
+              placeId:
+                type: string
+                description: Place Id.
+        payment:
+          type: string
+          description: Payment Type (Max 250 character long).
+        hoursOfOperations:
+          type: array
+          description: Working hours of business for each day.
+          items:
+            type: object
+            properties:
+              day:
+                type: number
+                description: 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+              workingHours:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    startHour:
+                      type: string
+                      description: Start hour 9:00 (9 AM), 18:00 (6 PM)
+                    endHour:
+                      type: string
+                      description: End hour  9:00 (9 AM), 18:00 (6 PM)
+                description: Working hours of the business
+              isOpen:
+                type: number
+                description: 0 (Business closed today), 1 (open)
+              comment:
+                type: string
+                description: Add the special instruction.
+        working24x7:
+          type: number
+          description: Whether business is 24x7 open or not (0-false, 1-true).
+        location:
+          type: object
+          properties:
+            address1:
+              type: string
+              description: Address of the business.
+            address2:
+              type: string
+              description: Address of the business.
+            subLocality:
+              type: string
+              description: '(Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.'
+            city:
+              type: string
+              description: City (Max 1000 character long).
+            state:
+              type: string
+              description: State (2 character state code).
+            countryCode:
+              type: string
+              description: Country Code (2 character country code).
+            zip:
+              type: string
+              description: Zip Code.
+          required:
+          - zip
+          description: Business address
+        reviewCount:
+          type: number
+          description: Total review count of the business.
+        avgRating:
+          type: number
+          description: Average rating of the business.
+        status:
+          type: string
+          description: Business status. Valid values are demo, active, inactive. Default is
+        type:
+          type: string
+          description: 'Business type. Valid values are "Business, Enterprise-Location, Enterprise-Product, Reseller or a existing custom hierarchy type". Default is:'
+        category:
+          type: string
+          description: Category (Mapped to Google Category).
+        socialProfileURLs:
+          type: object
+          properties:
+            facebookUrl:
+              type: string
+              description: Facebook URL.
+            twitterUrl:
+              type: string
+              description: Business Twitter URL.
+            linkedInUrl:
+              type: string
+              description: Business LinkedId URL.
+            googleUrl:
+              type: string
+              description: Business Google URL.
+            youTubeUrl:
+              type: string
+              description: Business Youtube URL.
+          description: Profile URLs for business on top rated social sites
+        isSEOEnabled:
+          type: boolean
+          description: Enable/Disbale search engine indexing of business profile. Valid values are "true","false". Default is "true"
+      required:
+      - services
+    1191Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1191
+        message: Invalid status.
+    2511Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2511
+        message: Cannot update business status when listing is already fixed.
+    Apiary_searchBusiness_Request:
+      type: object
+      properties:
+        searchStr:
+          type: string
+          description: Search criteria for business. This could be business name or number.
+        sortBy:
+          type: string
+          description: Results can be sorted by name, createdAt, and createdBy. By default is createdAt.
+        sortOrder:
+          type: string
+          description: The SORT order, Possible values "ASC" or "DESC". By default is "DESC".
+        startIndex:
+          type: number
+          description: Once sorted, it defines starting from which index a page (number of specified search results) is to be created.
+        pageSize:
+          type: number
+          description: Determines the number of search results in the response. Users can set a desired value to limit results, e.g., pageSize=25 shows the top 25 business listings. The Default value is 25.
+      example:
+        pageSize: 25
+        searchStr: Thurston Rosenlund
+        sortBy: createdAt
+        sortOrder: ASC
+        startIndex: 0
+    Apiary_updatePublicProfileOfBusinesses_Request:
+      type: object
+      properties:
+        profileTabs:
+          type: array
+          items:
+            type: object
+            properties:
+              tabType:
+                type: string
+                description: Valid values are "Reviews", "Feedback", "FAQ", "Aboutus", "Map", "Appointment" or "BusinessOwner".
+              label:
+                type: string
+                description: Name on the tab. Max length 30 character.
+              showOnProfile:
+                type: number
+                description: Show on profile Valid values "0" or "1".
+              showOnWebsite:
+                type: number
+                description: Show on website Valid values "0" or "1".
+              showOnFacebook:
+                type: number
+                description: Show on Facebook Valid values "0" or "1".
+              url:
+                type: string
+                description: Valid url for tab.
+            required:
+            - tabType
+            - showOnProfile
+            - showOnWebsite
+            - showOnFacebook
+      example:
+        profileTabs:
+        - tabType: map
+          label: map location
+          showOnProfile: 0
+          showOnWebsite: 1
+          showOnFacebook: 1
+          url: http://www.mapurl.com
+        - tabType: Feedback
+          label: Feedback
+          showOnProfile: 0
+          showOnWebsite: 1
+          showOnFacebook: 1
+          url: http://www.feedback.com
+    2290Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2290
+        message: Food Takeout/Food Delivery not supported for gmb primary category
+    2296Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2296
+        message: Invalid Food Delivery link
+    Apiary_getCustomCardDetails_Response200:
+      type: object
+      properties:
+        customCardDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              cardId:
+                type: number
+                description: Id of the Card
+              title:
+                type: string
+                description: Name of the card.
+              description:
+                type: string
+                description: Information of the business on the card.
+              imageURL:
+                type: string
+                description: Image URL
+              imagePosition:
+                type: string
+                description: 'Image position value. Possible values are:'
+              isVisible:
+                type: number
+                description: 'Visibility status of card on the microsite. Possible values are:'
+              clickURL:
+                type: string
+                description: Redirect link for a particular website.
+              linkText:
+                type: string
+                description: Enter the text you want displayed for the link.
+    2293Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2293
+        message: order can only be 'asc' or 'desc'
+    1055Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1055
+        message: Not a valid US phone number.
+    2514Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2514
+        message: Opening Soon date is mandatory when business is marked as Opening soon.
+    1174Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1174
+        message: Reseller can't be removed as it has child accounts.
+    400Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Page size must not be less than one!
+    6001Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 6001
+        message: The 'sub_locality' field cannot exceed 80 characters.
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

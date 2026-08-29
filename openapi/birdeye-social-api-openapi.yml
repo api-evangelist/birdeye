@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Social API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Social API
+  version: '1.0'
+  description: 'Operations tagged Social across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Social
   description: Create and track Social posting for all channels.
@@ -74,6 +70,11 @@ paths:
               required:
               - text
               - socialSite
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/social/post/public/scheduled/edit/{accountNumber}:
     post:
       summary: Edit Scheduled Social Post
@@ -137,6 +138,11 @@ paths:
               - text
               - socialSite
               - subBusinessNumbers
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/social/post/public/published/edit/{accountNumber}:
     post:
       summary: Edit Published social Post
@@ -182,6 +188,11 @@ paths:
               - text
               - socialSite
               - subBusinessNumbers
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/social/post/public/delete/{accountNumber}:
     post:
       summary: Delete public social Post
@@ -221,6 +232,11 @@ paths:
               required:
               - trackingId
               - subBusinessNumbers
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/social/{accountNumber}/post/track/{trackingId}:
     get:
       summary: Track Social Post
@@ -255,6 +271,11 @@ paths:
                 example:
                   code: 1011
                   message: Business id is invalid
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/social/open-url/performance/report:
     post:
       summary: Social Open URL Performance Report
@@ -302,10 +323,822 @@ paths:
               required:
               - startDate
               - endDate
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
+  /v1/social/post/public/media/upload:
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Apiary_uploadSocialMedia_Response200'
+              example:
+                batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+                accepted_count: 1
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1011Model'
+              x-apiary-response-models:
+              - $ref: '#/components/schemas/1011Model'
+              x-apiary-response-examples:
+                empty_urls:
+                  value:
+                    code: 1011
+                    message: media_urls cannot be empty
+                too_many_urls:
+                  value:
+                    code: 1011
+                    message: media_urls cannot exceed 50 items
+                unsupported_type:
+                  value:
+                    code: 1011
+                    message: 'Unsupported media type for URL: https://example.com/video.mp4.. Only image and video URLs are supported.'
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: media_urls cannot be empty
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              x-apiary-response-models:
+              - $ref: '#/components/schemas/1161Model'
+              - $ref: '#/components/schemas/1167Model'
+              x-apiary-response-examples:
+                error_1161:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+                error_1167:
+                  value:
+                    code: 1167
+                    message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+      summary: Upload Social Media
+      operationId: uploadSocialMedia
+      description: Accepts a batch of publicly accessible image or video URLs and queues them for asynchronous upload to the Birdeye media library. Returns a batch_id immediately; poll the Track Upload Status endpoint to retrieve per-item results. Accepts 1–50 URLs per request. Supported image formats — .jpg, .jpeg, .png, .gif, .webp. Supported video formats — .mp4, .mov, .avi, .mkv, .webm, .wmv.
+      tags:
+      - Social
+      parameters:
+      - name: x-api-key
+        in: header
+        description: Business API key.
+        required: true
+        example: your-api-key-here
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: Business identifier.
+        required: true
+        example: '151378841664132'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: true
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Apiary_uploadSocialMedia_Request'
+            examples:
+              single_url:
+                summary: Single URL
+                value:
+                  media_urls:
+                  - https://example.com/video.mp4
+              multiple_urls:
+                summary: Multiple URLs (image + video)
+                value:
+                  media_urls:
+                  - https://example.com/image.jpg
+                  - https://example.com/video.mp4
+              with_folder_id:
+                summary: With optional folder_id
+                value:
+                  media_urls:
+                  - https://example.com/video.mp4
+                  folder_id: 1527
+    servers:
+    - url: https://api.birdeye.com/resources
+  /v1/social/post/public/media/track/{batch_id}:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Apiary_trackSocialMediaUpload_Response200'
+              x-apiary-response-examples:
+                completed:
+                  value:
+                    batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+                    status: COMPLETED
+                    accepted_count: 1
+                    success_count: 1
+                    failed_count: 0
+                    pending_count: 0
+                    items:
+                    - source_url: https://example.com/video.mp4
+                      status: SUCCESS
+                      asset_id: 3457963
+                      cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
+                failed:
+                  value:
+                    batch_id: 030ec908-2c2d-4e2c-a9d6-654b27f63cca
+                    status: FAILED
+                    accepted_count: 1
+                    success_count: 0
+                    failed_count: 1
+                    pending_count: 0
+                    items:
+                    - source_url: https://example.com/image.jpg
+                      status: FAILED
+                      failure_reason: Source URL is not accessible or could not be downloaded
+                partially_completed:
+                  value:
+                    batch_id: 6c32243f-ce5f-4400-9988-06bd6f4c4080
+                    status: PARTIALLY_COMPLETED
+                    accepted_count: 2
+                    success_count: 1
+                    failed_count: 1
+                    pending_count: 0
+                    items:
+                    - source_url: https://example.com/image.jpg
+                      status: FAILED
+                      failure_reason: Source URL is not accessible or could not be downloaded
+                    - source_url: https://example.com/video.mp4
+                      status: SUCCESS
+                      asset_id: 3457963
+                      cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
+                eu_completed:
+                  value:
+                    batch_id: 1e2e088b-7b9d-4d9d-833b-ad506d5a7323
+                    status: COMPLETED
+                    accepted_count: 1
+                    success_count: 1
+                    failed_count: 0
+                    pending_count: 0
+                    items:
+                    - source_url: https://drive.google.com/file/d/...
+                      status: SUCCESS
+                      asset_id: 2144734
+                      cdn_url: https://d25nuexi6ta4v6.cloudfront.net/.../video.mp4
+              example:
+                batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+                status: COMPLETED
+                accepted_count: 1
+                success_count: 1
+                failed_count: 0
+                pending_count: 0
+                items:
+                - source_url: https://example.com/video.mp4
+                  status: SUCCESS
+                  asset_id: 3457963
+                  cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              x-apiary-response-models:
+              - $ref: '#/components/schemas/1161Model'
+              - $ref: '#/components/schemas/1167Model'
+              x-apiary-response-examples:
+                error_1161:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+                error_1167:
+                  value:
+                    code: 1167
+                    message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1011Model'
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: Business id is invalid
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+      summary: Track Social Media Upload
+      operationId: trackSocialMediaUpload
+      description: Returns the current processing status for a media upload batch submitted via the Upload Social Media endpoint. Poll until pending_count reaches 0 or the batch status is no longer PENDING. The asset_id returned for successfully uploaded items should be used when attaching media to a Social Post.
+      tags:
+      - Social
+      parameters:
+      - name: batch_id
+        in: path
+        description: The batch ID returned from the Upload Social Media endpoint.
+        required: true
+        example: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+        schema:
+          type: string
+          format: uuid
+      - name: x-api-key
+        in: header
+        description: Business API key.
+        required: true
+        example: your-api-key-here
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: Business identifier.
+        required: true
+        example: '151378841664132'
+        schema:
+          type: string
+    servers:
+    - url: https://api.birdeye.com/resources
 components:
+  schemas:
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    Apiary_uploadSocialMedia_Request:
+      type: object
+      properties:
+        media_urls:
+          type: array
+          description: List of publicly accessible image or video URLs. Maximum 50 items. Supported image extensions — .jpg, .jpeg, .png, .gif, .webp. Supported video extensions — .mp4, .mov, .avi, .mkv, .webm, .wmv.
+          maxItems: 50
+          items:
+            type: string
+        folder_id:
+          type: integer
+          description: Optional media library folder ID to organize uploaded assets. If omitted, assets are placed in the default media library location.
+      required:
+      - media_urls
+      example:
+        media_urls:
+        - https://example.com/video.mp4
+    Apiary_uploadSocialMedia_Response200:
+      type: object
+      properties:
+        batch_id:
+          type: string
+          format: uuid
+          description: Use this to poll the Track Upload Status endpoint for processing results.
+        accepted_count:
+          type: integer
+          description: Number of URLs accepted into the batch.
+      example:
+        batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+        accepted_count: 1
+    2177Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Invalid media id
+    Apiary_scheduleSocialPost_Request:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Input text that will be added in the post. Limits of characters across various Social Sites
+        socialSite:
+          type: string
+          description: The social site where the post will be made. Possible values are
+          properties:
+            Error message: {}
+        subBusinessNumbers:
+          type: array
+          description: List of Location Ids. Optional for SMB.
+          items: {}
+        scheduleTimestamp:
+          type: number
+          description: A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will be published after 5 minutes of posting.
+        media:
+          type: object
+          properties:
+            type:
+              type: string
+              description: An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
+            mediaUrl:
+              type: string
+              description: Media Link.
+            Error message:
+              type: string
+          description: Media details.
+        additionalMetaData:
+          type: object
+          properties:
+            callToActionType:
+              type: string
+              description: Type of data.
+            callToActionUrl:
+              type: string
+              description: Link of the additional data(Not required when CTA type is CALL).
+          description: Additional metadata for the post, including a call to action (CTA). Applicable only for GOOGLEMYBUSINESS.
+      required:
+      - text
+      - socialSite
+      example:
+        text: Check out the latest collection
+        socialSite: GOOGLEMYBUSINESS
+        subBusinessNumbers:
+        - 123456780
+        - 123456781
+        scheduleTimestamp: 1677759962528
+        media:
+        - type: IMAGE
+          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
+        - type: IMAGE
+          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
+        additionalMetaData:
+          callToActionType: LEARN_MORE
+          callToActionUrl: https://app.birdeye.com/
+    Apiary_trackSocialMediaUpload_Response200:
+      type: object
+      properties:
+        batch_id:
+          type: string
+          format: uuid
+          description: Identifier for the batch.
+        status:
+          type: string
+          description: 'Overall batch status. Possible values: COMPLETED (all items processed successfully), PARTIALLY_COMPLETED (some succeeded, some failed), FAILED (all items failed), PENDING (processing still in progress — poll again).'
+          enum:
+          - COMPLETED
+          - PARTIALLY_COMPLETED
+          - FAILED
+          - PENDING
+        accepted_count:
+          type: integer
+          description: Total number of URLs submitted in the batch.
+        success_count:
+          type: integer
+          description: Number of successfully uploaded items.
+        failed_count:
+          type: integer
+          description: Number of failed items.
+        pending_count:
+          type: integer
+          description: Number of items still processing. Poll again if greater than 0.
+        items:
+          type: array
+          description: Per-item processing results.
+          items:
+            type: object
+            properties:
+              source_url:
+                type: string
+                description: The original URL submitted.
+              status:
+                type: string
+                description: Item-level status. Possible values — SUCCESS or FAILED.
+                enum:
+                - SUCCESS
+                - FAILED
+              asset_id:
+                type: integer
+                description: Internal asset ID for use in post creation API. Present only on SUCCESS.
+              cdn_url:
+                type: string
+                description: CDN-hosted URL of the uploaded media. Present only on SUCCESS.
+              failure_reason:
+                type: string
+                description: Human-readable reason for failure. Present only on FAILED.
+      example:
+        batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+        status: COMPLETED
+        accepted_count: 1
+        success_count: 1
+        failed_count: 0
+        pending_count: 0
+        items:
+        - source_url: https://example.com/video.mp4
+          status: SUCCESS
+          asset_id: 3457963
+          cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
+    Apiary_socialOpenUrlPerformanceReport_Response200:
+      type: object
+      properties:
+        summary:
+          type: object
+          properties:
+            actual:
+              type: object
+              properties:
+                impressions:
+                  type: number
+                  description: Total impressions in selected period.
+                engagements:
+                  type: number
+                  description: Total engagements in selected period.
+                engRate:
+                  type: number
+                  description: Engagement rate in selected period.
+                postCount:
+                  type: number
+                  description: Total post count in selected period.
+                channelWiseData:
+                  type: object
+                  properties: {}
+                  description: Channel-level social metrics for selected period.
+                totalRecords:
+                  type: number
+                  description: Total number of location-level records.
+                postCountGrowthPercent:
+                  type: number
+                  description: Post count growth percentage against comparison period.
+                engRateGrowthPercent:
+                  type: number
+                  description: Engagement rate growth percentage against comparison period.
+                engagementGrowthPercent:
+                  type: number
+                  description: Engagement growth percentage against comparison period.
+            compare:
+              type: object
+              properties:
+                impressions:
+                  type: number
+                  description: Total impressions in comparison period.
+                engagements:
+                  type: number
+                  description: Total engagements in comparison period.
+                engRate:
+                  type: number
+                  description: Engagement rate in comparison period.
+                postCount:
+                  type: number
+                  description: Total post count in comparison period.
+                channelWiseData:
+                  type: object
+                  properties: {}
+                  description: Channel-level social metrics in comparison period.
+                totalRecords:
+                  type: number
+                  description: Total number of location-level records in comparison period.
+        dataPoints:
+          type: array
+          description: Location-level report data for actual and comparison periods.
+          items:
+            type: object
+            properties:
+              actual:
+                type: object
+                properties:
+                  label:
+                    type: string
+                    description: Location label.
+                  startDate:
+                    type: string
+                    description: Start date of the selected period.
+                  endDate:
+                    type: string
+                    description: End date of the selected period.
+                  locationId:
+                    type: number
+                    description: Location ID.
+                  businessNumber:
+                    type: number
+                    description: Business number of the location.
+                  externalReferenceId:
+                    type: string
+                    description: External reference ID of the location.
+                  channelWiseData:
+                    type: object
+                    description: Channel-level social metrics for the location.
+              compare:
+                type: object
+                properties:
+                  label:
+                    type: string
+                    description: Location label.
+                  startDate:
+                    type: string
+                    description: Start date of the selected period.
+                  endDate:
+                    type: string
+                    description: End date of the selected period.
+                  locationId:
+                    type: number
+                    description: Location ID.
+                  businessNumber:
+                    type: number
+                    description: Business number of the location.
+                  externalReferenceId:
+                    type: string
+                    description: External reference ID of the location.
+                  channelWiseData:
+                    type: object
+                    description: Channel-level social metrics for the location.
+                description: Comparison period metrics for the same location.
+    Apiary_trackSocialPost_Response200:
+      type: object
+      properties:
+        trackingId:
+          type: string
+          description: The tracking ID of the scheduled or posted social post.
+        accountNumber:
+          type: string
+          description: The account ID associated with the post.
+        socialSite:
+          type: string
+          description: Social Sites. Possible values are
+        subBusinessNumbers:
+          type: array
+          description: List of Location Ids. Optional for SMB.
+          items: {}
+        socialPostDetails:
+          type: array
+          description: An array of objects containing post details, including status, location name, and published timestamp.
+          items:
+            type: object
+            properties:
+              locationName:
+                type: string
+                description: The name of the location where the post was published.
+              locationNumber:
+                type: string
+                description: The ID of the location where the post was published.
+              status:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: 'Post status. Possible values:'
+                  failureReason:
+                    type: string
+                    description: Failure reason if any.
+                description: Post status details.
+              publishedTimestamp:
+                type: number
+                description: The Unix timestamp (in milliseconds) when the post was published.
+              socialSitePostId:
+                type: string
+                description: Social site post id.
+              socialSitePostUrl:
+                type: string
+                description: Social site post link.
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    5557Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5557
+        message: Requested Business Ids are empty.
+    Apiary_socialOpenUrlPerformanceReport_Request:
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: Start date in `MM/dd/YYYY` format.
+        endDate:
+          type: string
+          description: End date in `MM/dd/YYYY` format.
+        sourceNames:
+          type: array
+          description: List of social channels to include in the report.
+          items: {}
+        businessNumbers:
+          description: List of business numbers to filter the report. If empty, all accessible business numbers are considered.
+          type: array
+          items: {}
+        comparisonFilter:
+          type: object
+          properties:
+            startDate:
+              type: string
+              description: Comparison start date in `MM/dd/YYYY` format.
+            endDate:
+              type: string
+              description: Comparison end date in `MM/dd/YYYY` format.
+          description: Comparison date range.
+        page:
+          type: number
+          description: Page number for location-level data points.
+        size:
+          type: number
+          description: Number of records per page.
+      required:
+      - startDate
+      - endDate
+      example:
+        startDate: 02/03/2021
+        endDate: 02/10/2026
+        sourceNames:
+        - Instagram
+        - Tiktok
+        - Facebook
+        - Linkedin
+        businessNumbers: []
+        comparisonFilter:
+          startDate: 01/01/2020
+          endDate: 01/10/2020
+        page: 1
+        size: 50
+    Apiary_editScheduledSocialPost_Request:
+      type: object
+      properties:
+        trackingId:
+          type: string
+          description: Tracking id received when post was created through public api.
+        text:
+          type: string
+          description: Input text that will be added in the post. Limits of characters across various Social Sites
+        socialSite:
+          type: string
+          description: The social site where the post will be edited. Possible values are
+          properties:
+            Error message: {}
+        subBusinessNumbers:
+          type: array
+          description: List of location ids for which this post should be edited.
+          items: {}
+        scheduleTimestamp:
+          type: number
+          description: A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will have same schedule time as the original one.
+        media:
+          type: object
+          properties:
+            type:
+              type: string
+              description: An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
+            mediaUrl:
+              type: string
+              description: Media Link.
+            Error message:
+              type: string
+          description: Media details.
+        additionalMetaData:
+          type: object
+          properties:
+            callToActionType:
+              type: string
+              description: Type of data.
+            callToActionUrl:
+              type: string
+              description: Link of the additional data(Not required when CTA type is CALL).
+          description: Additional metadata for the post, including a call to action (CTA). Applicable only for GOOGLEMYBUSINESS.
+      required:
+      - trackingId
+      - text
+      - socialSite
+      - subBusinessNumbers
+      example:
+        trackingId: 4ece211b82162d1101d2d82a24876a92
+        text: Check out the latest collection
+        socialSite: GOOGLEMYBUSINESS
+        subBusinessNumbers:
+        - 123456780
+        - 123456781
+        scheduleTimestamp: 1677759962528
+        media:
+        - type: IMAGE
+          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
+        - type: IMAGE
+          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
+        additionalMetaData:
+          callToActionType: LEARN_MORE
+          callToActionUrl: https://app.birdeye.com/
+    5556Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5556
+        message: One or few BusinessIds are Invalid
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    Apiary_editPublishedSocialPost_Request:
+      type: object
+      properties:
+        trackingId:
+          type: string
+          description: Tracking id received when post was created through public api.
+        text:
+          type: string
+          description: Text to be updated for the post. Limits of characters across various Social Sites
+        socialSite:
+          type: string
+          description: The social site where the post will be edited. Possible values are
+          properties:
+            Error message: {}
+        subBusinessNumbers:
+          type: array
+          description: List of location ids for which this post should be edited. If list contains a location which is not part of the post, then no action will be taken for that location.
+          items: {}
+      required:
+      - trackingId
+      - text
+      - socialSite
+      - subBusinessNumbers
+      example:
+        trackingId: 4ece211b82162d1101d2d82a24876a92
+        text: Check out the latest collection
+        socialSite: GOOGLEMYBUSINESS
+        subBusinessNumbers:
+        - 123456780
+        - 123456781
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation GMB Products API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye GMB Products API
+  version: '1.0'
+  description: 'Operations tagged GMB Products across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: GMB Products
   description: To manage products, locations, and business details through Listing GMB platform
@@ -46,6 +42,11 @@ paths:
             schema:
               type: object
               example: {}
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/public/product:
     post:
       summary: Create Product Listing
@@ -119,6 +120,11 @@ paths:
               - googleProductCategoryId
               - price
               - status
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/public/product/{productId}:
     put:
       summary: Update Product Listing
@@ -197,6 +203,11 @@ paths:
               - googleProductCategoryId
               - price
               - status
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/public/product/{productIdentifier}:
     get:
       summary: Get Product Listing
@@ -221,6 +232,11 @@ paths:
                 example:
                   code: 1167
                   message: API key is missing
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/public/product/deleteProduct:
     post:
       summary: Delete Product Listings
@@ -250,6 +266,11 @@ paths:
                   type: array
               required:
               - productIds
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/public/product/getList:
     post:
       summary: Get List Product Listing
@@ -295,6 +316,11 @@ paths:
                   type: array
                 businessNumbers:
                   type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/public/product/addProduct:
     post:
       summary: Add Products On a Location
@@ -324,6 +350,11 @@ paths:
                   type: array
               required:
               - productIds
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/listing/public/product/removeProduct:
     post:
       summary: Remove Products On a Location
@@ -353,10 +384,283 @@ paths:
                   type: array
               required:
               - productIds
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  requestBodies:
+    Fix_ListingBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: {}
+            example: {}
+    Add_Products_On_a_LocationBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              productIds:
+                type: array
+                items: {}
+            required:
+            - productIds
+            example:
+              productIds:
+              - 68767cb39ebf51000815ab39
+              - 68767cb39ebf51000815ab39
+  schemas:
+    Apiary_updateProductListing_Response200:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: Unique identifier for the product.
+        code:
+          type: number
+          description: Error code. Present on validation failure.
+        message:
+          type: string
+          description: Error message. Present on validation failure.
+        data:
+          type: object
+          properties:
+            errorAttributes:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: Type of validation error.
+                  message:
+                    type: string
+                    description: Validation error message.
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    Apiary_createProductListing_Request:
+      type: object
+      properties:
+        businessNumbers:
+          type: array
+          description: Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+          items: {}
+        title:
+          type: string
+          description: Product title.
+        description:
+          type: string
+        imageLink:
+          type: string
+          description: Publicly accessible image URL.
+        additionalImageLinks:
+          type: array
+          description: Additional public image URLs.
+          items: {}
+        brandName:
+          type: string
+        googleProductCategoryId:
+          type: string
+          description: Google product taxonomy ID.
+        price:
+          type: object
+          properties:
+            amount:
+              type: string
+              description: Decimal string.
+            currencyCode:
+              type: string
+              description: ISO 4217 code.
+          required:
+          - amount
+          - currencyCode
+        salePrice:
+          type: object
+          properties:
+            amount:
+              type: string
+            currencyCode:
+              type: string
+          required:
+          - amount
+          - currencyCode
+        productSku:
+          type: string
+          description: Merchant SKU; if omitted, system may assign.
+        productTypes:
+          type: array
+          description: Product categorization keywords.
+          items: {}
+        productUrl:
+          type: string
+          description: implant (string, optional)
+        status:
+          type: string
+          description: 'Accepted values: `PUBLISH`, `DRAFT`.'
+      required:
+      - title
+      - imageLink
+      - googleProductCategoryId
+      - price
+      - status
+      example:
+        businessNumbers:
+        - 145308764185002
+        - 145308769721320
+        title: Dental Implant
+        description: The dental procedure for replacing missing teeth using implants.
+        imageLink: https://example.com/images/dental-implant-main.jpg
+        additionalImageLinks:
+        - https://example.com/images/dental-implant-side.jpg
+        - https://example.com/images/dental-implant-closeup.jpg
+        brandName: SmileCare
+        googleProductCategoryId: '123'
+        price:
+          amount: '1500.00'
+          currencyCode: USD
+        salePrice:
+          amount: '1200.00'
+          currencyCode: USD
+        productSku: DENTAL-IMPLANT-001
+        productTypes:
+        - Dental Services
+        - Implants
+        - Cosmetic Dentistry
+        productUrl: https://example.com/products/dental-implant
+        status: PUBLISH
+    Apiary_createProductListing_Response200:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: Unique identifier for the product.
+        code:
+          type: number
+          description: Error code. Present on validation failure.
+        message:
+          type: string
+          description: Error message. Present on validation failure.
+        data:
+          type: object
+          properties:
+            errorAttributes:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: Type of validation error.
+                  message:
+                    type: string
+                    description: Validation error message.
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    Apiary_getListProductListing_Response200:
+      type: object
+      properties:
+        response:
+          type: array
+          description: Product list
+          items:
+            type: object
+            properties:
+              productId:
+                type: string
+              productSku:
+                type: string
+              locationCount:
+                type: number
+              title:
+                type: string
+              description:
+                type: string
+              productUrl:
+                type: string
+                description: bragadiru.ro/preturi/ (string)
+              imageLink:
+                type: string
+              additionalImageLinks:
+                type: array
+                items: {}
+              videoUrl:
+                type: string
+              brandName:
+                type: string
+              googleProductCategoryId:
+                type: string
+              price:
+                type: object
+                properties:
+                  amount:
+                    type: string
+                  currencyCode:
+                    type: string
+              productTypes:
+                type: array
+                items: {}
+              salePrice:
+                type: object
+                properties:
+                  amount:
+                    type: string
+                  currencyCode:
+                    type: string
+              status:
+                type: string
+              updatedOn:
+                type: number
+                description: Epoch time.
+              updatedBy:
+                type: string
+        totalCount:
+          type: number
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

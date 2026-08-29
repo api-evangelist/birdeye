@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Google Services API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Google Services API
+  version: '1.0'
+  description: 'Operations tagged Google Services across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Google Services
   description: 'Note
@@ -68,6 +64,11 @@ paths:
                   type: number
               required:
               - name
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/google-services/services:
     post:
       summary: Get All Services
@@ -130,6 +131,11 @@ paths:
               properties:
                 search:
                   type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/google-services/service/update:
     post:
       summary: Update Service
@@ -179,6 +185,11 @@ paths:
               required:
               - serviceId
               - name
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/google-services/service/delete:
     post:
       summary: Delete Services
@@ -215,6 +226,11 @@ paths:
                   type: array
               required:
               - serviceIds
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/google-services/service/location-mapping:
     get:
       summary: Get Location Mapping
@@ -239,6 +255,11 @@ paths:
                 example:
                   code: 2486
                   message: Business Id missing or invalid
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/google-services/services/location-mapping:
     post:
       summary: Update Location Mapping
@@ -282,10 +303,232 @@ paths:
               required:
               - category_name
               - service_id
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    2494Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2494
+        message: Invalid GBP Service Id
+    2489Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2489
+        message: Invalid GBP Service description
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    2493Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2493
+        message: Duplicate Google Service is not allowed
+    2495Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2495
+        message: Invalid GBP Service Id
+    2496Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2496
+        message: Missing GBP category for given location
+    2491Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2491
+        message: Invalid GBP Service price
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    2490Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2490
+        message: Invalid GBP Service price type
+    2492Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2492
+        message: Invalid GBP Service currency code
+    Apiary_getAllServices_Response200:
+      type: object
+      properties:
+        services:
+          type: array
+          description: Google services details
+          items:
+            type: object
+            properties:
+              serviceId:
+                type: string
+                description: Unique service identifier
+              name:
+                type: string
+                description: name of the service
+              currencyCode:
+                type: string
+                description: currency code of the paid service
+              price:
+                type: number
+                description: price of the paid service
+              description:
+                type: string
+                description: description of the service
+              group:
+                type: string
+                description: service group
+              duration:
+                type: number
+                description: service duration in minutes
+    2488Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2488
+        message: Invalid GBP Service name
+    2486Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2486
+        message: Business Id missing or invalid
+    Apiary_getLocationMapping_Response200:
+      type: object
+      properties:
+        category_name:
+          type: string
+          description: name of the GMB category
+        services:
+          type: array
+          description: Google services details
+          items:
+            type: object
+            properties:
+              serviceId:
+                type: string
+                description: Unique service identifier
+              name:
+                type: string
+                description: name of the service
+              currencyCode:
+                type: string
+                description: currency code of the paid service
+              price:
+                type: number
+                description: price of the paid service
+              description:
+                type: string
+                description: description of the service
+              group:
+                type: string
+                description: service group
+              duration:
+                type: number
+                description: service duration in minutes
+    2487Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2487
+        message: Invalid input request data
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

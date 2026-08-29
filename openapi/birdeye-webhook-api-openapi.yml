@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Webhook API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Webhook API
+  version: '1.0'
+  description: 'Operations tagged Webhook across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Webhook
   description: Configure multiple webhooks with different URLs for a subscription and deliver real-time notifications.
@@ -30,6 +26,11 @@ paths:
               schema:
                 $schema: http://json-schema.org/draft-07/schema#
                 type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/messenger/subscribe/webhook/event:
     post:
       summary: Create webhook subscription
@@ -67,10 +68,99 @@ paths:
               - businessNumber
               - apiKey
               - events
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    Apiary_createWebhookSubscription_Request:
+      type: object
+      properties:
+        businessNumber:
+          type: number
+          description: The business number for which events to be subscribed. Should always be the account business number not the location business number.
+        apiKey:
+          type: string
+          description: Partner specific API key provided by Birdeye for data exchange.
+        events:
+          type: array
+          description: A list of event name strings from the list of available events that should trigger this webhook. Possible values are
+          items: {}
+        endpoint:
+          type: string
+          description: The webhook endpoint URL on your server on which webhook requests are to be sent.
+      required:
+      - businessNumber
+      - apiKey
+      - events
+      example:
+        businessNumber: '755009344'
+        apiKey: 92bcd6e0-c102-43fd-8a67-1a7be5258451
+        events:
+        - conversation.created
+        - conversation.updated
+        - message.added
+        - message.closed
+        endpoint: https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464
+    Apiary_getEvents_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          eventId:
+            type: number
+            description: Event Id.
+          eventName:
+            type: string
+            description: Name of the created event. Possible values are
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

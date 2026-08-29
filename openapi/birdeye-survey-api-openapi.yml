@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Survey API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Survey API
+  version: '1.0'
+  description: 'Operations tagged Survey across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Survey
   description: Engage each customer at the right time with NPS or CSAT surveys to improve your service.
@@ -53,6 +49,11 @@ paths:
                 example:
                   code: 89
                   message: Rate limit exceeded
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/survey/{survey_id}/submit:
     post:
       summary: Post a survey response
@@ -90,6 +91,11 @@ paths:
           application/json:
             schema:
               type: object
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/survey/ext/list/responses/{survey_id}:
     post:
       summary: List Responses for a Survey
@@ -168,6 +174,11 @@ paths:
                   type: string
                 endDate:
                   type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/survey/business/{business_id}/all:
     get:
       summary: Get All Surveys
@@ -213,6 +224,11 @@ paths:
                 example:
                   code: 89
                   message: Rate limit exceeded
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/survey/external/create/{businessId}:
     post:
       summary: Create Survey
@@ -347,6 +363,11 @@ paths:
                     - Google
                     - Facebook
                     - CitySearch
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/survey/{surveyId}/settings/update:
     post:
       summary: Update Survey Settings
@@ -425,10 +446,784 @@ paths:
                       properties:
                         role:
                           type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    2051Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2051
+        message: More than one review question cannot be present
+    2047Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2047
+        message: Survey Fields Missing!
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    2048Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2048
+        message: Field Rows Missing
+    2059Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2059
+        message: Invalid type of contact question
+    2043Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2043
+        message: Invalid value of showTitle, accepted values are CUSTOM, LOCATION, OFF
+    2086Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2086
+        message: Question Number cannot be null
+    2039Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2039
+        message: User email is missing in user access request!
+    2040Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2040
+        message: Invalid value of progress bar position, expected Bottom or Top
+    2096Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2096
+        message: Detected conflicting user-access request!
+    2067Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2067
+        message: One of the locations passed in the request is not present
+    2070Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2070
+        message: Question Type cannot be blank
+    2093Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2093
+        message: Survey Field Type passed is unknown
+    2046Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2046
+        message: Min Value is greater then Max Value
+    1315Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1315
+        message: Invalid survey.
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    2055Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2055
+        message: Max Value out of range
+    2082Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2082
+        message: The API returned an empty response.
+    2064Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2064
+        message: First page of the survey must contain atleast one question except review question
+    2087Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2087
+        message: Duplicate contact sub type question is present
+    2077Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2077
+        message: Value of a questionLogic field cannot be blank
+    2056Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2056
+        message: Min and Max values can only be even numbers when the interval is 60 minutes
+    2076Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2076
+        message: Value of the logic is not present in the choices of Question
+    2054Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2054
+        message: Min Value out of range
+    2085Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2085
+        message: Condition cannot be null!
+    2052Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2052
+        message: Review question should be present in the last page of the survey as a single question
+    2091Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2091
+        message: Operator Invalid
+    2049Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2049
+        message: Interval can only be 30 min or 60 min
+    2063Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2063
+        message: Pulse(NPS) Survey can only contain radio, text, textarea(paragraph), rating and nps type questions
+    Apiary_getAllSurveys_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          surveyId:
+            type: number
+            description: Survey Id.
+          name:
+            type: string
+            description: Survey Name.
+          status:
+            type: string
+            description: Survey status.
+          created:
+            type: number
+            description: Survey created date in epoc.
+          lastModified:
+            type: number
+            description: Survey last modified date in epoc
+          responses:
+            type: number
+            description: Number of survey responses.
+          questionCount:
+            type: number
+            description: Number of questions.
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    2094Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2094
+        message: ReviewSources passed are invalid
+    2088Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2088
+        message: Review Source already present
+    2061Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2061
+        message: Pickone type of survey can only contain pickone type questions
+    2057Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2057
+        message: Either one of Min and Max values is missing in datetime type question
+    2044Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2044
+        message: Survey already completed
+    2062Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2062
+        message: Traditional type survey cannot contain these type questions
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    Apiary_updateSurveySettings_Request:
+      type: object
+      properties:
+        surveySettings:
+          type: object
+          properties:
+            showSurveyTitle:
+              type: boolean
+              description: Pass true if want to show survey title.
+            showQuestionNumber:
+              type: boolean
+              description: Pass true if want to show question number.
+            showProgressBar:
+              type: boolean
+              description: Pass true if want to show progress bar.
+            progressbarPosition:
+              type: string
+              description: Position of progress bar.
+            showLogo:
+              type: string
+              description: Pass ON if want to show logo.
+            showTitle:
+              type: string
+              description: Show title.
+            customTitle:
+              type: string
+              description: Custom title value.
+            themeColor:
+              type: string
+              description: Theme color value.
+            themeTextColor:
+              type: string
+              description: Theme color text value.
+            subject:
+              type: string
+              description: Subject of the survey email.
+            message:
+              type: string
+              description: Thank you message..
+            signature:
+              type: string
+              description: Signature.
+            enableThankyouEmail:
+              type: boolean
+              description: Pass true if want to enable Thank you email.
+          description: Survey settings
+        accessControl:
+          type: object
+          properties:
+            userAccessList:
+              type: array
+              items:
+                type: object
+                properties:
+                  userEmail:
+                    type: string
+                    description: Email of the user.
+                  role:
+                    type: string
+                    description: User role.
+                  delete:
+                    type: boolean
+                    description: Delete status of the user.
+            surveyAccess:
+              type: object
+              properties:
+                role:
+                  type: string
+                  description: User's survey access.
+          description: Access control data.
+      example:
+        surveySettings:
+          showSurveyTitle: false
+          showQuestionNumber: false
+          showProgressBar: false
+          progressbarPosition: Bottom
+          showLogo: true
+          showTitle: CUSTOM
+          customTitle: Welcome to Tennessee!
+          themeColor: '#1976d2'
+          themeTextColor: '#ffffff'
+          subject: Thank you for taking the survey
+          message: 'Hi ,
+
+            Thank you for taking the time to give your inputs on the survey.'
+          signature: 'Sincerely,
+
+            BMW_Survey
+
+            '
+          enableThankyouEmail: true
+        accessControl:
+          userAccessList:
+          - userEmail: abc@test.com
+            role: viewer
+          - userEmail: def@test.com
+            delete: true
+          surveyAccess:
+            role: editor
+    2080Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2080
+        message: Display Logic Invalid!
+    2092Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2092
+        message: Invalid Logic!
+    2069Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2069
+        message: surveyName is Mandatory
+    2042Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2042
+        message: Received no valid inputs in request body!
+    2095Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2095
+        message: ownerEmailId cannot be null
+    2083Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2083
+        message: Source is not integrated with the business
+    2065Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2065
+        message: There cannot be more than 3 sourceIds for review question
+    2038Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2038
+        message: Invalid value of role, expected editor, viewer or no-access
+    2090Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2090
+        message: Invalid value of showLogo, accepted values are ON, OFF
+    2072Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2072
+        message: Choice cannot be a blank string
+    2041Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2041
+        message: Can't modify owner or existing owner's access!
+    2074Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2074
+        message: Cannot contain a logic
+    2071Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2071
+        message: Invalid ownerEmailId
+    2060Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2060
+        message: reviewSources are not present for review type question
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    2073Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2073
+        message: Logic type is Invalid!
+    2058Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2058
+        message: LocationIds are not present
+    2066Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2066
+        message: BusinessIds passed in the location type question are invalid
+    2053Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2053
+        message: Contact Fields are not present
+    2068Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2068
+        message: The locationIds are Non-Parseable
+    2045Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2045
+        message: Invalid Survey Type
+    2037Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2037
+        message: The survey doesn't belong to the account.
+    2081Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2081
+        message: Skip Logic Invalid!
+    2084Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2084
+        message: Opeartor must be present for logics other than the first display logic
+    2079Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2079
+        message: Only one Skip logic is allowed for text and textarea type questions
+    2050Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2050
+        message: More than one location question cannot be present
+    1380Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1380
+        message: Api key or session token missing
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

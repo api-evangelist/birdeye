@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Custom Fields API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Custom Fields API
+  version: '1.0'
+  description: 'Operations tagged Custom Fields across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Custom Fields
   description: Create, delete , update , associate and get custom fields easily.
@@ -55,6 +51,11 @@ paths:
               required:
               - fieldName
               - type
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/public/custom-fields/update/{fieldId}:
     put:
       summary: Update
@@ -97,6 +98,11 @@ paths:
                   type: boolean
                 isHidden:
                   type: boolean
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/public/custom-fields/get/{fieldId}?locationBizNumber={locationBizNumber}:
     get:
       summary: Get
@@ -128,6 +134,11 @@ paths:
                 example:
                   code: 5025
                   message: Custom field not found.
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/public/custom-fields/getList?locationBizNumber={locationBizNumber}:
     post:
       summary: POST
@@ -173,6 +184,11 @@ paths:
               required:
               - page
               - size
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/public/custom-fields/delete/{fieldId}:
     delete:
       summary: Delete
@@ -197,6 +213,11 @@ paths:
                 example:
                   code: 5028
                   message: Custom field delete failed.
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/public/custom-fields/associate:
     put:
       summary: Associate
@@ -232,6 +253,11 @@ paths:
               - fieldId
               - fieldValue
               - businessNumber
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/public/card:
     post:
       summary: Create Custom card
@@ -273,10 +299,222 @@ paths:
                   type: string
               required:
               - title
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    5031Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5031
+        message: Method not implemented for unknown custom field type.
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1027Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1027
+        message: Invalid business number.
+    5028Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5028
+        message: Custom field delete failed.
+    Apiary_create_Request:
+      type: object
+      properties:
+        defaultValue:
+          type: string
+          description: Default Value of custom field.
+        dropDownOptions:
+          type: array
+          description: The list of options in custom field.
+          items: {}
+        fieldDescription:
+          type: string
+          description: Description of custom field.
+        fieldName:
+          type: string
+          description: Name of custom field.
+        filterable:
+          type: boolean
+          description: 'Whether the custom field will be filterable or not. Default: false'
+        type:
+          type: string
+          description: Type of custom field.
+      required:
+      - fieldName
+      - type
+      example:
+        defaultValue: Green
+        dropDownOptions:
+        - Blue
+        - Green
+        - Red
+        fieldDescription: This custom field contains list of colours
+        fieldName: colours
+        filterable: 'false'
+        type: DROPDOWN_MULTI
+    5023Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5023
+        message: Custom field request dto cannot be null.
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    5025Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5025
+        message: Custom field not found.
+    5022Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5022
+        message: Another custom field with same name already present.
+    5040Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5040
+        message: Max limit reached for custom fields.
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    5026Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5026
+        message: Custom field updation failed.
+    5039Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5039
+        message: Custom field name cannot be a reserved keyword.
+    5024Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5024
+        message: Custom field creation failed.
+    Apiary_update_Request:
+      type: object
+      properties:
+        defaultValue:
+          type: string
+          description: Default Value of custom field.
+        dropDownOptions:
+          type: array
+          description: The list of options in custom field.The list of options in custom field
+          items: {}
+        fieldDescription:
+          type: string
+          description: Description of custom field.
+        filterable:
+          type: boolean
+          description: Whether the custom field will be filterable or not.
+        isHidden:
+          type: boolean
+          description: Whether the custom field will be hidden or not.
+      example:
+        defaultValue: Green
+        dropDownOptions:
+        - Blue
+        - Green
+        - Red
+        fieldDescription: This custom field contains list of colours
+        filterable: 'false'
+        isHidden: 'false'
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

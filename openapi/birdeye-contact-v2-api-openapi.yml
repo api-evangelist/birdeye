@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Contact V2 API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Contact V2 API
+  version: '1.0'
+  description: 'Operations tagged Contact V2 across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Contact V2
   description: Easily manage contacts across multiple locations using enhanced Contact APIs, featuring built-in support for communication preference flags.
@@ -82,6 +78,11 @@ paths:
                       type: boolean
                     serviceOptin:
                       type: boolean
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/contact/external/preferences/getCustomer:
     post:
       summary: Retrieve Contact
@@ -115,6 +116,11 @@ paths:
                   type: string
                 phone:
                   type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/contact/external/preferences/checkin:
     post:
       summary: Customer Checkin
@@ -172,6 +178,11 @@ paths:
                       type: boolean
                     serviceOptin:
                       type: boolean
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/contact/external/preferences/change-permission:
     post:
       summary: Update Communication Preferences
@@ -225,6 +236,11 @@ paths:
                   type: number
               required:
               - accountNumber
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/contact/external/preferences/update-feed:
     post:
       summary: Retrieve Opted-Out Contacts
@@ -260,10 +276,569 @@ paths:
               - start
               - end
               - subscriptionStatus
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1033Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1033
+        message: You are not authorized to perform this action
+    1087Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1087
+        message: Customer email id is invalid.
+    1089Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1089
+        message: Customer id is invalid.
+    1142Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1142
+        message: Customer name cannot be blank
+    Apiary_retrieveOptedOutContacts_Response200:
+      type: object
+      properties:
+        emailOptOut:
+          type: array
+          description: All the contacts grouped under this field, which were opted out from email in the given duration
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: id of the enterprise customer.
+              firstName:
+                type: string
+                description: First name of the contact.
+              lastName:
+                type: string
+                description: Last name of the contact.
+              emailId:
+                type: string
+                description: EmailId of the contact, if exists.
+              phone:
+                type: string
+                description: Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
+              optOutFrom:
+                type: array
+                items: {}
+                description: Categories from which the contact has opted out (e.g., marketing, feedback, service).
+        textOptOut:
+          type: array
+          description: All the contacts grouped under this field, which were opted out from text in the given duration
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: id of the enterprise customer.
+              firstName:
+                type: string
+                description: First name of the contact.
+              lastName:
+                type: string
+                description: Last name of the contact.
+              emailId:
+                type: string
+                description: EmailId of the contact, if exists.
+              phone:
+                type: string
+                description: Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
+              optOutFrom:
+                type: array
+                items: {}
+                description: Categories from which the contact has opted out (e.g., marketing, feedback, service).
+        blocked:
+          type: array
+          description: All the contacts grouped under this field, which were blockedl in the given duration.
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: id of the enterprise customer.
+              firstName:
+                type: string
+                description: First name of the contact.
+              lastName:
+                type: string
+                description: Last name of the contact.
+              emailId:
+                type: string
+                description: EmailId of the contact, if exists.
+              phone:
+                type: string
+                description: Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
+              optOutFrom:
+                type: array
+                items: {}
+                description: Categories from which the contact has opted out (e.g., marketing, feedback, service).
+    1170Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1170
+        message: SMS Alert flag is invalid. Valid values are 0 or 1.
+    5043Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5043
+        message: Contact not found for the given request
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    1532Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1532
+        message: Business id is missing or invalid.
+    1086Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1086
+        message: Customer email id cannot be blank.
+    5008Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5008
+        message: RequestBody not found
+    Apiary_retrieveContact_Response200:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of enterprise customer.
+        firstName:
+          type: string
+          description: First name of the customer.
+        lastName:
+          type: string
+          description: Last name of the customer.
+        email:
+          type: string
+          description: Email of customer, optional (if phone is provided).
+        phone:
+          type: string
+          description: Phone of customer optional (if email is provided).
+        countryCode:
+          type: string
+          description: Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
+        smsOptin:
+          type: boolean
+          description: SMS Opting flag.
+        mappings:
+          type: array
+          description: List of locations where customer is mapped. If requested by cid, only that location's mapping is returned.
+          items:
+            type: object
+            properties:
+              cid:
+                type: number
+                description: Customer location id.
+              location:
+                type: string
+                description: Name of the location.
+              bid:
+                type: number
+                description: Location id.
+              businessNumber:
+                type: number
+                description: Location Number.
+        tags:
+          type: string
+          description: List of tags.
+        customFields:
+          type: array
+          description: List of Custom fields.
+          items:
+            type: object
+            properties:
+              fieldName:
+                type: string
+                description: Field name.
+              type:
+                type: string
+                description: Field type.
+              fieldValue:
+                type: string
+                description: Value of field.
+        externalId:
+          type: string
+          description: Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
+        emailPreferences:
+          type: object
+          properties:
+            marketingOptin:
+              type: boolean
+              description: Marketing communication.
+            feedbackOptin:
+              type: boolean
+              description: Feedback communication.
+            serviceOptin:
+              type: boolean
+              description: Service communication.
+          description: Email communication preference flags.
+        smsPreferences:
+          type: object
+          properties:
+            marketingOptin:
+              type: boolean
+              description: Marketing communication.
+            feedbackOptin:
+              type: boolean
+              description: Feedback communication.
+            serviceOptin:
+              type: boolean
+              description: Service communication.
+          description: SMS communication preference flags.
+    20083Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 20083
+        message: End date can't be before start date
+    Apiary_customerCheckinPost_Request:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the customer.
+        emailId:
+          type: string
+          description: Email ID of the customer (optional If business has enabled for sms, then either email or phone will be required).
+        phone:
+          type: string
+          description: Phone number of the customer (optional If business has enabled for sms, then either email or phone will be required).
+        smsEnabled:
+          type: number
+          description: Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is 1.
+        additionalParams:
+          type: object
+          properties: {}
+          description: Custom tags can be added as key value pair.
+        employees:
+          type: array
+          items:
+            type: object
+            properties:
+              emailId:
+                type: string
+                description: Email Id of assisted Employee.
+        externalId:
+          type: string
+          description: Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
+        emailPreferences:
+          type: object
+          properties:
+            marketingOptin:
+              type: boolean
+              description: Marketing communication.
+            feedbackOptin:
+              type: boolean
+              description: Feedback communication.
+            serviceOptin:
+              type: boolean
+              description: Service communication.
+          description: Email communication preference flags.
+        smsPreferences:
+          type: object
+          properties:
+            marketingOptin:
+              type: boolean
+              description: Marketing communication.
+            feedbackOptin:
+              type: boolean
+              description: Feedback communication.
+            serviceOptin:
+              type: boolean
+              description: Service communication.
+          description: SMS communication preference flags.
+      example:
+        name: Steve Smith
+        emailId: steves@abcd.com
+        phone: 408-xxx-xxxx
+        smsEnabled: 1
+        additionalParams:
+          Tag Group Name 1: Tag Name 1
+          Tag Group Name 2: Tag Name 2
+          location: New York
+        employees:
+        - emailId: sshikha@abcd.com
+        externalId: ABC123
+        emailPreferences:
+          marketingOptin: true
+          feedbackOptin: true
+          serviceOptin: true
+        smsPreferences:
+          marketingOptin: true
+          feedbackOptin: true
+          serviceOptin: true
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1055Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1055
+        message: Not a valid US phone number.
+    Apiary_upsertContact_Request:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of enterprise customer.
+        firstName:
+          type: string
+          description: First name of the customer.
+        lastName:
+          type: string
+          description: Last name of the customer.
+        email:
+          type: string
+          description: Email of customer, optional (if phone is provided).
+        phone:
+          type: string
+          description: Phone of customer optional (if email is provided).
+        countryCode:
+          type: string
+          description: Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
+        smsOptin:
+          type: boolean
+          description: SMS Opt flag.
+        blocked:
+          type: boolean
+          description: Contact block flag.
+        businessIds:
+          type: array
+          description: Business Ids under enterprise account. The Business Ids field is mandatory while creating a new contact. While updating, if no business Ids are provided, the same location mappings are retained.
+          items: {}
+        tags:
+          type: array
+          description: List of tags
+          items: {}
+        customFields:
+          type: array
+          description: List of Custom fields. We currently support 4 types of customfields - text, number, currency, date (in formats - “MM/dd/yyyy” and "MM-dd-yyyy" only), and yes or no (1:"yes", 0:"no").
+          items:
+            type: object
+            properties:
+              fieldName:
+                type: string
+                description: Field name.
+              type:
+                type: string
+                description: Field type.
+              fieldValue:
+                type: string
+                description: Value of field.
+        externalId:
+          type: string
+          description: Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
+        emailPreferences:
+          type: object
+          properties:
+            marketingOptin:
+              type: boolean
+              description: Marketing communication.
+            feedbackOptin:
+              type: boolean
+              description: Feedback communication.
+            serviceOptin:
+              type: boolean
+              description: Service communication.
+          description: Email communication preference flags.
+        smsPreferences:
+          type: object
+          properties:
+            marketingOptin:
+              type: boolean
+              description: Marketing communication.
+            feedbackOptin:
+              type: boolean
+              description: Feedback communication.
+            serviceOptin:
+              type: boolean
+              description: Service communication.
+          description: SMS communication preference flags.
+      example:
+        id: 115339282
+        firstName: Michael
+        lastName: Scott
+        email: michael@test.com
+        phone: (212) xxx-xxxx
+        countryCode: US
+        smsOptin: true
+        blocked: false
+        businessIds:
+        - 161458406365307
+        - 161072537475129
+        tags:
+        - Tag One
+        - Tag Two
+        customFields:
+        - fieldName: Company
+          type: text
+          fieldValue: Dunder Mifflin
+        - fieldName: Product
+          type: text
+          fieldValue: Paper
+        externalId: ABC123
+        emailPreferences:
+          marketingOptin: true
+          feedbackOptin: true
+          serviceOptin: true
+        smsPreferences:
+          marketingOptin: true
+          feedbackOptin: true
+          serviceOptin: true
+    1088Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1088
+        message: Customer email id cannot be more than 40 characters.
+  requestBodies:
+    Get_opt-out_contact_dataBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              start:
+                type: number
+                description: The start date format should be in milliseconds. If the start date is not set and the end date is provided, we will fetch data for 24 hours before the end date. If both are not provided, the latest 24 hours data will be fetched.
+              end:
+                type: number
+                description: The end date format should be in milliseconds. If the end date is not set and the start date is provided, we will fetch data for 24 hours after the start date. If both are not provided, the latest 24 hours data will be fetched.
+              subscriptionStatus:
+                type: array
+                description: Type of subscription update feed we want the data for. Like opted-out to get email and text optouts, and blocked for contacts getting blocked. If not provided, only opted-out updates will be returned, by default.
+                items: {}
+            required:
+            - start
+            - end
+            - subscriptionStatus
+            example:
+              end: 1693657040000
+              start: 1693570640000
+              subscriptionStatus:
+              - blocked
+              - opted-out
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

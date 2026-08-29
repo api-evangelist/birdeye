@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Competitor API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Competitor API
+  version: '1.0'
+  description: 'Operations tagged Competitor across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Competitor
   description: Make competitive insights your unfair advantage.
@@ -46,6 +42,11 @@ paths:
                 example:
                   code: 1167
                   message: API key is missing
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{EnterpriseCompetitorBusinessId}/child:
     get:
       summary: Get Competitor Child Business
@@ -70,6 +71,11 @@ paths:
                 example:
                   code: 1167
                   message: API key is missing
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/business/{businessId}/competitors:
     get:
       summary: Get Business Competitors
@@ -94,6 +100,11 @@ paths:
                 example:
                   code: 1167
                   message: API key is missing
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/signup/competitor/{businessNumber}:
     post:
       summary: Create New Competitor Enterprise
@@ -140,6 +151,11 @@ paths:
                   type: string
                 type:
                   type: string
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/signup/competitor/{businessId}:
     post:
       summary: Create New Child Business in Competitor Enterprise
@@ -164,6 +180,11 @@ paths:
                 example:
                   code: 1167
                   message: API key is missing
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/aggregation/competitor/{compAccountId}/{businessNumber}:
     post:
       summary: Add new Competitor Aggregation URL
@@ -209,6 +230,11 @@ paths:
                   type: string
               required:
               - sourceAlias
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/review/businessId/{CompetitorEnterpriseBusinessId}:
     post:
       summary: Get Competitor Reviews
@@ -273,6 +299,11 @@ paths:
                   type: array
                 statuses:
                   type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/competitors/competitive-insight/categories/{businessNumber}:
     post:
       summary: Get Score
@@ -317,6 +348,11 @@ paths:
                   type: string
                 competitors:
                   type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/competitors/competitive-insight/themes/{businessNumber}:
     post:
       summary: Get Theme Statistics
@@ -367,6 +403,11 @@ paths:
                   type: string
                 sentiment:
                   type: number
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/competitors/competitive-insight/keywords/{businessNumber}:
     post:
       summary: Get Keyword Statistics
@@ -419,10 +460,865 @@ paths:
                   type: string
                 sentiment:
                   type: number
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    1228Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1228
+        message: Invalid updated to date. Allowed format is MM/dd/yyyy
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1187Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1187
+        message: Invalid to date. Allowed format is "MM/dd/yyyy".
+    Apiary_getBusinessCompetitors_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          enterpriseId:
+            type: number
+            description: Enterprise Business Number.
+          enterpriseName:
+            type: string
+            description: Enterprise Name.
+          businessCompetitors:
+            type: array
+            items:
+              type: object
+              properties:
+                businessId:
+                  type: number
+                  description: Competitor Business Number.
+                name:
+                  type: string
+                  description: Competitor Business Name.
+                location:
+                  type: object
+                  properties:
+                    address1:
+                      type: string
+                      description: Address of the business.
+                    address2:
+                      type: string
+                      description: Address of the business.
+                    city:
+                      type: string
+                      description: City (Max 1000 character long).
+                    state:
+                      type: string
+                      description: State (2 character state code).
+                    countryCode:
+                      type: string
+                      description: Country Code (2 character country code).
+                    zip:
+                      type: string
+                      description: Zip Code.
+                    countryName:
+                      type: string
+                      description: Country Name (2 character country code).
+                    lat:
+                      type: string
+                      description: Latitude.
+                    lng:
+                      type: string
+                      description: Longitude.
+                  description: Address details
+            description: List of business competitors
+    Apiary_getKeywordStatistics_Response200:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 119468
+          description: Business Id
+        name:
+          type: string
+          example: Social Stress
+          description: Name of Enterprise
+        keywords:
+          type: array
+          items: {}
+          description: List of keywords.
+        ct:
+          type: number
+          example: 27159
+          description: Count.
+        avgScr:
+          type: number
+          example: 1
+          description: Average Score.
+        keywordStats:
+          type: array
+          items:
+            type: object
+            properties:
+              keyword:
+                type: string
+                description: Keyword
+              occurences:
+                type: number
+                description: Occurences
+              score:
+                type: number
+                description: Score
+              scr:
+                type: number
+                description: Scr.
+        negKWAdjectives:
+          type: array
+          items:
+            type: object
+            properties:
+              adjective:
+                type: string
+                description: Adjectives
+              occurences:
+                type: number
+                description: Occurences
+              prcnt:
+                type: number
+                description: Percentage
+              avgScore:
+                type: number
+                description: Average Score
+          description: Negative keyword details
+        competitors:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: Business Id
+              name:
+                type: string
+                description: Name of Enterprise
+              keywords:
+                type: array
+                items: {}
+                description: List of keywords.
+              ct:
+                type: number
+                description: Count.
+              avgScr:
+                type: number
+                description: Average Score.
+              keywordStats:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    keyword:
+                      type: string
+                      description: Keyword
+                    occurences:
+                      type: number
+                      description: Occurences
+                    score:
+                      type: number
+                      description: Score
+                    scr:
+                      type: number
+                      description: Scr.
+              negKWAdjectives:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    adjective:
+                      type: string
+                      description: Adjectives
+                    occurences:
+                      type: number
+                      description: Occurences
+                    prcnt:
+                      type: number
+                      description: Percentage
+                    avgScore:
+                      type: number
+                      description: Average Score
+                description: Negative keyword details
+          description: Competitor details
+    Apiary_addNewCompetitorAggregationUrl_Request:
+      type: object
+      properties:
+        sourceAlias:
+          type: string
+          description: Source alias.
+        url:
+          type: string
+          description: Source url to be added.
+      required:
+      - sourceAlias
+      - url
+      example:
+        sourceAlias: 'citysearch '
+        url: http://www.citysearch.com/biz/maria-da-vittorio-san-francisco
+    1163Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1163
+        message: Invalid start index value
+    Apiary_createNewChildBusinessInCompetitorEnterprise_Response200:
+      type: object
+      properties:
+        competitorId:
+          type: number
+          example: 100037739
+          description: Enterprise Competitor Business ID.
+        templateid:
+          type: number
+          description: Template Id.
+        isAggregationRequired:
+          type: number
+          example: 1
+          description: Is agrgegation required.
+        type:
+          type: string
+          example: Enterprise
+          description: Type.
+        businessNumber:
+          type: number
+          example: 169744180007807
+          description: Enterprise Competitor Business Number.
+        businessAlreadyPresent:
+          type: boolean
+          description: Is Business Already Present.
+    Apiary_getThemeStatistics_Request:
+      type: object
+      properties:
+        sourceType:
+          type: string
+          description: Type of source e.g. review [by default] or social.
+        sources:
+          type: array
+          description: Aggregation sources.
+          items: {}
+        timePeriodSelected:
+          type: string
+          description: 'For all time : all.'
+        startDate:
+          type: string
+          description: Date from which data has to be fetched[MM/DD/YYYY].
+        endDate:
+          type: string
+          description: Date until which data has to be fetched[MM/DD/YYYY].
+        competitors:
+          type: array
+          description: List of competitors
+          items:
+            type: object
+            properties:
+              competitorId:
+                type: number
+                description: Enterprise Competitor Ids [competitorId in Competitor of Enterprise Business API].
+              compAccountIds:
+                type: array
+                items: {}
+                description: Locations Ids of competitor account [compAccountIds in Child Business of Competitor API].
+        topThm:
+          type: number
+          description: Count of top Themes to be fetched.
+        orderBy:
+          type: string
+          description: 'Order of the result e.g.: "occurrence"[default] or "ztoa" or "atoz"'
+        sentiment:
+          type: number
+          description: -1 = negative sentiment,
+      example:
+        sourceType: review
+        sources:
+        - google
+        - citysearch
+        startDate: 11/02/2020
+        endDate: 01/06/2021
+        competitors:
+        - competitorId: 530846
+          compAccountIds:
+          - 162426
+          - 144352
+        - competitorId: 720708
+          compAccountIds:
+          - 165432
+        topThm: 25
+        orderBy: occurrence
+        sentiment: -1
+    Apiary_addNewCompetitorAggregationUrl_Response200:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Id of the created Aggregation.
+        sourceAlias:
+          type: string
+          description: Alias of the source.
+        sourceName:
+          type: string
+          description: Name of the source.
+        sourceUrl:
+          type: string
+          description: Url of the souce.
+        sourceId:
+          type: number
+          description: Id of the source.
+        compAccountId:
+          type: number
+          description: Competitor account id.
+        Body:
+          type: string
+          description: "{\n    \"id\": 140179308,\n    \"sourceId\": 2,\n    \"compAccountId\": 1765,\n    \"sourceUrl\": \"https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476\",\n    \"sourceName\": \"Google\",\n    \"thumbnailUrl\": \"source/icons/2.png\",\n    \"backGroundColor\": \"#dd4b39\",\n    \"textColor\": \"#ffffff\",\n    \"userName\": null,\n    \"password\": null,\n    \"profileId\": null,\n    \"reviewFormUrl\": \"https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476\",\n    \"aggregationStatus\": 3,\n    \"sourceAlias\": \"google\",\n    \"disabledAggregation\": null,\n    \"disabledAggregationReason\": null\n}"
+    1186Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1186
+        message: Invalid from date. Allowed format is "MM/dd/yyyy".
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    Apiary_getCompetitorReviews_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          reviewId:
+            type: number
+            description: Id of the review.
+          rating:
+            type: number
+            description: Overall rating for the review, in case of direct feedback and facebook recommendations it will be 0. For Facebook recommendations, value will be 1, Non recommended review will have value set as 0.
+          comments:
+            type: string
+            description: User comment.
+          reviewer:
+            type: object
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string
+              nickName:
+                type: string
+              thumbnailUrl:
+                type: string
+                description: Thumbn
+            description: Reviewer details
+          sourceType:
+            type: string
+            description: Source of the review if it is an aggregated review.
+          reviewURL:
+            type: string
+            description: Review url
+          reviewDate:
+            type: string
+            description: Review posted date.
+          response:
+            type: string
+            description: Review response text.
+          responseDate:
+            type: string
+            description: Response date.
+          enableReply:
+            type: boolean
+            description: Whether a review reply is supported via Birdeye API or not.
+          customerId:
+            type: number
+            description: Customer's Id attributed with this review (if any).
+          extraParams:
+            type: object
+            description: Key value pair of custom field(s) associated with the customer attributed to the review (if any)
+    Apiary_createNewCompetitorEnterprise_Response200:
+      type: object
+      properties:
+        competitorId:
+          type: number
+          example: 100037739
+          description: Enterprise Competitor Business ID.
+        templateid:
+          type: number
+          description: Template Id.
+        isAggregationRequired:
+          type: number
+          example: 1
+          description: Is agrgegation required.
+        type:
+          type: string
+          example: Enterprise
+          description: Type.
+        businessNumber:
+          type: number
+          example: 169744180007807
+          description: Enterprise Competitor Business Number.
+        businessAlreadyPresent:
+          type: boolean
+          description: Is Business Already Present.
+    1227Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1227
+        message: Invalid updated from date. Allowed format is MM/dd/yyyy
+    1164Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1164
+        message: Invalid result count value
+    Apiary_getCompetitorBusiness_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+            description: Enterprise Competitor Business Number.
+          name:
+            type: string
+            description: Enterprise Competitor Business Name.
+          competitorId:
+            type: number
+            description: Enterprise Competitor Business ID.
+          alias:
+            type: string
+            description: Enterprise Competitor Business alias.
+    Apiary_getKeywordStatistics_Request:
+      type: object
+      properties:
+        sourceType:
+          type: string
+          description: Type of source e.g. review [by default] or social.
+        sources:
+          type: array
+          description: Aggregation sources.
+          items: {}
+        timePeriodSelected:
+          type: string
+          description: 'For all time : all.'
+        startDate:
+          type: string
+          description: Date from which data has to be fetched[MM/DD/YYYY].
+        endDate:
+          type: string
+          description: Date until which data has to be fetched[MM/DD/YYYY].
+        competitors:
+          type: array
+          description: List of competitors
+          items:
+            type: object
+            properties:
+              competitorId:
+                type: number
+                description: Enterprise Competitor Ids [competitorId in Competitor of Enterprise Business API].
+              compAccountIds:
+                type: array
+                items: {}
+                description: Locations Ids of competitor account [compAccountIds in Child Business of Competitor API].
+        topKW:
+          type: number
+          description: Count of top Keywords to be fetched.
+        topAd:
+          type: number
+          description: Count of top Adjectives to be fetched.
+        orderBy:
+          type: string
+          description: 'Order of the result e.g.: "occurrence"[default] or "ztoa" or "atoz"'
+        sentiment:
+          type: number
+          description: -1 = negative sentiment,
+      example:
+        sourceType: review
+        sources:
+        - google
+        - citysearch
+        startDate: 11/02/2020
+        endDate: 01/06/2021
+        competitors:
+        - competitorId: 530846
+          compAccountIds:
+          - 162426
+          - 144352
+        - competitorId: 720708
+          compAccountIds:
+          - 165432
+        topKW: 25
+        topAd: 10
+        orderBy: ztoa
+        sentiment: -1
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    Apiary_createNewCompetitorEnterprise_Request:
+      type: object
+      properties:
+        businessName:
+          type: string
+          description: Location competitor name.
+        userEmailId:
+          type: string
+          description: Location user email.
+        countryCode:
+          type: string
+          description: Location country code.
+        phone:
+          type: string
+          description: Location phone number.
+        zip:
+          type: string
+          description: Zip code.
+        competitorId:
+          type: string
+          description: Competitor Id.
+        type:
+          type: string
+          description: Business type.
+      example:
+        businessName: Location_compca
+        userEmailId: ron@test.com
+        countryCode: CA
+        phone: 408-234-5272
+        zip: '95035'
+        competitorId: 100037693
+        type: Product
+    Apiary_getCompetitorChildBusiness_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+            description: Business ID
+          name:
+            type: string
+            description: Business Name
+          alias:
+            type: number
+            description: Business alias
+          address:
+            type: object
+            properties:
+              address1:
+                type: string
+                description: Address of the business.
+              address2:
+                type: string
+                description: Address of the business.
+              city:
+                type: string
+                description: City (Max 1000 character long).
+              state:
+                type: string
+                description: State (2 character state code).
+              countryCode:
+                type: string
+                description: Country Code (2 character country code).
+              zip:
+                type: string
+                description: Zip Code.
+              countryName:
+                type: string
+                description: Country Name (2 character country code).
+            description: Business address
+          phone:
+            type: string
+            description: Business phone.
+          type:
+            type: string
+            description: Type of account. e.g. Reseller (when it is a sub-reseller), Enterprise-Location (location based enterprise), Enterprise-Product (product based enterprise), Business (SMB/Enterprise location), Product (Enterprise product).
+          status:
+            type: string
+            description: Business status
+          createdOn:
+            type: string
+            description: Business singup date
+          compAccountId:
+            type: number
+            description: Competitor Location Ids.
+          childCount:
+            type: number
+            description: Child account count(applicable only for Reseller, Enterprise-Location, Enterprise-Product).
+    Apiary_getThemeStatistics_Response200:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 398331
+          description: Business Id.
+        name:
+          type: string
+          example: Social Stress
+          description: Name of Enterprise.
+        themes:
+          type: array
+          items: {}
+          description: List of Themes.
+        occr:
+          type: number
+          example: 3
+          description: Occurence.
+        avgScore:
+          type: number
+          example: 1
+          description: Average Score.
+        pPrct:
+          type: number
+          description: Positive Percentage.
+        nPrct:
+          type: number
+          example: 0.04717
+          description: Negative Percentage.
+        prct:
+          type: number
+          example: 0.006304
+          description: Percentage
+        pCt:
+          type: number
+          example: 30707
+          description: Positive Count.
+        nCt:
+          type: number
+          example: 6360
+          description: Negative Count.
+        ct:
+          type: number
+          example: 47592
+          description: Total Count.
+        themeStats:
+          type: array
+          items:
+            type: object
+            properties:
+              theme:
+                type: string
+                description: Theme.
+              adj:
+                type: string
+                description: Adjective
+              kw:
+                type: string
+                description: Keyword.
+              pCt:
+                type: number
+                description: Positive Count.
+              nCt:
+                type: number
+                description: Negative Count.
+              ct:
+                type: number
+                description: Total Count.
+              score:
+                type: number
+                description: Score.
+              scr:
+                type: number
+                description: Scr.
+          description: List of Theme details
+        competitors:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: Business Id.
+              name:
+                type: string
+                description: Name of Enterprise.
+              themes:
+                type: array
+                items: {}
+                description: List of Themes.
+              occr:
+                type: number
+                description: Occurence.
+              avgScore:
+                type: number
+                description: Average Score.
+              pPrct:
+                type: number
+                description: Positive Percentage.
+              nPrct:
+                type: number
+                description: Negative Percentage.
+              prct:
+                type: number
+                description: Percentage
+              pCt:
+                type: number
+                description: Positive Count.
+              nCt:
+                type: number
+                description: Negative Count.
+              ct:
+                type: number
+                description: Total Count.
+              themeStats:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    theme:
+                      type: string
+                      description: Theme.
+                    adj:
+                      type: string
+                      description: Adjective
+                    kw:
+                      type: string
+                      description: Keyword.
+                    pCt:
+                      type: number
+                      description: Positive Count.
+                    nCt:
+                      type: number
+                      description: Negative Count.
+                    ct:
+                      type: number
+                      description: Total Count.
+                    score:
+                      type: number
+                      description: Score.
+                    scr:
+                      type: number
+                      description: Scr.
+                description: List of Theme details
+          description: Competitor details.
+    Apiary_getScore_Request:
+      anyOf:
+      - type: object
+        properties: {}
+      - type: object
+        properties:
+          sourceType:
+            type: string
+            description: Type of source e.g. review [by default] or social.
+          sources:
+            type: array
+            description: Aggregation sources.
+            items: {}
+          timePeriodSelected:
+            type: string
+            description: 'For all time : all.'
+          startDate:
+            type: string
+            description: Date from which data has to be fetched[MM/DD/YYYY].
+          endDate:
+            type: string
+            description: Date until which data has to be fetched[MM/DD/YYYY].
+          competitors:
+            type: array
+            description: List of competitors
+            items: {}
+      type: object
+      properties:
+        sourceType:
+          type: string
+          description: Type of source e.g. review [by default] or social.
+        sources:
+          type: array
+          items: {}
+          description: Aggregation sources.
+        timePeriodSelected:
+          type: string
+          description: 'For all time : all.'
+        startDate:
+          type: string
+          description: Date from which data has to be fetched[MM/DD/YYYY].
+        endDate:
+          type: string
+          description: Date until which data has to be fetched[MM/DD/YYYY].
+        competitors:
+          type: array
+          items:
+            type: object
+            properties:
+              competitorId:
+                type: number
+                description: Enterprise Competitor Ids [competitorId in Competitor of Enterprise Business API].
+              compAccountIds:
+                type: array
+                items: {}
+                description: Locations Ids of competitor account [compAccountIds in Child Business of Competitor API].
+          description: List of competitors
+  requestBodies:
+    Add_aggregation_URLBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Apiary_addNewCompetitorAggregationUrl_Request'
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

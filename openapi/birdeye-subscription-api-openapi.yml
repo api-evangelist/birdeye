@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Subscription API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Subscription API
+  version: '1.0'
+  description: 'Operations tagged Subscription across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Subscription
   description: Subscribe or Unsubscribe multiple webhooks with different URLs or Events for a subscription and deliver real-time notifications.
@@ -55,6 +51,11 @@ paths:
                   type: string
                 auth:
                   type: object
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/subscriptions/unsubscribe/{subscriptionId}:
     get:
       summary: Unsubscribe subscription
@@ -86,10 +87,90 @@ paths:
                 example:
                   code: 1005
                   message: Subscription Not found for Particular Id
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    Apiary_createSubscription_Request:
+      type: object
+      properties:
+        webhookUrl:
+          type: string
+          description: The webhook endpoint URL on your server on which webhook requests are to be sent.
+        emails:
+          type: array
+          description: The email id(s) of the business.
+          items: {}
+        eventName:
+          type: string
+          description: Name of the evnet to be subscribed
+        auth:
+          type: object
+          properties:
+            username:
+              type: string
+              description: username for authorization
+            password:
+              type: string
+              description: password for authorization
+          description: Will be used for basic authorization, should be null for no auth
+      example:
+        webhookUrl: https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65
+        emails:
+        - test@xyz.com
+        eventName: APPOINTMENT_BOOKED
+        auth:
+          username: testUser
+          password: userpassword
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

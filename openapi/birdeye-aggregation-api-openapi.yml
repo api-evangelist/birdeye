@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Birdeye Aggregation API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  version: '1.0'
+  description: 'Operations tagged Aggregation across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Aggregation
   description: Access your public data from 150+ review sites.
@@ -39,6 +35,11 @@ paths:
                 example:
                   code: 1175
                   message: No business found with the given id
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/survey/reviewsites-alias:
     get:
       summary: Get all aggregation source
@@ -63,6 +64,11 @@ paths:
                 example:
                   code: 1175
                   message: No business found with the given id
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/aggregation/business/{business_id}:
     post:
       summary: Add aggregation URL
@@ -101,6 +107,11 @@ paths:
                   type: string
               required:
               - sourceAlias
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/aggregation/business/{businessID}/aggregation/{aggregationID}:
     delete:
       summary: Delete aggregation URL
@@ -132,10 +143,178 @@ paths:
                 example:
                   code: 1039
                   message: Invalid business aggregation id
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    Apiary_addNewCompetitorAggregationUrl_Request:
+      type: object
+      properties:
+        sourceAlias:
+          type: string
+          description: Source alias.
+        url:
+          type: string
+          description: Source url to be added.
+      required:
+      - sourceAlias
+      - url
+      example:
+        sourceAlias: 'citysearch '
+        url: http://www.citysearch.com/biz/maria-da-vittorio-san-francisco
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1032Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1032
+        message: Invalid source id
+    1031Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1031
+        message: Source id cannot be blank
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1033Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1033
+        message: You are not authorized to perform this action
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    Apiary_addAggregationUrl_Response200:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Id of the created Aggregation.
+        sourceAlias:
+          type: string
+          description: Alias of the source.
+        sourceName:
+          type: string
+          description: Name of the source.
+        sourceUrl:
+          type: string
+          description: Url of the souce.
+        Body:
+          type: string
+          description: "{\n    \"id\": \"237030543\",\n    \"sourceAlias\": \"citysearch\",\n    \"sourceName\": \"Citysearch\",\n    \"sourceUrl\": \"http://www.citysearch.com/biz/maria-da-vittorio-san-francisco\"\n}"
+    1039Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1039
+        message: Invalid business aggregation id
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    1030Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1030
+        message: URL cannot be blank
+    Apiary_getAllAggregationSource_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+            description: Id of aggregation.
+          sourceAlias:
+            type: string
+            description: Source alias.
+          sourceUrl:
+            type: string
+            description: Source url.
+          sourceName:
+            type: string
+            description: Source name.
+          status:
+            type: number
+            description: 'This field indicates the status of aggregation:'
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+  requestBodies:
+    Add_aggregation_URLBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Apiary_addNewCompetitorAggregationUrl_Request'
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Ticketing API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Ticketing API
+  version: '1.0'
+  description: 'Operations tagged Ticketing across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Ticketing
   description: Create standout customer support with ticketing across reviews, untagged, and survey responses.
@@ -84,6 +80,11 @@ paths:
               required:
               - assignedTo
               - ticketType
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/ticket/{businessNumber}/comment-activity:
     post:
       summary: Add Ticket Comments
@@ -126,6 +127,11 @@ paths:
               - comment
               - ticketId
               - userEmail
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/ticket/{businessNumber}/update:
     put:
       summary: Update ticket
@@ -160,6 +166,11 @@ paths:
               properties:
                 ticketUpdateMessages:
                   type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/ticket/{businessNumber}/get/all?:
     post:
       summary: Get All Ticket Data
@@ -252,10 +263,297 @@ paths:
                   type: array
                 ticketTypes:
                   type: array
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    Apiary_createTicket_Request:
+      type: object
+      properties:
+        externalId:
+          type: number
+          description: Public Review Id for which you want to create ticket, Mandatory and applicable for creating review ticket.
+        assignedTo:
+          type: string
+          description: EmailId of the user to whom the ticket will be assigned.
+        ticketType:
+          type: string
+          description: 'Type of ticket you want to create. Possible values:'
+        customer:
+          type: object
+          properties:
+            emailId:
+              type: string
+              description: Email id of the customer.
+            firstName:
+              type: string
+              description: First name of the customer.
+            lastName:
+              type: string
+              description: Last name of the customer.
+            location:
+              type: object
+              properties:
+                city:
+                  type: string
+                  description: City of the customer’s location.
+                state:
+                  type: string
+                  description: State of the customer’s location.
+              description: Location details of the customer.
+            phone:
+              type: number
+              description: Phone number of the customer.
+          description: Customer details for which ticket is created, Mandatory and applicable for untagged ticket
+        description:
+          type: string
+          description: Description of the ticket. Applicable for untagged and survey ticket
+        sourceType:
+          type: string
+          description: 'Source Type of the ticket. Applicable for untagged ticket Possible values:'
+        surveyId:
+          type: number
+          description: Id of the survey for which we want to create a ticket. Applicable for survey ticket
+        surveyResponseId:
+          type: number
+          description: Id of the survey response for which we want to create a ticket. Applicable for survey ticket
+        additionalParams:
+          type: array
+          description: If you want to create tickets of survey for particular question and answer. Applicable for survey ticket
+          items:
+            type: object
+            properties:
+              answerId:
+                type: number
+                description: Id of any of the answers on the survey. Applicable for survey ticket
+              questionId:
+                type: number
+                description: Id of any of the questions on the survey. Applicable for survey ticket
+      required:
+      - assignedTo
+      - ticketType
+      example:
+        externalId: 3943351204239963000
+        assignedTo: pranav.singh@birdeye.com
+        ticketType: review
+        customer:
+          emailId: test+4@yopmail.com
+          firstName: Steve
+          lastName: Smith
+          location:
+            city: Dallas
+            state: Texas
+          phone: ''
+        description: Issue with the Store service
+        sourceType: internal
+    Apiary_updateTicket_Request:
+      type: object
+      properties:
+        ticketUpdateMessages:
+          type: array
+          description: Update ticket.
+          items:
+            type: object
+            properties:
+              assignedTo:
+                type: string
+                description: New assignee of the ticket.
+              ticketId:
+                type: string
+                description: Id of the ticket.
+              ticketStatus:
+                type: string
+                description: Status to be changed.
+      example:
+        ticketUpdateMessages:
+        - assignedTo: steve@ymail.com
+          ticketId: '882382'
+          ticketStatus: assigned
+        userEmail: pranav.singh@birdeye.com
+    Apiary_getAllTicketData_Response200:
+      type: object
+      properties:
+        ticketDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: Id of the ticket.
+              status:
+                type: string
+                description: Ticket status.
+              rating:
+                type: number
+                description: Review rating.
+              externalId:
+                type: string
+                description: Public review id.
+              description:
+                type: string
+                description: Description of the ticket.
+              activityCount:
+                type: number
+                description: Number of activities associated with the ticket.
+              assignedTo:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                    description: First Name of the assignee.
+                  lastName:
+                    type: string
+                    description: Last Name of the assignee.
+                  name:
+                    type: string
+                    description: Name  of the assignee.
+                  emailId:
+                    type: string
+                    description: Email id of the assignee.
+                description: Assignee details.
+              source:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Source details
+                description: Source details of the ticket
+              ticketType:
+                type: string
+                description: Type of the ticket.
+              tags:
+                type: array
+                items: {}
+                description: List of Ticket tags.
+              reporter:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                    description: First Name of the reporter
+                  lastName:
+                    type: string
+                    description: Last Name of the reporter
+                description: Ticket reporter details.
+          description: Ticket Details.
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    Apiary_getAllTicketData_Request:
+      type: object
+      properties:
+        assignees:
+          type: array
+          description: List of assignee email id.
+          items: {}
+        businessNumbers:
+          type: array
+          description: List of Location Business Numbers.
+          items: {}
+        fromDate:
+          type: number
+          description: Epoc start date.
+        toDate:
+          type: number
+          description: Epoc end date.
+        sourceAliases:
+          type: array
+          description: Source alias.
+          items: {}
+        sourceTypes:
+          type: array
+          description: Source Type.
+          items: {}
+        tagNames:
+          type: array
+          description: Tag assigned to any review ticket.
+          items: {}
+        ticketStatuses:
+          type: array
+          description: Filter tickets with status.
+          items: {}
+        ticketTypes:
+          type: array
+          description: List of ticket type, Possible values
+          items: {}
+      example:
+        assignees: []
+        businessNumbers: []
+        fromDate: 1581230064000
+        sourceAliases:
+        - ''
+        sourceTypes:
+        - phone
+        - socialmedia
+        - chat
+        - internal
+        tagNames:
+        - newReview
+        ticketStatuses:
+        - assigned
+        - new
+        ticketTypes:
+        - review
+        - survey
+        - untagged
+        toDate: 1707460464000
+    1033Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1033
+        message: You are not authorized to perform this action
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml

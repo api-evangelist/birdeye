@@ -1,16 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Birdeye Aggregation Google Q&A API
-  description: RESTful API for managing online reviews, sending survey requests, responding to customer messages, automating review collection workflows, and tracking reputation metrics across multiple business locations.
-  version: 1.0.0
-  termsOfService: https://birdeye.com/terms-of-service/
-  contact:
-    url: https://developers.birdeye.com/
+  title: Birdeye Google Q&A API
+  version: '1.0'
+  description: 'Operations tagged Google Q&A across 2 of this provider''s published API definitions: birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.birdeye.com
   description: Production
-security:
-- apiKey: []
+- url: https://api.birdeye.com/resources
 tags:
 - name: Google Q&A
   description: 'Note
@@ -57,6 +53,11 @@ paths:
               required:
               - question
               - answer
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/qna/answer/create:
     post:
       summary: Create Answer
@@ -96,6 +97,11 @@ paths:
               required:
               - questionId
               - answer
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/qna/question/update:
     put:
       summary: Update Question
@@ -135,6 +141,11 @@ paths:
               required:
               - questionId
               - question
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/qna/answer/update:
     put:
       summary: Update Answer
@@ -177,6 +188,11 @@ paths:
               - questionId
               - answerId
               - answer
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/qna/question/delete:
     post:
       summary: Delete Question
@@ -213,6 +229,11 @@ paths:
                   type: number
               required:
               - questionId
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/qna/answer/delete:
     post:
       summary: Delete Answer
@@ -252,6 +273,11 @@ paths:
               required:
               - questionId
               - answerId
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/qna/question/deleteAll:
     delete:
       summary: Delete All Questions and Answers
@@ -276,6 +302,11 @@ paths:
                 example:
                   code: 2482
                   message: Question Id is Invalid
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/qna/get:
     post:
       summary: Get All Questions and Answers
@@ -315,6 +346,11 @@ paths:
               required:
               - startIndex
               - pageSize
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
   /v1/qna/unanswered/get:
     post:
       summary: Get All Unanswered Questions and Answers
@@ -354,10 +390,342 @@ paths:
               required:
               - startIndex
               - pageSize
+      security:
+      - apiKey: []
+    servers:
+    - url: https://api.birdeye.com
+      description: Production
 components:
+  schemas:
+    Apiary_getAllQuestionsAndAnswers_Response200:
+      type: object
+      properties:
+        totalCount:
+          type: number
+          description: Total number of questions
+        questionsAndAnswers:
+          type: array
+          description: Questions and answers details
+          items:
+            type: object
+            properties:
+              questionId:
+                type: number
+                description: Unique question identifier.
+              answeredByOwner:
+                type: boolean
+                description: Identified if question was answered by page owner.
+              askedByOwner:
+                type: boolean
+                description: Identifies if question was asked by page owner.
+              question:
+                type: string
+                description: text of question
+              updatedBy:
+                type: string
+                description: Name of author of question
+              time:
+                type: string
+                description: time at which question was created/updated hh:mm AM/PM
+              updatedOn:
+                type: string
+                description: Date at which question was created/updated MMM DD, YYYY
+              userProfileLogoUrl:
+                type: string
+                description: url link to google profile photo of author
+              userCategory:
+                type: string
+                description: category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
+              locationName:
+                type: string
+                description: Birdeye registered business name
+              noOfAnswers:
+                type: string
+                description: number of answer available on question
+              answers:
+                type: object
+                properties:
+                  answerId:
+                    type: number
+                    description: Unique answer identifier.
+                  answer:
+                    type: string
+                    description: Text of answer.
+                  answeredByOwner:
+                    type: boolean
+                    description: Identifies if this answer was added by owner.
+                  updatedBy:
+                    type: string
+                    description: Name of author of answer.
+                  updatedOn:
+                    type: string
+                    description: 'Date at which answer was created/updated format : MMM DD, YYYY'
+                  time:
+                    type: string
+                    description: 'time at which answer was created/updated format: hh:mm AM/PM'
+                  userCategory:
+                    type: string
+                    description: category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
+                  userProfileLogoUrl:
+                    type: string
+                    description: url link to google profile photo of author
+                description: Answers details
+    2462Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2462
+        message: Owner answer already added please edit answer
+    2478Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2478
+        message: Question is required
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    2483Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2483
+        message: Question should have minimum 3 words
+    2479Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2479
+        message: Answer is required
+    Apiary_getAllUnansweredQuestionsAndAnswers_Response200:
+      type: object
+      properties:
+        totalCount:
+          type: number
+          description: Total number of questions
+        questionsAndAnswers:
+          type: array
+          description: Questions and answers details
+          items:
+            type: object
+            properties:
+              questionId:
+                type: number
+                description: Unique question identifier.
+              answeredByOwner:
+                type: boolean
+                description: Identified if question was answered by page owner.
+              askedByOwner:
+                type: boolean
+                description: Identifies if question was asked by page owner.
+              question:
+                type: string
+                description: text of question
+              updatedBy:
+                type: string
+                description: Name of author of question
+              time:
+                type: string
+                description: time at which question was created/updated hh:mm AM/PM
+              updatedOn:
+                type: string
+                description: Date at which question was created/updated MMM DD, YYYY
+              userProfileLogoUrl:
+                type: string
+                description: url link to google profile photo of author
+              userCategory:
+                type: string
+                description: category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
+              locationName:
+                type: string
+                description: Birdeye registered business name
+              noOfAnswers:
+                type: string
+                description: number of answer available on question
+              answers:
+                type: object
+                properties:
+                  answerId:
+                    type: number
+                    description: Unique answer identifier.
+                  answer:
+                    type: string
+                    description: Text of answer.
+                  answeredByOwner:
+                    type: boolean
+                    description: Identifies if this answer was added by owner.
+                  updatedBy:
+                    type: string
+                    description: Name of author of answer.
+                  updatedOn:
+                    type: string
+                    description: 'Date at which answer was created/updated format : MMM DD, YYYY'
+                  time:
+                    type: string
+                    description: 'time at which answer was created/updated format: hh:mm AM/PM'
+                  userCategory:
+                    type: string
+                    description: category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
+                  userProfileLogoUrl:
+                    type: string
+                    description: url link to google profile photo of author
+                description: Answers details
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    2466Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2466
+        message: Invalid input request
+    2480Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2480
+        message: Cannot modify non owner Q&A
+    2482Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2482
+        message: Question Id is Invalid
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    2461Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2461
+        message: No question found with provided request
+    2485Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2485
+        message: Questions should be 10 characters minimum
+    2481Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2481
+        message: Q&A cannot be more than 4096 characters
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+  requestBodies:
+    Get_All_Questions_and_AnswersBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              startIndex:
+                type: number
+                description: start index
+              pageSize:
+                type: number
+                description: page size
+            required:
+            - startIndex
+            - pageSize
+            example:
+              startIndex: 0
+              pageSize: 25
+    Delete_AnswerBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              questionId:
+                type: number
+                description: unique question identifier
+              answerId:
+                type: number
+                description: unique answer identifier
+            required:
+            - questionId
+            - answerId
+            example:
+              questionId: 7812
+              answerId: 7813
   securitySchemes:
     apiKey:
       type: apiKey
       in: header
       name: x-api-key
       description: Partner specific API key provided by Birdeye for data exchange.
+x-refined-from:
+- birdeye-birdeye-api-openapi.yml
+- birdeye-openapi-original.yml
