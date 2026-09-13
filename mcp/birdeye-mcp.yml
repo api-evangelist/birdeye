@@ -7,13 +7,15 @@ deployment:
   endpoint: https://mcp.birdeye.com/mcp
   auth: oauth
   verified: probed
-  note: >-
-    Probed 2026-08-13. POST tools/list to https://mcp.birdeye.com/mcp returned HTTP 401
-    with WWW-Authenticate: Bearer error="invalid_token" and
-    resource_metadata="https://mcp.birdeye.com/.well-known/oauth-protected-resource/mcp",
-    which is the live MCP OAuth challenge — the endpoint is real and reachable, the tool
-    schemas are auth-gated. No stdio/npx package is published; this is a hosted remote
-    server only.
+  note: 'Probed 2026-08-13. POST tools/list to https://mcp.birdeye.com/mcp returned HTTP 401 with WWW-Authenticate:
+    Bearer error="invalid_token" and resource_metadata="https://mcp.birdeye.com/.well-known/oauth-protected-resource/mcp",
+    which is the live MCP OAuth challenge — the endpoint is real and reachable, the tool schemas are auth-gated.
+    No stdio/npx package is published; this is a hosted remote server only.'
+  probe_prior: (never probed)
+  probe: gated
+  probe_why: RFC 9728 challenge on the MCP path only
+  checked: '2026-09-11'
+  source: claimed-backlog re-probe 2026-09-11
 server:
   name: Birdeye
   transport: streamable-http
@@ -31,33 +33,34 @@ authentication:
   token_endpoint: https://mcp.birdeye.com/token
   registration_endpoint: https://mcp.birdeye.com/register
   revocation_endpoint: https://mcp.birdeye.com/revoke
-  pkce: [S256]
-  grant_types: [authorization_code, refresh_token]
-  scopes: [openid, profile, email]
+  pkce:
+  - S256
+  grant_types:
+  - authorization_code
+  - refresh_token
+  scopes:
+  - openid
+  - profile
+  - email
   protected_resource_metadata: https://mcp.birdeye.com/.well-known/oauth-protected-resource/mcp
   preauthorized_clients:
   - Claude (claude.ai)
   - ChatGPT (chatgpt.com)
-  note: >-
-    Any other MCP client must have its redirect URI registered with Birdeye Support
-    before OAuth will complete.
+  note: Any other MCP client must have its redirect URI registered with Birdeye Support before OAuth will
+    complete.
 posture:
   read_only: true
   write_access: false
-  pii_filtering: >-
-    Birdeye documents that sensitive fields such as reviewer email addresses are
-    filtered from tool responses.
-  account_scoping: >-
-    Every tool call is scoped to the Birdeye business tied to the authenticated
-    account; enterprise accounts reach all child locations.
+  pii_filtering: Birdeye documents that sensitive fields such as reviewer email addresses are filtered
+    from tool responses.
+  account_scoping: Every tool call is scoped to the Birdeye business tied to the authenticated account;
+    enterprise accounts reach all child locations.
 tool_count_published: 25
 tool_count_claimed: 31
-tool_count_note: >-
-  docs.birdeye.com/mcp/introduction says "31 available tools"; the launch blog post says
-  "30 tools across 11 product areas"; the published Tools Overview table enumerates 25.
-  Only the 25 enumerated in the docs are recorded below. Live tools/list is OAuth-gated,
-  so the authoritative count and the per-tool inputSchema require an authenticated
-  introspection.
+tool_count_note: docs.birdeye.com/mcp/introduction says "31 available tools"; the launch blog post says
+  "30 tools across 11 product areas"; the published Tools Overview table enumerates 25. Only the 25 enumerated
+  in the docs are recorded below. Live tools/list is OAuth-gated, so the authoritative count and the per-tool
+  inputSchema require an authenticated introspection.
 tools:
 - name: review_and_rating_overview
   module: Reviews
