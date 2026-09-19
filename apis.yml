@@ -221,6 +221,8 @@ apis:
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
+  - Conversations
+  tags_raw:
   - Conversation
   properties:
   - type: OpenAPI
@@ -399,6 +401,8 @@ apis:
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
+  - Listings
+  tags_raw:
   - Listing
   properties:
   - type: OpenAPI
@@ -511,6 +515,8 @@ apis:
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
+  - Surveys
+  tags_raw:
   - Survey
   properties:
   - type: OpenAPI
