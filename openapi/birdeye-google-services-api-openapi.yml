@@ -12,11 +12,7 @@ tags:
   description: 'Note
 
 
-    Applicable to be used only by paid listings clients, for their active locations, for the Google Services section, in the Google listing.
-
-    No two services should have the same service name. It is recommended that all services created should  HAVE UNIQUE service names.
-
-    You CAN have the same service across two diff categories e.g.: Emergency counselling as a $100 paid service can be a service created &amp; mapped to category A - Mental health and category B - Psychotherapy - both categories being present for the same location.'
+    Applicable to be used only by paid listings clients, for their active locations, for the Google Services section, in the Google listing.'
 paths:
   /v1/google-services/service/create:
     post:
@@ -310,96 +306,6 @@ paths:
       description: Production
 components:
   schemas:
-    2494Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2494
-        message: Invalid GBP Service Id
-    2489Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2489
-        message: Invalid GBP Service description
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    2493Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2493
-        message: Duplicate Google Service is not allowed
-    2495Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2495
-        message: Invalid GBP Service Id
-    2496Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2496
-        message: Missing GBP category for given location
-    2491Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2491
-        message: Invalid GBP Service price
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
     2490Model:
       type: object
       properties:
@@ -410,7 +316,7 @@ components:
       example:
         code: 2490
         message: Invalid GBP Service price type
-    2492Model:
+    2495Model:
       type: object
       properties:
         code:
@@ -418,8 +324,18 @@ components:
         message:
           type: string
       example:
-        code: 2492
-        message: Invalid GBP Service currency code
+        code: 2495
+        message: Invalid GBP Service Id
+    2486Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2486
+        message: Business Id missing or invalid
     Apiary_getAllServices_Response200:
       type: object
       properties:
@@ -450,26 +366,6 @@ components:
               duration:
                 type: number
                 description: service duration in minutes
-    2488Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2488
-        message: Invalid GBP Service name
-    2486Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2486
-        message: Business Id missing or invalid
     Apiary_getLocationMapping_Response200:
       type: object
       properties:
@@ -503,16 +399,6 @@ components:
               duration:
                 type: number
                 description: service duration in minutes
-    2487Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2487
-        message: Invalid input request data
     89Model:
       type: object
       properties:
@@ -523,6 +409,116 @@ components:
       example:
         code: 89
         message: Rate limit exceeded
+    2492Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2492
+        message: Invalid GBP Service currency code
+    2496Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2496
+        message: Missing GBP category for given location
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    2494Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2494
+        message: Invalid GBP Service Id
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    2491Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2491
+        message: Invalid GBP Service price
+    2493Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2493
+        message: Duplicate Google Service is not allowed
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    2488Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2488
+        message: Invalid GBP Service name
+    2487Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2487
+        message: Invalid input request data
+    2489Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2489
+        message: Invalid GBP Service description
   securitySchemes:
     apiKey:
       type: apiKey

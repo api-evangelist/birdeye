@@ -306,6 +306,74 @@ paths:
       description: Production
 components:
   schemas:
+    5025Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5025
+        message: Custom field not found.
+    Apiary_update_Request:
+      type: object
+      properties:
+        defaultValue:
+          type: string
+          description: Default Value of custom field.
+        dropDownOptions:
+          type: array
+          description: The list of options in custom field.The list of options in custom field
+          items: {}
+        fieldDescription:
+          type: string
+          description: Description of custom field.
+        filterable:
+          type: boolean
+          description: Whether the custom field will be filterable or not.
+        isHidden:
+          type: boolean
+          description: Whether the custom field will be hidden or not.
+      example:
+        defaultValue: Green
+        dropDownOptions:
+        - Blue
+        - Green
+        - Red
+        fieldDescription: This custom field contains list of colours
+        filterable: 'false'
+        isHidden: 'false'
+    5023Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5023
+        message: Custom field request dto cannot be null.
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
     5031Model:
       type: object
       properties:
@@ -316,26 +384,6 @@ components:
       example:
         code: 5031
         message: Method not implemented for unknown custom field type.
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
-    1027Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1027
-        message: Invalid business number.
     5028Model:
       type: object
       properties:
@@ -346,6 +394,86 @@ components:
       example:
         code: 5028
         message: Custom field delete failed.
+    5022Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5022
+        message: Another custom field with same name already present.
+    5026Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5026
+        message: Custom field updation failed.
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    5024Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5024
+        message: Custom field creation failed.
+    5039Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5039
+        message: Custom field name cannot be a reserved keyword.
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    5040Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5040
+        message: Max limit reached for custom fields.
+    1027Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1027
+        message: Invalid business number.
     Apiary_create_Request:
       type: object
       properties:
@@ -381,134 +509,6 @@ components:
         fieldName: colours
         filterable: 'false'
         type: DROPDOWN_MULTI
-    5023Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5023
-        message: Custom field request dto cannot be null.
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    5025Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5025
-        message: Custom field not found.
-    5022Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5022
-        message: Another custom field with same name already present.
-    5040Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5040
-        message: Max limit reached for custom fields.
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    5026Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5026
-        message: Custom field updation failed.
-    5039Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5039
-        message: Custom field name cannot be a reserved keyword.
-    5024Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5024
-        message: Custom field creation failed.
-    Apiary_update_Request:
-      type: object
-      properties:
-        defaultValue:
-          type: string
-          description: Default Value of custom field.
-        dropDownOptions:
-          type: array
-          description: The list of options in custom field.The list of options in custom field
-          items: {}
-        fieldDescription:
-          type: string
-          description: Description of custom field.
-        filterable:
-          type: boolean
-          description: Whether the custom field will be filterable or not.
-        isHidden:
-          type: boolean
-          description: Whether the custom field will be hidden or not.
-      example:
-        defaultValue: Green
-        dropDownOptions:
-        - Blue
-        - Green
-        - Red
-        fieldDescription: This custom field contains list of colours
-        filterable: 'false'
-        isHidden: 'false'
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey

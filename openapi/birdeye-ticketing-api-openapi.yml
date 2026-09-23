@@ -270,6 +270,205 @@ paths:
       description: Production
 components:
   schemas:
+    1033Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1033
+        message: You are not authorized to perform this action
+    Apiary_updateTicket_Request:
+      type: object
+      properties:
+        ticketUpdateMessages:
+          type: array
+          description: Update ticket.
+          items:
+            type: object
+            properties:
+              assignedTo:
+                type: string
+                description: New assignee of the ticket.
+              ticketId:
+                type: string
+                description: Id of the ticket.
+              ticketStatus:
+                type: string
+                description: Status to be changed.
+      example:
+        ticketUpdateMessages:
+        - assignedTo: steve@ymail.com
+          ticketId: '882382'
+          ticketStatus: assigned
+        userEmail: pranav.singh@birdeye.com
+    Apiary_getAllTicketData_Request:
+      type: object
+      properties:
+        assignees:
+          type: array
+          description: List of assignee email id.
+          items: {}
+        businessNumbers:
+          type: array
+          description: List of Location Business Numbers.
+          items: {}
+        fromDate:
+          type: number
+          description: Epoc start date.
+        toDate:
+          type: number
+          description: Epoc end date.
+        sourceAliases:
+          type: array
+          description: Source alias.
+          items: {}
+        sourceTypes:
+          type: array
+          description: Source Type.
+          items: {}
+        tagNames:
+          type: array
+          description: Tag assigned to any review ticket.
+          items: {}
+        ticketStatuses:
+          type: array
+          description: Filter tickets with status.
+          items: {}
+        ticketTypes:
+          type: array
+          description: List of ticket type, Possible values
+          items: {}
+      example:
+        assignees: []
+        businessNumbers: []
+        fromDate: 1581230064000
+        sourceAliases:
+        - ''
+        sourceTypes:
+        - phone
+        - socialmedia
+        - chat
+        - internal
+        tagNames:
+        - newReview
+        ticketStatuses:
+        - assigned
+        - new
+        ticketTypes:
+        - review
+        - survey
+        - untagged
+        toDate: 1707460464000
+    Apiary_getAllTicketData_Response200:
+      type: object
+      properties:
+        ticketDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: number
+                description: Id of the ticket.
+              status:
+                type: string
+                description: Ticket status.
+              rating:
+                type: number
+                description: Review rating.
+              externalId:
+                type: string
+                description: Public review id.
+              description:
+                type: string
+                description: Description of the ticket.
+              activityCount:
+                type: number
+                description: Number of activities associated with the ticket.
+              assignedTo:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                    description: First Name of the assignee.
+                  lastName:
+                    type: string
+                    description: Last Name of the assignee.
+                  name:
+                    type: string
+                    description: Name  of the assignee.
+                  emailId:
+                    type: string
+                    description: Email id of the assignee.
+                description: Assignee details.
+              source:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Source details
+                description: Source details of the ticket
+              ticketType:
+                type: string
+                description: Type of the ticket.
+              tags:
+                type: array
+                items: {}
+                description: List of Ticket tags.
+              reporter:
+                type: object
+                properties:
+                  firstName:
+                    type: string
+                    description: First Name of the reporter
+                  lastName:
+                    type: string
+                    description: Last Name of the reporter
+                description: Ticket reporter details.
+          description: Ticket Details.
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
     Apiary_createTicket_Request:
       type: object
       properties:
@@ -349,205 +548,6 @@ components:
           phone: ''
         description: Issue with the Store service
         sourceType: internal
-    Apiary_updateTicket_Request:
-      type: object
-      properties:
-        ticketUpdateMessages:
-          type: array
-          description: Update ticket.
-          items:
-            type: object
-            properties:
-              assignedTo:
-                type: string
-                description: New assignee of the ticket.
-              ticketId:
-                type: string
-                description: Id of the ticket.
-              ticketStatus:
-                type: string
-                description: Status to be changed.
-      example:
-        ticketUpdateMessages:
-        - assignedTo: steve@ymail.com
-          ticketId: '882382'
-          ticketStatus: assigned
-        userEmail: pranav.singh@birdeye.com
-    Apiary_getAllTicketData_Response200:
-      type: object
-      properties:
-        ticketDetails:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: number
-                description: Id of the ticket.
-              status:
-                type: string
-                description: Ticket status.
-              rating:
-                type: number
-                description: Review rating.
-              externalId:
-                type: string
-                description: Public review id.
-              description:
-                type: string
-                description: Description of the ticket.
-              activityCount:
-                type: number
-                description: Number of activities associated with the ticket.
-              assignedTo:
-                type: object
-                properties:
-                  firstName:
-                    type: string
-                    description: First Name of the assignee.
-                  lastName:
-                    type: string
-                    description: Last Name of the assignee.
-                  name:
-                    type: string
-                    description: Name  of the assignee.
-                  emailId:
-                    type: string
-                    description: Email id of the assignee.
-                description: Assignee details.
-              source:
-                type: object
-                properties:
-                  name:
-                    type: string
-                    description: Source details
-                description: Source details of the ticket
-              ticketType:
-                type: string
-                description: Type of the ticket.
-              tags:
-                type: array
-                items: {}
-                description: List of Ticket tags.
-              reporter:
-                type: object
-                properties:
-                  firstName:
-                    type: string
-                    description: First Name of the reporter
-                  lastName:
-                    type: string
-                    description: Last Name of the reporter
-                description: Ticket reporter details.
-          description: Ticket Details.
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
-    Apiary_getAllTicketData_Request:
-      type: object
-      properties:
-        assignees:
-          type: array
-          description: List of assignee email id.
-          items: {}
-        businessNumbers:
-          type: array
-          description: List of Location Business Numbers.
-          items: {}
-        fromDate:
-          type: number
-          description: Epoc start date.
-        toDate:
-          type: number
-          description: Epoc end date.
-        sourceAliases:
-          type: array
-          description: Source alias.
-          items: {}
-        sourceTypes:
-          type: array
-          description: Source Type.
-          items: {}
-        tagNames:
-          type: array
-          description: Tag assigned to any review ticket.
-          items: {}
-        ticketStatuses:
-          type: array
-          description: Filter tickets with status.
-          items: {}
-        ticketTypes:
-          type: array
-          description: List of ticket type, Possible values
-          items: {}
-      example:
-        assignees: []
-        businessNumbers: []
-        fromDate: 1581230064000
-        sourceAliases:
-        - ''
-        sourceTypes:
-        - phone
-        - socialmedia
-        - chat
-        - internal
-        tagNames:
-        - newReview
-        ticketStatuses:
-        - assigned
-        - new
-        ticketTypes:
-        - review
-        - survey
-        - untagged
-        toDate: 1707460464000
-    1033Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1033
-        message: You are not authorized to perform this action
-    1175Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1175
-        message: No business found with the given id
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey

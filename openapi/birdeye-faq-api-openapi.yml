@@ -66,26 +66,6 @@ paths:
       description: Production
 components:
   schemas:
-    5008Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5008
-        message: RequestBody not found
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
     1532Model:
       type: object
       properties:
@@ -96,6 +76,16 @@ components:
       example:
         code: 1532
         message: Business id is missing or invalid.
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
     5043Model:
       type: object
       properties:
@@ -116,6 +106,26 @@ components:
       example:
         code: 1161
         message: Invalid API key
+    5008Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5008
+        message: RequestBody not found
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
     Apiary_getAllQna_Response200:
       type: object
       properties:
@@ -160,16 +170,6 @@ components:
                 items: {}
                 description: Array of location/business numbers, if specific.
           description: List of QnA objects.
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey

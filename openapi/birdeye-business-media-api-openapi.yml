@@ -20,8 +20,6 @@ tags:
     Video: 30 sec long. 720p or more upto 75MB.
 
 
-
-
     Note
 
 
@@ -176,36 +174,6 @@ paths:
       description: Production
 components:
   schemas:
-    2176Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 400
-        message: Category can not be empty
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
-    2174Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2174
-        message: Unsupported media format
     2177Model:
       type: object
       properties:
@@ -216,82 +184,6 @@ components:
       example:
         code: 400
         message: Invalid media id
-    Apiary_updateMedia_Request:
-      type: object
-      properties:
-        mediaCategory:
-          type: string
-          description: 'Category for the media item. Possible values are:'
-      required:
-      - mediaCategory
-      example:
-        mediaCategory: INTERIOR
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    2270Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2270
-        message: Unsupported Media Category for the business
-    Apiary_addMedia_Response200:
-      type: object
-      required:
-      - media
-      properties:
-        media:
-          type: array
-          items:
-            type: object
-            properties:
-              mediaId:
-                type: string
-                description: Id of the media.
-              url:
-                type: string
-                description: Url of the media item.
-              mediaCategory:
-                type: string
-                description: Category for the media item.
-              description:
-                type: string
-                description: Description of the media.
-              mediaFormat:
-                type: string
-                description: Format of the Media.
-          description: List of media items.
-    2181Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2181
-        message: Supported video format is MP4.
-    2180Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2180
-        message: The recommended Image size for Google media image is 250 pixels wide and 250 pixels tall.
     2175Model:
       type: object
       properties:
@@ -302,7 +194,7 @@ components:
       example:
         code: 2175
         message: Provided media category is not supported
-    1161Model:
+    2270Model:
       type: object
       properties:
         code:
@@ -310,32 +202,8 @@ components:
         message:
           type: string
       example:
-        code: 1161
-        message: Invalid API key
-    Apiary_getMedia_Response200:
-      type: object
-      properties:
-        media:
-          type: array
-          items:
-            type: object
-            properties:
-              mediaId:
-                type: string
-                description: Id of the media.
-              url:
-                type: string
-                description: Url of the media item.
-              mediaCategory:
-                type: string
-                description: Category for the media item.
-              description:
-                type: string
-                description: Description of the media.
-              mediaFormat:
-                type: string
-                description: Format of the Media.
-          description: List of media items of the business.
+        code: 2270
+        message: Unsupported Media Category for the business
     Apiary_addMedia_Request:
       type: object
       properties:
@@ -374,7 +242,7 @@ components:
           mediaCategory: ADDITIONAL
           description: Introductory video
           mediaFormat: VIDEO
-    2171Model:
+    2180Model:
       type: object
       properties:
         code:
@@ -382,8 +250,8 @@ components:
         message:
           type: string
       example:
-        code: 2171
-        message: URL is invalid
+        code: 2180
+        message: The recommended Image size for Google media image is 250 pixels wide and 250 pixels tall.
     89Model:
       type: object
       properties:
@@ -394,6 +262,136 @@ components:
       example:
         code: 89
         message: Rate limit exceeded
+    2181Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2181
+        message: Supported video format is MP4.
+    Apiary_getMedia_Response200:
+      type: object
+      properties:
+        media:
+          type: array
+          items:
+            type: object
+            properties:
+              mediaId:
+                type: string
+                description: Id of the media.
+              url:
+                type: string
+                description: Url of the media item.
+              mediaCategory:
+                type: string
+                description: Category for the media item.
+              description:
+                type: string
+                description: Description of the media.
+              mediaFormat:
+                type: string
+                description: Format of the Media.
+          description: List of media items of the business.
+    2174Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2174
+        message: Unsupported media format
+    2171Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2171
+        message: URL is invalid
+    Apiary_addMedia_Response200:
+      type: object
+      required:
+      - media
+      properties:
+        media:
+          type: array
+          items:
+            type: object
+            properties:
+              mediaId:
+                type: string
+                description: Id of the media.
+              url:
+                type: string
+                description: Url of the media item.
+              mediaCategory:
+                type: string
+                description: Category for the media item.
+              description:
+                type: string
+                description: Description of the media.
+              mediaFormat:
+                type: string
+                description: Format of the Media.
+          description: List of media items.
+    Apiary_updateMedia_Request:
+      type: object
+      properties:
+        mediaCategory:
+          type: string
+          description: 'Category for the media item. Possible values are:'
+      required:
+      - mediaCategory
+      example:
+        mediaCategory: INTERIOR
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    2176Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Category can not be empty
   securitySchemes:
     apiKey:
       type: apiKey

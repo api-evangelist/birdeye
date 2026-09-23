@@ -68,7 +68,8 @@
     "tag 'Survey' spans 2 source specs (birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml): per-path servers applied",
     "tag 'Ticketing' spans 2 source specs (birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml): per-path servers applied",
     "tag 'User' spans 2 source specs (birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml): per-path servers applied",
-    "tag 'Webhook' spans 2 source specs (birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml): per-path servers applied"
+    "tag 'Webhook' spans 2 source specs (birdeye-birdeye-api-openapi.yml, birdeye-openapi-original.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "birdeye-aggregation-api-openapi.yml: previously refined output, superseded by openapi/_original/",

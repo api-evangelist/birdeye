@@ -75,7 +75,7 @@ paths:
       description: Production
 components:
   schemas:
-    1167Model:
+    89Model:
       type: object
       properties:
         code:
@@ -83,28 +83,8 @@ components:
         message:
           type: string
       example:
-        code: 1167
-        message: API key is missing
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
+        code: 89
+        message: Rate limit exceeded
     Apiary_createWebhookSubscription_Request:
       type: object
       properties:
@@ -134,6 +114,36 @@ components:
         - message.added
         - message.closed
         endpoint: https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
     Apiary_getEvents_Response200:
       type: array
       items:
@@ -145,16 +155,6 @@ components:
           eventName:
             type: string
             description: Name of the created event. Possible values are
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey

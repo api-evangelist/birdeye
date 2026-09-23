@@ -300,7 +300,7 @@ paths:
       description: Production
 components:
   schemas:
-    1167Model:
+    1053Model:
       type: object
       properties:
         code:
@@ -308,9 +308,9 @@ components:
         message:
           type: string
       example:
-        code: 1167
-        message: API key is missing
-    1059Model:
+        code: 1053
+        message: User email id is invalid
+    1057Model:
       type: object
       properties:
         code:
@@ -318,8 +318,69 @@ components:
         message:
           type: string
       example:
-        code: 1059
-        message: Last name cannot be more than 50 characters
+        code: 1057
+        message: First name cannot be more than 50 characters
+    1052Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1052
+        message: User email id cannot be blank
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1013Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1013
+        message: Unknown user role
+    Apiary_createUser_Request:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: First name of the user.
+        lastName:
+          type: string
+          description: Last name of the user.
+        userEmailId:
+          type: string
+          description: Email Id of the user that’s being added to this business.
+        phone:
+          type: string
+          description: Mobile number of the user.
+        userRole:
+          type: string
+          description: User role. Valid values are "owner","admin". Default is "owner".
+        sendInvite:
+          type: boolean
+          description: Whether to send invite email to the user. Default is `true`.
+      required:
+      - userEmailId
+      - userRole
+      example:
+        firstName: Rhonda
+        lastName: Spears
+        userEmailId: rhonda.spears@example.com
+        phone: 408-xxx-xxxx
+        userRole: owner
+        sendInvite: true
     1188Model:
       type: object
       properties:
@@ -330,7 +391,7 @@ components:
       example:
         code: 1188
         message: User is not associated with the business.
-    1033Model:
+    1010Model:
       type: object
       properties:
         code:
@@ -338,8 +399,28 @@ components:
         message:
           type: string
       example:
-        code: 1033
-        message: You are not authorized to perform this action
+        code: 1010
+        message: No user found with the given id
+    1177Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1177
+        message: User is not authorized to perform any action on any business
+    1189Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1189
+        message: User with given email id not found.
     Apiary_updateUser_Request:
       type: object
       properties:
@@ -497,46 +578,6 @@ components:
               type: number
               description: Flag to enable email alerts for broken integrations.
           description: user details
-    1013Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1013
-        message: Unknown user role
-    1010Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1010
-        message: No user found with the given id
-    1014Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1014
-        message: User role cannot be blank
-    1052Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1052
-        message: User email id cannot be blank
     1175Model:
       type: object
       properties:
@@ -547,16 +588,6 @@ components:
       example:
         code: 1175
         message: No business found with the given id
-    1057Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1057
-        message: First name cannot be more than 50 characters
     1161Model:
       type: object
       properties:
@@ -567,67 +598,6 @@ components:
       example:
         code: 1161
         message: Invalid API key
-    1189Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1189
-        message: User with given email id not found.
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    Apiary_createUser_Request:
-      type: object
-      properties:
-        firstName:
-          type: string
-          description: First name of the user.
-        lastName:
-          type: string
-          description: Last name of the user.
-        userEmailId:
-          type: string
-          description: Email Id of the user that’s being added to this business.
-        phone:
-          type: string
-          description: Mobile number of the user.
-        userRole:
-          type: string
-          description: User role. Valid values are "owner","admin". Default is "owner".
-        sendInvite:
-          type: boolean
-          description: Whether to send invite email to the user. Default is `true`.
-      required:
-      - userEmailId
-      - userRole
-      example:
-        firstName: Rhonda
-        lastName: Spears
-        userEmailId: rhonda.spears@example.com
-        phone: 408-xxx-xxxx
-        userRole: owner
-        sendInvite: true
-    1053Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1053
-        message: User email id is invalid
     1160Model:
       type: object
       properties:
@@ -638,7 +608,7 @@ components:
       example:
         code: 1160
         message: User is already associated with business.
-    1177Model:
+    1033Model:
       type: object
       properties:
         code:
@@ -646,8 +616,28 @@ components:
         message:
           type: string
       example:
-        code: 1177
-        message: User is not authorized to perform any action on any business
+        code: 1033
+        message: You are not authorized to perform this action
+    1059Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1059
+        message: Last name cannot be more than 50 characters
+    1014Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1014
+        message: User role cannot be blank
     1054Model:
       type: object
       properties:
@@ -658,6 +648,16 @@ components:
       example:
         code: 1054
         message: User email id cannot be more than 40 characters
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
   securitySchemes:
     apiKey:
       type: apiKey

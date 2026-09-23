@@ -453,7 +453,7 @@ paths:
       description: Production
 components:
   schemas:
-    2051Model:
+    2081Model:
       type: object
       properties:
         code:
@@ -461,8 +461,108 @@ components:
         message:
           type: string
       example:
-        code: 2051
-        message: More than one review question cannot be present
+        code: 2081
+        message: Skip Logic Invalid!
+    2065Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2065
+        message: There cannot be more than 3 sourceIds for review question
+    2046Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2046
+        message: Min Value is greater then Max Value
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    2069Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2069
+        message: surveyName is Mandatory
+    2038Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2038
+        message: Invalid value of role, expected editor, viewer or no-access
+    2085Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2085
+        message: Condition cannot be null!
+    2057Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2057
+        message: Either one of Min and Max values is missing in datetime type question
+    2090Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2090
+        message: Invalid value of showLogo, accepted values are ON, OFF
+    2056Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2056
+        message: Min and Max values can only be even numbers when the interval is 60 minutes
+    2041Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2041
+        message: Can't modify owner or existing owner's access!
     2047Model:
       type: object
       properties:
@@ -473,7 +573,7 @@ components:
       example:
         code: 2047
         message: Survey Fields Missing!
-    1167Model:
+    2076Model:
       type: object
       properties:
         code:
@@ -481,9 +581,9 @@ components:
         message:
           type: string
       example:
-        code: 1167
-        message: API key is missing
-    2048Model:
+        code: 2076
+        message: Value of the logic is not present in the choices of Question
+    2095Model:
       type: object
       properties:
         code:
@@ -491,9 +591,9 @@ components:
         message:
           type: string
       example:
-        code: 2048
-        message: Field Rows Missing
-    2059Model:
+        code: 2095
+        message: ownerEmailId cannot be null
+    2077Model:
       type: object
       properties:
         code:
@@ -501,8 +601,38 @@ components:
         message:
           type: string
       example:
-        code: 2059
-        message: Invalid type of contact question
+        code: 2077
+        message: Value of a questionLogic field cannot be blank
+    2066Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2066
+        message: BusinessIds passed in the location type question are invalid
+    2061Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2061
+        message: Pickone type of survey can only contain pickone type questions
+    2073Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2073
+        message: Logic type is Invalid!
     2043Model:
       type: object
       properties:
@@ -523,7 +653,7 @@ components:
       example:
         code: 2086
         message: Question Number cannot be null
-    2039Model:
+    2088Model:
       type: object
       properties:
         code:
@@ -531,38 +661,8 @@ components:
         message:
           type: string
       example:
-        code: 2039
-        message: User email is missing in user access request!
-    2040Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2040
-        message: Invalid value of progress bar position, expected Bottom or Top
-    2096Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2096
-        message: Detected conflicting user-access request!
-    2067Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2067
-        message: One of the locations passed in the request is not present
+        code: 2088
+        message: Review Source already present
     2070Model:
       type: object
       properties:
@@ -573,7 +673,7 @@ components:
       example:
         code: 2070
         message: Question Type cannot be blank
-    2093Model:
+    2079Model:
       type: object
       properties:
         code:
@@ -581,9 +681,9 @@ components:
         message:
           type: string
       example:
-        code: 2093
-        message: Survey Field Type passed is unknown
-    2046Model:
+        code: 2079
+        message: Only one Skip logic is allowed for text and textarea type questions
+    2062Model:
       type: object
       properties:
         code:
@@ -591,9 +691,9 @@ components:
         message:
           type: string
       example:
-        code: 2046
-        message: Min Value is greater then Max Value
-    1315Model:
+        code: 2062
+        message: Traditional type survey cannot contain these type questions
+    2044Model:
       type: object
       properties:
         code:
@@ -601,9 +701,9 @@ components:
         message:
           type: string
       example:
-        code: 1315
-        message: Invalid survey.
-    1011Model:
+        code: 2044
+        message: Survey already completed
+    2071Model:
       type: object
       properties:
         code:
@@ -611,18 +711,8 @@ components:
         message:
           type: string
       example:
-        code: 1011
-        message: Business id is invalid
-    2055Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2055
-        message: Max Value out of range
+        code: 2071
+        message: Invalid ownerEmailId
     2082Model:
       type: object
       properties:
@@ -633,7 +723,7 @@ components:
       example:
         code: 2082
         message: The API returned an empty response.
-    2064Model:
+    1315Model:
       type: object
       properties:
         code:
@@ -641,9 +731,9 @@ components:
         message:
           type: string
       example:
-        code: 2064
-        message: First page of the survey must contain atleast one question except review question
-    2087Model:
+        code: 1315
+        message: Invalid survey.
+    2051Model:
       type: object
       properties:
         code:
@@ -651,78 +741,8 @@ components:
         message:
           type: string
       example:
-        code: 2087
-        message: Duplicate contact sub type question is present
-    2077Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2077
-        message: Value of a questionLogic field cannot be blank
-    2056Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2056
-        message: Min and Max values can only be even numbers when the interval is 60 minutes
-    2076Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2076
-        message: Value of the logic is not present in the choices of Question
-    2054Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2054
-        message: Min Value out of range
-    2085Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2085
-        message: Condition cannot be null!
-    2052Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2052
-        message: Review question should be present in the last page of the survey as a single question
-    2091Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2091
-        message: Operator Invalid
+        code: 2051
+        message: More than one review question cannot be present
     2049Model:
       type: object
       properties:
@@ -743,33 +763,7 @@ components:
       example:
         code: 2063
         message: Pulse(NPS) Survey can only contain radio, text, textarea(paragraph), rating and nps type questions
-    Apiary_getAllSurveys_Response200:
-      type: array
-      items:
-        type: object
-        properties:
-          surveyId:
-            type: number
-            description: Survey Id.
-          name:
-            type: string
-            description: Survey Name.
-          status:
-            type: string
-            description: Survey status.
-          created:
-            type: number
-            description: Survey created date in epoc.
-          lastModified:
-            type: number
-            description: Survey last modified date in epoc
-          responses:
-            type: number
-            description: Number of survey responses.
-          questionCount:
-            type: number
-            description: Number of questions.
-    1175Model:
+    2084Model:
       type: object
       properties:
         code:
@@ -777,9 +771,9 @@ components:
         message:
           type: string
       example:
-        code: 1175
-        message: No business found with the given id
-    2094Model:
+        code: 2084
+        message: Opeartor must be present for logics other than the first display logic
+    2087Model:
       type: object
       properties:
         code:
@@ -787,9 +781,9 @@ components:
         message:
           type: string
       example:
-        code: 2094
-        message: ReviewSources passed are invalid
-    2088Model:
+        code: 2087
+        message: Duplicate contact sub type question is present
+    2042Model:
       type: object
       properties:
         code:
@@ -797,9 +791,9 @@ components:
         message:
           type: string
       example:
-        code: 2088
-        message: Review Source already present
-    2061Model:
+        code: 2042
+        message: Received no valid inputs in request body!
+    2050Model:
       type: object
       properties:
         code:
@@ -807,9 +801,9 @@ components:
         message:
           type: string
       example:
-        code: 2061
-        message: Pickone type of survey can only contain pickone type questions
-    2057Model:
+        code: 2050
+        message: More than one location question cannot be present
+    2059Model:
       type: object
       properties:
         code:
@@ -817,9 +811,9 @@ components:
         message:
           type: string
       example:
-        code: 2057
-        message: Either one of Min and Max values is missing in datetime type question
-    2044Model:
+        code: 2059
+        message: Invalid type of contact question
+    2060Model:
       type: object
       properties:
         code:
@@ -827,9 +821,9 @@ components:
         message:
           type: string
       example:
-        code: 2044
-        message: Survey already completed
-    2062Model:
+        code: 2060
+        message: reviewSources are not present for review type question
+    2054Model:
       type: object
       properties:
         code:
@@ -837,18 +831,8 @@ components:
         message:
           type: string
       example:
-        code: 2062
-        message: Traditional type survey cannot contain these type questions
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
+        code: 2054
+        message: Min Value out of range
     Apiary_updateSurveySettings_Request:
       type: object
       properties:
@@ -948,7 +932,7 @@ components:
             delete: true
           surveyAccess:
             role: editor
-    2080Model:
+    1175Model:
       type: object
       properties:
         code:
@@ -956,9 +940,9 @@ components:
         message:
           type: string
       example:
-        code: 2080
-        message: Display Logic Invalid!
-    2092Model:
+        code: 1175
+        message: No business found with the given id
+    2096Model:
       type: object
       properties:
         code:
@@ -966,248 +950,8 @@ components:
         message:
           type: string
       example:
-        code: 2092
-        message: Invalid Logic!
-    2069Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2069
-        message: surveyName is Mandatory
-    2042Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2042
-        message: Received no valid inputs in request body!
-    2095Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2095
-        message: ownerEmailId cannot be null
-    2083Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2083
-        message: Source is not integrated with the business
-    2065Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2065
-        message: There cannot be more than 3 sourceIds for review question
-    2038Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2038
-        message: Invalid value of role, expected editor, viewer or no-access
-    2090Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2090
-        message: Invalid value of showLogo, accepted values are ON, OFF
-    2072Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2072
-        message: Choice cannot be a blank string
-    2041Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2041
-        message: Can't modify owner or existing owner's access!
-    2074Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2074
-        message: Cannot contain a logic
-    2071Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2071
-        message: Invalid ownerEmailId
-    2060Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2060
-        message: reviewSources are not present for review type question
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    2073Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2073
-        message: Logic type is Invalid!
-    2058Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2058
-        message: LocationIds are not present
-    2066Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2066
-        message: BusinessIds passed in the location type question are invalid
-    2053Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2053
-        message: Contact Fields are not present
-    2068Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2068
-        message: The locationIds are Non-Parseable
-    2045Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2045
-        message: Invalid Survey Type
-    2037Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2037
-        message: The survey doesn't belong to the account.
-    2081Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2081
-        message: Skip Logic Invalid!
-    2084Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2084
-        message: Opeartor must be present for logics other than the first display logic
-    2079Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2079
-        message: Only one Skip logic is allowed for text and textarea type questions
-    2050Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2050
-        message: More than one location question cannot be present
+        code: 2096
+        message: Detected conflicting user-access request!
     1380Model:
       type: object
       properties:
@@ -1218,6 +962,262 @@ components:
       example:
         code: 1380
         message: Api key or session token missing
+    2048Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2048
+        message: Field Rows Missing
+    2091Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2091
+        message: Operator Invalid
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    2068Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2068
+        message: The locationIds are Non-Parseable
+    2058Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2058
+        message: LocationIds are not present
+    2083Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2083
+        message: Source is not integrated with the business
+    2064Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2064
+        message: First page of the survey must contain atleast one question except review question
+    2053Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2053
+        message: Contact Fields are not present
+    2037Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2037
+        message: The survey doesn't belong to the account.
+    2080Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2080
+        message: Display Logic Invalid!
+    Apiary_getAllSurveys_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          surveyId:
+            type: number
+            description: Survey Id.
+          name:
+            type: string
+            description: Survey Name.
+          status:
+            type: string
+            description: Survey status.
+          created:
+            type: number
+            description: Survey created date in epoc.
+          lastModified:
+            type: number
+            description: Survey last modified date in epoc
+          responses:
+            type: number
+            description: Number of survey responses.
+          questionCount:
+            type: number
+            description: Number of questions.
+    2055Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2055
+        message: Max Value out of range
+    2039Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2039
+        message: User email is missing in user access request!
+    2074Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2074
+        message: Cannot contain a logic
+    2067Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2067
+        message: One of the locations passed in the request is not present
+    2052Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2052
+        message: Review question should be present in the last page of the survey as a single question
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    2093Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2093
+        message: Survey Field Type passed is unknown
+    2045Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2045
+        message: Invalid Survey Type
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    2040Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2040
+        message: Invalid value of progress bar position, expected Bottom or Top
+    2092Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2092
+        message: Invalid Logic!
+    2094Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2094
+        message: ReviewSources passed are invalid
+    2072Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2072
+        message: Choice cannot be a blank string
   securitySchemes:
     apiKey:
       type: apiKey

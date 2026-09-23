@@ -179,6 +179,26 @@ components:
         reviewCount:
           type: number
           description: The total number of reviews for this competitor location on this specific source
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
     1167Model:
       type: object
       properties:
@@ -189,16 +209,6 @@ components:
       example:
         code: 1167
         message: API key is missing
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
     Apiary_retrieveCompetitorReviews_Response200:
       type: object
       properties:
@@ -250,7 +260,7 @@ components:
         reply:
           type: string
           description: The business owner's response to the review (if any)
-    1161Model:
+    1011Model:
       type: object
       properties:
         code:
@@ -258,18 +268,8 @@ components:
         message:
           type: string
       example:
-        code: 1161
-        message: Invalid API key
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
+        code: 1011
+        message: Business id is invalid
   securitySchemes:
     apiKey:
       type: apiKey

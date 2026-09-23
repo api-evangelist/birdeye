@@ -607,46 +607,6 @@ paths:
     - url: https://api.birdeye.com/resources
 components:
   schemas:
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
-    Apiary_uploadSocialMedia_Request:
-      type: object
-      properties:
-        media_urls:
-          type: array
-          description: List of publicly accessible image or video URLs. Maximum 50 items. Supported image extensions — .jpg, .jpeg, .png, .gif, .webp. Supported video extensions — .mp4, .mov, .avi, .mkv, .webm, .wmv.
-          maxItems: 50
-          items:
-            type: string
-        folder_id:
-          type: integer
-          description: Optional media library folder ID to organize uploaded assets. If omitted, assets are placed in the default media library location.
-      required:
-      - media_urls
-      example:
-        media_urls:
-        - https://example.com/video.mp4
-    Apiary_uploadSocialMedia_Response200:
-      type: object
-      properties:
-        batch_id:
-          type: string
-          format: uuid
-          description: Use this to poll the Track Upload Status endpoint for processing results.
-        accepted_count:
-          type: integer
-          description: Number of URLs accepted into the batch.
-      example:
-        batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
-        accepted_count: 1
     2177Model:
       type: object
       properties:
@@ -715,6 +675,267 @@ components:
         additionalMetaData:
           callToActionType: LEARN_MORE
           callToActionUrl: https://app.birdeye.com/
+    Apiary_editPublishedSocialPost_Request:
+      type: object
+      properties:
+        trackingId:
+          type: string
+          description: Tracking id received when post was created through public api.
+        text:
+          type: string
+          description: Text to be updated for the post. Limits of characters across various Social Sites
+        socialSite:
+          type: string
+          description: The social site where the post will be edited. Possible values are
+          properties:
+            Error message: {}
+        subBusinessNumbers:
+          type: array
+          description: List of location ids for which this post should be edited. If list contains a location which is not part of the post, then no action will be taken for that location.
+          items: {}
+      required:
+      - trackingId
+      - text
+      - socialSite
+      - subBusinessNumbers
+      example:
+        trackingId: 4ece211b82162d1101d2d82a24876a92
+        text: Check out the latest collection
+        socialSite: GOOGLEMYBUSINESS
+        subBusinessNumbers:
+        - 123456780
+        - 123456781
+    Apiary_trackSocialPost_Response200:
+      type: object
+      properties:
+        trackingId:
+          type: string
+          description: The tracking ID of the scheduled or posted social post.
+        accountNumber:
+          type: string
+          description: The account ID associated with the post.
+        socialSite:
+          type: string
+          description: Social Sites. Possible values are
+        subBusinessNumbers:
+          type: array
+          description: List of Location Ids. Optional for SMB.
+          items: {}
+        socialPostDetails:
+          type: array
+          description: An array of objects containing post details, including status, location name, and published timestamp.
+          items:
+            type: object
+            properties:
+              locationName:
+                type: string
+                description: The name of the location where the post was published.
+              locationNumber:
+                type: string
+                description: The ID of the location where the post was published.
+              status:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: 'Post status. Possible values:'
+                  failureReason:
+                    type: string
+                    description: Failure reason if any.
+                description: Post status details.
+              publishedTimestamp:
+                type: number
+                description: The Unix timestamp (in milliseconds) when the post was published.
+              socialSitePostId:
+                type: string
+                description: Social site post id.
+              socialSitePostUrl:
+                type: string
+                description: Social site post link.
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    Apiary_socialOpenUrlPerformanceReport_Request:
+      type: object
+      properties:
+        startDate:
+          type: string
+          description: Start date in `MM/dd/YYYY` format.
+        endDate:
+          type: string
+          description: End date in `MM/dd/YYYY` format.
+        sourceNames:
+          type: array
+          description: List of social channels to include in the report.
+          items: {}
+        businessNumbers:
+          description: List of business numbers to filter the report. If empty, all accessible business numbers are considered.
+          type: array
+          items: {}
+        comparisonFilter:
+          type: object
+          properties:
+            startDate:
+              type: string
+              description: Comparison start date in `MM/dd/YYYY` format.
+            endDate:
+              type: string
+              description: Comparison end date in `MM/dd/YYYY` format.
+          description: Comparison date range.
+        page:
+          type: number
+          description: Page number for location-level data points.
+        size:
+          type: number
+          description: Number of records per page.
+      required:
+      - startDate
+      - endDate
+      example:
+        startDate: 02/03/2021
+        endDate: 02/10/2026
+        sourceNames:
+        - Instagram
+        - Tiktok
+        - Facebook
+        - Linkedin
+        businessNumbers: []
+        comparisonFilter:
+          startDate: 01/01/2020
+          endDate: 01/10/2020
+        page: 1
+        size: 50
+    Apiary_uploadSocialMedia_Request:
+      type: object
+      properties:
+        media_urls:
+          type: array
+          description: List of publicly accessible image or video URLs. Maximum 50 items. Supported image extensions — .jpg, .jpeg, .png, .gif, .webp. Supported video extensions — .mp4, .mov, .avi, .mkv, .webm, .wmv.
+          maxItems: 50
+          items:
+            type: string
+        folder_id:
+          type: integer
+          description: Optional media library folder ID to organize uploaded assets. If omitted, assets are placed in the default media library location.
+      required:
+      - media_urls
+      example:
+        media_urls:
+        - https://example.com/video.mp4
+    Apiary_uploadSocialMedia_Response200:
+      type: object
+      properties:
+        batch_id:
+          type: string
+          format: uuid
+          description: Use this to poll the Track Upload Status endpoint for processing results.
+        accepted_count:
+          type: integer
+          description: Number of URLs accepted into the batch.
+      example:
+        batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+        accepted_count: 1
+    5556Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5556
+        message: One or few BusinessIds are Invalid
+    5557Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5557
+        message: Requested Business Ids are empty.
+    Apiary_editScheduledSocialPost_Request:
+      type: object
+      properties:
+        trackingId:
+          type: string
+          description: Tracking id received when post was created through public api.
+        text:
+          type: string
+          description: Input text that will be added in the post. Limits of characters across various Social Sites
+        socialSite:
+          type: string
+          description: The social site where the post will be edited. Possible values are
+          properties:
+            Error message: {}
+        subBusinessNumbers:
+          type: array
+          description: List of location ids for which this post should be edited.
+          items: {}
+        scheduleTimestamp:
+          type: number
+          description: A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will have same schedule time as the original one.
+        media:
+          type: object
+          properties:
+            type:
+              type: string
+              description: An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
+            mediaUrl:
+              type: string
+              description: Media Link.
+            Error message:
+              type: string
+          description: Media details.
+        additionalMetaData:
+          type: object
+          properties:
+            callToActionType:
+              type: string
+              description: Type of data.
+            callToActionUrl:
+              type: string
+              description: Link of the additional data(Not required when CTA type is CALL).
+          description: Additional metadata for the post, including a call to action (CTA). Applicable only for GOOGLEMYBUSINESS.
+      required:
+      - trackingId
+      - text
+      - socialSite
+      - subBusinessNumbers
+      example:
+        trackingId: 4ece211b82162d1101d2d82a24876a92
+        text: Check out the latest collection
+        socialSite: GOOGLEMYBUSINESS
+        subBusinessNumbers:
+        - 123456780
+        - 123456781
+        scheduleTimestamp: 1677759962528
+        media:
+        - type: IMAGE
+          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
+        - type: IMAGE
+          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
+        additionalMetaData:
+          callToActionType: LEARN_MORE
+          callToActionUrl: https://app.birdeye.com/
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
     Apiary_trackSocialMediaUpload_Response200:
       type: object
       properties:
@@ -778,6 +999,26 @@ components:
           status: SUCCESS
           asset_id: 3457963
           cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
     Apiary_socialOpenUrlPerformanceReport_Response200:
       type: object
       properties:
@@ -892,247 +1133,6 @@ components:
                     type: object
                     description: Channel-level social metrics for the location.
                 description: Comparison period metrics for the same location.
-    Apiary_trackSocialPost_Response200:
-      type: object
-      properties:
-        trackingId:
-          type: string
-          description: The tracking ID of the scheduled or posted social post.
-        accountNumber:
-          type: string
-          description: The account ID associated with the post.
-        socialSite:
-          type: string
-          description: Social Sites. Possible values are
-        subBusinessNumbers:
-          type: array
-          description: List of Location Ids. Optional for SMB.
-          items: {}
-        socialPostDetails:
-          type: array
-          description: An array of objects containing post details, including status, location name, and published timestamp.
-          items:
-            type: object
-            properties:
-              locationName:
-                type: string
-                description: The name of the location where the post was published.
-              locationNumber:
-                type: string
-                description: The ID of the location where the post was published.
-              status:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    description: 'Post status. Possible values:'
-                  failureReason:
-                    type: string
-                    description: Failure reason if any.
-                description: Post status details.
-              publishedTimestamp:
-                type: number
-                description: The Unix timestamp (in milliseconds) when the post was published.
-              socialSitePostId:
-                type: string
-                description: Social site post id.
-              socialSitePostUrl:
-                type: string
-                description: Social site post link.
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    5557Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5557
-        message: Requested Business Ids are empty.
-    Apiary_socialOpenUrlPerformanceReport_Request:
-      type: object
-      properties:
-        startDate:
-          type: string
-          description: Start date in `MM/dd/YYYY` format.
-        endDate:
-          type: string
-          description: End date in `MM/dd/YYYY` format.
-        sourceNames:
-          type: array
-          description: List of social channels to include in the report.
-          items: {}
-        businessNumbers:
-          description: List of business numbers to filter the report. If empty, all accessible business numbers are considered.
-          type: array
-          items: {}
-        comparisonFilter:
-          type: object
-          properties:
-            startDate:
-              type: string
-              description: Comparison start date in `MM/dd/YYYY` format.
-            endDate:
-              type: string
-              description: Comparison end date in `MM/dd/YYYY` format.
-          description: Comparison date range.
-        page:
-          type: number
-          description: Page number for location-level data points.
-        size:
-          type: number
-          description: Number of records per page.
-      required:
-      - startDate
-      - endDate
-      example:
-        startDate: 02/03/2021
-        endDate: 02/10/2026
-        sourceNames:
-        - Instagram
-        - Tiktok
-        - Facebook
-        - Linkedin
-        businessNumbers: []
-        comparisonFilter:
-          startDate: 01/01/2020
-          endDate: 01/10/2020
-        page: 1
-        size: 50
-    Apiary_editScheduledSocialPost_Request:
-      type: object
-      properties:
-        trackingId:
-          type: string
-          description: Tracking id received when post was created through public api.
-        text:
-          type: string
-          description: Input text that will be added in the post. Limits of characters across various Social Sites
-        socialSite:
-          type: string
-          description: The social site where the post will be edited. Possible values are
-          properties:
-            Error message: {}
-        subBusinessNumbers:
-          type: array
-          description: List of location ids for which this post should be edited.
-          items: {}
-        scheduleTimestamp:
-          type: number
-          description: A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will have same schedule time as the original one.
-        media:
-          type: object
-          properties:
-            type:
-              type: string
-              description: An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
-            mediaUrl:
-              type: string
-              description: Media Link.
-            Error message:
-              type: string
-          description: Media details.
-        additionalMetaData:
-          type: object
-          properties:
-            callToActionType:
-              type: string
-              description: Type of data.
-            callToActionUrl:
-              type: string
-              description: Link of the additional data(Not required when CTA type is CALL).
-          description: Additional metadata for the post, including a call to action (CTA). Applicable only for GOOGLEMYBUSINESS.
-      required:
-      - trackingId
-      - text
-      - socialSite
-      - subBusinessNumbers
-      example:
-        trackingId: 4ece211b82162d1101d2d82a24876a92
-        text: Check out the latest collection
-        socialSite: GOOGLEMYBUSINESS
-        subBusinessNumbers:
-        - 123456780
-        - 123456781
-        scheduleTimestamp: 1677759962528
-        media:
-        - type: IMAGE
-          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
-        - type: IMAGE
-          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
-        additionalMetaData:
-          callToActionType: LEARN_MORE
-          callToActionUrl: https://app.birdeye.com/
-    5556Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5556
-        message: One or few BusinessIds are Invalid
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    Apiary_editPublishedSocialPost_Request:
-      type: object
-      properties:
-        trackingId:
-          type: string
-          description: Tracking id received when post was created through public api.
-        text:
-          type: string
-          description: Text to be updated for the post. Limits of characters across various Social Sites
-        socialSite:
-          type: string
-          description: The social site where the post will be edited. Possible values are
-          properties:
-            Error message: {}
-        subBusinessNumbers:
-          type: array
-          description: List of location ids for which this post should be edited. If list contains a location which is not part of the post, then no action will be taken for that location.
-          items: {}
-      required:
-      - trackingId
-      - text
-      - socialSite
-      - subBusinessNumbers
-      example:
-        trackingId: 4ece211b82162d1101d2d82a24876a92
-        text: Check out the latest collection
-        socialSite: GOOGLEMYBUSINESS
-        subBusinessNumbers:
-        - 123456780
-        - 123456781
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey

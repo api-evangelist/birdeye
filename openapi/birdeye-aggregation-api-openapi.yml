@@ -150,31 +150,6 @@ paths:
       description: Production
 components:
   schemas:
-    Apiary_addNewCompetitorAggregationUrl_Request:
-      type: object
-      properties:
-        sourceAlias:
-          type: string
-          description: Source alias.
-        url:
-          type: string
-          description: Source url to be added.
-      required:
-      - sourceAlias
-      - url
-      example:
-        sourceAlias: 'citysearch '
-        url: http://www.citysearch.com/biz/maria-da-vittorio-san-francisco
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
     1032Model:
       type: object
       properties:
@@ -185,26 +160,6 @@ components:
       example:
         code: 1032
         message: Invalid source id
-    1031Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1031
-        message: Source id cannot be blank
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
     1033Model:
       type: object
       properties:
@@ -215,64 +170,6 @@ components:
       example:
         code: 1033
         message: You are not authorized to perform this action
-    1175Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1175
-        message: No business found with the given id
-    Apiary_addAggregationUrl_Response200:
-      type: object
-      properties:
-        id:
-          type: number
-          description: Id of the created Aggregation.
-        sourceAlias:
-          type: string
-          description: Alias of the source.
-        sourceName:
-          type: string
-          description: Name of the source.
-        sourceUrl:
-          type: string
-          description: Url of the souce.
-        Body:
-          type: string
-          description: "{\n    \"id\": \"237030543\",\n    \"sourceAlias\": \"citysearch\",\n    \"sourceName\": \"Citysearch\",\n    \"sourceUrl\": \"http://www.citysearch.com/biz/maria-da-vittorio-san-francisco\"\n}"
-    1039Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1039
-        message: Invalid business aggregation id
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    1030Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1030
-        message: URL cannot be blank
     Apiary_getAllAggregationSource_Response200:
       type: array
       items:
@@ -303,6 +200,109 @@ components:
       example:
         code: 89
         message: Rate limit exceeded
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1030Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1030
+        message: URL cannot be blank
+    1039Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1039
+        message: Invalid business aggregation id
+    Apiary_addNewCompetitorAggregationUrl_Request:
+      type: object
+      properties:
+        sourceAlias:
+          type: string
+          description: Source alias.
+        url:
+          type: string
+          description: Source url to be added.
+      required:
+      - sourceAlias
+      - url
+      example:
+        sourceAlias: 'citysearch '
+        url: http://www.citysearch.com/biz/maria-da-vittorio-san-francisco
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    Apiary_addAggregationUrl_Response200:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Id of the created Aggregation.
+        sourceAlias:
+          type: string
+          description: Alias of the source.
+        sourceName:
+          type: string
+          description: Name of the source.
+        sourceUrl:
+          type: string
+          description: Url of the souce.
+        Body:
+          type: string
+          description: "{\n    \"id\": \"237030543\",\n    \"sourceAlias\": \"citysearch\",\n    \"sourceName\": \"Citysearch\",\n    \"sourceUrl\": \"http://www.citysearch.com/biz/maria-da-vittorio-san-francisco\"\n}"
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1031Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1031
+        message: Source id cannot be blank
   requestBodies:
     Add_aggregation_URLBody:
       content:

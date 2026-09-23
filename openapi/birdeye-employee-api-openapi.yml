@@ -42,7 +42,7 @@ paths:
       description: Production
 components:
   schemas:
-    1167Model:
+    89Model:
       type: object
       properties:
         code:
@@ -50,18 +50,8 @@ components:
         message:
           type: string
       example:
-        code: 1167
-        message: API key is missing
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
+        code: 89
+        message: Rate limit exceeded
     Apiary_getDetailsOfEmployees_Response200:
       type: array
       items:
@@ -92,7 +82,7 @@ components:
       example:
         code: 1161
         message: Invalid API key
-    89Model:
+    1167Model:
       type: object
       properties:
         code:
@@ -100,8 +90,18 @@ components:
         message:
           type: string
       example:
-        code: 89
-        message: Rate limit exceeded
+        code: 1167
+        message: API key is missing
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
   securitySchemes:
     apiKey:
       type: apiKey
