@@ -607,7 +607,7 @@ paths:
     - url: https://api.birdeye.com/resources
 components:
   schemas:
-    2177Model:
+    5557Model:
       type: object
       properties:
         code:
@@ -615,153 +615,71 @@ components:
         message:
           type: string
       example:
-        code: 400
-        message: Invalid media id
-    Apiary_scheduleSocialPost_Request:
+        code: 5557
+        message: Requested Business Ids are empty.
+    Apiary_trackSocialMediaUpload_Response200:
       type: object
       properties:
-        text:
+        batch_id:
           type: string
-          description: Input text that will be added in the post. Limits of characters across various Social Sites
-        socialSite:
+          format: uuid
+          description: Identifier for the batch.
+        status:
           type: string
-          description: The social site where the post will be made. Possible values are
-          properties:
-            Error message: {}
-        subBusinessNumbers:
+          description: 'Overall batch status. Possible values: COMPLETED (all items processed successfully), PARTIALLY_COMPLETED (some succeeded, some failed), FAILED (all items failed), PENDING (processing still in progress — poll again).'
+          enum:
+          - COMPLETED
+          - PARTIALLY_COMPLETED
+          - FAILED
+          - PENDING
+        accepted_count:
+          type: integer
+          description: Total number of URLs submitted in the batch.
+        success_count:
+          type: integer
+          description: Number of successfully uploaded items.
+        failed_count:
+          type: integer
+          description: Number of failed items.
+        pending_count:
+          type: integer
+          description: Number of items still processing. Poll again if greater than 0.
+        items:
           type: array
-          description: List of Location Ids. Optional for SMB.
-          items: {}
-        scheduleTimestamp:
-          type: number
-          description: A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will be published after 5 minutes of posting.
-        media:
-          type: object
-          properties:
-            type:
-              type: string
-              description: An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
-            mediaUrl:
-              type: string
-              description: Media Link.
-            Error message:
-              type: string
-          description: Media details.
-        additionalMetaData:
-          type: object
-          properties:
-            callToActionType:
-              type: string
-              description: Type of data.
-            callToActionUrl:
-              type: string
-              description: Link of the additional data(Not required when CTA type is CALL).
-          description: Additional metadata for the post, including a call to action (CTA). Applicable only for GOOGLEMYBUSINESS.
-      required:
-      - text
-      - socialSite
-      example:
-        text: Check out the latest collection
-        socialSite: GOOGLEMYBUSINESS
-        subBusinessNumbers:
-        - 123456780
-        - 123456781
-        scheduleTimestamp: 1677759962528
-        media:
-        - type: IMAGE
-          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
-        - type: IMAGE
-          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
-        additionalMetaData:
-          callToActionType: LEARN_MORE
-          callToActionUrl: https://app.birdeye.com/
-    Apiary_editPublishedSocialPost_Request:
-      type: object
-      properties:
-        trackingId:
-          type: string
-          description: Tracking id received when post was created through public api.
-        text:
-          type: string
-          description: Text to be updated for the post. Limits of characters across various Social Sites
-        socialSite:
-          type: string
-          description: The social site where the post will be edited. Possible values are
-          properties:
-            Error message: {}
-        subBusinessNumbers:
-          type: array
-          description: List of location ids for which this post should be edited. If list contains a location which is not part of the post, then no action will be taken for that location.
-          items: {}
-      required:
-      - trackingId
-      - text
-      - socialSite
-      - subBusinessNumbers
-      example:
-        trackingId: 4ece211b82162d1101d2d82a24876a92
-        text: Check out the latest collection
-        socialSite: GOOGLEMYBUSINESS
-        subBusinessNumbers:
-        - 123456780
-        - 123456781
-    Apiary_trackSocialPost_Response200:
-      type: object
-      properties:
-        trackingId:
-          type: string
-          description: The tracking ID of the scheduled or posted social post.
-        accountNumber:
-          type: string
-          description: The account ID associated with the post.
-        socialSite:
-          type: string
-          description: Social Sites. Possible values are
-        subBusinessNumbers:
-          type: array
-          description: List of Location Ids. Optional for SMB.
-          items: {}
-        socialPostDetails:
-          type: array
-          description: An array of objects containing post details, including status, location name, and published timestamp.
+          description: Per-item processing results.
           items:
             type: object
             properties:
-              locationName:
+              source_url:
                 type: string
-                description: The name of the location where the post was published.
-              locationNumber:
-                type: string
-                description: The ID of the location where the post was published.
+                description: The original URL submitted.
               status:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    description: 'Post status. Possible values:'
-                  failureReason:
-                    type: string
-                    description: Failure reason if any.
-                description: Post status details.
-              publishedTimestamp:
-                type: number
-                description: The Unix timestamp (in milliseconds) when the post was published.
-              socialSitePostId:
                 type: string
-                description: Social site post id.
-              socialSitePostUrl:
+                description: Item-level status. Possible values — SUCCESS or FAILED.
+                enum:
+                - SUCCESS
+                - FAILED
+              asset_id:
+                type: integer
+                description: Internal asset ID for use in post creation API. Present only on SUCCESS.
+              cdn_url:
                 type: string
-                description: Social site post link.
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
+                description: CDN-hosted URL of the uploaded media. Present only on SUCCESS.
+              failure_reason:
+                type: string
+                description: Human-readable reason for failure. Present only on FAILED.
       example:
-        code: 89
-        message: Rate limit exceeded
+        batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+        status: COMPLETED
+        accepted_count: 1
+        success_count: 1
+        failed_count: 0
+        pending_count: 0
+        items:
+        - source_url: https://example.com/video.mp4
+          status: SUCCESS
+          asset_id: 3457963
+          cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
     Apiary_socialOpenUrlPerformanceReport_Request:
       type: object
       properties:
@@ -812,6 +730,36 @@ components:
           endDate: 01/10/2020
         page: 1
         size: 50
+    Apiary_editPublishedSocialPost_Request:
+      type: object
+      properties:
+        trackingId:
+          type: string
+          description: Tracking id received when post was created through public api.
+        text:
+          type: string
+          description: Text to be updated for the post. Limits of characters across various Social Sites
+        socialSite:
+          type: string
+          description: The social site where the post will be edited. Possible values are
+          properties:
+            Error message: {}
+        subBusinessNumbers:
+          type: array
+          description: List of location ids for which this post should be edited. If list contains a location which is not part of the post, then no action will be taken for that location.
+          items: {}
+      required:
+      - trackingId
+      - text
+      - socialSite
+      - subBusinessNumbers
+      example:
+        trackingId: 4ece211b82162d1101d2d82a24876a92
+        text: Check out the latest collection
+        socialSite: GOOGLEMYBUSINESS
+        subBusinessNumbers:
+        - 123456780
+        - 123456781
     Apiary_uploadSocialMedia_Request:
       type: object
       properties:
@@ -829,19 +777,36 @@ components:
       example:
         media_urls:
         - https://example.com/video.mp4
-    Apiary_uploadSocialMedia_Response200:
+    1011Model:
       type: object
       properties:
-        batch_id:
+        code:
+          type: number
+        message:
           type: string
-          format: uuid
-          description: Use this to poll the Track Upload Status endpoint for processing results.
-        accepted_count:
-          type: integer
-          description: Number of URLs accepted into the batch.
       example:
-        batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
-        accepted_count: 1
+        code: 1011
+        message: Business id is invalid
+    2177Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Invalid media id
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
     5556Model:
       type: object
       properties:
@@ -852,7 +817,7 @@ components:
       example:
         code: 5556
         message: One or few BusinessIds are Invalid
-    5557Model:
+    1167Model:
       type: object
       properties:
         code:
@@ -860,8 +825,8 @@ components:
         message:
           type: string
       example:
-        code: 5557
-        message: Requested Business Ids are empty.
+        code: 1167
+        message: API key is missing
     Apiary_editScheduledSocialPost_Request:
       type: object
       properties:
@@ -926,99 +891,19 @@ components:
         additionalMetaData:
           callToActionType: LEARN_MORE
           callToActionUrl: https://app.birdeye.com/
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    Apiary_trackSocialMediaUpload_Response200:
+    Apiary_uploadSocialMedia_Response200:
       type: object
       properties:
         batch_id:
           type: string
           format: uuid
-          description: Identifier for the batch.
-        status:
-          type: string
-          description: 'Overall batch status. Possible values: COMPLETED (all items processed successfully), PARTIALLY_COMPLETED (some succeeded, some failed), FAILED (all items failed), PENDING (processing still in progress — poll again).'
-          enum:
-          - COMPLETED
-          - PARTIALLY_COMPLETED
-          - FAILED
-          - PENDING
+          description: Use this to poll the Track Upload Status endpoint for processing results.
         accepted_count:
           type: integer
-          description: Total number of URLs submitted in the batch.
-        success_count:
-          type: integer
-          description: Number of successfully uploaded items.
-        failed_count:
-          type: integer
-          description: Number of failed items.
-        pending_count:
-          type: integer
-          description: Number of items still processing. Poll again if greater than 0.
-        items:
-          type: array
-          description: Per-item processing results.
-          items:
-            type: object
-            properties:
-              source_url:
-                type: string
-                description: The original URL submitted.
-              status:
-                type: string
-                description: Item-level status. Possible values — SUCCESS or FAILED.
-                enum:
-                - SUCCESS
-                - FAILED
-              asset_id:
-                type: integer
-                description: Internal asset ID for use in post creation API. Present only on SUCCESS.
-              cdn_url:
-                type: string
-                description: CDN-hosted URL of the uploaded media. Present only on SUCCESS.
-              failure_reason:
-                type: string
-                description: Human-readable reason for failure. Present only on FAILED.
+          description: Number of URLs accepted into the batch.
       example:
         batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
-        status: COMPLETED
         accepted_count: 1
-        success_count: 1
-        failed_count: 0
-        pending_count: 0
-        items:
-        - source_url: https://example.com/video.mp4
-          status: SUCCESS
-          asset_id: 3457963
-          cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
     Apiary_socialOpenUrlPerformanceReport_Response200:
       type: object
       properties:
@@ -1133,6 +1018,121 @@ components:
                     type: object
                     description: Channel-level social metrics for the location.
                 description: Comparison period metrics for the same location.
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    Apiary_trackSocialPost_Response200:
+      type: object
+      properties:
+        trackingId:
+          type: string
+          description: The tracking ID of the scheduled or posted social post.
+        accountNumber:
+          type: string
+          description: The account ID associated with the post.
+        socialSite:
+          type: string
+          description: Social Sites. Possible values are
+        subBusinessNumbers:
+          type: array
+          description: List of Location Ids. Optional for SMB.
+          items: {}
+        socialPostDetails:
+          type: array
+          description: An array of objects containing post details, including status, location name, and published timestamp.
+          items:
+            type: object
+            properties:
+              locationName:
+                type: string
+                description: The name of the location where the post was published.
+              locationNumber:
+                type: string
+                description: The ID of the location where the post was published.
+              status:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: 'Post status. Possible values:'
+                  failureReason:
+                    type: string
+                    description: Failure reason if any.
+                description: Post status details.
+              publishedTimestamp:
+                type: number
+                description: The Unix timestamp (in milliseconds) when the post was published.
+              socialSitePostId:
+                type: string
+                description: Social site post id.
+              socialSitePostUrl:
+                type: string
+                description: Social site post link.
+    Apiary_scheduleSocialPost_Request:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Input text that will be added in the post. Limits of characters across various Social Sites
+        socialSite:
+          type: string
+          description: The social site where the post will be made. Possible values are
+          properties:
+            Error message: {}
+        subBusinessNumbers:
+          type: array
+          description: List of Location Ids. Optional for SMB.
+          items: {}
+        scheduleTimestamp:
+          type: number
+          description: A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will be published after 5 minutes of posting.
+        media:
+          type: object
+          properties:
+            type:
+              type: string
+              description: An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
+            mediaUrl:
+              type: string
+              description: Media Link.
+            Error message:
+              type: string
+          description: Media details.
+        additionalMetaData:
+          type: object
+          properties:
+            callToActionType:
+              type: string
+              description: Type of data.
+            callToActionUrl:
+              type: string
+              description: Link of the additional data(Not required when CTA type is CALL).
+          description: Additional metadata for the post, including a call to action (CTA). Applicable only for GOOGLEMYBUSINESS.
+      required:
+      - text
+      - socialSite
+      example:
+        text: Check out the latest collection
+        socialSite: GOOGLEMYBUSINESS
+        subBusinessNumbers:
+        - 123456780
+        - 123456781
+        scheduleTimestamp: 1677759962528
+        media:
+        - type: IMAGE
+          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
+        - type: IMAGE
+          mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png
+        additionalMetaData:
+          callToActionType: LEARN_MORE
+          callToActionUrl: https://app.birdeye.com/
   securitySchemes:
     apiKey:
       type: apiKey

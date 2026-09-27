@@ -42,7 +42,7 @@ paths:
       description: Production
 components:
   schemas:
-    89Model:
+    1011Model:
       type: object
       properties:
         code:
@@ -50,28 +50,8 @@ components:
         message:
           type: string
       example:
-        code: 89
-        message: Rate limit exceeded
-    Apiary_getDetailsOfEmployees_Response200:
-      type: array
-      items:
-        type: object
-        properties:
-          firstName:
-            type: string
-            description: First name of the employee.
-          lastName:
-            type: string
-            description: Last name of the employee.
-          emailId:
-            type: string
-            description: Email Id of the employee.
-          phone:
-            type: string
-            description: Phone number of the employee.
-          imageUrl:
-            type: string
-            description: Image URL of the employee.
+        code: 1011
+        message: Business id is invalid
     1161Model:
       type: object
       properties:
@@ -92,7 +72,27 @@ components:
       example:
         code: 1167
         message: API key is missing
-    1011Model:
+    Apiary_getDetailsOfEmployees_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          firstName:
+            type: string
+            description: First name of the employee.
+          lastName:
+            type: string
+            description: Last name of the employee.
+          emailId:
+            type: string
+            description: Email Id of the employee.
+          phone:
+            type: string
+            description: Phone number of the employee.
+          imageUrl:
+            type: string
+            description: Image URL of the employee.
+    89Model:
       type: object
       properties:
         code:
@@ -100,8 +100,8 @@ components:
         message:
           type: string
       example:
-        code: 1011
-        message: Business id is invalid
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey

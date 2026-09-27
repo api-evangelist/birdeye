@@ -397,7 +397,7 @@ paths:
       description: Production
 components:
   schemas:
-    2479Model:
+    2478Model:
       type: object
       properties:
         code:
@@ -405,18 +405,8 @@ components:
         message:
           type: string
       example:
-        code: 2479
-        message: Answer is required
-    2466Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2466
-        message: Invalid input request
+        code: 2478
+        message: Question is required
     Apiary_getAllUnansweredQuestionsAndAnswers_Response200:
       type: object
       properties:
@@ -490,7 +480,7 @@ components:
                     type: string
                     description: url link to google profile photo of author
                 description: Answers details
-    2485Model:
+    2482Model:
       type: object
       properties:
         code:
@@ -498,28 +488,8 @@ components:
         message:
           type: string
       example:
-        code: 2485
-        message: Questions should be 10 characters minimum
-    2480Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2480
-        message: Cannot modify non owner Q&A
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
+        code: 2482
+        message: Question Id is Invalid
     2483Model:
       type: object
       properties:
@@ -530,7 +500,7 @@ components:
       example:
         code: 2483
         message: Question should have minimum 3 words
-    2462Model:
+    2479Model:
       type: object
       properties:
         code:
@@ -538,8 +508,18 @@ components:
         message:
           type: string
       example:
-        code: 2462
-        message: Owner answer already added please edit answer
+        code: 2479
+        message: Answer is required
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
     1161Model:
       type: object
       properties:
@@ -550,7 +530,7 @@ components:
       example:
         code: 1161
         message: Invalid API key
-    2478Model:
+    2480Model:
       type: object
       properties:
         code:
@@ -558,8 +538,18 @@ components:
         message:
           type: string
       example:
-        code: 2478
-        message: Question is required
+        code: 2480
+        message: Cannot modify non owner Q&A
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
     Apiary_getAllQuestionsAndAnswers_Response200:
       type: object
       properties:
@@ -633,36 +623,6 @@ components:
                     type: string
                     description: url link to google profile photo of author
                 description: Answers details
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    2461Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2461
-        message: No question found with provided request
     2481Model:
       type: object
       properties:
@@ -673,7 +633,7 @@ components:
       example:
         code: 2481
         message: Q&A cannot be more than 4096 characters
-    2482Model:
+    2485Model:
       type: object
       properties:
         code:
@@ -681,8 +641,48 @@ components:
         message:
           type: string
       example:
-        code: 2482
-        message: Question Id is Invalid
+        code: 2485
+        message: Questions should be 10 characters minimum
+    2461Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2461
+        message: No question found with provided request
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    2462Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2462
+        message: Owner answer already added please edit answer
+    2466Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2466
+        message: Invalid input request
   requestBodies:
     Get_All_Questions_and_AnswersBody:
       content:

@@ -67,7 +67,7 @@ paths:
       description: Production
 components:
   schemas:
-    1246Model:
+    1011Model:
       type: object
       properties:
         code:
@@ -75,8 +75,8 @@ components:
         message:
           type: string
       example:
-        code: 1246
-        message: Customer email or phone number is required.
+        code: 1011
+        message: Business id is invalid
     Apiary_listConversations_Response200:
       type: object
       properties:
@@ -184,16 +184,6 @@ components:
         hasMore:
           type: boolean
           description: Indicates if there are more conversations.
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
     1161Model:
       type: object
       properties:
@@ -214,7 +204,7 @@ components:
       example:
         code: 1167
         message: API key is missing
-    1011Model:
+    89Model:
       type: object
       properties:
         code:
@@ -222,8 +212,18 @@ components:
         message:
           type: string
       example:
-        code: 1011
-        message: Business id is invalid
+        code: 89
+        message: Rate limit exceeded
+    1246Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1246
+        message: Customer email or phone number is required.
   securitySchemes:
     apiKey:
       type: apiKey

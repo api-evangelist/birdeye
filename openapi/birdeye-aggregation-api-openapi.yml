@@ -43,7 +43,7 @@ paths:
   /v1/survey/reviewsites-alias:
     get:
       summary: Get all aggregation source
-      operationId: get-all-aggregation-source
+      operationId: getV1SurveyReviewsitesAlias
       tags:
       - Aggregation
       parameters:
@@ -66,6 +66,8 @@ paths:
                   message: No business found with the given id
       security:
       - apiKey: []
+      x-operation-id-source: normalized
+      x-operation-id-original: get-all-aggregation-source
     servers:
     - url: https://api.birdeye.com
       description: Production
@@ -150,76 +152,24 @@ paths:
       description: Production
 components:
   schemas:
-    1032Model:
+    Apiary_addAggregationUrl_Response200:
       type: object
       properties:
-        code:
+        id:
           type: number
-        message:
+          description: Id of the created Aggregation.
+        sourceAlias:
           type: string
-      example:
-        code: 1032
-        message: Invalid source id
-    1033Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
+          description: Alias of the source.
+        sourceName:
           type: string
-      example:
-        code: 1033
-        message: You are not authorized to perform this action
-    Apiary_getAllAggregationSource_Response200:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: number
-            description: Id of aggregation.
-          sourceAlias:
-            type: string
-            description: Source alias.
-          sourceUrl:
-            type: string
-            description: Source url.
-          sourceName:
-            type: string
-            description: Source name.
-          status:
-            type: number
-            description: 'This field indicates the status of aggregation:'
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
+          description: Name of the source.
+        sourceUrl:
           type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    1175Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
+          description: Url of the souce.
+        Body:
           type: string
-      example:
-        code: 1175
-        message: No business found with the given id
-    1030Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1030
-        message: URL cannot be blank
+          description: "{\n    \"id\": \"237030543\",\n    \"sourceAlias\": \"citysearch\",\n    \"sourceName\": \"Citysearch\",\n    \"sourceUrl\": \"http://www.citysearch.com/biz/maria-da-vittorio-san-francisco\"\n}"
     1039Model:
       type: object
       properties:
@@ -230,6 +180,16 @@ components:
       example:
         code: 1039
         message: Invalid business aggregation id
+    1033Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1033
+        message: You are not authorized to perform this action
     Apiary_addNewCompetitorAggregationUrl_Request:
       type: object
       properties:
@@ -245,6 +205,26 @@ components:
       example:
         sourceAlias: 'citysearch '
         url: http://www.citysearch.com/biz/maria-da-vittorio-san-francisco
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1032Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1032
+        message: Invalid source id
     1161Model:
       type: object
       properties:
@@ -265,34 +245,6 @@ components:
       example:
         code: 1167
         message: API key is missing
-    Apiary_addAggregationUrl_Response200:
-      type: object
-      properties:
-        id:
-          type: number
-          description: Id of the created Aggregation.
-        sourceAlias:
-          type: string
-          description: Alias of the source.
-        sourceName:
-          type: string
-          description: Name of the source.
-        sourceUrl:
-          type: string
-          description: Url of the souce.
-        Body:
-          type: string
-          description: "{\n    \"id\": \"237030543\",\n    \"sourceAlias\": \"citysearch\",\n    \"sourceName\": \"Citysearch\",\n    \"sourceUrl\": \"http://www.citysearch.com/biz/maria-da-vittorio-san-francisco\"\n}"
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
     1031Model:
       type: object
       properties:
@@ -303,6 +255,56 @@ components:
       example:
         code: 1031
         message: Source id cannot be blank
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1030Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1030
+        message: URL cannot be blank
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    Apiary_getAllAggregationSource_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+            description: Id of aggregation.
+          sourceAlias:
+            type: string
+            description: Source alias.
+          sourceUrl:
+            type: string
+            description: Source url.
+          sourceName:
+            type: string
+            description: Source name.
+          status:
+            type: number
+            description: 'This field indicates the status of aggregation:'
   requestBodies:
     Add_aggregation_URLBody:
       content:

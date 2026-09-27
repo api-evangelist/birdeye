@@ -94,7 +94,7 @@ paths:
       description: Production
 components:
   schemas:
-    89Model:
+    1011Model:
       type: object
       properties:
         code:
@@ -102,8 +102,8 @@ components:
         message:
           type: string
       example:
-        code: 89
-        message: Rate limit exceeded
+        code: 1011
+        message: Business id is invalid
     1161Model:
       type: object
       properties:
@@ -114,16 +114,6 @@ components:
       example:
         code: 1161
         message: Invalid API key
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
     Apiary_createSubscription_Request:
       type: object
       properties:
@@ -155,7 +145,7 @@ components:
         auth:
           username: testUser
           password: userpassword
-    1011Model:
+    1167Model:
       type: object
       properties:
         code:
@@ -163,8 +153,18 @@ components:
         message:
           type: string
       example:
-        code: 1011
-        message: Business id is invalid
+        code: 1167
+        message: API key is missing
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey

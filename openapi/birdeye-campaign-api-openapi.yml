@@ -93,26 +93,6 @@ paths:
       description: Production
 components:
   schemas:
-    1040Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1040
-        message: Invalid temmplate id.
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
     1089Model:
       type: object
       properties:
@@ -123,6 +103,16 @@ components:
       example:
         code: 1089
         message: Customer id is invalid.
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
     1161Model:
       type: object
       properties:
@@ -143,7 +133,7 @@ components:
       example:
         code: 1315
         message: Invalid survey.
-    1011Model:
+    1040Model:
       type: object
       properties:
         code:
@@ -151,8 +141,18 @@ components:
         message:
           type: string
       example:
-        code: 1011
-        message: Business id is invalid
+        code: 1040
+        message: Invalid temmplate id.
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey

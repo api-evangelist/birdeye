@@ -62,26 +62,6 @@ components:
       example:
         code: 1033
         message: You are not authorized to perform this action
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    1175Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1175
-        message: No business found with the given id
     1161Model:
       type: object
       properties:
@@ -92,16 +72,6 @@ components:
       example:
         code: 1161
         message: Invalid API key
-    1422Model:
-      type: object
-      properties:
-        errorCode:
-          type: number
-        errorMessage:
-          type: string
-      example:
-        errorCode: 1422
-        errorMessage: Api call failed
     1167Model:
       type: object
       properties:
@@ -112,6 +82,36 @@ components:
       example:
         code: 1167
         message: API key is missing
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1422Model:
+      type: object
+      properties:
+        errorCode:
+          type: number
+        errorMessage:
+          type: string
+      example:
+        errorCode: 1422
+        errorMessage: Api call failed
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
   securitySchemes:
     apiKey:
       type: apiKey
