@@ -1326,382 +1326,6 @@ paths:
     - url: https://api.birdeye.com/resources
 components:
   schemas:
-    Apiary_retrieveMenuDetails_Response200:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: string
-            description: Unique identifier of the record
-          businessNumber:
-            type: number
-            description: Unique business ID
-          accountNumber:
-            type: number
-            description: Account ID associated with the business
-          menuDetails:
-            type: object
-            properties:
-              name:
-                type: string
-                description: Business display name
-              error:
-                type: string
-                description: Error details if retrieval failed
-              menus:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    cuisines:
-                      type: array
-                      items: {}
-                      description: List of cuisines served
-                    labels:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          displayName:
-                            type: string
-                          description:
-                            type: string
-                          languageCode:
-                            type: string
-                    sections:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          labels:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                displayName:
-                                  type: string
-                                description:
-                                  type: string
-                                languageCode:
-                                  type: string
-                          items:
-                            type: array
-                            items:
-                              type: object
-                              properties:
-                                labels:
-                                  type: array
-                                  items:
-                                    type: object
-                                    properties:
-                                      displayName:
-                                        type: string
-                                      description:
-                                        type: string
-                                      languageCode:
-                                        type: string
-                                attributes:
-                                  type: object
-                                  properties:
-                                    price:
-                                      type: object
-                                      properties:
-                                        currencyCode:
-                                          type: string
-                                        units:
-                                          type: number
-                                        nanos:
-                                          type: number
-                                    allergen:
-                                      type: array
-                                      items: {}
-                                    dietaryRestriction:
-                                      type: array
-                                      items: {}
-                                    nutritionFacts:
-                                      type: object
-                                      properties:
-                                        calories:
-                                          type: number
-                                        fatContent:
-                                          type: string
-                                        proteinContent:
-                                          type: string
-                                        carbohydrateContent:
-                                          type: string
-                                    ingredients:
-                                      type: array
-                                      items:
-                                        type: object
-                                        properties:
-                                          name:
-                                            type: string
-                                    servesNumPeople:
-                                      type: number
-                                    preparationMethods:
-                                      type: array
-                                      items: {}
-                                    portionSize:
-                                      type: object
-                                      properties:
-                                        amount:
-                                          type: number
-                                        unit:
-                                          type: string
-                                    mediaKeys:
-                                      type: array
-                                      items: {}
-                                options:
-                                  type: array
-                                  items:
-                                    type: object
-                                    properties:
-                                      labels:
-                                        type: array
-                                        items:
-                                          type: object
-                                          properties:
-                                            displayName:
-                                              type: string
-                                            description:
-                                              type: string
-                                            languageCode:
-                                              type: string
-                                      attributes:
-                                        type: object
-                                        properties:
-                                          price:
-                                            type: object
-                                            properties:
-                                              currencyCode:
-                                                type: string
-                                              units:
-                                                type: number
-                                              nanos:
-                                                type: number
-              businessNumber:
-                type: number
-              correlationId:
-                type: string
-                description: 456 (string)
-          createdAt:
-            type: string
-            description: Creation timestamp
-          updatedAt:
-            type: string
-            description: Last update timestamp
-          crmName:
-            type: string
-    2290Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2290
-        message: Food Takeout/Food Delivery not supported for gmb primary category
-    2522Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2286
-        message: Invalid whatsapp business link
-    2457Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2457
-        message: Invalid sortby value. Allowed values are 'frequency' or 'keyword'
-    2519Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2519
-        message: Third party categories change for opening soon business is not allowed.
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
-    Apiary_listingsInsights_Request:
-      type: object
-      properties:
-        businessNumbers:
-          type: array
-          description: Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
-          items: {}
-        startDate:
-          type: string
-          description: 'Start Date, Format: yyyy-MM-dd.'
-        endDate:
-          type: string
-          description: 'End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen.'
-        viewMode:
-          description: for mobile or desktop or both (if none is provided then data for both will be displayed) Example “Desktop”, ”Mobile”
-          type: array
-          items: {}
-      required:
-      - viewMode
-      example:
-        businessNumbers:
-        - 156387109031976
-        startDate: 2010-02-01
-        endDate: 2022-02-01
-        viewMode:
-        - Mobile
-        - Desktop
-    2517Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2517
-        message: Opening Soon date should not be less than current date.
-    2518Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2518
-        message: Business Status is mandatory to pass with reopen, opened on and opening soon date.
-    3337Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2278
-        message: Primary GBP category is not allowed in additional GBP categories.
-    2513Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2513
-        message: Opened On date can not be in future.
-    Apiary_listingsInsightsDatapoints_Request:
-      type: object
-      properties:
-        businessNumbers:
-          type: array
-          description: Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
-          items: {}
-        startDate:
-          type: string
-          description: 'Start Date, Format: yyyy-MM-dd.'
-        endDate:
-          type: string
-          description: 'End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.'
-        viewMode:
-          description: is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
-          type: array
-          items: {}
-        groupByType:
-          type: string
-          description: Group the data accordingly. The default value will be the week. Possible values are
-      example:
-        businessNumbers:
-        - 156387109031976
-        startDate: 2010-02-01
-        endDate: 2022-02-01
-        groupByType: year
-        viewMode:
-        - Mobile
-        - Desktop
-    2516Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2516
-        message: Opening Soon Date can not be more than 1 year from now.
-    4013Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 400
-        message: Invalid country code
-    4014Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 400
-        message: Source name not found
-    Apiary_getGmbAttributes_Response200:
-      type: object
-      properties:
-        Accessibility:
-          type: array
-          items:
-            type: object
-            properties:
-              attributeId:
-                type: string
-                description: Attribute Id.
-              valueType:
-                type: string
-                description: Attribute value type.
-              displayName:
-                type: string
-                description: Attribute display name.
-              groupDisplayName:
-                type: string
-                description: Attribute group name.
-              valueMetadata:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    value:
-                      type: string
-                      description: Possible attribute value.
-                    displayName:
-                      type: string
-                      description: Attribute display name.
-                description: Contains the list of possible values for the attribute.
-          description: This is dynamic field. Depends upon request inputs.
     2296Model:
       type: object
       properties:
@@ -1712,7 +1336,7 @@ components:
       example:
         code: 2296
         message: Invalid Food Delivery link
-    1011Model:
+    4013Model:
       type: object
       properties:
         code:
@@ -1720,18 +1344,8 @@ components:
         message:
           type: string
       example:
-        code: 1011
-        message: Business id is invalid
-    2458Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2458
-        message: Invalid order value. Allowed values are 'asc' or 'desc'.
+        code: 400
+        message: Invalid country code
     2520Model:
       type: object
       properties:
@@ -1742,23 +1356,66 @@ components:
       example:
         code: 2520
         message: Open Date is not supported for this date
-    Apiary_listingsInsightsDatapoints_Response200:
-      type: array
-      items:
-        type: object
-        properties:
-          label:
-            type: string
-            description: The business counts data on a particular date.
-          wsiteVisitsCount:
-            type: number
-            description: The number of times the business profile website was clicked.
-          directionsCount:
-            type: number
-            description: The number of times a direction request was requested to the business location.
-          callsCount:
-            type: number
-            description: The number of times the business profile call button was clicked.
+    4014Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Source name not found
+    4015Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 400
+        message: Invalid Source Name
+    3334Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2503
+        message: Primary category can not be included in additional category.
+    3336Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2277
+        message: Duplicate GBP categories are not allowed.
+    2290Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2290
+        message: Food Takeout/Food Delivery not supported for gmb primary category
+    2515Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2515
+        message: Reopen date is not supported for this date.
     Apiary_updateListing_Request:
       type: object
       properties:
@@ -2573,188 +2230,39 @@ components:
           university: Sample text
           hospitalAffiliations: Sample text
           insurancesAccepted: Sample text
-    3333Model:
+    Apiary_getGmbAttributes_Response200:
       type: object
       properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1043
-        message: Business should be either SMB or Enterprise sub account
-    Apiary_getGoogleKeywordsCount_Response200:
-      type: object
-      properties:
-        data:
+        Accessibility:
           type: array
           items:
             type: object
             properties:
-              label:
+              attributeId:
                 type: string
-                description: Business/location name. Total, for sum of all locations keyword count
-              frequency:
+                description: Attribute Id.
+              valueType:
                 type: string
-                description: Keywords count
-          description: Returns business/location name along with its keywords count.
-    4012Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 400
-        message: Country code not found
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    2297Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2297
-        message: Invalid Food Takeout link
-    6001Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 6001
-        message: The 'sub_locality' field cannot exceed 80 characters.
-    2512Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2512
-        message: Cannot update opening soon date when listing is already fixed.
-    2511Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2511
-        message: Cannot update business status when listing is already fixed.
-    Apiary_getLocationStatusReport_Response200:
-      type: object
-      properties:
-        businessName:
-          type: string
-          description: Name of the Business/Location.
-        activationStatus:
-          type: string
-          example: active/demo/inactive
-          description: Activation Status of Business/Location
-        lastUpdated:
-          type: string
-          example: Mon Jun 10 09:49:30 GMT 2024
-          description: Last Updated Date of a Business/Location.
-        locationStatus:
-          type: string
-          example: Possible Values “Published”,“Scan State” or “Disabled“
-          description: Return the state of Business/Location.
-        totalSites:
-          type: number
-          example: 44
-          description: Total no. of Sites.
-        syncedCount:
-          type: number
-          example: 30
-          description: Total no. of Synced sites count.
-        submittedCount:
-          type: number
-          example: 13
-          description: Total no. of Submitted sites Count.
-        needUpdatesCount:
-          type: number
-          description: Total no. of Sites where Action is required.
-        optedOutCount:
-          type: number
-          description: Total no. of Opted out sites count.
-        notConnectedCount:
-          type: number
-          example: 1
-          description: Total no. of Not connected sites count.
-        syncedPercentage:
-          type: string
-          example: 68.18%
-          description: Total no. of Synced Sites Percentage.
-        submittedPercentage:
-          type: string
-          example: 29.55%
-          description: Total no. of Submitted Sites Percentage.
-        needUpdatesPercentage:
-          type: string
-          example: 0.00%
-          description: Total no. of Need Updates Sites Percentage.
-        optedOutPercentage:
-          type: string
-          example: 0.00%
-          description: Total no. of Opted out sites percentage.
-        notConnectedPercentage:
-          type: string
-          example: 2.27%
-          description: Total no. of Not Connected Sites Percentage.
-        publishListings:
-          type: string
-          example: Please initiate Publish for this locations listings.
-          description: Message to initiate publish locations listings.
-        errors:
-          type: array
-          items: {}
-          description: List of Error messages in case of Not Published state if exists.
-        sites:
-          type: array
-          items:
-            type: object
-            properties:
-              siteName:
+                description: Attribute value type.
+              displayName:
                 type: string
-                description: Name of listing source.
-              status:
+                description: Attribute display name.
+              groupDisplayName:
                 type: string
-                description: 'Status of the location on that source. Possible values are :'
-              url:
-                type: string
-                description: Location source link.
-              errors:
+                description: Attribute group name.
+              valueMetadata:
                 type: array
-                items: {}
-                description: Possible errors would be come when status of directory is 'Action Required'
-          description: List of location status.
-    3336Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2277
-        message: Duplicate GBP categories are not allowed.
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                      description: Possible attribute value.
+                    displayName:
+                      type: string
+                      description: Attribute display name.
+                description: Contains the list of possible values for the attribute.
+          description: This is dynamic field. Depends upon request inputs.
     Apiary_createListing_Request:
       type: object
       properties:
@@ -3569,6 +3077,446 @@ components:
           university: Sample text
           hospitalAffiliations: Sample text
           insurancesAccepted: Sample text
+    Apiary_getHotelAttributes_Response200:
+      type: object
+      properties:
+        hotelAttributes:
+          type: object
+          properties:
+            services:
+              type: object
+              properties:
+                services:
+                  type: object
+                  properties:
+                    frontDesk:
+                      type: object
+                      properties:
+                        attributeId:
+                          type: string
+                          example: frontDesk
+                          description: Attribute Id.
+                        attributeName:
+                          type: string
+                          example: Front desk
+                          description: Attribute display name.
+                        columnId:
+                          type: number
+                          example: 20001
+                          description: Internal column identifier.
+                        possibleValues:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              value:
+                                type: boolean
+                                description: Possible attribute value.
+                              name:
+                                type: string
+                                description: Attribute value display name.
+                          description: Contains the list of possible values for the attribute.
+                        attributeValueType:
+                          type: string
+                          example: BOOLEAN
+                          description: Defines the expected value format for the attribute.
+                          enum:
+                          - BOOLEAN
+                          - INTEGER
+                          - YEAR
+                          - TIME
+                          - SINGLE_SELECT
+                          - MULTI_SELECT
+          description: This is a dynamic field. Depends upon the hotel attributes supported for the selected business.
+    Apiary_getLocationStatusReport_Response200:
+      type: object
+      properties:
+        businessName:
+          type: string
+          description: Name of the Business/Location.
+        activationStatus:
+          type: string
+          example: active/demo/inactive
+          description: Activation Status of Business/Location
+        lastUpdated:
+          type: string
+          example: Mon Jun 10 09:49:30 GMT 2024
+          description: Last Updated Date of a Business/Location.
+        locationStatus:
+          type: string
+          example: Possible Values “Published”,“Scan State” or “Disabled“
+          description: Return the state of Business/Location.
+        totalSites:
+          type: number
+          example: 44
+          description: Total no. of Sites.
+        syncedCount:
+          type: number
+          example: 30
+          description: Total no. of Synced sites count.
+        submittedCount:
+          type: number
+          example: 13
+          description: Total no. of Submitted sites Count.
+        needUpdatesCount:
+          type: number
+          description: Total no. of Sites where Action is required.
+        optedOutCount:
+          type: number
+          description: Total no. of Opted out sites count.
+        notConnectedCount:
+          type: number
+          example: 1
+          description: Total no. of Not connected sites count.
+        syncedPercentage:
+          type: string
+          example: 68.18%
+          description: Total no. of Synced Sites Percentage.
+        submittedPercentage:
+          type: string
+          example: 29.55%
+          description: Total no. of Submitted Sites Percentage.
+        needUpdatesPercentage:
+          type: string
+          example: 0.00%
+          description: Total no. of Need Updates Sites Percentage.
+        optedOutPercentage:
+          type: string
+          example: 0.00%
+          description: Total no. of Opted out sites percentage.
+        notConnectedPercentage:
+          type: string
+          example: 2.27%
+          description: Total no. of Not Connected Sites Percentage.
+        publishListings:
+          type: string
+          example: Please initiate Publish for this locations listings.
+          description: Message to initiate publish locations listings.
+        errors:
+          type: array
+          items: {}
+          description: List of Error messages in case of Not Published state if exists.
+        sites:
+          type: array
+          items:
+            type: object
+            properties:
+              siteName:
+                type: string
+                description: Name of listing source.
+              status:
+                type: string
+                description: 'Status of the location on that source. Possible values are :'
+              url:
+                type: string
+                description: Location source link.
+              errors:
+                type: array
+                items: {}
+                description: Possible errors would be come when status of directory is 'Action Required'
+          description: List of location status.
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    Apiary_retrieveMenuDetails_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            description: Unique identifier of the record
+          businessNumber:
+            type: number
+            description: Unique business ID
+          accountNumber:
+            type: number
+            description: Account ID associated with the business
+          menuDetails:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Business display name
+              error:
+                type: string
+                description: Error details if retrieval failed
+              menus:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    cuisines:
+                      type: array
+                      items: {}
+                      description: List of cuisines served
+                    labels:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          displayName:
+                            type: string
+                          description:
+                            type: string
+                          languageCode:
+                            type: string
+                    sections:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          labels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                displayName:
+                                  type: string
+                                description:
+                                  type: string
+                                languageCode:
+                                  type: string
+                          items:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                labels:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      displayName:
+                                        type: string
+                                      description:
+                                        type: string
+                                      languageCode:
+                                        type: string
+                                attributes:
+                                  type: object
+                                  properties:
+                                    price:
+                                      type: object
+                                      properties:
+                                        currencyCode:
+                                          type: string
+                                        units:
+                                          type: number
+                                        nanos:
+                                          type: number
+                                    allergen:
+                                      type: array
+                                      items: {}
+                                    dietaryRestriction:
+                                      type: array
+                                      items: {}
+                                    nutritionFacts:
+                                      type: object
+                                      properties:
+                                        calories:
+                                          type: number
+                                        fatContent:
+                                          type: string
+                                        proteinContent:
+                                          type: string
+                                        carbohydrateContent:
+                                          type: string
+                                    ingredients:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          name:
+                                            type: string
+                                    servesNumPeople:
+                                      type: number
+                                    preparationMethods:
+                                      type: array
+                                      items: {}
+                                    portionSize:
+                                      type: object
+                                      properties:
+                                        amount:
+                                          type: number
+                                        unit:
+                                          type: string
+                                    mediaKeys:
+                                      type: array
+                                      items: {}
+                                options:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      labels:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            displayName:
+                                              type: string
+                                            description:
+                                              type: string
+                                            languageCode:
+                                              type: string
+                                      attributes:
+                                        type: object
+                                        properties:
+                                          price:
+                                            type: object
+                                            properties:
+                                              currencyCode:
+                                                type: string
+                                              units:
+                                                type: number
+                                              nanos:
+                                                type: number
+              businessNumber:
+                type: number
+              correlationId:
+                type: string
+                description: 456 (string)
+          createdAt:
+            type: string
+            description: Creation timestamp
+          updatedAt:
+            type: string
+            description: Last update timestamp
+          crmName:
+            type: string
+    2458Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2458
+        message: Invalid order value. Allowed values are 'asc' or 'desc'.
+    2511Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2511
+        message: Cannot update business status when listing is already fixed.
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    2512Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2512
+        message: Cannot update opening soon date when listing is already fixed.
+    6001Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 6001
+        message: The 'sub_locality' field cannot exceed 80 characters.
+    2513Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2513
+        message: Opened On date can not be in future.
+    2457Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2457
+        message: Invalid sortby value. Allowed values are 'frequency' or 'keyword'
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    3335Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2276
+        message: Please add upto 9 GBP additional categories only.
+    3348Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2162
+        message: Reopen date should not be less than current date.
+    Apiary_getGoogleKeywordsCount_Response200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+                description: Business/location name. Total, for sum of all locations keyword count
+              frequency:
+                type: string
+                description: Keywords count
+          description: Returns business/location name along with its keywords count.
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
     Apiary_getListing_Response200:
       type: object
       properties:
@@ -4017,6 +3965,26 @@ components:
               type: string
               description: Insurance Accepted of the provider/practice.  Must be less than 50 characters
           description: This section is only applicable if you have purchased the health care listings plan and have been onboarded on the same.
+    2297Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2297
+        message: Invalid Food Takeout link
+    2522Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2286
+        message: Invalid whatsapp business link
     2514Model:
       type: object
       properties:
@@ -4027,7 +3995,36 @@ components:
       example:
         code: 2514
         message: Opening Soon date is mandatory when business is marked as Opening soon.
-    2515Model:
+    Apiary_listingsInsightsDatapoints_Request:
+      type: object
+      properties:
+        businessNumbers:
+          type: array
+          description: Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+          items: {}
+        startDate:
+          type: string
+          description: 'Start Date, Format: yyyy-MM-dd.'
+        endDate:
+          type: string
+          description: 'End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.'
+        viewMode:
+          description: is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
+          type: array
+          items: {}
+        groupByType:
+          type: string
+          description: Group the data accordingly. The default value will be the week. Possible values are
+      example:
+        businessNumbers:
+        - 156387109031976
+        startDate: 2010-02-01
+        endDate: 2022-02-01
+        groupByType: year
+        viewMode:
+        - Mobile
+        - Desktop
+    2517Model:
       type: object
       properties:
         code:
@@ -4035,9 +4032,9 @@ components:
         message:
           type: string
       example:
-        code: 2515
-        message: Reopen date is not supported for this date.
-    3334Model:
+        code: 2517
+        message: Opening Soon date should not be less than current date.
+    4012Model:
       type: object
       properties:
         code:
@@ -4045,9 +4042,9 @@ components:
         message:
           type: string
       example:
-        code: 2503
-        message: Primary category can not be included in additional category.
-    3348Model:
+        code: 400
+        message: Country code not found
+    6000Model:
       type: object
       properties:
         code:
@@ -4055,59 +4052,18 @@ components:
         message:
           type: string
       example:
-        code: 2162
-        message: Reopen date should not be less than current date.
-    Apiary_getHotelAttributes_Response200:
+        code: 6000
+        message: The 'sub_locality' field is mandatory for addresses in New Zealand.
+    3333Model:
       type: object
       properties:
-        hotelAttributes:
-          type: object
-          properties:
-            services:
-              type: object
-              properties:
-                services:
-                  type: object
-                  properties:
-                    frontDesk:
-                      type: object
-                      properties:
-                        attributeId:
-                          type: string
-                          example: frontDesk
-                          description: Attribute Id.
-                        attributeName:
-                          type: string
-                          example: Front desk
-                          description: Attribute display name.
-                        columnId:
-                          type: number
-                          example: 20001
-                          description: Internal column identifier.
-                        possibleValues:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              value:
-                                type: boolean
-                                description: Possible attribute value.
-                              name:
-                                type: string
-                                description: Attribute value display name.
-                          description: Contains the list of possible values for the attribute.
-                        attributeValueType:
-                          type: string
-                          example: BOOLEAN
-                          description: Defines the expected value format for the attribute.
-                          enum:
-                          - BOOLEAN
-                          - INTEGER
-                          - YEAR
-                          - TIME
-                          - SINGLE_SELECT
-                          - MULTI_SELECT
-          description: This is a dynamic field. Depends upon the hotel attributes supported for the selected business.
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1043
+        message: Business should be either SMB or Enterprise sub account
     2521Model:
       type: object
       properties:
@@ -4118,7 +4074,7 @@ components:
       example:
         code: 2285
         message: Invalid text message number
-    3335Model:
+    2516Model:
       type: object
       properties:
         code:
@@ -4126,8 +4082,62 @@ components:
         message:
           type: string
       example:
-        code: 2276
-        message: Please add upto 9 GBP additional categories only.
+        code: 2516
+        message: Opening Soon Date can not be more than 1 year from now.
+    2518Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2518
+        message: Business Status is mandatory to pass with reopen, opened on and opening soon date.
+    Apiary_listingsInsights_Request:
+      type: object
+      properties:
+        businessNumbers:
+          type: array
+          description: Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+          items: {}
+        startDate:
+          type: string
+          description: 'Start Date, Format: yyyy-MM-dd.'
+        endDate:
+          type: string
+          description: 'End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen.'
+        viewMode:
+          description: for mobile or desktop or both (if none is provided then data for both will be displayed) Example “Desktop”, ”Mobile”
+          type: array
+          items: {}
+      required:
+      - viewMode
+      example:
+        businessNumbers:
+        - 156387109031976
+        startDate: 2010-02-01
+        endDate: 2022-02-01
+        viewMode:
+        - Mobile
+        - Desktop
+    Apiary_listingsInsightsDatapoints_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          label:
+            type: string
+            description: The business counts data on a particular date.
+          wsiteVisitsCount:
+            type: number
+            description: The number of times the business profile website was clicked.
+          directionsCount:
+            type: number
+            description: The number of times a direction request was requested to the business location.
+          callsCount:
+            type: number
+            description: The number of times the business profile call button was clicked.
     4011Model:
       type: object
       properties:
@@ -4138,6 +4148,36 @@ components:
       example:
         code: 400
         message: Category Id not found
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    3337Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2278
+        message: Primary GBP category is not allowed in additional GBP categories.
+    2519Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2519
+        message: Third party categories change for opening soon business is not allowed.
     Apiary_getCategoryList_Response200:
       type: array
       items:
@@ -4152,46 +4192,6 @@ components:
           primary:
             type: boolean
             description: It will be present in response only in case when sourceName = “VENDOR”
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    1175Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1175
-        message: No business found with the given id
-    4015Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 400
-        message: Invalid Source Name
-    6000Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 6000
-        message: The 'sub_locality' field is mandatory for addresses in New Zealand.
   requestBodies:
     Fix_ListingBody:
       content:

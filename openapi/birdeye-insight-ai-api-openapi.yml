@@ -376,26 +376,6 @@ paths:
     - url: https://api.birdeye.com/resources
 components:
   schemas:
-    2003Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2003
-        message: businessNumbers are mandatory
-    2151Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2151
-        message: Not a valid reseller/enterprise id.
     1011Model:
       type: object
       properties:
@@ -406,16 +386,6 @@ components:
       example:
         code: 1011
         message: Business id is invalid
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
     1167Model:
       type: object
       properties:
@@ -426,16 +396,6 @@ components:
       example:
         code: 1167
         message: API key is missing
-    2150Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2150
-        message: Not a valid reseller/enterprise id.
     89Model:
       type: object
       properties:
@@ -446,6 +406,46 @@ components:
       example:
         code: 89
         message: Rate limit exceeded
+    2151Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2151
+        message: Not a valid reseller/enterprise id.
+    2003Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2003
+        message: businessNumbers are mandatory
+    1027Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1027
+        message: Invalid business number.
+    2150Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2150
+        message: Not a valid reseller/enterprise id.
     Apiary_getInsightExperienceLocationInfo_Response200:
       type: object
       properties:
@@ -500,7 +500,7 @@ components:
               sentimentDelta:
                 type: number
                 description: Change in sentiment score
-    1027Model:
+    1161Model:
       type: object
       properties:
         code:
@@ -508,8 +508,8 @@ components:
         message:
           type: string
       example:
-        code: 1027
-        message: Invalid business number.
+        code: 1161
+        message: Invalid API key
   securitySchemes:
     apiKey:
       type: apiKey

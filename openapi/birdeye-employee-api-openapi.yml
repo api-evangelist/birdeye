@@ -42,36 +42,6 @@ paths:
       description: Production
 components:
   schemas:
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
     Apiary_getDetailsOfEmployees_Response200:
       type: array
       items:
@@ -92,6 +62,26 @@ components:
           imageUrl:
             type: string
             description: Image URL of the employee.
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
     89Model:
       type: object
       properties:
@@ -102,6 +92,16 @@ components:
       example:
         code: 89
         message: Rate limit exceeded
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
   securitySchemes:
     apiKey:
       type: apiKey

@@ -300,7 +300,7 @@ paths:
       description: Production
 components:
   schemas:
-    1059Model:
+    1013Model:
       type: object
       properties:
         code:
@@ -308,18 +308,8 @@ components:
         message:
           type: string
       example:
-        code: 1059
-        message: Last name cannot be more than 50 characters
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
+        code: 1013
+        message: Unknown user role
     1177Model:
       type: object
       properties:
@@ -330,7 +320,7 @@ components:
       example:
         code: 1177
         message: User is not authorized to perform any action on any business
-    1189Model:
+    1188Model:
       type: object
       properties:
         code:
@@ -338,9 +328,9 @@ components:
         message:
           type: string
       example:
-        code: 1189
-        message: User with given email id not found.
-    1054Model:
+        code: 1188
+        message: User is not associated with the business.
+    1160Model:
       type: object
       properties:
         code:
@@ -348,8 +338,18 @@ components:
         message:
           type: string
       example:
-        code: 1054
-        message: User email id cannot be more than 40 characters
+        code: 1160
+        message: User is already associated with business.
+    1014Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1014
+        message: User role cannot be blank
     Apiary_createUser_Request:
       type: object
       properties:
@@ -381,7 +381,7 @@ components:
         phone: 408-xxx-xxxx
         userRole: owner
         sendInvite: true
-    1053Model:
+    1175Model:
       type: object
       properties:
         code:
@@ -389,9 +389,9 @@ components:
         message:
           type: string
       example:
-        code: 1053
-        message: User email id is invalid
-    1013Model:
+        code: 1175
+        message: No business found with the given id
+    1059Model:
       type: object
       properties:
         code:
@@ -399,9 +399,9 @@ components:
         message:
           type: string
       example:
-        code: 1013
-        message: Unknown user role
-    1014Model:
+        code: 1059
+        message: Last name cannot be more than 50 characters
+    1167Model:
       type: object
       properties:
         code:
@@ -409,8 +409,8 @@ components:
         message:
           type: string
       example:
-        code: 1014
-        message: User role cannot be blank
+        code: 1167
+        message: API key is missing
     89Model:
       type: object
       properties:
@@ -421,7 +421,7 @@ components:
       example:
         code: 89
         message: Rate limit exceeded
-    1057Model:
+    1189Model:
       type: object
       properties:
         code:
@@ -429,9 +429,9 @@ components:
         message:
           type: string
       example:
-        code: 1057
-        message: First name cannot be more than 50 characters
-    1160Model:
+        code: 1189
+        message: User with given email id not found.
+    1054Model:
       type: object
       properties:
         code:
@@ -439,8 +439,18 @@ components:
         message:
           type: string
       example:
-        code: 1160
-        message: User is already associated with business.
+        code: 1054
+        message: User email id cannot be more than 40 characters
+    1033Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1033
+        message: You are not authorized to perform this action
     1052Model:
       type: object
       properties:
@@ -461,7 +471,7 @@ components:
       example:
         code: 1010
         message: No user found with the given id
-    1188Model:
+    1053Model:
       type: object
       properties:
         code:
@@ -469,8 +479,8 @@ components:
         message:
           type: string
       example:
-        code: 1188
-        message: User is not associated with the business.
+        code: 1053
+        message: User email id is invalid
     Apiary_updateUser_Request:
       type: object
       properties:
@@ -628,16 +638,6 @@ components:
               type: number
               description: Flag to enable email alerts for broken integrations.
           description: user details
-    1033Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1033
-        message: You are not authorized to perform this action
     1161Model:
       type: object
       properties:
@@ -648,7 +648,7 @@ components:
       example:
         code: 1161
         message: Invalid API key
-    1175Model:
+    1057Model:
       type: object
       properties:
         code:
@@ -656,8 +656,8 @@ components:
         message:
           type: string
       example:
-        code: 1175
-        message: No business found with the given id
+        code: 1057
+        message: First name cannot be more than 50 characters
   securitySchemes:
     apiKey:
       type: apiKey

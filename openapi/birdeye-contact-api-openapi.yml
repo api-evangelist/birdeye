@@ -563,7 +563,43 @@ paths:
       description: Production
 components:
   schemas:
-    2348Model:
+    Apiary_contact_Response200:
+      type: object
+      properties:
+        page:
+          type: number
+          description: The page number.
+        size:
+          type: number
+          description: Maximum number of contacts return in response.
+        totalPages:
+          type: number
+          description: Number of pages to query.
+        totalCount:
+          type: number
+          description: Number of contacts to query.
+        customers:
+          type: array
+          description: Customer list
+          items:
+            type: object
+            properties:
+              customerId:
+                type: number
+                description: Id of enterprise customer.
+              name:
+                type: string
+                description: Name of enterprise customer.
+              email:
+                type: string
+                description: Email Id of enterprise customer.
+              phone:
+                type: string
+                description: Phone number of enterprise customer.
+              lastActivityWithTime:
+                type: string
+                description: Last activity time.
+    21121Model:
       type: object
       properties:
         code:
@@ -571,8 +607,38 @@ components:
         message:
           type: string
       example:
-        code: 2348
-        message: Max window size allowed is 60000 for a filter selection
+        code: 21121
+        message: Invalid contact source provided in the request.
+    1021Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1021
+        message: Invalid Phone Number.
+    5008Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5008
+        message: RequestBody not found
+    2347Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2347
+        message: Max page size allowed is 1,000
     1091Model:
       type: object
       properties:
@@ -583,7 +649,7 @@ components:
       example:
         code: 1091
         message: User id not authorized to view this customer.
-    1055Model:
+    1011Model:
       type: object
       properties:
         code:
@@ -591,8 +657,28 @@ components:
         message:
           type: string
       example:
-        code: 1055
-        message: Not a valid US phone number.
+        code: 1011
+        message: Business id is invalid
+    20083Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 20083
+        message: End date can't be before start date
+    1088Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1088
+        message: Customer email id cannot be more than 40 characters.
     1142Model:
       type: object
       properties:
@@ -613,6 +699,202 @@ components:
       example:
         code: 1524
         message: Date entered is invalid.
+    Apiary_subscribeUnsubscribeCustomer_Request:
+      type: object
+      properties:
+        permission:
+          type: string
+          description: Action to be taken. Valid values are both-subscribed, both-unsubscribed, sms-subscribed, and email-subscribed.
+        email:
+          type: array
+          description: Customer email ids.
+          items: {}
+        phone:
+          type: array
+          description: Customer phone numbers.
+          items: {}
+        accountNumber:
+          type: number
+          description: Location id.
+      required:
+      - accountNumber
+      - permission
+      example:
+        permission: both-unsubscribed
+        email:
+        - test1@mail.in
+        phone:
+        - '2345654326'
+        accountNumber: 123456789876543
+    Apiary_getContact_Response200:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of enterprise customer.
+        firstName:
+          type: string
+          description: First name of the customer.
+        lastName:
+          type: string
+          description: Last name of the customer.
+        email:
+          type: string
+          description: Email of customer, optional (if phone is provided).
+        phone:
+          type: string
+          description: Phone of customer optional (if email is provided).
+        countryCode:
+          type: string
+          description: Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
+        smsOptin:
+          type: boolean
+          description: SMS Opting flag.
+        mappings:
+          type: array
+          description: List of locations where customer is mapped. If requested by cid, only that location's mapping is returned.
+          items:
+            type: object
+            properties:
+              cid:
+                type: number
+                description: Customer location id.
+              location:
+                type: string
+                description: Name of the location.
+              bid:
+                type: number
+                description: Location id.
+              businessNumber:
+                type: number
+                description: Location Number.
+        tags:
+          type: string
+          description: List of tags.
+        customFields:
+          type: array
+          description: List of Custom fields.
+          items:
+            type: object
+            properties:
+              fieldName:
+                type: string
+                description: Field name.
+              type:
+                type: string
+                description: Field type.
+              fieldValue:
+                type: string
+                description: Value of field.
+        externalId:
+          type: string
+          description: Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
+        experienceScore:
+          type: number
+          description: Experience score of the customer. Returned only when experienceScore is true in the request.
+        experienceScoreSource:
+          type: string
+          description: Source of the experience score (e.g. review, survey). Returned only when experienceScore is true in the request.
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1089Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1089
+        message: Customer id is invalid.
+    1523Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1523
+        message: The correct date format should be mm/dd/yyyy.
+    1532Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1532
+        message: Business id is missing or invalid.
+    1001Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1001
+        message: Name of the contact is too long.
+    21122Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 21122
+        message: Reseller business is not supported in this request
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1170Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1170
+        message: SMS Alert flag is invalid. Valid values are 0 or 1.
+    5043Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5043
+        message: Contact not found for the given request
     Apiary_getOptOutContactData_Response200:
       type: object
       properties:
@@ -679,7 +961,7 @@ components:
               phone:
                 type: string
                 description: Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
-    21121Model:
+    1033Model:
       type: object
       properties:
         code:
@@ -687,9 +969,9 @@ components:
         message:
           type: string
       example:
-        code: 21121
-        message: Invalid contact source provided in the request.
-    5008Model:
+        code: 1033
+        message: You are not authorized to perform this action
+    5046Model:
       type: object
       properties:
         code:
@@ -697,8 +979,48 @@ components:
         message:
           type: string
       example:
-        code: 5008
-        message: RequestBody not found
+        code: 5046
+        message: The customer is blocked
+    1055Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1055
+        message: Not a valid US phone number.
+    1087Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1087
+        message: Customer email id is invalid.
+    2348Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2348
+        message: Max window size allowed is 60000 for a filter selection
+    21120Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 21120
+        message: Invalid contact type provided in the request. Valid contact types are lead or customer
     Apiary_customerOrLeadList_Response200:
       type: object
       properties:
@@ -750,7 +1072,7 @@ components:
                       type: number
                       description: Id of the customer.
                 description: Locations customer/lead is associated with
-    1167Model:
+    1086Model:
       type: object
       properties:
         code:
@@ -758,38 +1080,8 @@ components:
         message:
           type: string
       example:
-        code: 1167
-        message: API key is missing
-    1021Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1021
-        message: Invalid Phone Number.
-    1523Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1523
-        message: The correct date format should be mm/dd/yyyy.
-    5043Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5043
-        message: Contact not found for the given request
+        code: 1086
+        message: Customer email id cannot be blank.
     Apiary_customerActivityLog_Response200:
       type: array
       items:
@@ -807,149 +1099,6 @@ components:
           activityTimestamp:
             type: number
             description: Epoc activity timestamp.
-    Apiary_subscribeUnsubscribeCustomer_Request:
-      type: object
-      properties:
-        permission:
-          type: string
-          description: Action to be taken. Valid values are both-subscribed, both-unsubscribed, sms-subscribed, and email-subscribed.
-        email:
-          type: array
-          description: Customer email ids.
-          items: {}
-        phone:
-          type: array
-          description: Customer phone numbers.
-          items: {}
-        accountNumber:
-          type: number
-          description: Location id.
-      required:
-      - accountNumber
-      - permission
-      example:
-        permission: both-unsubscribed
-        email:
-        - test1@mail.in
-        phone:
-        - '2345654326'
-        accountNumber: 123456789876543
-    1088Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1088
-        message: Customer email id cannot be more than 40 characters.
-    Apiary_contact_Response200:
-      type: object
-      properties:
-        page:
-          type: number
-          description: The page number.
-        size:
-          type: number
-          description: Maximum number of contacts return in response.
-        totalPages:
-          type: number
-          description: Number of pages to query.
-        totalCount:
-          type: number
-          description: Number of contacts to query.
-        customers:
-          type: array
-          description: Customer list
-          items:
-            type: object
-            properties:
-              customerId:
-                type: number
-                description: Id of enterprise customer.
-              name:
-                type: string
-                description: Name of enterprise customer.
-              email:
-                type: string
-                description: Email Id of enterprise customer.
-              phone:
-                type: string
-                description: Phone number of enterprise customer.
-              lastActivityWithTime:
-                type: string
-                description: Last activity time.
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    1532Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1532
-        message: Business id is missing or invalid.
-    2347Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2347
-        message: Max page size allowed is 1,000
-    20083Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 20083
-        message: End date can't be before start date
-    1086Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1086
-        message: Customer email id cannot be blank.
-    5046Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 5046
-        message: The customer is blocked
     Apiary_createOrUpdateContact_Request:
       type: object
       properties:
@@ -1029,66 +1178,6 @@ components:
           type: text
           fieldValue: Paper
         externalId: ABC123
-    21122Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 21122
-        message: Reseller business is not supported in this request
-    1089Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1089
-        message: Customer id is invalid.
-    1033Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1033
-        message: You are not authorized to perform this action
-    1001Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1001
-        message: Name of the contact is too long.
-    1087Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1087
-        message: Customer email id is invalid.
-    1170Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1170
-        message: SMS Alert flag is invalid. Valid values are 0 or 1.
     1161Model:
       type: object
       properties:
@@ -1141,95 +1230,6 @@ components:
         employees:
         - emailId: sshikha@abcd.com
         externalId: ABC123
-    1175Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1175
-        message: No business found with the given id
-    Apiary_getContact_Response200:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Id of enterprise customer.
-        firstName:
-          type: string
-          description: First name of the customer.
-        lastName:
-          type: string
-          description: Last name of the customer.
-        email:
-          type: string
-          description: Email of customer, optional (if phone is provided).
-        phone:
-          type: string
-          description: Phone of customer optional (if email is provided).
-        countryCode:
-          type: string
-          description: Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
-        smsOptin:
-          type: boolean
-          description: SMS Opting flag.
-        mappings:
-          type: array
-          description: List of locations where customer is mapped. If requested by cid, only that location's mapping is returned.
-          items:
-            type: object
-            properties:
-              cid:
-                type: number
-                description: Customer location id.
-              location:
-                type: string
-                description: Name of the location.
-              bid:
-                type: number
-                description: Location id.
-              businessNumber:
-                type: number
-                description: Location Number.
-        tags:
-          type: string
-          description: List of tags.
-        customFields:
-          type: array
-          description: List of Custom fields.
-          items:
-            type: object
-            properties:
-              fieldName:
-                type: string
-                description: Field name.
-              type:
-                type: string
-                description: Field type.
-              fieldValue:
-                type: string
-                description: Value of field.
-        externalId:
-          type: string
-          description: Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
-        experienceScore:
-          type: number
-          description: Experience score of the customer. Returned only when experienceScore is true in the request.
-        experienceScoreSource:
-          type: string
-          description: Source of the experience score (e.g. review, survey). Returned only when experienceScore is true in the request.
-    21120Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 21120
-        message: Invalid contact type provided in the request. Valid contact types are lead or customer
   requestBodies:
     Get_opt-out_contact_dataBody:
       content:

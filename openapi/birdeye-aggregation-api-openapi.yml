@@ -152,6 +152,56 @@ paths:
       description: Production
 components:
   schemas:
+    1030Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1030
+        message: URL cannot be blank
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1039Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1039
+        message: Invalid business aggregation id
     Apiary_addAggregationUrl_Response200:
       type: object
       properties:
@@ -170,26 +220,6 @@ components:
         Body:
           type: string
           description: "{\n    \"id\": \"237030543\",\n    \"sourceAlias\": \"citysearch\",\n    \"sourceName\": \"Citysearch\",\n    \"sourceUrl\": \"http://www.citysearch.com/biz/maria-da-vittorio-san-francisco\"\n}"
-    1039Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1039
-        message: Invalid business aggregation id
-    1033Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1033
-        message: You are not authorized to perform this action
     Apiary_addNewCompetitorAggregationUrl_Request:
       type: object
       properties:
@@ -205,46 +235,6 @@ components:
       example:
         sourceAlias: 'citysearch '
         url: http://www.citysearch.com/biz/maria-da-vittorio-san-francisco
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    1032Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1032
-        message: Invalid source id
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
     1031Model:
       type: object
       properties:
@@ -265,7 +255,7 @@ components:
       example:
         code: 1175
         message: No business found with the given id
-    1030Model:
+    1033Model:
       type: object
       properties:
         code:
@@ -273,9 +263,9 @@ components:
         message:
           type: string
       example:
-        code: 1030
-        message: URL cannot be blank
-    89Model:
+        code: 1033
+        message: You are not authorized to perform this action
+    1161Model:
       type: object
       properties:
         code:
@@ -283,8 +273,8 @@ components:
         message:
           type: string
       example:
-        code: 89
-        message: Rate limit exceeded
+        code: 1161
+        message: Invalid API key
     Apiary_getAllAggregationSource_Response200:
       type: array
       items:
@@ -305,6 +295,16 @@ components:
           status:
             type: number
             description: 'This field indicates the status of aggregation:'
+    1032Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1032
+        message: Invalid source id
   requestBodies:
     Add_aggregation_URLBody:
       content:
