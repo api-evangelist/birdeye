@@ -543,17 +543,7 @@ paths:
     - url: https://api.birdeye.com/resources
 components:
   schemas:
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    Apiary_getAccuracyReport_Request:
+    Apiary_getSentimentReport_Request:
       type: object
       properties:
         businessNumbers:
@@ -568,10 +558,15 @@ components:
         endDate:
           type: string
           description: 'End date for the report range (format: **`yyyy-MM-dd`**).'
+        viewReportType:
+          type: string
+          description: 'Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**'
         startDate - Start date for the report range (format:
           description: 'Start date for the report range (format: **`yyyy-MM-dd`**).'
         endDate - End date for the report range (format:
           description: 'End date for the report range (format: **`yyyy-MM-dd`**).'
+        viewReportType - Defines the level at which the report is generated. Allowed values:
+          description: 'Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**'
       example:
         businessNumbers:
         - 177337970010644
@@ -580,8 +575,29 @@ components:
         - CHATGPT
         - GEMINI
         - PERPLEXITY
-        startDate: 2025-12-01
-        endDate: 2025-12-31
+        startDate: 2026-03-01
+        endDate: 2026-03-31
+        viewReportType: LOCATION_LEVEL
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
     Apiary_getSearchAiBusinesses_Request:
       type: object
       properties:
@@ -627,7 +643,7 @@ components:
         startDate: 03/01/2026
         endDate: 03/31/2026
         viewReportType: LOCATION_LEVEL
-    Apiary_getSentimentReport_Request:
+    Apiary_getAccuracyReport_Request:
       type: object
       properties:
         businessNumbers:
@@ -642,15 +658,10 @@ components:
         endDate:
           type: string
           description: 'End date for the report range (format: **`yyyy-MM-dd`**).'
-        viewReportType:
-          type: string
-          description: 'Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**'
         startDate - Start date for the report range (format:
           description: 'Start date for the report range (format: **`yyyy-MM-dd`**).'
         endDate - End date for the report range (format:
           description: 'End date for the report range (format: **`yyyy-MM-dd`**).'
-        viewReportType - Defines the level at which the report is generated. Allowed values:
-          description: 'Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**'
       example:
         businessNumbers:
         - 177337970010644
@@ -659,19 +670,8 @@ components:
         - CHATGPT
         - GEMINI
         - PERPLEXITY
-        startDate: 2026-03-01
-        endDate: 2026-03-31
-        viewReportType: LOCATION_LEVEL
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
+        startDate: 2025-12-01
+        endDate: 2025-12-31
   requestBodies:
     Get_Search_AI_CitationsBody:
       content:

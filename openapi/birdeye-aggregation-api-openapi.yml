@@ -152,16 +152,6 @@ paths:
       description: Production
 components:
   schemas:
-    1030Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1030
-        message: URL cannot be blank
     1011Model:
       type: object
       properties:
@@ -172,16 +162,6 @@ components:
       example:
         code: 1011
         message: Business id is invalid
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
     89Model:
       type: object
       properties:
@@ -192,6 +172,56 @@ components:
       example:
         code: 89
         message: Rate limit exceeded
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1175Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1175
+        message: No business found with the given id
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    Apiary_getAllAggregationSource_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+            description: Id of aggregation.
+          sourceAlias:
+            type: string
+            description: Source alias.
+          sourceUrl:
+            type: string
+            description: Source url.
+          sourceName:
+            type: string
+            description: Source name.
+          status:
+            type: number
+            description: 'This field indicates the status of aggregation:'
     1039Model:
       type: object
       properties:
@@ -202,6 +232,16 @@ components:
       example:
         code: 1039
         message: Invalid business aggregation id
+    1032Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1032
+        message: Invalid source id
     Apiary_addAggregationUrl_Response200:
       type: object
       properties:
@@ -245,7 +285,7 @@ components:
       example:
         code: 1031
         message: Source id cannot be blank
-    1175Model:
+    1030Model:
       type: object
       properties:
         code:
@@ -253,8 +293,8 @@ components:
         message:
           type: string
       example:
-        code: 1175
-        message: No business found with the given id
+        code: 1030
+        message: URL cannot be blank
     1033Model:
       type: object
       properties:
@@ -265,46 +305,6 @@ components:
       example:
         code: 1033
         message: You are not authorized to perform this action
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    Apiary_getAllAggregationSource_Response200:
-      type: array
-      items:
-        type: object
-        properties:
-          id:
-            type: number
-            description: Id of aggregation.
-          sourceAlias:
-            type: string
-            description: Source alias.
-          sourceUrl:
-            type: string
-            description: Source url.
-          sourceName:
-            type: string
-            description: Source name.
-          status:
-            type: number
-            description: 'This field indicates the status of aggregation:'
-    1032Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1032
-        message: Invalid source id
   requestBodies:
     Add_aggregation_URLBody:
       content:

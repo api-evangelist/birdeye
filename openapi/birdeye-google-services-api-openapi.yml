@@ -306,6 +306,36 @@ paths:
       description: Production
 components:
   schemas:
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    2493Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2493
+        message: Duplicate Google Service is not allowed
+    2492Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2492
+        message: Invalid GBP Service currency code
     2494Model:
       type: object
       properties:
@@ -316,6 +346,106 @@ components:
       example:
         code: 2494
         message: Invalid GBP Service Id
+    Apiary_getAllServices_Response200:
+      type: object
+      properties:
+        services:
+          type: array
+          description: Google services details
+          items:
+            type: object
+            properties:
+              serviceId:
+                type: string
+                description: Unique service identifier
+              name:
+                type: string
+                description: name of the service
+              currencyCode:
+                type: string
+                description: currency code of the paid service
+              price:
+                type: number
+                description: price of the paid service
+              description:
+                type: string
+                description: description of the service
+              group:
+                type: string
+                description: service group
+              duration:
+                type: number
+                description: service duration in minutes
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    2486Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2486
+        message: Business Id missing or invalid
+    2490Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2490
+        message: Invalid GBP Service price type
+    2496Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2496
+        message: Missing GBP category for given location
+    2488Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2488
+        message: Invalid GBP Service name
     Apiary_getLocationMapping_Response200:
       type: object
       properties:
@@ -349,56 +479,6 @@ components:
               duration:
                 type: number
                 description: service duration in minutes
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    2495Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2495
-        message: Invalid GBP Service Id
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
     2487Model:
       type: object
       properties:
@@ -419,7 +499,7 @@ components:
       example:
         code: 2489
         message: Invalid GBP Service description
-    2496Model:
+    2495Model:
       type: object
       properties:
         code:
@@ -427,68 +507,8 @@ components:
         message:
           type: string
       example:
-        code: 2496
-        message: Missing GBP category for given location
-    Apiary_getAllServices_Response200:
-      type: object
-      properties:
-        services:
-          type: array
-          description: Google services details
-          items:
-            type: object
-            properties:
-              serviceId:
-                type: string
-                description: Unique service identifier
-              name:
-                type: string
-                description: name of the service
-              currencyCode:
-                type: string
-                description: currency code of the paid service
-              price:
-                type: number
-                description: price of the paid service
-              description:
-                type: string
-                description: description of the service
-              group:
-                type: string
-                description: service group
-              duration:
-                type: number
-                description: service duration in minutes
-    2492Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2492
-        message: Invalid GBP Service currency code
-    2490Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2490
-        message: Invalid GBP Service price type
-    2488Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2488
-        message: Invalid GBP Service name
+        code: 2495
+        message: Invalid GBP Service Id
     2491Model:
       type: object
       properties:
@@ -499,26 +519,6 @@ components:
       example:
         code: 2491
         message: Invalid GBP Service price
-    2486Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2486
-        message: Business Id missing or invalid
-    2493Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 2493
-        message: Duplicate Google Service is not allowed
   securitySchemes:
     apiKey:
       type: apiKey

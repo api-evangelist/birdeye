@@ -77,16 +77,6 @@ components:
       example:
         code: 1011
         message: Business id is invalid
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
     89Model:
       type: object
       properties:
@@ -97,6 +87,26 @@ components:
       example:
         code: 89
         message: Rate limit exceeded
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
     Apiary_listConversations_Response200:
       type: object
       properties:
@@ -214,16 +224,6 @@ components:
       example:
         code: 1246
         message: Customer email or phone number is required.
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
   securitySchemes:
     apiKey:
       type: apiKey
