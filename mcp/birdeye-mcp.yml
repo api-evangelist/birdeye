@@ -178,3 +178,20 @@ x-evidence:
 - url: https://docs.birdeye.com/mcp/quickstart.md
   http_status: 200
   fetched: '2026-08-13'
+rfc9728:
+  endpoint: https://mcp.birdeye.com/mcp
+  metadata_url: https://mcp.birdeye.com/.well-known/oauth-protected-resource/mcp
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://mcp.birdeye.com/mcp
+    authorization_servers:
+    - https://mcp.birdeye.com/
+    scopes_supported:
+    - openid
+    - profile
+    - email
+    bearer_methods_supported:
+    - header

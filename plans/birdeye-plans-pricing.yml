@@ -80,3 +80,33 @@ notes:
 - API access is only available on the Premium/Enterprise tier.
 - An additional daily API call limit of approximately 10,000 requests applies per API key on standard
   accounts; higher limits are negotiated on enterprise plans.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models: []
+  units: []
+  plans:
+  - name: Starter
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Growth
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Dominate
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Premium / Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
