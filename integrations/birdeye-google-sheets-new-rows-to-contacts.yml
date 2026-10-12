@@ -1,0 +1,88 @@
+arazzo: 1.0.1
+info:
+  title: Create Birdeye customers from new Google Sheets rows
+  summary: Create Birdeye customers from new Google Sheets rows
+  description: Reads rows from a Google Sheet range and upserts each as a Birdeye contact, mirroring the Zapier
+    template.
+  version: 1.0.0
+sourceDescriptions:
+- name: birdeyeContactApi
+  url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/openapi/birdeye-contact-api-openapi.yml
+  type: openapi
+- name: googleSheetsValuesApi
+  url: https://raw.githubusercontent.com/api-evangelist/google-sheets/refs/heads/main/openapi/google-sheets-values-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: google-sheets-new-rows-to-contacts
+  summary: Create Birdeye customers from new Google Sheets rows
+  description: Reads rows from a Google Sheet range and upserts each as a Birdeye contact, mirroring the Zapier
+    template.
+  inputs:
+    type: object
+    properties:
+      spreadsheetId:
+        type: string
+      range:
+        type: string
+      businessId:
+        type: string
+        description: Birdeye business (location) id
+  steps:
+  - stepId: read-sheet-rows
+    description: Read the rows in the configured range.
+    operationId: $sourceDescriptions.googleSheetsValuesApi.getValues
+    parameters:
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    - name: majorDimension
+      in: query
+      value: ROWS
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstName: $response.body#/values/0/0
+      lastName: $response.body#/values/0/1
+      email: $response.body#/values/0/2
+      phone: $response.body#/values/0/3
+  - stepId: create-or-update-birdeye-contact
+    description: Upsert the contact in Birdeye for the location.
+    operationId: $sourceDescriptions.birdeyeContactApi.create-or-update-contact
+    parameters:
+    - name: businessId
+      in: query
+      value: $inputs.businessId
+    requestBody:
+      contentType: application/json
+      payload:
+        firstName: $steps.read-sheet-rows.outputs.firstName
+        lastName: $steps.read-sheet-rows.outputs.lastName
+        email: $steps.read-sheet-rows.outputs.email
+        phone: $steps.read-sheet-rows.outputs.phone
+        businessIds:
+        - $inputs.businessId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      result: $response.body
+  outputs:
+    birdeyeResult: $steps.create-or-update-birdeye-contact.outputs.result
+x-integration:
+  partner: google-sheets
+  template: https://zapier.com/apps/birdeye/integrations/google-sheets/1211581/create-birdeye-customers-from-new-google-sheets-rows
+  edge_evidence: https://zapier.com/apps/birdeye/integrations/google-sheets/1211581/create-birdeye-customers-from-new-google-sheets-rows
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-12'
+  generator: claude-opus-5-5 provider-integrations-arazzo
+  guessed_steps:
+  - step: read-sheet-rows
+    cause: partner-contract
+    why: Sheets values are untyped arrays; the column order (first, last, email, phone) is a user-configured assumption,
+      and "new rows" detection is Zapier polling, not an API filter.
+  - step: create-or-update-birdeye-contact
+    cause: provider-contract
+    why: Birdeye response schema is only an example ({code,message}); no contact id output is declared.

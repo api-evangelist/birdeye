@@ -12,8 +12,8 @@ description: Birdeye uses location-based pricing configured through a custom quo
   available on higher-tier plans. The platform is structured around the number of business locations and
   the suite of features deployed.
 url: https://birdeye.com/pricing/
-created: 2026-06-13
-modified: 2026-06-13
+created: '2026-06-13'
+modified: '2026-06-13'
 plans:
 - name: Starter
   description: Core reputation management for single or small multi-location businesses. Includes reviews,

@@ -1,932 +1,423 @@
+generated: '2026-10-12'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/birdeye-aggregation-api-openapi.yml
+- openapi/birdeye-business-api-openapi.yml
+- openapi/birdeye-business-media-api-openapi.yml
+- openapi/birdeye-campaign-api-openapi.yml
+- openapi/birdeye-competitor-ai-api-openapi.yml
 vocabulary:
-  name: Birdeye API Vocabulary
-  description: Domain vocabulary for the Birdeye reputation management and customer
-    experience API.
-  url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/vocabulary/birdeye-vocabulary.yml
+  name: Birdeye Domain Vocabulary
+  description: 'Terms declared by Birdeye''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-12'
   terms:
-  - name: Aggregation
-    type: tag
-    definition: API resource group for Aggregation operations in Birdeye.
-  - name: Business
-    type: tag
-    definition: API resource group for Business operations in Birdeye.
-  - name: Business Media
-    type: tag
-    definition: API resource group for Business Media operations in Birdeye.
-  - name: BusinessId
-    type: parameter
-    definition: Id of the business.
-  - name: Campaign
-    type: tag
-    definition: API resource group for Campaign operations in Birdeye.
-  - name: Competitor
-    type: tag
-    definition: API resource group for Competitor operations in Birdeye.
-  - name: Competitor AI
-    type: tag
-    definition: API resource group for Competitor AI operations in Birdeye.
-  - name: Contact
-    type: tag
-    definition: API resource group for Contact operations in Birdeye.
-  - name: Contact V2
-    type: tag
-    definition: API resource group for Contact V2 operations in Birdeye.
-  - name: Conversation
-    type: tag
-    definition: API resource group for Conversation operations in Birdeye.
-  - name: Custom Fields
-    type: tag
-    definition: API resource group for Custom Fields operations in Birdeye.
-  - name: Employee
-    type: tag
-    definition: API resource group for Employee operations in Birdeye.
-  - name: EnterpriseBusinessNumber
-    type: parameter
-    definition: Enterprise Business id.
-  - name: FAQ
-    type: tag
-    definition: API resource group for FAQ operations in Birdeye.
-  - name: GMB Products
-    type: tag
-    definition: API resource group for GMB Products operations in Birdeye.
-  - name: Google Q&A
-    type: tag
-    definition: API resource group for Google Q&A operations in Birdeye.
-  - name: Google Services
-    type: tag
-    definition: API resource group for Google Services operations in Birdeye.
-  - name: Insight AI
-    type: tag
-    definition: API resource group for Insight AI operations in Birdeye.
-  - name: Integration
-    type: tag
-    definition: API resource group for Integration operations in Birdeye.
-  - name: Level
-    type: property
-    definition: The Level field.
-  - name: Listing
-    type: tag
-    definition: API resource group for Listing operations in Birdeye.
-  - name: Report
-    type: tag
-    definition: API resource group for Report operations in Birdeye.
-  - name: Reviews
-    type: tag
-    definition: API resource group for Reviews operations in Birdeye.
-  - name: Search AI
-    type: tag
-    definition: API resource group for Search AI operations in Birdeye.
-  - name: Social
-    type: tag
-    definition: API resource group for Social operations in Birdeye.
-  - name: Subscription
-    type: tag
-    definition: API resource group for Subscription operations in Birdeye.
-  - name: Survey
-    type: tag
-    definition: API resource group for Survey operations in Birdeye.
-  - name: Ticketing
-    type: tag
-    definition: API resource group for Ticketing operations in Birdeye.
-  - name: User
-    type: tag
-    definition: API resource group for User operations in Birdeye.
-  - name: Webhook
-    type: tag
-    definition: API resource group for Webhook operations in Birdeye.
-  - name: accessControl
-    type: property
-    definition: The accessControl field.
-  - name: accountNumber
-    type: property
-    definition: The accountNumber field.
-  - name: active
-    type: property
-    definition: The active field.
-  - name: additionalImageLinks
-    type: property
-    definition: The additionalImageLinks field.
-  - name: additionalInfo
-    type: property
-    definition: The additionalInfo field.
-  - name: additionalMetaData
-    type: property
-    definition: The additionalMetaData field.
-  - name: additionalParams
-    type: property
-    definition: The additionalParams field.
-  - name: aggrOptions
-    type: property
-    definition: The aggrOptions field.
-  - name: aggregationID
-    type: parameter
-    definition: Id of the aggregation to be deleted.
-  - name: aiModel
-    type: property
-    definition: The aiModel field.
-  - name: aiModels
-    type: property
-    definition: The aiModels field.
-  - name: alias
-    type: property
-    definition: The alias field.
-  - name: allChild
-    type: property
-    definition: The allChild field.
-  - name: androidAppURL
-    type: property
-    definition: The androidAppURL field.
-  - name: answer
-    type: property
-    definition: The answer field.
-  - name: answerId
-    type: property
-    definition: The answerId field.
-  - name: apiKey
-    type: property
-    definition: The apiKey field.
-  - name: appleListing
-    type: property
-    definition: The appleListing field.
-  - name: appointmentLink
-    type: property
-    definition: The appointmentLink field.
-  - name: assignedTo
-    type: property
-    definition: The assignedTo field.
-  - name: assignees
-    type: property
-    definition: The assignees field.
-  - name: astatus
-    type: parameter
-    definition: New status for the business. Valid values are &quot;active/inactive&quot;.
-  - name: auth
-    type: property
-    definition: The auth field.
-  - name: b_id
-    type: parameter
-    definition: Id of the business.
-  - name: bid
-    type: parameter
-    definition: Business Id from which user access has to be revoked
-  - name: bingListing
-    type: property
-    definition: The bingListing field.
-  - name: blocked
-    type: property
-    definition: The blocked field.
-  - name: brandIds
-    type: property
-    definition: The brandIds field.
-  - name: brandName
-    type: property
-    definition: The brandName field.
-  - name: businessID
-    type: parameter
-    definition: Id of the business.
-  - name: businessId
-    type: parameter
-    definition: The Business Number
-  - name: businessIds
-    type: property
-    definition: The businessIds field.
-  - name: businessInfo
-    type: property
-    definition: The businessInfo field.
-  - name: businessName
-    type: property
-    definition: The businessName field.
-  - name: businessNumber
-    type: parameter
-    definition: Long id of the business, under which user wants to search for.
-  - name: businessNumbers
-    type: property
-    definition: The businessNumbers field.
-  - name: businessStatus
-    type: property
-    definition: The businessStatus field.
-  - name: business_Id
-    type: parameter
-    definition: Id of the Business.
-  - name: business_id
-    type: parameter
-    definition: Id of the Business.
-  - name: cardId
-    type: parameter
-    definition: Id of the custom card to update.
-  - name: categoryId
-    type: parameter
-    definition: Category id.
-  - name: category_name
-    type: property
-    definition: The category_name field.
-  - name: channel
-    type: parameter
-    definition: Source name for which more hours type needs to be fetched. Possible
-      values are gmb, apple. Default value will be gmb if not passed
-  - name: checkinId
-    type: property
-    definition: The checkinId field.
-  - name: cid
-    type: property
-    definition: The cid field.
-  - name: clickURL
-    type: property
-    definition: The clickURL field.
-  - name: comment
-    type: property
-    definition: The comment field.
-  - name: compAccountId
-    type: parameter
-    definition: Competitor Account Id.
-  - name: comparisonFilter
-    type: property
-    definition: The comparisonFilter field.
-  - name: competitorId
-    type: property
-    definition: The competitorId field.
-  - name: competitorLocationIds
-    type: property
-    definition: The competitorLocationIds field.
-  - name: competitors
-    type: property
-    definition: The competitors field.
-  - name: contact
-    type: property
-    definition: The contact field.
-  - name: contactType
-    type: property
-    definition: The contactType field.
-  - name: count
-    type: parameter
-    definition: Number of reviews to query. Refer API note for max permissible value.
-  - name: countryCode
-    type: property
-    definition: The countryCode field.
-  - name: coverBusinessInfoLayout
-    type: property
-    definition: The coverBusinessInfoLayout field.
-  - name: coverImageUrl
-    type: property
-    definition: The coverImageUrl field.
-  - name: covidInfo
-    type: property
-    definition: The covidInfo field.
-  - name: currencyCode
-    type: property
-    definition: The currencyCode field.
-  - name: customFields
-    type: property
-    definition: The customFields field.
-  - name: customer
-    type: property
-    definition: The customer field.
-  - name: customerComment
-    type: property
-    definition: The customerComment field.
-  - name: customerId
-    type: parameter
-    definition: Id of the customer.
-  - name: customfields
-    type: parameter
-    definition: If custom fields data is required send true, default is false.
-  - name: days
-    type: parameter
-    definition: Use to get results for last some days.
-  - name: defaultValue
-    type: property
-    definition: The defaultValue field.
-  - name: deleteEndDate
-    type: property
-    definition: The deleteEndDate field.
-  - name: deleteStartDate
-    type: property
-    definition: The deleteStartDate field.
-  - name: description
-    type: property
-    definition: The description field.
-  - name: dropDownOptions
-    type: property
-    definition: The dropDownOptions field.
-  - name: duration
-    type: property
-    definition: The duration field.
-  - name: email
-    type: parameter
-    definition: Email id of the user whose access has to be revoked
-  - name: emailId
-    type: property
-    definition: The emailId field.
-  - name: emailOptin
-    type: property
-    definition: The emailOptin field.
-  - name: emailPreferences
-    type: property
-    definition: The emailPreferences field.
-  - name: email_id
-    type: parameter
-    definition: Business Email id.
-  - name: emails
-    type: property
-    definition: The emails field.
-  - name: employees
-    type: property
-    definition: The employees field.
-  - name: end
-    type: property
-    definition: The end field.
-  - name: endDate
-    type: property
-    definition: The endDate field.
-  - name: endDateUtc
-    type: property
-    definition: The endDateUtc field.
-  - name: endpoint
-    type: property
-    definition: The endpoint field.
-  - name: entUser
-    type: parameter
-    definition: 'true if the user needs to provide enterprise level access in case
-      of all locations.
-
-      entUser needs to be passed as true if user needs to be provided access to all
-      locations otherwise by default its false.'
-  - name: entityCategory
-    type: property
-    definition: The entityCategory field.
-  - name: establishedYear
-    type: property
-    definition: The establishedYear field.
-  - name: eventName
-    type: property
-    definition: The eventName field.
-  - name: events
-    type: property
-    definition: The events field.
-  - name: excludeCampaignMessages
-    type: property
-    definition: The excludeCampaignMessages field.
-  - name: experienceScore
-    type: property
-    definition: The experienceScore field.
-  - name: externalId
-    type: property
-    definition: The externalId field.
-  - name: externalReferenceId
-    type: property
-    definition: The externalReferenceId field.
-  - name: facebookCover
-    type: property
-    definition: The facebookCover field.
-  - name: facebookListing
-    type: property
-    definition: The facebookListing field.
-  - name: fax
-    type: property
-    definition: The fax field.
-  - name: fbCoverOptOut
-    type: property
-    definition: The fbCoverOptOut field.
-  - name: fbLogoOptOut
-    type: property
-    definition: The fbLogoOptOut field.
-  - name: fetchAssitedByDetails
-    type: property
-    definition: The fetchAssitedByDetails field.
-  - name: fetchExtraParams
-    type: property
-    definition: The fetchExtraParams field.
-  - name: fieldDescription
-    type: property
-    definition: The fieldDescription field.
-  - name: fieldId
-    type: parameter
-    definition: fieldId of the custom field created earlier.
-  - name: fieldName
-    type: property
-    definition: The fieldName field.
-  - name: fieldValue
-    type: property
-    definition: The fieldValue field.
-  - name: filterable
-    type: property
-    definition: The filterable field.
-  - name: firstName
-    type: property
-    definition: The firstName field.
-  - name: fromDate
-    type: property
-    definition: The fromDate field.
-  - name: fromTimestamp
-    type: property
-    definition: The fromTimestamp field.
-  - name: gmbCover
-    type: property
-    definition: The gmbCover field.
-  - name: gmbCoverOptOut
-    type: property
-    definition: The gmbCoverOptOut field.
-  - name: gmbListing
-    type: property
-    definition: The gmbListing field.
-  - name: gmbLogoOptOut
-    type: property
-    definition: The gmbLogoOptOut field.
-  - name: googleProductCategoryId
-    type: property
-    definition: The googleProductCategoryId field.
-  - name: group
-    type: property
-    definition: The group field.
-  - name: groupByDays
-    type: property
-    definition: The groupByDays field.
-  - name: groupByType
-    type: property
-    definition: The groupByType field.
-  - name: healthcare
-    type: property
-    definition: The healthcare field.
-  - name: hoursOfOperations
-    type: property
-    definition: The hoursOfOperations field.
-  - name: id
-    type: property
-    definition: The id field.
-  - name: imageLink
-    type: property
-    definition: The imageLink field.
-  - name: imagePosition
-    type: property
-    definition: The imagePosition field.
-  - name: imageURL
-    type: property
-    definition: The imageURL field.
-  - name: impressum
-    type: property
-    definition: The impressum field.
-  - name: includeNonAggregatedReviews
-    type: parameter
-    definition: Include Reviews whose auto-crawling is blocked e.g. PressGaney
-  - name: includeTicketId
-    type: parameter
-    definition: The field to fetch ticketIds associated with the response.
-  - name: integrationGroupId
-    type: property
-    definition: The integrationGroupId field.
-  - name: integrationProperties
-    type: property
-    definition: The integrationProperties field.
-  - name: internalListing
-    type: property
-    definition: The internalListing field.
-  - name: iosAppURL
-    type: property
-    definition: The iosAppURL field.
-  - name: isAddressHidden
-    type: property
-    definition: The isAddressHidden field.
-  - name: isCompetitor
-    type: parameter
-    definition: True for get competitor business of Enterprise Business and False
-      for get Child Business of Enterprise Business.
-  - name: isHidden
-    type: property
-    definition: The isHidden field.
-  - name: isPinOnTop
-    type: property
-    definition: The isPinOnTop field.
-  - name: isPrivateResponse
-    type: property
-    definition: The isPrivateResponse field.
-  - name: isSEOEnabled
-    type: property
-    definition: The isSEOEnabled field.
-  - name: isServiceAreaProvider
-    type: property
-    definition: The isServiceAreaProvider field.
-  - name: isVisible
-    type: property
-    definition: The isVisible field.
-  - name: keywords
-    type: property
-    definition: The keywords field.
-  - name: keywordsSearch
-    type: property
-    definition: The keywordsSearch field.
-  - name: lang
-    type: parameter
-    definition: The survey locale, default is english
-  - name: languages
-    type: property
-    definition: The languages field.
-  - name: lastName
-    type: property
-    definition: The lastName field.
-  - name: limit
-    type: property
-    definition: The limit field.
-  - name: linkText
-    type: property
-    definition: The linkText field.
-  - name: localPhoneNumber
-    type: property
-    definition: The localPhoneNumber field.
-  - name: location
-    type: property
-    definition: The location field.
-  - name: locationBizNumber
-    type: parameter
-    definition: Long Location number of the Location
-  - name: locationsNumberAccess
-    type: property
-    definition: The locationsNumberAccess field.
-  - name: logoUrl
-    type: property
-    definition: The logoUrl field.
-  - name: media
-    type: property
-    definition: The media field.
-  - name: mediaCategory
-    type: property
-    definition: The mediaCategory field.
-  - name: mediaId
-    type: parameter
-    definition: Id of the media item.
-  - name: menuLink
-    type: property
-    definition: The menuLink field.
-  - name: merchantId
-    type: parameter
-    definition: Google Merchant Center account ID.
-  - name: months
-    type: parameter
-    definition: Use to get results for last some months.
-  - name: name
-    type: property
-    definition: The name field.
-  - name: needCustomerInfo
-    type: property
-    definition: The needCustomerInfo field.
-  - name: notification
-    type: property
-    definition: The notification field.
-  - name: offset
-    type: property
-    definition: The offset field.
-  - name: op
-    type: parameter
-    definition: 'Possible values are: [1] will display ticket count only, [3] will
-      display all the data of the ticket. Default value - 3.'
-  - name: optOut
-    type: property
-    definition: The optOut field.
-  - name: order
-    type: property
-    definition: The order field.
-  - name: orderAheadLink
-    type: property
-    definition: The orderAheadLink field.
-  - name: orderBy
-    type: property
-    definition: The orderBy field.
-  - name: page
-    type: property
-    definition: The page field.
-  - name: pageNo
-    type: property
-    definition: The pageNo field.
-  - name: pageNumber
-    type: parameter
-    definition: 0-based page index. Default 0.
-  - name: pageSize
-    type: property
-    definition: The pageSize field.
-  - name: payment
-    type: property
-    definition: The payment field.
-  - name: permission
-    type: property
-    definition: The permission field.
-  - name: phone
-    type: property
-    definition: The phone field.
-  - name: pid
-    type: parameter
-    definition: Reseller/Sub-reseller/Enterprise Id.
-  - name: price
-    type: property
-    definition: The price field.
-  - name: productId
-    type: parameter
-    definition: Unique identifier of the product to update.
-  - name: productIdentifier
-    type: parameter
-    definition: Product identifier.
-  - name: productIds
-    type: property
-    definition: The productIds field.
-  - name: productSku
-    type: property
-    definition: The productSku field.
-  - name: productTypes
-    type: property
-    definition: The productTypes field.
-  - name: productUrl
-    type: property
-    definition: The productUrl field.
-  - name: products
-    type: property
-    definition: The products field.
-  - name: profileTabs
-    type: property
-    definition: The profileTabs field.
-  - name: question
-    type: property
-    definition: The question field.
-  - name: questionId
-    type: property
-    definition: The questionId field.
-  - name: ratings
-    type: property
-    definition: The ratings field.
-  - name: reopenDate
-    type: property
-    definition: The reopenDate field.
-  - name: reportType
-    type: parameter
-    definition: The type of Report - Summary or Tabular.
-  - name: reservationLink
-    type: property
-    definition: The reservationLink field.
-  - name: response
-    type: property
-    definition: The response field.
-  - name: reviewId
-    type: parameter
-    definition: Review Id.
-  - name: reviewSiteAllFlag
-    type: property
-    definition: The reviewSiteAllFlag field.
-  - name: reviewSites
-    type: property
-    definition: The reviewSites field.
-  - name: reviewSources
-    type: property
-    definition: The reviewSources field.
-  - name: rid
-    type: parameter
-    definition: Id of the Reseller.
-  - name: sIndex
-    type: parameter
-    definition: The starting index for the records to fetch. Default is 0 if not specified.
-  - name: salePrice
-    type: property
-    definition: The salePrice field.
-  - name: scheduleTimestamp
-    type: property
-    definition: The scheduleTimestamp field.
-  - name: search
-    type: property
-    definition: The search field.
-  - name: searchStr
-    type: property
-    definition: The searchStr field.
-  - name: selectedMonth
-    type: property
-    definition: The selectedMonth field.
-  - name: selectedkeywords
-    type: property
-    definition: The selectedkeywords field.
-  - name: sendInvite
-    type: property
-    definition: The sendInvite field.
-  - name: sentiment
-    type: property
-    definition: The sentiment field.
-  - name: serviceAreas
-    type: property
-    definition: The serviceAreas field.
-  - name: serviceId
-    type: property
-    definition: The serviceId field.
-  - name: serviceIds
-    type: property
-    definition: The serviceIds field.
-  - name: service_id
-    type: property
-    definition: The service_id field.
-  - name: services
-    type: property
-    definition: The services field.
-  - name: sindex
-    type: parameter
-    definition: Start index of the reviews. Refer API note for max permissible value.
-  - name: size
-    type: property
-    definition: The size field.
-  - name: smsEnabled
-    type: property
-    definition: The smsEnabled field.
-  - name: smsOptin
-    type: property
-    definition: The smsOptin field.
-  - name: smsPreferences
-    type: property
-    definition: The smsPreferences field.
-  - name: socialProfileURLs
-    type: property
-    definition: The socialProfileURLs field.
-  - name: socialSite
-    type: property
-    definition: The socialSite field.
-  - name: sorder
-    type: parameter
-    definition: '''0'' for ascending and ''1'' for descending order.'
-  - name: sortBy
-    type: property
-    definition: The sortBy field.
-  - name: sortOrder
-    type: property
-    definition: The sortOrder field.
-  - name: sortby
-    type: property
-    definition: The sortby field.
-  - name: sortorder
-    type: parameter
-    definition: Sort order identifier. Default is 1.
-  - name: sourceAlias
-    type: property
-    definition: The sourceAlias field.
-  - name: sourceAliases
-    type: property
-    definition: The sourceAliases field.
-  - name: sourceName
-    type: parameter
-    definition: Source name for which category data needs to be fetched. Possible
-      values are BING, HEALTHCARE, GMB, VENDOR, FACEBOOK, APPLE.
-  - name: sourceNames
-    type: property
-    definition: The sourceNames field.
-  - name: sourceType
-    type: property
-    definition: The sourceType field.
-  - name: sourceTypes
-    type: property
-    definition: The sourceTypes field.
-  - name: sources
-    type: property
-    definition: The sources field.
-  - name: specialHours
-    type: property
-    definition: The specialHours field.
-  - name: start
-    type: property
-    definition: The start field.
-  - name: startDate
-    type: property
-    definition: The startDate field.
-  - name: startDateUtc
-    type: property
-    definition: The startDateUtc field.
-  - name: startIndex
-    type: property
-    definition: The startIndex field.
-  - name: status
-    type: property
-    definition: The status field.
-  - name: statuses
-    type: property
-    definition: The statuses field.
-  - name: subBusinessIds
-    type: property
-    definition: The subBusinessIds field.
-  - name: subBusinessNumbers
-    type: property
-    definition: The subBusinessNumbers field.
-  - name: subscriptionStatus
-    type: property
-    definition: The subscriptionStatus field.
-  - name: surveyId
-    type: property
-    definition: The surveyId field.
-  - name: surveyResponseId
-    type: property
-    definition: The surveyResponseId field.
-  - name: surveySettings
-    type: property
-    definition: The surveySettings field.
-  - name: survey_id
-    type: parameter
-    definition: Id of the Survey.
-  - name: tag
-    type: parameter
-    definition: List of tags.
-  - name: tagNames
-    type: property
-    definition: The tagNames field.
-  - name: tagname
-    type: parameter
-    definition: Tag name to be deleted.
-  - name: tags
-    type: property
-    definition: The tags field.
-  - name: templateId
-    type: property
-    definition: The templateId field.
-  - name: text
-    type: property
-    definition: The text field.
-  - name: theme
-    type: property
-    definition: The theme field.
-  - name: thirdPartyListing
-    type: property
-    definition: The thirdPartyListing field.
-  - name: ticketId
-    type: property
-    definition: The ticketId field.
-  - name: ticketStatuses
-    type: property
-    definition: The ticketStatuses field.
-  - name: ticketType
-    type: property
-    definition: The ticketType field.
-  - name: ticketTypes
-    type: property
-    definition: The ticketTypes field.
-  - name: ticketUpdateMessages
-    type: property
-    definition: The ticketUpdateMessages field.
-  - name: timePeriodSelected
-    type: property
-    definition: The timePeriodSelected field.
-  - name: timezone
-    type: property
-    definition: The timezone field.
-  - name: title
-    type: property
-    definition: The title field.
-  - name: toDate
-    type: property
-    definition: The toDate field.
-  - name: toTimestamp
-    type: property
-    definition: The toTimestamp field.
-  - name: tollFreePhoneNumber
-    type: property
-    definition: The tollFreePhoneNumber field.
-  - name: topAd
-    type: property
-    definition: The topAd field.
-  - name: topKW
-    type: property
-    definition: The topKW field.
-  - name: topThm
-    type: property
-    definition: The topThm field.
-  - name: trackingId
-    type: property
-    definition: The trackingId field.
-  - name: type
-    type: property
-    definition: The type field.
-  - name: updateFromDate
-    type: property
-    definition: The updateFromDate field.
-  - name: updateToDate
-    type: property
-    definition: The updateToDate field.
-  - name: url
-    type: property
-    definition: The url field.
-  - name: user
-    type: property
-    definition: The user field.
-  - name: userEmail
-    type: property
-    definition: The userEmail field.
-  - name: userEmailId
-    type: property
-    definition: The userEmailId field.
-  - name: userRole
-    type: property
-    definition: The userRole field.
-  - name: viewMode
-    type: property
-    definition: The viewMode field.
-  - name: viewReportType
-    type: property
-    definition: The viewReportType field.
-  - name: webhookUrl
-    type: property
-    definition: The webhookUrl field.
-  - name: websiteUrl
-    type: property
-    definition: The websiteUrl field.
-  - name: working24x7
-    type: property
-    definition: The working24x7 field.
-  - name: zip
-    type: property
-    definition: The zip field.
+  - term: Aggregation
+    definition: Access your public data from 150+ review sites.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-aggregation-api-openapi.yml
+  - term: Business
+    definition: Create and maintain your business on Birdeye.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-business-api-openapi.yml
+  - term: Business Media
+    definition: 'Add, delete and manage business media. Supported Media Size Photo: JPG or PNG. 720 x 720px. 10KB min. Video: 30 sec long. 720p
+      or more upto 75MB. Note Uploaded media will be pushed to your google business profile (if connected) and other long tail directories only.'
+    tags:
+    - Resource Group
+    source: openapi/birdeye-business-media-api-openapi.yml
+  - term: Campaign
+    definition: Create a short link for review requests and set review sources in the template.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-campaign-api-openapi.yml
+  - term: Competitor AI
+    definition: Competitive intelligence, simplified by AI.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-competitor-ai-api-openapi.yml
+  - term: Competitor
+    definition: Make competitive insights your unfair advantage.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-competitor-api-openapi.yml
+  - term: Contact
+    definition: Manage contacts across locations effortlessly with a robust Contact Management System.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-contact-api-openapi.yml
+  - term: Contact V2
+    definition: Easily manage contacts across multiple locations using enhanced Contact APIs, featuring built-in support for communication preference
+      flags.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-contact-v2-api-openapi.yml
+  - term: Conversation
+    definition: Connect with customers across a range of digital channels from one unified inbox.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-conversation-api-openapi.yml
+  - term: Custom Fields
+    definition: Create, delete , update , associate and get custom fields easily.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-custom-fields-api-openapi.yml
+  - term: FAQ
+    definition: To retrieve all Question and Answer (QnA) entries across locations using FAQ APIs, enabling smart support and knowledge features
+      for businesses.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-faq-api-openapi.yml
+  - term: GMB Products
+    definition: To manage products, locations, and business details through Listing GMB platform
+    tags:
+    - Resource Group
+    source: openapi/birdeye-gmb-products-api-openapi.yml
+  - term: Google Q&A
+    definition: Note Applicable to be used only by paid listings clients, for their active locations, for the Google Q&A section, in the Google
+      listing
+    tags:
+    - Resource Group
+    source: openapi/birdeye-google-q-a-api-openapi.yml
+  - term: Google Services
+    definition: Note Applicable to be used only by paid listings clients, for their active locations, for the Google Services section, in the
+      Google listing.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-google-services-api-openapi.yml
+  - term: Insight AI
+    definition: Insight intelligence, simplified by AI.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-insight-ai-api-openapi.yml
+  - term: Integration
+    definition: Birdeye integrates with various software or tools you use.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-integration-api-openapi.yml
+  - term: Listing
+    definition: Keep your business information accurate and consistent across 50+ websites.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-listing-api-openapi.yml
+  - term: Report
+    definition: Various reporting data points across Birdeye modules like reviews, insights and competitors etc for all your data visualisation
+    tags:
+    - Resource Group
+    source: openapi/birdeye-report-api-openapi.yml
+  - term: Reviews
+    definition: Consistently generate more reviews and higher ratings.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-reviews-api-openapi.yml
+  - term: Search AI
+    definition: Search AI provides a comprehensive view of your business performance across AI-powered search platforms, including data accuracy,
+      sentiment analysis, citations, brand ranking, and overall visibility.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-search-ai-api-openapi.yml
+  - term: Social
+    definition: Create and track Social posting for all channels.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-social-api-openapi.yml
+  - term: Subscription
+    definition: Subscribe or Unsubscribe multiple webhooks with different URLs or Events for a subscription and deliver real-time notifications.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-subscription-api-openapi.yml
+  - term: Survey
+    definition: Engage each customer at the right time with NPS or CSAT surveys to improve your service.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-survey-api-openapi.yml
+  - term: Ticketing
+    definition: Create standout customer support with ticketing across reviews, untagged, and survey responses.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-ticketing-api-openapi.yml
+  - term: User
+    definition: Delete and manage user profiles and permissions easily.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-user-api-openapi.yml
+  - term: Webhook
+    definition: Configure multiple webhooks with different URLs for a subscription and deliver real-time notifications.
+    tags:
+    - Resource Group
+    source: openapi/birdeye-webhook-api-openapi.yml
+  - term: 1011Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/1011Model
+  - term: 89Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/89Model
+  - term: 1167Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/1167Model
+  - term: 1175Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/1175Model
+  - term: 1161Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/1161Model
+  - term: 1039Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/1039Model
+  - term: 1032Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/1032Model
+  - term: Apiary_addAggregationUrl_Response200
+    definition: 'Object declared by the contract with fields: id, sourceAlias, sourceName, sourceUrl, Body.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/Apiary_addAggregationUrl_Response200
+  - term: Apiary_addNewCompetitorAggregationUrl_Request
+    definition: 'Object declared by the contract with fields: sourceAlias, url.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/Apiary_addNewCompetitorAggregationUrl_Request
+  - term: 1031Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/1031Model
+  - term: 1030Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/1030Model
+  - term: 1033Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-aggregation-api-openapi.yml#/components/schemas/1033Model
+  - term: 3334Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/3334Model
+  - term: Apiary_updatePublicProfileOfBusinesses_Request
+    definition: 'Object declared by the contract with fields: profileTabs.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/Apiary_updatePublicProfileOfBusinesses_Request
+  - term: 1174Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1174Model
+  - term: 2519Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2519Model
+  - term: 1047Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1047Model
+  - term: Apiary_searchBusiness_Request
+    definition: 'Object declared by the contract with fields: searchStr, sortBy, sortOrder, startIndex, pageSize.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/Apiary_searchBusiness_Request
+  - term: 1052Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1052Model
+  - term: 1025Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1025Model
+  - term: 1070Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1070Model
+  - term: 2151Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2151Model
+  - term: 1046Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1046Model
+  - term: 3337Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/3337Model
+  - term: 2286Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2286Model
+  - term: 2297Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2297Model
+  - term: 2290Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2290Model
+  - term: 2155Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2155Model
+  - term: 400Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/400Model
+  - term: 2166Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2166Model
+  - term: 2292Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2292Model
+  - term: Apiary_getBusiness_Response200
+    definition: 'Object declared by the contract with fields: businessId, name, alias, emailId, phone, fax, websiteUrl, description, services,
+      keywords, logoUrl, coverImageUrl. (17 more)'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/Apiary_getBusiness_Response200
+  - term: Apiary_getBirdeyeImpressions_Request
+    definition: 'Object declared by the contract with fields: businessNumbers, startDate, endDate, limit, startIndex, sortby, order.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/Apiary_getBirdeyeImpressions_Request
+  - term: 2520Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2520Model
+  - term: 2518Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2518Model
+  - term: 2154Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2154Model
+  - term: 1093Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1093Model
+  - term: Apiary_updateBusiness_Request
+    definition: 'Object declared by the contract with fields: name, alias, isAddressHidden, location, emailId, phone, fax, websiteUrl, establishedYear,
+      timezone, languages, isServiceAreaProvider. (38 more)'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/Apiary_updateBusiness_Request
+  - term: 6001Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/6001Model
+  - term: 2157Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2157Model
+  - term: 1184Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1184Model
+  - term: 2516Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2516Model
+  - term: 2513Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2513Model
+  - term: 1010Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1010Model
+  - term: 1094Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1094Model
+  - term: 2512Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2512Model
+  - term: 2293Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2293Model
+  - term: 1150Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1150Model
+  - term: 1056Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/1056Model
+  - term: 2511Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2511Model
+  - term: 2296Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2296Model
+  - term: Apiary_getCustomCardDetails_Response200
+    definition: 'Object declared by the contract with fields: customCardDetails.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/Apiary_getCustomCardDetails_Response200
+  - term: 2156Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/2156Model
+  - term: 3335Model
+    definition: 'Object declared by the contract with fields: code, message.'
+    tags:
+    - Object
+    source: openapi/birdeye-business-api-openapi.yml#/components/schemas/3335Model

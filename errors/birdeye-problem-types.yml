@@ -1,0 +1,52 @@
+generated: '2026-10-12'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/birdeye-aggregation-api-openapi.yml
+- openapi/birdeye-business-api-openapi.yml
+- openapi/birdeye-business-media-api-openapi.yml
+- openapi/birdeye-campaign-api-openapi.yml
+- openapi/birdeye-competitor-ai-api-openapi.yml
+- openapi/birdeye-competitor-api-openapi.yml
+- openapi/birdeye-contact-api-openapi.yml
+- openapi/birdeye-contact-v2-api-openapi.yml
+- openapi/birdeye-conversation-api-openapi.yml
+- openapi/birdeye-custom-fields-api-openapi.yml
+- openapi/birdeye-employee-api-openapi.yml
+- openapi/birdeye-faq-api-openapi.yml
+format: custom
+envelope:
+  media_type: application/json
+  schema: 1161Model
+coverage:
+  operations: 168
+  statuses_declared: 4
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad Request
+  operations: 3
+  media_types:
+  - application/json
+  schema: 2150Model
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  operations: 6
+  media_types:
+  - application/json
+  schema: 1161Model
+- status: 404
+  title: Not Found
+  description: Not Found
+  operations: 2
+  media_types:
+  - application/json
+  schema: 2151Model
+- status: 429
+  title: Too Many Requests
+  description: Too Many Requests
+  operations: 6
+  media_types:
+  - application/json
+  schema: 89Model

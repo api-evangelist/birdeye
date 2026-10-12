@@ -1,0 +1,108 @@
+generated: '2026-10-12'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 8
+  own: 5
+  other_domain: 0
+  platform: 3
+  roles:
+  - api
+  - other
+  - portal
+  - source
+  - status
+  - support
+  - website
+hosts:
+- host: api.birdeye.com
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: birdeye.com
+  role: api
+  relation: own
+- host: birdeye.com
+  found_by:
+  - pointer
+  types:
+  - Newsroom
+  - Leadership
+  - Compliance
+  - Security
+  - TermsOfService
+  - PrivacyPolicy
+  - Login
+  - Website
+  - Blog
+  - Pricing
+  serves: []
+  registrable_domain: birdeye.com
+  role: website
+  relation: own
+- host: docs.birdeye.com
+  found_by:
+  - pointer
+  - apis[]
+  - vendor-detect
+  types:
+  - DeveloperPortal
+  - APIReference
+  - GettingStarted
+  - Documentation
+  serves:
+  - docs
+  - cdn
+  - hosting
+  vendor: cloudflare
+  registrable_domain: birdeye.com
+  role: portal
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: status.birdeye.com
+  found_by:
+  - pointer
+  types:
+  - StatusPage
+  serves: []
+  registrable_domain: birdeye.com
+  role: status
+  relation: own
+- host: support.birdeye.com
+  found_by:
+  - pointer
+  types:
+  - Support
+  serves: []
+  registrable_domain: birdeye.com
+  role: support
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: x.com
+  found_by:
+  - pointer
+  types:
+  - X
+  serves: []
+  registrable_domain: x.com
+  role: other
+  relation: platform

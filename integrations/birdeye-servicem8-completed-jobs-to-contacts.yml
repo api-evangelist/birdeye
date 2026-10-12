@@ -1,0 +1,78 @@
+arazzo: 1.0.1
+info:
+  title: Create customers in Birdeye when jobs are completed in ServiceM8
+  summary: Create customers in Birdeye when jobs are completed in ServiceM8
+  description: Lists completed ServiceM8 jobs, reads the job contact, and upserts that contact into Birdeye.
+  version: 1.0.0
+sourceDescriptions:
+- name: birdeyeContactApi
+  url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/openapi/birdeye-contact-api-openapi.yml
+  type: openapi
+- name: servicem8JobContactsApi
+  url: https://raw.githubusercontent.com/api-evangelist/servicem8/refs/heads/main/openapi/servicem8-job-contacts-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: servicem8-completed-jobs-to-contacts
+  summary: Create customers in Birdeye when jobs are completed in ServiceM8
+  description: Lists completed ServiceM8 jobs, reads the job contact, and upserts that contact into Birdeye.
+  inputs:
+    type: object
+    properties:
+      jobUuid:
+        type: string
+      businessId:
+        type: string
+        description: Birdeye business (location) id
+  steps:
+  - stepId: get-job-contact
+    description: Read the contact attached to the completed job.
+    operationId: $sourceDescriptions.servicem8JobContactsApi.listJobContacts
+    parameters:
+    - name: $filter
+      in: query
+      value: job_uuid eq '{$inputs.jobUuid}'
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstName: $response.body#/0/first
+      lastName: $response.body#/0/last
+      email: $response.body#/0/email
+      phone: $response.body#/0/mobile
+  - stepId: create-or-update-birdeye-contact
+    description: Upsert the contact in Birdeye for the location.
+    operationId: $sourceDescriptions.birdeyeContactApi.create-or-update-contact
+    parameters:
+    - name: businessId
+      in: query
+      value: $inputs.businessId
+    requestBody:
+      contentType: application/json
+      payload:
+        firstName: $steps.get-job-contact.outputs.firstName
+        lastName: $steps.get-job-contact.outputs.lastName
+        email: $steps.get-job-contact.outputs.email
+        phone: $steps.get-job-contact.outputs.phone
+        businessIds:
+        - $inputs.businessId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      result: $response.body
+  outputs:
+    birdeyeResult: $steps.create-or-update-birdeye-contact.outputs.result
+x-integration:
+  partner: servicem8
+  template: https://zapier.com/apps/birdeye/integrations/servicem8/1211605/create-customers-in-birdeye-when-jobs-are-completed-in-servicem8
+  edge_evidence: https://zapier.com/apps/birdeye/integrations/servicem8/1211605/create-customers-in-birdeye-when-jobs-are-completed-in-servicem8
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-12'
+  generator: claude-opus-5-5 provider-integrations-arazzo
+  guessed_steps:
+  - step: get-job-contact
+    cause: partner-contract
+    why: Completed-job detection (status filter on listJobs) and job-contact field names are not declared as schemas
+      in the catalog ServiceM8 spec; the job uuid is taken as an input.
+  - step: create-or-update-birdeye-contact
+    cause: provider-contract
+    why: Birdeye response schema is only an example; no contact id output is declared.

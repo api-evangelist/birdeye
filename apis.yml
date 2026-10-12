@@ -1,10 +1,9 @@
 aid: birdeye
 name: Birdeye
 description: Birdeye is an AI-powered customer experience and reputation management platform for multi-location
-  brands. Its REST API enables developers to manage online reviews across 200+ sites, send surveys, respond
-  to messages, automate review requests, and track reputation metrics including ratings, sentiment trends,
-  and NPS scores. Integrations cover listings, webchat, appointments, payments, social posting, and customer
-  insights.
+  brands. Its REST API enables developers to manage online reviews across 200+ sites, send surveys, respond to messages,
+  automate review requests, and track reputation metrics including ratings, sentiment trends, and NPS scores. Integrations
+  cover listings, webchat, appointments, payments, social posting, and customer insights.
 type: Index
 deliveryModel:
   model: saas
@@ -33,8 +32,8 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/birdeye.png
 url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/apis.yml
-created: 2026-06-13
-modified: 2026-08-13
+created: '2026-06-13'
+modified: '2026-10-12'
 specificationVersion: '0.23'
 x-docs-platform: mintlify
 x-docs-platform-confidence: medium
@@ -57,6 +56,114 @@ tags_raw:
 - Multi-Location
 - AI
 - A2A
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+common:
+- type: Spectral
+  url: rules/birdeye-rules.yml
+- type: Spectral
+  url: rules/birdeye-jsonschema-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/birdeye-context.jsonld
+- type: ErrorCatalog
+  url: errors/birdeye-problem-types.yml
+- type: Hosts
+  url: hosts/birdeye-hosts.yml
+- type: IntegrationEdges
+  url: integrations/birdeye-integration-edges.yml
+- type: Vendors
+  url: vendors/birdeye-vendors.yml
+- type: Newsroom
+  url: https://birdeye.com/press/
+- type: Leadership
+  url: https://birdeye.com/team/
+- type: CapabilityMap
+  url: capabilities/birdeye-capability-edges.yml
+  name: Birdeye Business Capability Map
+- type: OpenAPI
+  name: Birdeye published OpenAPI (harvested verbatim)
+  url: openapi/_original/birdeye-openapi-original.yml
+- type: AgentCard
+  url: a2a/birdeye-a2a.yml
+- type: MCPServer
+  url: mcp/birdeye-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/birdeye-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/birdeye-llms.txt
+- type: WellKnown
+  url: well-known/birdeye-well-known.yml
+- type: Conventions
+  url: conventions/birdeye-conventions.yml
+- type: ErrorCatalog
+  url: errors/birdeye-error-codes.yml
+- type: DataModel
+  url: data-model/birdeye-data-model.yml
+- type: Overlay
+  url: overlays/birdeye-openapi-overlay.yaml
+- type: Conformance
+  url: conformance/birdeye-conformance.yml
+- type: Compliance
+  url: https://birdeye.com/security/
+- type: TrustCenter
+  url: security/birdeye-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/birdeye-vulnerability-disclosure.yml
+- type: Security
+  url: https://birdeye.com/security/
+- type: OAuthScopes
+  url: scopes/birdeye-scopes.yml
+- type: Lifecycle
+  url: lifecycle/birdeye-lifecycle.yml
+- type: ChangeLog
+  url: changelog/birdeye-changelog.yml
+- type: Webhooks
+  url: asyncapi/birdeye-webhooks.yml
+- type: DeveloperPortal
+  url: https://docs.birdeye.com/
+- type: APIReference
+  url: https://docs.birdeye.com/api/introduction
+- type: GettingStarted
+  url: https://docs.birdeye.com/mcp/quickstart
+- type: Support
+  url: https://support.birdeye.com/
+- type: TermsOfService
+  url: https://birdeye.com/terms/
+- type: PrivacyPolicy
+  url: https://birdeye.com/privacy/
+- type: Login
+  url: https://birdeye.com/login/
+- type: GitHubOrganization
+  url: https://github.com/birdeyeinc
+- type: AgenticAccess
+  url: agentic-access/birdeye-agentic-access.yml
+- type: DomainSecurity
+  url: security/birdeye-domain-security.yml
+- type: Authentication
+  url: authentication/birdeye-authentication.yml
+- type: Website
+  url: https://birdeye.com/
+- type: Documentation
+  url: https://docs.birdeye.com/api/introduction
+- type: Blog
+  url: https://birdeye.com/blog/
+- type: Pricing
+  url: https://birdeye.com/pricing/
+- type: StatusPage
+  url: https://status.birdeye.com/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/birdeye
+- type: X
+  url: https://x.com/Birdeye_
+- type: Plans
+  url: plans/birdeye-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/birdeye-rate-limits.yml
+- type: FinOps
+  url: finops/birdeye-finops.yml
 apis:
 - aid: birdeye:birdeye-aggregation-api
   name: Birdeye Aggregation API
@@ -203,8 +310,8 @@ apis:
     url: json-ld/birdeye-context.jsonld
 - aid: birdeye:birdeye-contact-v2-api
   name: Birdeye Contact V2 API
-  description: Easily manage contacts across multiple locations using enhanced Contact APIs, featuring
-    built-in support for communication preference flags.
+  description: Easily manage contacts across multiple locations using enhanced Contact APIs, featuring built-in
+    support for communication preference flags.
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
@@ -278,8 +385,8 @@ apis:
     url: json-ld/birdeye-context.jsonld
 - aid: birdeye:birdeye-faq-api
   name: Birdeye FAQ API
-  description: To retrieve all Question and Answer (QnA) entries across locations using FAQ APIs, enabling
-    smart support and knowledge features for businesses.
+  description: To retrieve all Question and Answer (QnA) entries across locations using FAQ APIs, enabling smart
+    support and knowledge features for businesses.
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
@@ -318,8 +425,8 @@ apis:
   description: 'Note
 
 
-    Applicable to be used only by paid listings clients, for their active locations, for the Google Q&A
-    section, in the Google listing'
+    Applicable to be used only by paid listings clients, for their active locations, for the Google Q&A section,
+    in the Google listing'
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
@@ -340,15 +447,15 @@ apis:
   description: 'Note
 
 
-    Applicable to be used only by paid listings clients, for their active locations, for the Google Services
-    section, in the Google listing.
+    Applicable to be used only by paid listings clients, for their active locations, for the Google Services section,
+    in the Google listing.
 
     No two services should have the same service name. It is recommended that all services created should  HAVE
     UNIQUE service names.
 
-    You CAN have the same service across two diff categories e.g.: Emergency counselling as a $100 paid
-    service can be a service created & mapped to category A - Mental health and category B - Psychotherapy
-    - both categories being present for the same location.'
+    You CAN have the same service across two diff categories e.g.: Emergency counselling as a $100 paid service
+    can be a service created & mapped to category A - Mental health and category B - Psychotherapy - both categories
+    being present for the same location.'
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
@@ -420,10 +527,12 @@ apis:
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/birdeye-context.jsonld
+  - type: JSONSchema
+    url: json-schema/birdeye-apiary-get-hotel-attributes-response200-schema.json
 - aid: birdeye:birdeye-report-api
   name: Birdeye Report API
-  description: Various reporting data points across Birdeye modules like reviews, insights and competitors
-    etc for all your data visualisation
+  description: Various reporting data points across Birdeye modules like reviews, insights and competitors etc for
+    all your data visualisation
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
@@ -459,9 +568,8 @@ apis:
     url: json-ld/birdeye-context.jsonld
 - aid: birdeye:birdeye-search-ai-api
   name: Birdeye Search AI API
-  description: Search AI provides a comprehensive view of your business performance across AI-powered
-    search platforms, including data accuracy, sentiment analysis, citations, brand ranking, and overall
-    visibility.
+  description: Search AI provides a comprehensive view of your business performance across AI-powered search platforms,
+    including data accuracy, sentiment analysis, citations, brand ranking, and overall visibility.
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
@@ -495,10 +603,16 @@ apis:
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/birdeye-context.jsonld
+  - type: JSONSchema
+    url: json-schema/birdeye-apiary-track-social-media-upload-response200-schema.json
+  - type: JSONSchema
+    url: json-schema/birdeye-apiary-upload-social-media-request-schema.json
+  - type: JSONSchema
+    url: json-schema/birdeye-apiary-upload-social-media-response200-schema.json
 - aid: birdeye:birdeye-subscription-api
   name: Birdeye Subscription API
-  description: Subscribe or Unsubscribe multiple webhooks with different URLs or Events for a subscription
-    and deliver real-time notifications.
+  description: Subscribe or Unsubscribe multiple webhooks with different URLs or Events for a subscription and deliver
+    real-time notifications.
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
@@ -572,8 +686,7 @@ apis:
     url: json-ld/birdeye-context.jsonld
 - aid: birdeye:birdeye-webhook-api
   name: Birdeye Webhook API
-  description: Configure multiple webhooks with different URLs for a subscription and deliver real-time
-    notifications.
+  description: Configure multiple webhooks with different URLs for a subscription and deliver real-time notifications.
   humanURL: https://docs.birdeye.com/
   baseURL: https://api.birdeye.com
   tags:
@@ -589,105 +702,15 @@ apis:
     url: vocabulary/birdeye-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/birdeye-context.jsonld
-common:
-- type: CapabilityMap
-  url: capabilities/birdeye-capability-edges.yml
-  name: Birdeye Business Capability Map
-- type: OpenAPI
-  name: Birdeye published OpenAPI (harvested verbatim)
-  url: openapi/_original/birdeye-openapi-original.yml
-- type: AgentCard
-  url: a2a/birdeye-a2a.yml
-- type: MCPServer
-  url: mcp/birdeye-mcp.yml
-- type: ToolCrosswalk
-  url: mcp/birdeye-tool-crosswalk.yml
-- type: AgentSkill
-  url: skills/_index.yml
-- type: LLMsTxt
-  url: llms/birdeye-llms.txt
-- type: WellKnown
-  url: well-known/birdeye-well-known.yml
-- type: Conventions
-  url: conventions/birdeye-conventions.yml
-- type: ErrorCatalog
-  url: errors/birdeye-error-codes.yml
-- type: DataModel
-  url: data-model/birdeye-data-model.yml
-- type: Overlay
-  url: overlays/birdeye-openapi-overlay.yaml
-- type: Conformance
-  url: conformance/birdeye-conformance.yml
-- type: Compliance
-  url: https://birdeye.com/security/
-- type: TrustCenter
-  url: security/birdeye-trust-center.yml
-- type: VulnerabilityDisclosure
-  url: security/birdeye-vulnerability-disclosure.yml
-- type: Security
-  url: https://birdeye.com/security/
-- type: OAuthScopes
-  url: scopes/birdeye-scopes.yml
-- type: Lifecycle
-  url: lifecycle/birdeye-lifecycle.yml
-- type: ChangeLog
-  url: changelog/birdeye-changelog.yml
-- type: Webhooks
-  url: asyncapi/birdeye-webhooks.yml
-- type: DeveloperPortal
-  url: https://docs.birdeye.com/
-- type: APIReference
-  url: https://docs.birdeye.com/api/introduction
-- type: GettingStarted
-  url: https://docs.birdeye.com/mcp/quickstart
-- type: Support
-  url: https://support.birdeye.com/
-- type: TermsOfService
-  url: https://birdeye.com/terms/
-- type: PrivacyPolicy
-  url: https://birdeye.com/privacy/
-- type: Login
-  url: https://birdeye.com/login/
-- type: GitHubOrganization
-  url: https://github.com/birdeyeinc
-- type: AgenticAccess
-  url: agentic-access/birdeye-agentic-access.yml
-- type: DomainSecurity
-  url: security/birdeye-domain-security.yml
-- type: Authentication
-  url: authentication/birdeye-authentication.yml
-- type: Website
-  url: https://birdeye.com/
-- type: Documentation
-  url: https://docs.birdeye.com/api/introduction
-- type: Blog
-  url: https://birdeye.com/blog/
-- type: Pricing
-  url: https://birdeye.com/pricing/
-- type: StatusPage
-  url: https://status.birdeye.com/
-- type: LinkedIn
-  url: https://www.linkedin.com/company/birdeye
-- type: X
-  url: https://x.com/Birdeye_
-- type: Plans
-  url: plans/birdeye-plans-pricing.yml
-- type: RateLimits
-  url: rate-limits/birdeye-rate-limits.yml
-- type: FinOps
-  url: finops/birdeye-finops.yml
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
 x-enrichment:
-  date: '2026-08-13'
+  date: '2026-10-12'
   status: enriched
-  artifacts_added: 24
-  pass: local-v1
+  artifacts_added: 6
+  pass: local-v5
 x-a2a:
   verified: true
   probed: '2026-09-26'
-  url: "https://docs.birdeye.com/.well-known/agent-card.json"
-  grade: "conformant"
-  protocol_version: "0.3"
+  url: https://docs.birdeye.com/.well-known/agent-card.json
+  grade: conformant
+  protocol_version: '0.3'
   control: 404

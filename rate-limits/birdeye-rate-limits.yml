@@ -1,26 +1,26 @@
 name: Birdeye API Rate Limits
-description: Birdeye enforces per-API-key rate limits to ensure optimal performance and fair usage across
-  all accounts. Limits vary by account plan and are not universally published; specific thresholds must
-  be confirmed with Birdeye support or found in account documentation.
+description: Birdeye enforces per-API-key rate limits to ensure optimal performance and fair usage across all accounts.
+  Limits vary by account plan and are not universally published; specific thresholds must be confirmed with Birdeye
+  support or found in account documentation.
 url: https://support.birdeye.com/en/articles/12654181-birdeye-s-developer-portal
-created: 2026-06-13
-modified: 2026-06-13
+created: '2026-06-13'
+modified: '2026-06-13'
 rateLimits:
 - name: Standard Daily Limit
   scope: per-api-key
   window: daily
   limit: 10000
   unit: requests
-  description: Default daily cap applied per API key on standard accounts. This is a reference threshold;
-    actual limits depend on the account plan.
-  notes: Not universal — some accounts may have higher or lower limits based on contract terms.
+  description: Default daily cap applied per API key on standard accounts. This is a reference threshold; actual
+    limits depend on the account plan.
+  notes: "Not universal \u2014 some accounts may have higher or lower limits based on contract terms."
 - name: Enterprise Custom Limit
   scope: per-api-key
   window: negotiated
   limit: custom
   unit: requests
-  description: Enterprise and Premium plan API keys receive custom rate limit allocations negotiated at
-    contract time. Contact Birdeye account management to adjust.
+  description: Enterprise and Premium plan API keys receive custom rate limit allocations negotiated at contract
+    time. Contact Birdeye account management to adjust.
 headers:
 - name: X-RateLimit-Limit
   description: Maximum number of requests permitted in the current window (if returned).
@@ -29,8 +29,8 @@ headers:
 errorCodes:
 - code: 429
   message: Too Many Requests
-  description: Returned when the API key has exceeded its configured rate limit. Implement exponential
-    backoff before retrying.
+  description: Returned when the API key has exceeded its configured rate limit. Implement exponential backoff before
+    retrying.
 bestPractices:
 - Batch API calls where possible to reduce total request count.
 - Cache frequently-requested data (e.g., business details, review aggregates) on the client side.
@@ -41,19 +41,17 @@ contactForLimits: https://support.birdeye.com/
 generated: '2026-08-13'
 method: searched
 source: https://docs.birdeye.com/api/authentication
-limit_count: 2
+limit_count: 1
 published_numeric_limit: false
-method_note: Birdeye publishes NO numeric rate limit. Its own authentication page says "There is a limit
-  to calling APIs with each API key [connect with the support team to get the current limit]." HTTP 429
-  and business code 89 "Rate limit exceeded" (also 1541 "Rate Limit of API has been exceeded") are documented
-  as the exhaustion signals. The entries below are account-level reference thresholds, not provider-published
-  numbers.
+method_note: Birdeye publishes NO numeric rate limit. Its own authentication page says "There is a limit to calling
+  APIs with each API key [connect with the support team to get the current limit]." HTTP 429 and business code 89
+  "Rate limit exceeded" (also 1541 "Rate Limit of API has been exceeded") are documented as the exhaustion signals.
+  The entries below are account-level reference thresholds, not provider-published numbers.
 response_headers:
   published: false
-  note: No RateLimit-* or X-RateLimit-* header contract is documented anywhere in the Birdeye developer
-    docs or the published OpenAPI. The X-RateLimit-* entries previously recorded here are conditional
-    ("if returned") and unconfirmed — an agent cannot rely on a runtime remaining-quota signal from this
-    API.
+  note: "No RateLimit-* or X-RateLimit-* header contract is documented anywhere in the Birdeye developer docs or\
+    \ the published OpenAPI. The X-RateLimit-* entries previously recorded here are conditional (\"if returned\"\
+    ) and unconfirmed \u2014 an agent cannot rely on a runtime remaining-quota signal from this API."
 exhaustion:
   http_status: 429
   body_codes:
@@ -62,3 +60,11 @@ exhaustion:
   retry_after_header: false
   guidance: Exponential backoff; the docs give no Retry-After.
 docs: https://docs.birdeye.com/api/http-status-codes
+limits:
+- name: Per API key limit
+  scope: per-api-key
+  limit_text: There is a limit to calling APIs with each API key [connect with the support team to get the current
+    limit]
+  note: No number or window is published; the limit is obtained from Birdeye support.
+rateLimits_note: The rateLimits entries below (10000/day, enterprise custom) came from an earlier pass and could
+  not be re-found on docs.birdeye.com on 2026-10-12; treat them as unverified.

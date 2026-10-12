@@ -1,28 +1,73 @@
 # Birdeye Developer Portal
 
-## Docs
-
 - [Introduction](https://docs.birdeye.com/mcp/introduction.md): The Birdeye MCP server gives AI assistants direct access to your Birdeye data — Reviews, Listings, Surveys, Social, Ticketing, Search AI, Insights, and more
 - [Quickstart](https://docs.birdeye.com/mcp/quickstart.md): Connect your AI assistant to Birdeye in under 5 minutes.
-- [Authentication](https://docs.birdeye.com/mcp/authentication.md): The Birdeye MCP Server uses OAuth 2.0 to authenticate requests. No API keys or manual token management required.
+- [Authentication and Rate limiting](https://docs.birdeye.com/mcp/authentication.md): The Birdeye MCP Server uses OAuth 2.0 to authenticate requests. No API keys or manual token management required.
 - [Troubleshooting](https://docs.birdeye.com/mcp/troubleshooting.md): Common issues and how to resolve them when using the Birdeye MCP Server.
 - [Tools Overview](https://docs.birdeye.com/mcp/tools/overview.md): Birdeye MCP provides a variety of read-only tools across different categories. All tools use your authenticated Birdeye account context
-- [Reviews Overview](https://docs.birdeye.com/mcp/tools/reviews/overview.md): Tools for accessing review data, rating trends, and per-source summaries.
+- [Reviews Overview](https://docs.birdeye.com/mcp/tools/reviews/overview.md): Tools for accessing review data, rating trends, per-source summaries, and managing review tags and replies.
 - [Review and Rating Overview](https://docs.birdeye.com/mcp/tools/reviews/review-and-rating-overview.md): Get a report on review and rating trends over a specified time period.
 - [Get Reviews](https://docs.birdeye.com/mcp/tools/reviews/get-reviews.md): Fetch individual reviews with full details including rating, comment, reviewer info, source, and status.
 - [Get Review Summary](https://docs.birdeye.com/mcp/tools/reviews/get-review-summary.md): Fetch review summary grouped by review source — total counts and average ratings per platform.
-- [Business Overview](https://docs.birdeye.com/mcp/tools/business/overview.md): Tools for fetching business profile and location data.
+- [Get Review Tags](https://docs.birdeye.com/mcp/tools/reviews/get-review-tags.md): Fetch all review tags associated with the business account.
+- [Reply to Review](https://docs.birdeye.com/mcp/tools/reviews/reply-to-review.md): Post a public or private reply to a customer review.
+- [Create Review Tag](https://docs.birdeye.com/mcp/tools/reviews/create-review-tag.md): Create one or more new review tags for the account.
+- [Delete Review Tag](https://docs.birdeye.com/mcp/tools/reviews/delete-review-tag.md): Permanently delete a review tag from the account.
+- [Assign Tags to Reviews](https://docs.birdeye.com/mcp/tools/reviews/assign-tags-to-reviews.md): Assign a tag to reviews — by explicit review IDs or by filter criteria.
+- [Remove Tags from Reviews](https://docs.birdeye.com/mcp/tools/reviews/remove-tags-from-reviews.md): Remove a tag from reviews — by explicit review IDs or by filter criteria.
+- [Reports Overview](https://docs.birdeye.com/mcp/tools/reports/overview.md): Tools for review performance, response operations, NPS, visitor, usage, and business dashboard reporting.
+- [Get Review Conversion Report](https://docs.birdeye.com/mcp/tools/reports/get-review-conversion-report.md): Analyze how review request emails and SMS messages convert into clicks and reviews.
+- [Get Review and Rating Over Time](https://docs.birdeye.com/mcp/tools/reports/get-review-and-rating-over-time.md): Track review volume and average rating across time buckets.
+- [Get Review and Rating By Location](https://docs.birdeye.com/mcp/tools/reports/get-review-and-rating-by-location.md): Compare review volume and average rating across business locations.
+- [Get Review Count By Source](https://docs.birdeye.com/mcp/tools/reports/get-review-count-by-source.md): Break down review volume by source for each location.
+- [Get Visitor Count](https://docs.birdeye.com/mcp/tools/reports/get-visitor-count.md): Measure business visitors by traffic source and location.
+- [Get Reviews NPS Over Time](https://docs.birdeye.com/mcp/tools/reports/get-reviews-nps-over-time.md): Track review-derived Net Promoter Score and promoter, passive, and detractor share over time.
+- [Get Reviews NPS By Location](https://docs.birdeye.com/mcp/tools/reports/get-reviews-nps-by-location.md): Compare review-derived Net Promoter Score and customer loyalty across locations.
+- [Get Usage Report](https://docs.birdeye.com/mcp/tools/reports/get-usage-report.md): Inspect the detailed email and SMS review request usage funnel.
+- [Get Business Dashboard Report](https://docs.birdeye.com/mcp/tools/reports/get-business-dashboard-report.md): Get an executive snapshot of ratings, reviews, sentiment, benchmarks, presence, and recent reviews.
+- [Get Review Response Rate Over Time](https://docs.birdeye.com/mcp/tools/reports/get-review-response-rate-over-time.md): Track review response rate, answered reviews, and unanswered reviews over time.
+- [Get Review Response Rate By Location](https://docs.birdeye.com/mcp/tools/reports/get-review-response-rate-by-location.md): Compare response rates and unanswered-review backlogs across locations.
+- [Get Average Response Time Over Time](https://docs.birdeye.com/mcp/tools/reports/get-avg-response-time-over-time.md): Track how quickly the business responds to reviews over time.
+- [Get Average Response Time By Location](https://docs.birdeye.com/mcp/tools/reports/get-avg-response-time-by-location.md): Compare review response speed across business locations.
+- [Get Review Count By Rating](https://docs.birdeye.com/mcp/tools/reports/get-review-count-by-rating.md): View the distribution of reviews across star ratings.
+- [Get Review Count By Rating By Employee](https://docs.birdeye.com/mcp/tools/reports/get-review-count-by-rating-by-employee.md): Compare review rating distributions for assisted employees.
+- [Business Overview](https://docs.birdeye.com/mcp/tools/business/overview.md): Tools for business profiles, locations, account management, and microsite custom cards.
 - [Get Business Info](https://docs.birdeye.com/mcp/tools/business/get-business-info.md): Fetch the business profile of the currently authenticated user.
 - [Get Child Locations](https://docs.birdeye.com/mcp/tools/business/get-child-locations.md): Fetch all child locations of the current enterprise account.
-- [Surveys Overview](https://docs.birdeye.com/mcp/tools/surveys/overview.md): Tools for accessing survey definitions and responses.
+- [Create Business](https://docs.birdeye.com/mcp/tools/business/create-business.md): Create a new business or sub-account under the reseller or account.
+- [Update Business Status](https://docs.birdeye.com/mcp/tools/business/update-business-status.md): Activate or deactivate a business or location.
+- [Get Custom Card Details](https://docs.birdeye.com/mcp/tools/business/get-custom-card-details.md): List the custom cards on a location's microsite profile.
+- [Update Custom Card](https://docs.birdeye.com/mcp/tools/business/update-custom-card.md): Update an existing custom card on a business's microsite profile.
+- [Delete Custom Card](https://docs.birdeye.com/mcp/tools/business/delete-custom-card.md): Delete a custom card from a business's microsite profile.
+- [Custom Fields Overview](https://docs.birdeye.com/mcp/tools/custom-fields/overview.md): Tools for creating, reading, updating, and deleting custom fields on a business.
+- [Get Custom Fields List](https://docs.birdeye.com/mcp/tools/custom-fields/get-custom-fields-list.md): List a business's custom fields with pagination, search, and sorting.
+- [Get Custom Field](https://docs.birdeye.com/mcp/tools/custom-fields/get-custom-field.md): Get a single custom field's definition, and value if set, by its ID.
+- [Create Custom Field](https://docs.birdeye.com/mcp/tools/custom-fields/create-custom-field.md): Create a new custom field on a business.
+- [Update Custom Field](https://docs.birdeye.com/mcp/tools/custom-fields/update-custom-field.md): Update an existing custom field's configuration.
+- [Delete Custom Field](https://docs.birdeye.com/mcp/tools/custom-fields/delete-custom-field.md): Delete a custom field from a business.
+- [Business Media Overview](https://docs.birdeye.com/mcp/tools/business-media/overview.md): Tools for managing the photos and videos on a location's profile.
+- [Get Media](https://docs.birdeye.com/mcp/tools/business-media/get-media.md): List the photos and videos on a location's profile.
+- [Add Media](https://docs.birdeye.com/mcp/tools/business-media/add-media.md): Upload one or more photos or videos to a location profile.
+- [Update Media Category](https://docs.birdeye.com/mcp/tools/business-media/update-media-category.md): Re-categorize a single existing media item on a location profile.
+- [Delete Media](https://docs.birdeye.com/mcp/tools/business-media/delete-media.md): Delete one or more media items from a location profile.
+- [Surveys Overview](https://docs.birdeye.com/mcp/tools/surveys/overview.md): Tools for accessing, creating, and configuring customer surveys.
 - [Get All Surveys](https://docs.birdeye.com/mcp/tools/surveys/get-all-surveys.md): Get all available surveys for the business.
 - [Get Survey Responses](https://docs.birdeye.com/mcp/tools/surveys/get-survey-responses.md): Fetch paginated responses for a specific survey.
+- [Create Survey](https://docs.birdeye.com/mcp/tools/surveys/create-survey.md): Create a new customer feedback or NPS survey.
+- [Update Survey Settings](https://docs.birdeye.com/mcp/tools/surveys/update-survey-settings.md): Update appearance settings and access control for an existing survey.
 - [Listings Overview](https://docs.birdeye.com/mcp/tools/listings/overview.md): Tools for managing and analyzing your business listings across Google, Facebook, Bing, Apple, and other platforms.
 - [Get Listing](https://docs.birdeye.com/mcp/tools/listings/get-listing.md): Get the full listing profile for a single location, including hours, categories, photos, and per-site listing data.
 - [Get Listing Location Status Report](https://docs.birdeye.com/mcp/tools/listings/get-listing-location-status-report.md): Get a detailed listing status report for a single location across all connected sites.
 - [Get Listing Insights](https://docs.birdeye.com/mcp/tools/listings/get-listing-insights.md): Get analytics for your Google and other listings — map views, searches, calls, direction requests, and website visits.
 - [Get Listing Category List](https://docs.birdeye.com/mcp/tools/listings/get-listing-category-list.md): Get the list of available listing categories for a given platform and country.
 - [Get Product Listing List](https://docs.birdeye.com/mcp/tools/listings/get-product-listing-list.md): Get a paginated list of Google Merchant product listings linked to your account.
+- [Fix Listing](https://docs.birdeye.com/mcp/tools/listings/fix-listing.md): Publish / sync business information to 50+ online listing directories for a location.
+- [Deactivate Listing](https://docs.birdeye.com/mcp/tools/listings/deactivate-listing.md): Stop publishing business information to online listing directories for a location.
+- [Create Product](https://docs.birdeye.com/mcp/tools/listings/create-product.md): Create a new Google Merchant product listing for the business account.
+- [Update Product](https://docs.birdeye.com/mcp/tools/listings/update-product.md): Update an existing Google Merchant product listing on the business account.
+- [Add Products](https://docs.birdeye.com/mcp/tools/listings/add-products.md): Add one or more existing products to the business's Google listing.
+- [Remove Products](https://docs.birdeye.com/mcp/tools/listings/remove-products.md): Remove one or more products from the business's Google listing without permanently deleting them.
+- [Delete Products](https://docs.birdeye.com/mcp/tools/listings/delete-products.md): Permanently delete one or more Google Merchant products from the business account.
 - [Search AI Overview](https://docs.birdeye.com/mcp/tools/search-ai/overview.md): Tools for tracking how AI engines like ChatGPT, Gemini, and Perplexity represent your business.
 - [Get Search AI Configuration](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-configuration.md): Get the Search AI configuration — themes and the exact prompts being monitored for your business.
 - [Get Search AI Available Runs](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-available-runs.md): Get the list of available Search AI run dates for your account.
@@ -30,12 +75,31 @@
 - [Get Search AI Businesses](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-businesses.md): Get the businesses that AI engines surface when answering your monitored prompts.
 - [Get Search AI Accuracy Report](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-accuracy-report.md): Get a NAP accuracy report — how correctly AI engines report your business name, address, phone, hours, and website.
 - [Get Search AI Sentiment Report](https://docs.birdeye.com/mcp/tools/search-ai/get-search-ai-sentiment-report.md): Get a SWOT analysis — Strengths, Weaknesses, Opportunities, and Threats as perceived by AI engines about your business.
-- [Social Overview](https://docs.birdeye.com/mcp/tools/social/overview.md): Tools for measuring social channel performance across platforms.
+- [Social Overview](https://docs.birdeye.com/mcp/tools/social/overview.md): Tools for publishing, tracking, and measuring social posts across channels.
 - [Get Social Performance Report](https://docs.birdeye.com/mcp/tools/social/get-social-open-url-performance-report.md): Get channel-level social media performance metrics with optional period-over-period comparison.
-- [Ticketing Overview](https://docs.birdeye.com/mcp/tools/ticketing/overview.md): Tools for retrieving support ticket data from Birdeye.
+- [Create Social Post](https://docs.birdeye.com/mcp/tools/social/create-social-post.md): Schedule or immediately publish a social post to a connected channel.
+- [Get Social Post](https://docs.birdeye.com/mcp/tools/social/get-social-post.md): Track the per-location status of a social post created via the API.
+- [Edit Published Social Post](https://docs.birdeye.com/mcp/tools/social/edit-published-social-post.md): Edit the text of an already-published social post created via the API.
+- [Delete Social Post](https://docs.birdeye.com/mcp/tools/social/delete-social-post.md): Delete a social post created via the API, whether scheduled or published.
+- [Ticketing Overview](https://docs.birdeye.com/mcp/tools/ticketing/overview.md): Tools for retrieving and managing support tickets in Birdeye.
 - [Get All Ticket Data](https://docs.birdeye.com/mcp/tools/ticketing/get-all-ticket-data.md): Retrieve tickets for the business with comprehensive filtering and pagination.
-- [Aggregation Overview](https://docs.birdeye.com/mcp/tools/aggregation/overview.md): Tools for accessing review source configuration and site aliases.
-- [Get All Aggregation Sources](https://docs.birdeye.com/mcp/tools/aggregation/get-all-aggregation-sources.md): List all review aggregation sources (monitoring URLs) configured for the business.
+- [Create Ticket](https://docs.birdeye.com/mcp/tools/ticketing/create-ticket.md): Create a support ticket — untagged (default), review-linked, or survey-linked.
+- [Add Ticket Comment](https://docs.birdeye.com/mcp/tools/ticketing/add-ticket-comment.md): Add a comment or internal note to an existing ticket.
+- [Update Ticket](https://docs.birdeye.com/mcp/tools/ticketing/update-ticket.md): Update the status and/or assignee of one or more tickets in bulk.
+- [Contact Overview](https://docs.birdeye.com/mcp/tools/contact/overview.md): Tools for creating, updating, and managing customer contacts and their communication preferences.
+- [Upsert Contact](https://docs.birdeye.com/mcp/tools/contact/upsert-contact.md): Create a new contact or update an existing one (upsert by email or phone).
+- [Customer Check-In](https://docs.birdeye.com/mcp/tools/contact/customer-checkin.md): Record a customer check-in at a specific location.
+- [Delete Contact](https://docs.birdeye.com/mcp/tools/contact/delete-contact.md): Delete a contact from the business account.
+- [Update Contact Subscription](https://docs.birdeye.com/mcp/tools/contact/update-contact-subscription.md): Subscribe or unsubscribe contacts from email and/or SMS communications.
+- [User Overview](https://docs.birdeye.com/mcp/tools/user/overview.md): Tools for managing Birdeye user accounts — create, update roles and access, and remove users.
+- [Create User](https://docs.birdeye.com/mcp/tools/user/create-user.md): Add a new user to the Birdeye business account.
+- [Update User](https://docs.birdeye.com/mcp/tools/user/update-user.md): Update a user's role, name, location access, and notification preferences.
+- [Delete User](https://docs.birdeye.com/mcp/tools/user/delete-user.md): Remove a user's access from the business account.
+- [Google Services Overview](https://docs.birdeye.com/mcp/tools/google-services/overview.md): Tools for managing services listed on the business's Google profile.
+- [Get Google Services](https://docs.birdeye.com/mcp/tools/google-services/get-google-services.md): Fetch all services listed on the business's Google profile.
+- [Create Google Service](https://docs.birdeye.com/mcp/tools/google-services/create-google-service.md): Add a new service to the business's Google profile.
+- [Update Google Service](https://docs.birdeye.com/mcp/tools/google-services/update-google-service.md): Update the price, description, duration, or group of an existing Google service.
+- [Delete Google Services](https://docs.birdeye.com/mcp/tools/google-services/delete-google-services.md): Permanently delete one or more services from the business's Google profile.
 - [Competitor AI Overview](https://docs.birdeye.com/mcp/tools/competitor-ai/overview.md): Tools for retrieving individual competitor reviews and aggregated review metrics.
 - [Retrieve Competitor Reviews](https://docs.birdeye.com/mcp/tools/competitor-ai/retrieve-competitor-reviews.md): Retrieve paginated individual reviews left for competitor locations.
 - [Retrieve Competitor Review Metrics](https://docs.birdeye.com/mcp/tools/competitor-ai/retrieve-competitor-review-metrics.md): Retrieve aggregated average rating and review count per competitor location and source.
@@ -124,8 +188,8 @@
 - [Review Count & Rating By Employee](https://docs.birdeye.com/api/report/review-count-rating-by-employee.md): Review Count & Rating By Employee returns review count by rating associated with each assisted employee.
 - [Insights Category Report by location](https://docs.birdeye.com/api/report/insights-category-report-by-location-report.md): Insights Category Report by location provides the location-wise insights category data in the response.
 - [Competitive Ranking](https://docs.birdeye.com/api/report/competitive-ranking-report.md): Competitive Ranking Report provides the competitors ranking & rating data in the response for a business.
-- [NPS Over time](https://docs.birdeye.com/api/report/nps-over-time-report.md): NPS Over time gives you the NPS score for a selected period of time for all locations across businesses and the count of promoters, passives, and detractors for this business. The report can be grouped per day/week/month/year.
-- [NPS By Location](https://docs.birdeye.com/api/report/nps-by-location-report.md): NPS By Location gives you the NPS score for each location and the count of promoters, passives, and detractors for the business.
+- [NPS Over time](https://docs.birdeye.com/api/report/nps-over-time-report.md): NPS Over time gives you the review-derived NPS score for a selected period of time for all locations across businesses and the count of promoters, passives, and detractors for this business. The report can be grouped per day/week/month/year.
+- [NPS By Location](https://docs.birdeye.com/api/report/nps-by-location-report.md): NPS By Location gives you the review-derived NPS score for each location and the count of promoters, passives, and detractors for the business.
 - [Review By Source](https://docs.birdeye.com/api/report/review-by-source-report.md): Review By Source  API groups the number of reviews and average ratings in an account according to the aggregation source.
 - [Visitor report](https://docs.birdeye.com/api/report/visitor-report.md): Visitor report groups the data according to source.
 - [Usage report](https://docs.birdeye.com/api/report/usage-report.md): Usage report gives the usage details for the review requests, and the number of requests sent, opened and clicked.
@@ -137,6 +201,7 @@
 - [Get](https://docs.birdeye.com/api/survey/get-survey.md): Get Survey fetches the survey designer page details for a particular survey. It provides all the questions which are available in the requested survey ID.
 - [Submit](https://docs.birdeye.com/api/survey/post-a-survey-response.md): Post a survey response API submits the survey response for a particular survey using JSON structure.
 - [List Responses](https://docs.birdeye.com/api/survey/list-responses-for-a-survey.md): List Responses for a Survey API fetches all the responses available for a particular survey ID.
+- [Get Survey Usage by Location](https://docs.birdeye.com/api/survey/get-survey-usage-by-location.md): Get Survey Usage by Location API provides usage data per location for a given survey, including sent count and response rate by location. Results are paginated and sorted by response count in descending order by default.
 - [Get All](https://docs.birdeye.com/api/survey/get-all-surveys.md): Get All Surveys fetches the list of all available surveys on the business.
 - [Create Survey](https://docs.birdeye.com/api/survey/create-survey.md): Create Survey API helps create a new survey for the required question structure and further displays it on the survey list page.
 - [Update Settings](https://docs.birdeye.com/api/survey/update-survey-settings.md): Update Survey Settings helps update the survey page appearance settings like Logo, Title, ProgessBar setting, Theme Colour, User Acess, and many more.
@@ -159,6 +224,7 @@
 - [List Conversations](https://docs.birdeye.com/api/conversation/list-conversations.md): List Conversations retrieves conversations for a business.
 - [Subscription](https://docs.birdeye.com/api/subscription/overview.md)
 - [Subscribe](https://docs.birdeye.com/api/subscription/create-subscription.md): Create webhook subscription listens to subscribed webhook events on a specific passed URL.
+- [List](https://docs.birdeye.com/api/subscription/list-subscriptions.md): Get the list of webhook subscriptions configured for the account.
 - [Unsubscribe](https://docs.birdeye.com/api/subscription/unsubscribe-subscription.md): Delete webhook subscription to stop listening to subscribed webhook events on the subscribed url.
 - [Webhook](https://docs.birdeye.com/api/webhook/overview.md)
 - [List webhook events](https://docs.birdeye.com/api/webhook/get-events.md): List webhook events get events via webhook on multiple activities, whether the conversation is open, updated, closed, or a new message has been added.
@@ -180,7 +246,18 @@
 - [Insight AI](https://docs.birdeye.com/api/insight-ai/overview.md)
 - [Insight Experience Score Benchmark](https://docs.birdeye.com/api/insight-ai/get-insight-experience-score-benchmark.md): Insight Experience Score Benchmark API retrieves benchmark scores comparing actual performance against industry standards and specified comparison periods for sentiment, reputation, experience, and listing metrics.
 - [Insight Experience Location Info](https://docs.birdeye.com/api/insight-ai/get-insight-experience-location-info.md): Insight Experience Location Info API retrieves location-wise experience metrics including sentiment, reputation, experience, and listing scores along with delta comparisons for specified business locations and date ranges.
+- [Insight Experience Location Info Rank](https://docs.birdeye.com/api/insight-ai/get-insight-experience-location-info-rank.md): Insight Experience Location Info Rank API retrieves the top or bottom performing business locations ranked by experience score, for specified business locations and date ranges.
 - [Insight Experience Over Time](https://docs.birdeye.com/api/insight-ai/get-insight-experience-over-time.md): The Insight Experience Over Time API provides a time-series view of experience scores at the account level. It aggregates sentiment, reputation, listing, and call scores across configurable time intervals — day, week, month, quarter, or year — enabling trend analysis and performance tracking over cu…
+- [Insight Sentiment Score Benchmark](https://docs.birdeye.com/api/insight-ai/get-insight-sentiment-score-benchmark.md): Insight Sentiment Score Benchmark API retrieves the actual sentiment score compared against the industry benchmark for specified business locations and date ranges.
+- [Insight Sentiment Location Info](https://docs.birdeye.com/api/insight-ai/get-insight-sentiment-location-info.md): Insight Sentiment Location Info API retrieves location-wise sentiment scores and mention counts for specified business locations and date ranges.
+- [Insight Sentiment Location Info Rank](https://docs.birdeye.com/api/insight-ai/get-insight-sentiment-location-info-rank.md): Insight Sentiment Location Info Rank API retrieves the top or bottom performing business locations ranked by sentiment score, for specified business locations and date ranges.
+- [Insight Sentiment Over Time](https://docs.birdeye.com/api/insight-ai/get-insight-sentiment-over-time.md): The Insight Sentiment Over Time API provides a time-series view of sentiment scores and mention counts at the account level, aggregated across configurable time intervals — day, week, month, quarter, or year — enabling trend analysis over custom date ranges.
+- [Insight Sentiment Category](https://docs.birdeye.com/api/insight-ai/get-insight-sentiment-category.md): Insight Sentiment Category API retrieves sentiment scores and mention counts broken down by review category (e.g. Customer Service, Wait Time) for specified business locations and date ranges.
+- [Insight Reputation Score Benchmark](https://docs.birdeye.com/api/insight-ai/get-insight-reputation-score-benchmark.md): Insight Reputation Score Benchmark API retrieves the actual reputation score compared against the industry benchmark for specified business locations and date ranges.
+- [Insight Reputation Location Info](https://docs.birdeye.com/api/insight-ai/get-insight-reputation-location-info.md): Insight Reputation Location Info API retrieves location-wise reputation scores, average ratings, and review counts for specified business locations and date ranges.
+- [Insight Reputation Location Info Rank](https://docs.birdeye.com/api/insight-ai/get-insight-reputation-location-info-rank.md): Insight Reputation Location Info Rank API retrieves the top or bottom performing business locations ranked by reputation score, for specified business locations and date ranges.
+- [Insight Reputation Over Time](https://docs.birdeye.com/api/insight-ai/get-insight-reputation-over-time.md): The Insight Reputation Over Time API provides a time-series view of reputation scores at the account level, aggregated across configurable time intervals — day, week, month, quarter, or year — enabling trend analysis over custom date ranges.
+- [Insight Reputation Source](https://docs.birdeye.com/api/insight-ai/get-insight-reputation-source.md): Insight Reputation Source API retrieves reputation scores, average ratings, and review counts broken down by review source (e.g. Google, Facebook) for specified business locations and date ranges.
 - [Google Q&A](https://docs.birdeye.com/api/google-q-a/overview.md)
 - [Create Question](https://docs.birdeye.com/api/google-q-a/create-question.md): Create a new question and associated answer
 - [Create Answer](https://docs.birdeye.com/api/google-q-a/create-answer.md): Add an answer to an existing question. Owner can add only one answer per question. This API would be needed when you wish to answer a third party raised question. In this use case, you would need to do a GET all Q&A API call, identify the unanswered Q’s and then use this Create Answer API to answer…
@@ -243,4 +320,7 @@
 
 ## OpenAPI Specs
 
-- [openapi](https://docs.birdeye.com/api/openapi.yaml)
+- [openapi](/api/openapi.yaml)
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

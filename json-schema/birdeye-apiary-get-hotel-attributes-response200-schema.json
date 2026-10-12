@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/main/json-schema/birdeye-apiary-get-hotel-attributes-response200-schema.json",
+  "title": "Apiary_getHotelAttributes_Response200",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/birdeye-listing-api-openapi.yml#/components/schemas/Apiary_getHotelAttributes_Response200",
+  "type": "object",
+  "properties": {
+    "hotelAttributes": {
+      "type": "object",
+      "properties": {
+        "services": {
+          "type": "object",
+          "properties": {
+            "services": {
+              "type": "object",
+              "properties": {
+                "frontDesk": {
+                  "type": "object",
+                  "properties": {
+                    "attributeId": {
+                      "type": "string",
+                      "description": "Attribute Id."
+                    },
+                    "attributeName": {
+                      "type": "string",
+                      "description": "Attribute display name."
+                    },
+                    "columnId": {
+                      "type": "number",
+                      "description": "Internal column identifier."
+                    },
+                    "possibleValues": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "value": {
+                            "type": "boolean",
+                            "description": "Possible attribute value."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Attribute value display name."
+                          }
+                        }
+                      },
+                      "description": "Contains the list of possible values for the attribute."
+                    },
+                    "attributeValueType": {
+                      "type": "string",
+                      "description": "Defines the expected value format for the attribute.",
+                      "enum": [
+                        "BOOLEAN",
+                        "INTEGER",
+                        "YEAR",
+                        "TIME",
+                        "SINGLE_SELECT",
+                        "MULTI_SELECT"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "description": "This is a dynamic field. Depends upon the hotel attributes supported for the selected business."
+    }
+  }
+}

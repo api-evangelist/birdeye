@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/main/json-schema/birdeye-apiary-upload-social-media-response200-schema.json",
+  "title": "Apiary_uploadSocialMedia_Response200",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/birdeye-social-api-openapi.yml#/components/schemas/Apiary_uploadSocialMedia_Response200",
+  "type": "object",
+  "properties": {
+    "batch_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Use this to poll the Track Upload Status endpoint for processing results."
+    },
+    "accepted_count": {
+      "type": "integer",
+      "description": "Number of URLs accepted into the batch."
+    }
+  }
+}

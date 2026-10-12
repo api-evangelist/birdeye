@@ -1,0 +1,78 @@
+arazzo: 1.0.1
+info:
+  title: Create Birdeye customers from new WooCommerce orders
+  summary: Create Birdeye customers from new WooCommerce orders
+  description: Lists WooCommerce orders created after a timestamp and upserts the billing customer into Birdeye.
+  version: 1.0.0
+sourceDescriptions:
+- name: birdeyeContactApi
+  url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/openapi/birdeye-contact-api-openapi.yml
+  type: openapi
+- name: woocommerceOrdersApi
+  url: https://raw.githubusercontent.com/api-evangelist/woocommerce/refs/heads/main/openapi/woocommerce-orders-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: woocommerce-new-orders-to-contacts
+  summary: Create Birdeye customers from new WooCommerce orders
+  description: Lists WooCommerce orders created after a timestamp and upserts the billing customer into Birdeye.
+  inputs:
+    type: object
+    properties:
+      after:
+        type: string
+      businessId:
+        type: string
+        description: Birdeye business (location) id
+  steps:
+  - stepId: list-new-orders
+    description: List orders created after the last run.
+    operationId: $sourceDescriptions.woocommerceOrdersApi.listOrders
+    parameters:
+    - name: after
+      in: query
+      value: $inputs.after
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstName: $response.body#/0/billing/first_name
+      lastName: $response.body#/0/billing/last_name
+      email: $response.body#/0/billing/email
+      phone: $response.body#/0/billing/phone
+  - stepId: create-or-update-birdeye-contact
+    description: Upsert the contact in Birdeye for the location.
+    operationId: $sourceDescriptions.birdeyeContactApi.create-or-update-contact
+    parameters:
+    - name: businessId
+      in: query
+      value: $inputs.businessId
+    requestBody:
+      contentType: application/json
+      payload:
+        firstName: $steps.list-new-orders.outputs.firstName
+        lastName: $steps.list-new-orders.outputs.lastName
+        email: $steps.list-new-orders.outputs.email
+        phone: $steps.list-new-orders.outputs.phone
+        businessIds:
+        - $inputs.businessId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      result: $response.body
+  outputs:
+    birdeyeResult: $steps.create-or-update-birdeye-contact.outputs.result
+x-integration:
+  partner: woocommerce
+  template: https://zapier.com/apps/birdeye/integrations/woocommerce/1230755/create-birdeye-customers-from-new-woocommerce-orders
+  edge_evidence: https://zapier.com/apps/birdeye/integrations/woocommerce/1230755/create-birdeye-customers-from-new-woocommerce-orders
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-12'
+  generator: claude-opus-5-5 provider-integrations-arazzo
+  guessed_steps:
+  - step: list-new-orders
+    cause: partner-contract
+    why: billing.* output paths follow the WooCommerce order shape; not verified against a declared response schema
+      in the catalog spec.
+  - step: create-or-update-birdeye-contact
+    cause: provider-contract
+    why: Birdeye response schema is only an example; no contact id output is declared.

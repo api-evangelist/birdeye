@@ -13,20 +13,17 @@ style:
   base_url: https://api.birdeye.com
   media_type: application/json
   resource_oriented_urls: true
-  note: >-
-    Birdeye's own description: "Uses resource-oriented URLs. Uses built-in HTTP
-    capabilities for passing parameters and authentication. Responds with standard HTTP
-    response codes to indicate errors."
+  note: 'Birdeye''s own description: "Uses resource-oriented URLs. Uses built-in HTTP capabilities for passing parameters
+    and authentication. Responds with standard HTTP response codes to indicate errors."'
 authentication:
   style: api-key-header
   header: x-api-key
   required: true
   scope: per business account
   server_side_only: true
-  note: >-
-    Birdeye explicitly instructs that the key must never be used from a browser or
-    exposed in client-side code. Prior to 2026-02-11 the key was passed as a query
-    parameter; the changelog records the move to the x-api-key header.
+  note: Birdeye explicitly instructs that the key must never be used from a browser or exposed in client-side code.
+    Prior to 2026-02-11 the key was passed as a query parameter; the changelog records the move to the x-api-key
+    header.
   agent_surface:
     mechanism: OAuth 2.0 with Dynamic Client Registration
     endpoint: https://mcp.birdeye.com/mcp
@@ -34,18 +31,16 @@ authentication:
 idempotency:
   supported: false
   idempotency_key_header: null
-  note: >-
-    Birdeye publishes no idempotency key, no request-replay contract and no
-    Idempotency-Key parameter appears in any of the 166 operations in the published
-    OpenAPI. Several write endpoints are upsert-shaped instead
-    (create-or-update-contact / upsert-contact keyed on id or externalId;
-    update-hierarchy keyed on businessId), which gives natural idempotence for those
-    specific calls but is not a general retry-safety contract. Recorded as an honest
-    absence — no Idempotency pointer is emitted for this provider.
+  note: "Birdeye publishes no idempotency key, no request-replay contract and no Idempotency-Key parameter appears\
+    \ in any of the 166 operations in the published OpenAPI. Several write endpoints are upsert-shaped instead (create-or-update-contact\
+    \ / upsert-contact keyed on id or externalId; update-hierarchy keyed on businessId), which gives natural idempotence\
+    \ for those specific calls but is not a general retry-safety contract. Recorded as an honest absence \u2014\
+    \ no Idempotency pointer is emitted for this provider."
   upsert_shaped_operations:
   - create-or-update-contact
   - upsert-contact
   - update-hierarchy
+  coverage: none
 pagination:
   style: offset
   params:
@@ -56,24 +51,34 @@ pagination:
   - startIndex + pageSize (business search)
   - start-index + page-size query string (Search AI accuracy and sentiment reports)
   max_window: 100000
-  max_window_rule: >-
-    sindex + count must be <= 100,000. Deep pagination past that window is rejected;
-    Birdeye tells callers to narrow the result set with filters instead.
+  max_window_rule: sindex + count must be <= 100,000. Deep pagination past that window is rejected; Birdeye tells
+    callers to narrow the result set with filters instead.
   response_fields: null
-  response_field_note: >-
-    The docs do not publish a standard envelope for total counts or next-page cursors;
-    several endpoints take a totalCount flag (for example get-all-ticket-data) instead.
-  inconsistency: >-
-    Three different offset/limit parameter conventions coexist across modules. An agent
-    cannot assume one pagination contract for the whole API.
+  response_field_note: The docs do not publish a standard envelope for total counts or next-page cursors; several
+    endpoints take a totalCount flag (for example get-all-ticket-data) instead.
+  inconsistency: Three different offset/limit parameter conventions coexist across modules. An agent cannot assume
+    one pagination contract for the whole API.
 sorting:
-  params: [sortby, sortBy, sorder, sortOrder, order]
-  note: >-
-    Also inconsistent across modules — some use string values (asc/desc, modified,
-    date), some numeric enums (sortOrder 0 = ascending, 1 = descending).
+  params:
+  - sortby
+  - sortBy
+  - sorder
+  - sortOrder
+  - order
+  note: "Also inconsistent across modules \u2014 some use string values (asc/desc, modified, date), some numeric\
+    \ enums (sortOrder 0 = ascending, 1 = descending)."
 filtering:
-  date_params: [fromDate, toDate, startDate, endDate, startDateUtc, endDateUtc,
-    fromTimestamp, toTimestamp, updateFromDate, updateToDate]
+  date_params:
+  - fromDate
+  - toDate
+  - startDate
+  - endDate
+  - startDateUtc
+  - endDateUtc
+  - fromTimestamp
+  - toTimestamp
+  - updateFromDate
+  - updateToDate
   date_formats:
   - MM/dd/yyyy (customer activity log)
   - UTC epoch milliseconds (survey response `created`, review timestamps)
@@ -84,64 +89,61 @@ errors:
   rfc9457: false
   problem_json: false
   detail: errors/birdeye-error-codes.yml
-  gotcha: >-
-    Business-level failures are frequently returned inside a HTTP 200 response body
-    carrying a non-success `code` — every response example in the published OpenAPI is
-    an HTTP 200 whose example payload is an error object. An agent must inspect the
-    body `code`, not just the HTTP status.
+  gotcha: "Business-level failures are frequently returned inside a HTTP 200 response body carrying a non-success\
+    \ `code` \u2014 every response example in the published OpenAPI is an HTTP 200 whose example payload is an error\
+    \ object. An agent must inspect the body `code`, not just the HTTP status."
 status_codes:
-  documented: [200, 202, 400, 404, 429, 500]
-  also_observed: [401]
+  documented:
+  - 200
+  - 202
+  - 400
+  - 404
+  - 429
+  - 500
+  also_observed:
+  - 401
   source: https://docs.birdeye.com/api/http-status-codes
-  note: >-
-    401 is not in the published table but is what api.birdeye.com returns to an
-    unauthenticated caller, with body {"code":4011,"message":"User is not authorized to
-    perform this action."}
+  note: 401 is not in the published table but is what api.birdeye.com returns to an unauthenticated caller, with
+    body {"code":4011,"message":"User is not authorized to perform this action."}
 rate_limiting:
   published_limit: false
-  signal: >-
-    HTTP 429 "Rate Limited" is documented; error code 89 "Rate limit exceeded" appears
-    in operation response examples across Survey and Listing.
+  signal: HTTP 429 "Rate Limited" is documented; error code 89 "Rate limit exceeded" appears in operation response
+    examples across Survey and Listing.
   response_headers: null
-  header_note: >-
-    Birdeye publishes no RateLimit-* / X-RateLimit-* header contract. The docs say
-    "There is a limit to calling APIs with each API key [connect with the support team
-    to get the current limit]" — the number is not public.
+  header_note: "Birdeye publishes no RateLimit-* / X-RateLimit-* header contract. The docs say \"There is a limit\
+    \ to calling APIs with each API key [connect with the support team to get the current limit]\" \u2014 the number\
+    \ is not public."
   detail: rate-limits/birdeye-rate-limits.yml
 versioning:
   scheme: uri-path
   current: v1
   also_present: v2
-  v2_examples: [/v2/customer/list, /v2/competitive/ranking]
+  v2_examples:
+  - /v2/customer/list
+  - /v2/competitive/ranking
   header_versioning: false
   detail: lifecycle/birdeye-lifecycle.yml
 request_tracing:
   request_id_header: null
-  note: >-
-    No request-id / correlation-id header is documented. Social posting has an
-    application-level `trackingId` returned by schedule-social-post and consumed by
-    track-social-post, and media upload has a `batch_id` — those are job handles, not
-    request tracing.
+  note: "No request-id / correlation-id header is documented. Social posting has an application-level `trackingId`\
+    \ returned by schedule-social-post and consumed by track-social-post, and media upload has a `batch_id` \u2014\
+    \ those are job handles, not request tracing."
 async_operations:
   present: true
   pattern: submit-then-poll
   examples:
-  - upload-social-media returns a batch_id; poll track-social-media-upload until
-    pending_count reaches 0
+  - upload-social-media returns a batch_id; poll track-social-media-upload until pending_count reaches 0
   status_code: 202 Accepted
 field_expansion:
   supported: false
   partial:
-  - Boolean opt-in flags widen a response rather than a generic expand parameter, e.g.
-    fetchExtraParams, needCustomerInfo, fetchAssitedByDetails (get-reviews),
-    experienceScore (get-contact), includeTicketId (list-responses-for-a-survey),
+  - Boolean opt-in flags widen a response rather than a generic expand parameter, e.g. fetchExtraParams, needCustomerInfo,
+    fetchAssitedByDetails (get-reviews), experienceScore (get-contact), includeTicketId (list-responses-for-a-survey),
     tags and customfields (customer-or-lead-list)
 metadata:
   supported: true
-  mechanism: >-
-    Custom Fields module (create/update/get/delete/associate) plus an externalId on
-    contacts, tickets and businesses for correlating Birdeye records with an external
-    system of record.
+  mechanism: Custom Fields module (create/update/get/delete/associate) plus an externalId on contacts, tickets and
+    businesses for correlating Birdeye records with an external system of record.
 webhooks:
   supported: true
   detail: asyncapi/birdeye-webhooks.yml
@@ -152,3 +154,10 @@ cross_links:
   rate_limits: rate-limits/birdeye-rate-limits.yml
   changelog: changelog/birdeye-changelog.yml
   mcp: mcp/birdeye-mcp.yml
+reversibility:
+  status: none
+  note: The contract exposes destructive operations (delete-contact, delete-business, delete-media, delete-public-social-post,
+    delete-a-user ...) but no cancel/undo/restore operation and no stated recovery window in the published docs;
+    deletes are not reversals. Recorded as an honest absence; no window is asserted.
+  reversal_operations: []
+  source: openapi/ (operationId scan, 2026-10-12)

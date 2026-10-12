@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/birdeye/main/json-schema/birdeye-apiary-track-social-media-upload-response200-schema.json",
+  "title": "Apiary_trackSocialMediaUpload_Response200",
+  "x-generated": "2026-10-12",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/birdeye-social-api-openapi.yml#/components/schemas/Apiary_trackSocialMediaUpload_Response200",
+  "type": "object",
+  "properties": {
+    "batch_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Identifier for the batch."
+    },
+    "status": {
+      "type": "string",
+      "description": "Overall batch status. Possible values: COMPLETED (all items processed successfully), PARTIALLY_COMPLETED (some succeeded, some failed), FAILED (all items failed), PENDING (processing still in progress — poll again).",
+      "enum": [
+        "COMPLETED",
+        "PARTIALLY_COMPLETED",
+        "FAILED",
+        "PENDING"
+      ]
+    },
+    "accepted_count": {
+      "type": "integer",
+      "description": "Total number of URLs submitted in the batch."
+    },
+    "success_count": {
+      "type": "integer",
+      "description": "Number of successfully uploaded items."
+    },
+    "failed_count": {
+      "type": "integer",
+      "description": "Number of failed items."
+    },
+    "pending_count": {
+      "type": "integer",
+      "description": "Number of items still processing. Poll again if greater than 0."
+    },
+    "items": {
+      "type": "array",
+      "description": "Per-item processing results.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_url": {
+            "type": "string",
+            "description": "The original URL submitted."
+          },
+          "status": {
+            "type": "string",
+            "description": "Item-level status. Possible values — SUCCESS or FAILED.",
+            "enum": [
+              "SUCCESS",
+              "FAILED"
+            ]
+          },
+          "asset_id": {
+            "type": "integer",
+            "description": "Internal asset ID for use in post creation API. Present only on SUCCESS."
+          },
+          "cdn_url": {
+            "type": "string",
+            "description": "CDN-hosted URL of the uploaded media. Present only on SUCCESS."
+          },
+          "failure_reason": {
+            "type": "string",
+            "description": "Human-readable reason for failure. Present only on FAILED."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 ---
-name: Birdeye
+name: birdeye
+x-original-name: Birdeye
 description: Use when building integrations with Birdeye's reputation management platform, querying review data, managing business listings, analyzing customer feedback, scheduling social posts, or connecting AI assistants to Birdeye account data via MCP.
 metadata:
     mintlify-proj: birdeye

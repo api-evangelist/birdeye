@@ -1,0 +1,77 @@
+arazzo: 1.0.1
+info:
+  title: Create Birdeye customers from new Xero contacts
+  summary: Create Birdeye customers from new Xero contacts
+  description: Lists Xero contacts modified since a timestamp and upserts the contact into Birdeye.
+  version: 1.0.0
+sourceDescriptions:
+- name: birdeyeContactApi
+  url: https://raw.githubusercontent.com/api-evangelist/birdeye/refs/heads/main/openapi/birdeye-contact-api-openapi.yml
+  type: openapi
+- name: xeroAccountingApi
+  url: https://raw.githubusercontent.com/api-evangelist/xero/refs/heads/main/openapi/xero-accounting-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: xero-new-contacts-to-contacts
+  summary: Create Birdeye customers from new Xero contacts
+  description: Lists Xero contacts modified since a timestamp and upserts the contact into Birdeye.
+  inputs:
+    type: object
+    properties:
+      xeroTenantId:
+        type: string
+      since:
+        type: string
+      businessId:
+        type: string
+        description: Birdeye business (location) id
+  steps:
+  - stepId: list-new-xero-contacts
+    description: List Xero contacts modified since the last run.
+    operationId: $sourceDescriptions.xeroAccountingApi.getContacts
+    parameters:
+    - name: xero-tenant-id
+      in: header
+      value: $inputs.xeroTenantId
+    - name: If-Modified-Since
+      in: header
+      value: $inputs.since
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstName: $response.body#/Contacts/0/FirstName
+      lastName: $response.body#/Contacts/0/LastName
+      email: $response.body#/Contacts/0/EmailAddress
+  - stepId: create-or-update-birdeye-contact
+    description: Upsert the contact in Birdeye for the location.
+    operationId: $sourceDescriptions.birdeyeContactApi.create-or-update-contact
+    parameters:
+    - name: businessId
+      in: query
+      value: $inputs.businessId
+    requestBody:
+      contentType: application/json
+      payload:
+        firstName: $steps.list-new-xero-contacts.outputs.firstName
+        lastName: $steps.list-new-xero-contacts.outputs.lastName
+        email: $steps.list-new-xero-contacts.outputs.email
+        businessIds:
+        - $inputs.businessId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      result: $response.body
+  outputs:
+    birdeyeResult: $steps.create-or-update-birdeye-contact.outputs.result
+x-integration:
+  partner: xero
+  template: https://zapier.com/apps/birdeye/integrations/xero/1220158/create-birdeye-customers-from-new-xero-contacts
+  edge_evidence: https://zapier.com/apps/birdeye/integrations/xero/1220158/create-birdeye-customers-from-new-xero-contacts
+  edge_type: marketplace
+  method: generated
+  generated: '2026-10-12'
+  generator: claude-opus-5-5 provider-integrations-arazzo
+  guessed_steps:
+  - step: create-or-update-birdeye-contact
+    cause: provider-contract
+    why: Birdeye response schema is only an example; no contact id output is declared.
