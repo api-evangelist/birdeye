@@ -63,7 +63,6 @@
   status: arazzo
 - slug: birdeye-create-new-birdeye-customers-from-newly-added-monday-com-board-items
   label: Create new Birdeye customers from newly added monday.com board items
-  partner: monday-com
   partner_name: monday.com
   category: Project Management
   use_case: Create new Birdeye customers from newly added monday.com board items
@@ -73,7 +72,7 @@
   evidence: https://zapier.com/apps/birdeye/integrations/monday/1228826/create-new-birdeye-customers-from-newly-added-mondaycom-board-items
   template: https://zapier.com/apps/birdeye/integrations/monday/1228826/create-new-birdeye-customers-from-newly-added-mondaycom-board-items
   source: template
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: birdeye-create-birdeye-customers-from-new-quickbooks-online-invoices
   label: Create Birdeye customers from new QuickBooks Online invoices
