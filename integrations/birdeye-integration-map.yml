@@ -1,0 +1,174 @@
+# DERIVED by derive-integration-map.py (roadmap#949): each integration workflow, step by step,
+# resolved to spec file -> tag -> business capability (Turbo EA, CC BY 4.0) and the operation's
+# phrasing intent. Read from our own files; an unmapped link says why.
+slug: birdeye
+workflows:
+- file: birdeye-google-sheets-new-rows-to-contacts.yml
+  title: Create Birdeye customers from new Google Sheets rows
+  partner: google-sheets
+  template: https://zapier.com/apps/birdeye/integrations/google-sheets/1211581/create-birdeye-customers-from-new-google-sheets-rows
+  repos:
+  - google-sheets
+  - birdeye
+  steps:
+  - step: read-sheet-rows
+    repo: google-sheets
+    spec_file: google-sheets-values-api-openapi.yml
+    operationId: getValues
+    tag: Values
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  - step: create-or-update-birdeye-contact
+    repo: birdeye
+    spec_file: birdeye-contact-api-openapi.yml
+    operationId: create-or-update-contact
+    tag: Contact
+    capability_id: BC-420.10
+    capability: Customer Data Management
+    capability_l1: BC-420
+    intent: Create or update a contact
+    effect: write
+    unmapped: null
+  connects:
+    google-sheets:
+      capabilities: []
+      tags:
+      - Values
+    birdeye:
+      capabilities:
+      - BC-420.10
+      tags:
+      - Contact
+  intents:
+  - Create or update a contact
+- file: birdeye-servicem8-completed-jobs-to-contacts.yml
+  title: Create customers in Birdeye when jobs are completed in ServiceM8
+  partner: servicem8
+  template: https://zapier.com/apps/birdeye/integrations/servicem8/1211605/create-customers-in-birdeye-when-jobs-are-completed-in-servicem8
+  repos:
+  - servicem8
+  - birdeye
+  steps:
+  - step: get-job-contact
+    repo: servicem8
+    spec_file: servicem8-job-contacts-api-openapi.yml
+    operationId: listJobContacts
+    tag: Job Contacts
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  - step: create-or-update-birdeye-contact
+    repo: birdeye
+    spec_file: birdeye-contact-api-openapi.yml
+    operationId: create-or-update-contact
+    tag: Contact
+    capability_id: BC-420.10
+    capability: Customer Data Management
+    capability_l1: BC-420
+    intent: Create or update a contact
+    effect: write
+    unmapped: null
+  connects:
+    servicem8:
+      capabilities: []
+      tags:
+      - Job Contacts
+    birdeye:
+      capabilities:
+      - BC-420.10
+      tags:
+      - Contact
+  intents:
+  - Create or update a contact
+- file: birdeye-woocommerce-new-orders-to-contacts.yml
+  title: Create Birdeye customers from new WooCommerce orders
+  partner: woocommerce
+  template: https://zapier.com/apps/birdeye/integrations/woocommerce/1230755/create-birdeye-customers-from-new-woocommerce-orders
+  repos:
+  - woocommerce
+  - birdeye
+  steps:
+  - step: list-new-orders
+    repo: woocommerce
+    spec_file: woocommerce-orders-api-openapi.yml
+    operationId: listOrders
+    tag: Orders
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  - step: create-or-update-birdeye-contact
+    repo: birdeye
+    spec_file: birdeye-contact-api-openapi.yml
+    operationId: create-or-update-contact
+    tag: Contact
+    capability_id: BC-420.10
+    capability: Customer Data Management
+    capability_l1: BC-420
+    intent: Create or update a contact
+    effect: write
+    unmapped: null
+  connects:
+    woocommerce:
+      capabilities: []
+      tags:
+      - Orders
+    birdeye:
+      capabilities:
+      - BC-420.10
+      tags:
+      - Contact
+  intents:
+  - Create or update a contact
+- file: birdeye-xero-new-contacts-to-contacts.yml
+  title: Create Birdeye customers from new Xero contacts
+  partner: xero
+  template: https://zapier.com/apps/birdeye/integrations/xero/1220158/create-birdeye-customers-from-new-xero-contacts
+  repos:
+  - xero
+  - birdeye
+  steps:
+  - step: list-new-xero-contacts
+    repo: xero
+    spec_file: xero-accounting-api-openapi.yml
+    operationId: getContacts
+    tag: Accounting
+    capability_id: BC-200
+    capability: Financial Management
+    capability_l1: BC-200
+    intent: null
+    effect: null
+    unmapped: null
+  - step: create-or-update-birdeye-contact
+    repo: birdeye
+    spec_file: birdeye-contact-api-openapi.yml
+    operationId: create-or-update-contact
+    tag: Contact
+    capability_id: BC-420.10
+    capability: Customer Data Management
+    capability_l1: BC-420
+    intent: Create or update a contact
+    effect: write
+    unmapped: null
+  connects:
+    xero:
+      capabilities:
+      - BC-200
+      tags:
+      - Accounting
+    birdeye:
+      capabilities:
+      - BC-420.10
+      tags:
+      - Contact
+  intents:
+  - Create or update a contact
