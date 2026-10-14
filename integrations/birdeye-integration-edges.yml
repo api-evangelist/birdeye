@@ -8,6 +8,7 @@ checked:
 - https://n8n.io/integrations/birdeye/
 - https://zapier.com/apps/birdeye/integrations
 - okta/integrations/okta-integration-edges.yml
+- olo/integrations/olo-integration-edges.yml
 - servicetitan/integrations/servicetitan-integration-edges.yml
 summary: null
 marketplace_apps:
@@ -422,6 +423,23 @@ edges:
   - OKTA_VERIFIED
   features:
   - SAML
+- partner_name: Olo (own)
+  partner: olo
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.olo.com/partners/birdeye
+  mirror_of: olo/integrations/olo-integration-edges.yml
+  apps:
+  - Birdeye
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Data Syndication
 - partner_name: ServiceTitan (own)
   partner: servicetitan
   partner_match: mirror

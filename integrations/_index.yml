@@ -404,6 +404,19 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: birdeye-olo-own
+  label: Olo (own)
+  partner: olo
+  partner_name: Olo (own)
+  category: Data Syndication
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.olo.com/partners/birdeye
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: birdeye-servicetitan-own
   label: ServiceTitan (own)
   partner: servicetitan
