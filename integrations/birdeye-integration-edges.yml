@@ -7,6 +7,7 @@ checked:
 - https://monid.ai/tools/birdeye
 - https://n8n.io/integrations/birdeye/
 - https://zapier.com/apps/birdeye/integrations
+- okta/integrations/okta-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -399,6 +400,27 @@ edges:
   direction: third-party
   category: Email Newsletters
   partner_url: http://www.constantcontact.com/signup.jsp?pn=zapier
+- partner_name: Okta (own)
+  partner: okta
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.okta.com/integrations/birdeye/
+  mirror_of: okta/integrations/okta-integration-edges.yml
+  apps:
+  - BirdEye
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Single Sign-On
+  badges:
+  - OKTA_VERIFIED
+  features:
+  - SAML
 templates:
 - title: Create new Birdeye customers when Wix rules are triggered
   url: https://zapier.com/apps/birdeye/integrations/wix/1400048/create-new-birdeye-customers-when-wix-rules-are-triggered
