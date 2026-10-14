@@ -404,3 +404,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: birdeye-servicetitan-own
+  label: ServiceTitan (own)
+  partner: servicetitan
+  partner_name: ServiceTitan (own)
+  category: Marketing
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.servicetitan.com/partner/birdeye
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
