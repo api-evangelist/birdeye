@@ -3,6 +3,7 @@ method: searched
 source:
 - https://zapier.com/apps/birdeye/integrations
 checked:
+- https://a2aregistry.org/api/agents
 - https://composio.dev/toolkits/birdeye
 - https://monid.ai/tools/birdeye
 - https://n8n.io/integrations/birdeye/
@@ -457,6 +458,39 @@ edges:
   detected: '2026-10-14'
   detected_by: mirror-platform-listings.py
   category: Marketing
+- partner_name: A2A protocol (own Agent Card)
+  partner: null
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: A2A agent
+  evidence: https://docs.birdeye.com/.well-known/agent-card.json
+  channel: provider-built
+  relationship: compatible
+  shape: a2a
+  evidence_kind: own-wellknown
+  degree: conformant
+  report_only: true
+  a2a_card:
+    grade: conformant
+    verdict: live
+    protocol_version: '0.3'
+    deviations:
+    - supportedInterfaces-instead-of-additionalInterfaces
+    card_subject: docs
+  contract_reference:
+    register: provider's own /.well-known/agent-card.json
+    spec_file: null
+    standard: A2A
+    role: a2a-agent-card
+    registered_name: Birdeye Developer Portal
+    organization: Birdeye Developer Portal
+    matched_domain: birdeye.com
+    matched_by: own-domain
+    detected_by: sweep-ai-agents.py
+    detected: '2026-10-15'
+  detected_by: sweep-ai-agents.py
+  first_seen: '2026-10-15'
 templates:
 - title: Create new Birdeye customers when Wix rules are triggered
   url: https://zapier.com/apps/birdeye/integrations/wix/1400048/create-new-birdeye-customers-when-wix-rules-are-triggered
