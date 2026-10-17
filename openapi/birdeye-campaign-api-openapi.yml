@@ -93,6 +93,26 @@ paths:
       description: Production
 components:
   schemas:
+    1040Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1040
+        message: Invalid temmplate id.
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
     1011Model:
       type: object
       properties:
@@ -103,6 +123,16 @@ components:
       example:
         code: 1011
         message: Business id is invalid
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
     1315Model:
       type: object
       properties:
@@ -123,36 +153,6 @@ components:
       example:
         code: 1089
         message: Customer id is invalid.
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    1040Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1040
-        message: Invalid temmplate id.
   securitySchemes:
     apiKey:
       type: apiKey

@@ -359,7 +359,7 @@ components:
           marketingOptin: true
           feedbackOptin: true
           serviceOptin: true
-    5008Model:
+    1175Model:
       type: object
       properties:
         code:
@@ -367,98 +367,8 @@ components:
         message:
           type: string
       example:
-        code: 5008
-        message: RequestBody not found
-    1142Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1142
-        message: Customer name cannot be blank
-    1088Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1088
-        message: Customer email id cannot be more than 40 characters.
-    1532Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1532
-        message: Business id is missing or invalid.
-    1170Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1170
-        message: SMS Alert flag is invalid. Valid values are 0 or 1.
-    1033Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1033
-        message: You are not authorized to perform this action
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    20083Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 20083
-        message: End date can't be before start date
-    1086Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1086
-        message: Customer email id cannot be blank.
+        code: 1175
+        message: No business found with the given id
     Apiary_retrieveContact_Response200:
       type: object
       properties:
@@ -548,6 +458,46 @@ components:
               type: boolean
               description: Service communication.
           description: SMS communication preference flags.
+    20083Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 20083
+        message: End date can't be before start date
+    5008Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 5008
+        message: RequestBody not found
+    1088Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1088
+        message: Customer email id cannot be more than 40 characters.
+    1532Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1532
+        message: Business id is missing or invalid.
     Apiary_retrieveOptedOutContacts_Response200:
       type: object
       properties:
@@ -626,7 +576,7 @@ components:
                 type: array
                 items: {}
                 description: Categories from which the contact has opted out (e.g., marketing, feedback, service).
-    1175Model:
+    1033Model:
       type: object
       properties:
         code:
@@ -634,8 +584,38 @@ components:
         message:
           type: string
       example:
-        code: 1175
-        message: No business found with the given id
+        code: 1033
+        message: You are not authorized to perform this action
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
+    1170Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1170
+        message: SMS Alert flag is invalid. Valid values are 0 or 1.
+    1086Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1086
+        message: Customer email id cannot be blank.
     5043Model:
       type: object
       properties:
@@ -646,6 +626,16 @@ components:
       example:
         code: 5043
         message: Contact not found for the given request
+    1087Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1087
+        message: Customer email id is invalid.
     Apiary_upsertContact_Request:
       type: object
       properties:
@@ -756,36 +746,6 @@ components:
           marketingOptin: true
           feedbackOptin: true
           serviceOptin: true
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    1055Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1055
-        message: Not a valid US phone number.
-    1089Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1089
-        message: Customer id is invalid.
     1167Model:
       type: object
       properties:
@@ -796,7 +756,7 @@ components:
       example:
         code: 1167
         message: API key is missing
-    1087Model:
+    1055Model:
       type: object
       properties:
         code:
@@ -804,8 +764,48 @@ components:
         message:
           type: string
       example:
-        code: 1087
-        message: Customer email id is invalid.
+        code: 1055
+        message: Not a valid US phone number.
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
+    1142Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1142
+        message: Customer name cannot be blank
+    1089Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1089
+        message: Customer id is invalid.
   requestBodies:
     Get_opt-out_contact_dataBody:
       content:

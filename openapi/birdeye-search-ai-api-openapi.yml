@@ -578,26 +578,6 @@ components:
         startDate: 2026-03-01
         endDate: 2026-03-31
         viewReportType: LOCATION_LEVEL
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
     Apiary_getSearchAiBusinesses_Request:
       type: object
       properties:
@@ -672,6 +652,26 @@ components:
         - PERPLEXITY
         startDate: 2025-12-01
         endDate: 2025-12-31
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
   requestBodies:
     Get_Search_AI_CitationsBody:
       content:

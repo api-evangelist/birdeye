@@ -391,46 +391,6 @@ paths:
       description: Production
 components:
   schemas:
-    1011Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1011
-        message: Business id is invalid
-    89Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 89
-        message: Rate limit exceeded
-    1161Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1161
-        message: Invalid API key
-    1167Model:
-      type: object
-      properties:
-        code:
-          type: number
-        message:
-          type: string
-      example:
-        code: 1167
-        message: API key is missing
     Apiary_updateProductListing_Response200:
       type: object
       properties:
@@ -516,6 +476,36 @@ components:
                 type: string
         totalCount:
           type: number
+    1167Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1167
+        message: API key is missing
+    89Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 89
+        message: Rate limit exceeded
+    1011Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1011
+        message: Business id is invalid
     Apiary_createProductListing_Response200:
       type: object
       properties:
@@ -542,6 +532,16 @@ components:
                   message:
                     type: string
                     description: Validation error message.
+    1161Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 1161
+        message: Invalid API key
     Apiary_createProductListing_Request:
       type: object
       properties:
@@ -633,6 +633,13 @@ components:
         productUrl: https://example.com/products/dental-implant
         status: PUBLISH
   requestBodies:
+    Fix_ListingBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties: {}
+            example: {}
     Add_Products_On_a_LocationBody:
       content:
         application/json:
@@ -648,13 +655,6 @@ components:
               productIds:
               - 68767cb39ebf51000815ab39
               - 68767cb39ebf51000815ab39
-    Fix_ListingBody:
-      content:
-        application/json:
-          schema:
-            type: object
-            properties: {}
-            example: {}
   securitySchemes:
     apiKey:
       type: apiKey
