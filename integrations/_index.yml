@@ -501,5 +501,5 @@
     - connectors/applications/birdeye
     vendor_link: https://birdeye.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
