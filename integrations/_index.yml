@@ -391,6 +391,79 @@
   source: edge
   status: pending-generation
   arazzo: null
+- slug: birdeye-zapier
+  label: Zapier
+  partner: zapier
+  partner_name: Zapier
+  type: marketplace
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  evidence: https://zapier.com/apps/birdeye/integrations
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: Birdeye
+    matched_domain: birdeye.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: birdeye
+    beta: false
+    builder: unknown (not in the directory record)
+  status: not-a-workflow
+  arazzo: null
+- slug: birdeye-a2a-protocol-own-agent-card
+  label: A2A protocol (own Agent Card)
+  partner_name: A2A protocol (own Agent Card)
+  category: A2A agent
+  type: register
+  channel: provider-built
+  evidence: https://docs.birdeye.com/.well-known/agent-card.json
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: provider's own /.well-known/agent-card.json
+    spec_file: null
+    standard: A2A
+    role: a2a-agent-card
+    registered_name: Birdeye Developer Portal
+    organization: Birdeye Developer Portal
+    matched_domain: birdeye.com
+    matched_by: own-domain
+    detected_by: sweep-ai-agents.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: birdeye-fivetran
+  label: Fivetran
+  partner: fivetran
+  partner_name: Fivetran
+  type: marketplace
+  marketplace: fivetran-connectors
+  channel: elt-connector
+  evidence: https://fivetran.com/docs/connectors/applications/birdeye
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
+    spec_file: null
+    role: elt-connector:fivetran
+    registered_name: Birdeye
+    matched_domain: birdeye.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    connector_paths:
+    - connectors/applications/birdeye
+    vendor_link: https://birdeye.com/
+    builder: Fivetran
+  status: not-a-workflow
+  arazzo: null
 - slug: birdeye-okta-own
   label: Okta (own)
   partner: okta
@@ -430,76 +503,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: birdeye-a2a-protocol-own-agent-card
-  label: A2A protocol (own Agent Card)
-  partner_name: A2A protocol (own Agent Card)
-  category: A2A agent
-  type: register
-  channel: provider-built
-  evidence: https://docs.birdeye.com/.well-known/agent-card.json
-  source: edge
-  relationship: compatible
-  contract_reference:
-    register: provider's own /.well-known/agent-card.json
-    spec_file: null
-    standard: A2A
-    role: a2a-agent-card
-    registered_name: Birdeye Developer Portal
-    organization: Birdeye Developer Portal
-    matched_domain: birdeye.com
-    matched_by: own-domain
-    detected_by: sweep-ai-agents.py
-    detected: '2026-10-15'
-  status: not-a-workflow
-  arazzo: null
-- slug: birdeye-zapier
-  label: Zapier
-  partner: zapier
-  partner_name: Zapier
+- slug: birdeye-toast-own
+  label: Toast (own)
+  partner: toast
+  partner_name: Toast (own)
+  category: Marketing & CRM
   type: marketplace
-  marketplace: zapier-directory
-  channel: ipaas-listing
-  evidence: https://zapier.com/apps/birdeye/integrations
+  marketplace: own
+  channel: partner-built
+  evidence: https://pos.toasttab.com/partners/directory/Birdeye
   source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Zapier app directory (zapier.com/api/v4/apps)
-    spec_file: null
-    role: ipaas-connector:zapier
-    registered_name: Birdeye
-    matched_domain: birdeye.com
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: birdeye
-    beta: false
-    builder: unknown (not in the directory record)
-  status: not-a-workflow
-  arazzo: null
-- slug: birdeye-fivetran
-  label: Fivetran
-  partner: fivetran
-  partner_name: Fivetran
-  type: marketplace
-  marketplace: fivetran-connectors
-  channel: elt-connector
-  evidence: https://fivetran.com/docs/connectors/applications/birdeye
-  source: edge
-  relationship: ipaas-bridge
-  contract_reference:
-    register: Fivetran connectors (fivetran.com/docs/connectors, docs-sitemap.xml + Partner-Built program)
-    spec_file: null
-    role: elt-connector:fivetran
-    registered_name: Birdeye
-    matched_domain: birdeye.com
-    matched_by: domain
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    connector_paths:
-    - connectors/applications/birdeye
-    vendor_link: https://birdeye.com/
-    builder: Fivetran
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
