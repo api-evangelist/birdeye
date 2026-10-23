@@ -16,6 +16,8 @@ checked:
 - servicetitan/integrations/servicetitan-integration-edges.yml
 - toast/integrations/toast-integration-edges.yml
 - hubspot/integrations/hubspot-integration-edges.yml
+- https://docs.overturemaps.org/attribution/
+- https://overturemaps.org/about/members/
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -613,6 +615,32 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: LEAD_SCORING_ROUTING
+- partner_name: Overture Maps Foundation (data contributors)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://docs.overturemaps.org/attribution/
+  category: open map data contribution
+  contract_reference:
+    register: Overture Maps data contributors (docs.overturemaps.org/attribution)
+    standard: Overture Maps (GERS)
+    spec_file: null
+    role: overture-data-contributor
+    registered_name: Birdeye
+    register_id: places:Birdeye
+    matched_domain: birdeye.com
+    matched_by: domain
+    themes:
+    - places
+    signal_note: 'participation only: the company''s data ships in the named Overture theme(s) under an open licence;
+      not an API conformance claim'
+    detected_by: sweep-overture-maps-members.py
+    detected: '2026-10-23'
+  detected_by: sweep-overture-maps-members.py
+  first_seen: '2026-10-23'
 templates:
 - title: Create new Birdeye customers when Wix rules are triggered
   url: https://zapier.com/apps/birdeye/integrations/wix/1400048/create-new-birdeye-customers-when-wix-rules-are-triggered

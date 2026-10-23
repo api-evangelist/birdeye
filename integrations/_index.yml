@@ -565,3 +565,29 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: birdeye-overture-maps-foundation-data-contributors
+  label: Overture Maps Foundation (data contributors)
+  partner_name: Overture Maps Foundation (data contributors)
+  category: open map data contribution
+  type: register
+  channel: standard-directory
+  evidence: https://docs.overturemaps.org/attribution/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Overture Maps data contributors (docs.overturemaps.org/attribution)
+    standard: Overture Maps (GERS)
+    spec_file: null
+    role: overture-data-contributor
+    registered_name: Birdeye
+    register_id: places:Birdeye
+    matched_domain: birdeye.com
+    matched_by: domain
+    themes:
+    - places
+    signal_note: 'participation only: the company''s data ships in the named Overture theme(s) under an open licence;
+      not an API conformance claim'
+    detected_by: sweep-overture-maps-members.py
+    detected: '2026-10-23'
+  status: not-a-workflow
+  arazzo: null
